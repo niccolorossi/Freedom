@@ -15,6 +15,8 @@ class Player {
             throw new OutOfBoundsException(coordinate + " is out of bound!");
     }
     
+    
+    
     public void move(int x, int y) {
         try {
             checkBounds(x);

@@ -1,4 +1,5 @@
 package it.freedom.exceptions;
 
-public class NotAnIntegerException {
+class NotAnIntegerException extends Exception {
+    
 }
