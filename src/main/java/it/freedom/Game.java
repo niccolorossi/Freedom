@@ -3,15 +3,11 @@ package it.freedom;
 public class Game {
     
     private Board board;
-    private Player whitePlayer;
-    private Player blackPlayer;
-    private Player currentPlayer;
+    private Character currentStone;
 
     public Game(int size) {
         this.board = new Board(size);
-        this.whitePlayer = new Player('W');
-        this.blackPlayer = new Player('B');
-        this.currentPlayer = this.whitePlayer;
+        this.currentStone = 'W';
     }
 
     @Override
@@ -20,7 +16,11 @@ public class Game {
     }
 
     public void move(int x, int y) {
-        currentPlayer.move(x, y);
+        
+        board.setStone(currentStone, x, y);
+        
     }
+    
+    
     
 }

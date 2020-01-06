@@ -21,6 +21,17 @@ public class GameTest {
             "|_|_|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|_|_|";
 
+    private String oneMoveBoard10 = "|W|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|\n" +
+            "|_|_|_|_|_|_|_|_|_|_|";
+
     private String emptyBoard8 = "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" +
@@ -65,6 +76,14 @@ public class GameTest {
         game10.move(1,11);
         assertThat(game10.toString(), is(emptyBoard10));
 
+    }
+    
+    @Test
+    public void checkOneMove(){
+        
+        game10.move(1,1);
+        assertThat(game10.toString(), is(oneMoveBoard10));
+        
     }
     
 }

@@ -1,5 +1,7 @@
 package it.freedom;
 
+import it.freedom.exceptions.OutOfBoundsException;
+
 class Board {
     
     private Character[][] currentBoard;
@@ -37,5 +39,24 @@ class Board {
         }
 
         return result;
+    }
+
+    private void checkBounds(int coordinate) throws OutOfBoundsException {
+        if(coordinate < 0 || coordinate > 9)
+            throw new OutOfBoundsException(coordinate + " is out of bound!");
+    }
+
+    void setStone(Character symbol, int  x, int y) {
+        try {
+            
+            checkBounds(x);
+            checkBounds(y);
+            currentBoard[x-1][y-1] = symbol;
+
+        } catch (OutOfBoundsException e1) {
+            System.out.println(e1.getMessage());
+        
+        } 
+        
     }
 }
