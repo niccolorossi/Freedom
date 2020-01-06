@@ -16,9 +16,15 @@ public class Game {
     }
 
 
-    public void playerMove(int i, int i1) throws OutOfBoundsException {
-        if( i < 0 || i > 9) {
-            throw new OutOfBoundsException(i + " is out of bound!");
+    public void playerMove(int x, int y) throws OutOfBoundsException {
+        if( x < 0 || x > 9) {
+            throw new OutOfBoundsException(x + " is out of bound!");
         }
+
+        if( y < 0 || y > 9) {
+            throw new OutOfBoundsException(y + " is out of bound!");
+        }
+        
+        
     }
 }

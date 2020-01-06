@@ -62,6 +62,17 @@ public class GameTest {
             assertTrue(thrown.getMessage().contains("11 is out of bound!"));
 
     }
+
+    @Test
+    public void whenYOutsideBoardThenOutOfBoundsException() throws OutOfBoundsException {
+
+
+        OutOfBoundsException thrown = assertThrows(OutOfBoundsException.class, () -> {
+            game10.playerMove(1,11);
+        });
+        assertTrue(thrown.getMessage().contains("11 is out of bound!"));
+
+    }
     
 
 
