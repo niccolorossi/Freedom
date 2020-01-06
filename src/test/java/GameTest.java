@@ -53,24 +53,17 @@ public class GameTest {
     }
 
     @Test
-    public void whenXOutsideBoardThenOutOfBoundsException() throws OutOfBoundsException {
-
-
-            OutOfBoundsException thrown = assertThrows(OutOfBoundsException.class, () -> {
-                game10.playerMove(11,1);
-            });
-            assertTrue(thrown.getMessage().contains("11 is out of bound!"));
-
+    public void whenXOutsideBoardThenOutOfBoundsException() {
+        
+        game10.move(11,1);
+        assertThat(game10.toString(), is(emptyBoard10));
     }
 
     @Test
-    public void whenYOutsideBoardThenOutOfBoundsException() throws OutOfBoundsException {
-
-
-        OutOfBoundsException thrown = assertThrows(OutOfBoundsException.class, () -> {
-            game10.playerMove(1,11);
-        });
-        assertTrue(thrown.getMessage().contains("11 is out of bound!"));
+    public void whenYOutsideBoardThenOutOfBoundsException() {
+        
+        game10.move(1,11);
+        assertThat(game10.toString(), is(emptyBoard10));
 
     }
     

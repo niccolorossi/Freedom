@@ -1,29 +1,26 @@
 package it.freedom;
 
-import it.freedom.exceptions.OutOfBoundsException;
-
 public class Game {
     
     private Board board;
+    private Player whitePlayer;
+    private Player blackPlayer;
+    private Player currentPlayer;
 
     public Game(int size) {
         this.board = new Board(size);
+        this.whitePlayer = new Player('W');
+        this.blackPlayer = new Player('B');
+        this.currentPlayer = this.whitePlayer;
     }
 
     @Override
     public String toString(){
         return board.printBoard();
     }
-    
-    private void checkBounds(int coordinate) throws OutOfBoundsException{
-        if(coordinate < 0 || coordinate > 9)
-            throw new OutOfBoundsException(coordinate + " is out of bound!");
-    }
 
-    public void playerMove(int x, int y) throws OutOfBoundsException {
-        checkBounds(x);
-        checkBounds(y);
-        
-        
+    public void move(int x, int y) {
+        currentPlayer.move(x, y);
     }
+    
 }
