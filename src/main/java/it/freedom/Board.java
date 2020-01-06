@@ -4,21 +4,23 @@ class Board {
     
     private Character[][] currentBoard;
     private int boardSize;
-    
+    private char EMPTY = '_';
+
     Board(int boardSize) {
-        
+
         this.boardSize = boardSize;
         this.currentBoard = new Character[boardSize][boardSize];
 
         for(int i = 0; i < boardSize; i++){
             for(int j = 0; j < boardSize; j++){
-                currentBoard[i][j] = '_';
+                currentBoard[i][j] = EMPTY;
             }
         }
         
     }
     
     String printBoard() {
+
         String result = "";
 
         for(int i = 0; i < boardSize; i++){
