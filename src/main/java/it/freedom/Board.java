@@ -16,11 +16,18 @@ class Board {
 
         this.boardSize = boardSize;
         this.currentBoard = new Character[boardSize][boardSize];
+<<<<<<< HEAD
 
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = EMPTY));
 
+=======
+        
+        IntStream.range(0, boardSize)
+                .forEach(r -> IntStream.range(0, boardSize)
+                        .forEach(c -> currentBoard[r][c] = emptyCellCharacter));
+>>>>>>> new boardPrinter method
     }
 
     String printBoard() {

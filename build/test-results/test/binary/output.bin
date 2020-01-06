@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 11 is out of bound!
 11 is out of bound!
+=======
+11 is out of bounds!
+11 is out of bounds!
+>>>>>>> new boardPrinter method
