@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-06T10:31:31" hostname="cli243-105.wireless-s.units.it" time="0.009">
+<testsuite name="GameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-06T10:36:06" hostname="cli243-105.wireless-s.units.it" time="0.008">
   <properties/>
-  <testcase name="whenYOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.009"/>
+  <testcase name="whenXOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

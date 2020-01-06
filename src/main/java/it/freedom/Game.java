@@ -14,16 +14,15 @@ public class Game {
     public String toString(){
         return board.printBoard();
     }
-
+    
+    private void checkBounds(int coordinate) throws OutOfBoundsException{
+        if(coordinate < 0 || coordinate > 9)
+            throw new OutOfBoundsException(coordinate + " is out of bound!");
+    }
 
     public void playerMove(int x, int y) throws OutOfBoundsException {
-        if( x < 0 || x > 9) {
-            throw new OutOfBoundsException(x + " is out of bound!");
-        }
-
-        if( y < 0 || y > 9) {
-            throw new OutOfBoundsException(y + " is out of bound!");
-        }
+        checkBounds(x);
+        checkBounds(y);
         
         
     }
