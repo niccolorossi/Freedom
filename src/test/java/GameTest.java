@@ -1,12 +1,9 @@
 import it.freedom.Game;
-import it.freedom.exceptions.OutOfBoundsException;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GameTest {
 
@@ -19,7 +16,7 @@ public class GameTest {
             "|_|_|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|";
+            "|_|_|_|_|_|_|_|_|_|_|\n";
 
     private String oneMoveBoard10 = "|W|_|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|_|_|\n" +
@@ -30,7 +27,7 @@ public class GameTest {
             "|_|_|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|";
+            "|_|_|_|_|_|_|_|_|_|_|\n";
 
     private String emptyBoard8 = "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" +
@@ -39,7 +36,7 @@ public class GameTest {
             "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|" ;
+            "|_|_|_|_|_|_|_|_|\n" ;
 
     private Game game10;
     private Game game8;

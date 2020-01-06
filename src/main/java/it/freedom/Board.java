@@ -2,6 +2,10 @@ package it.freedom;
 
 import it.freedom.exceptions.OutOfBoundsException;
 
+import java.util.Arrays;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+
 class Board {
     
     private Character[][] currentBoard;
@@ -13,32 +17,29 @@ class Board {
         this.boardSize = boardSize;
         this.currentBoard = new Character[boardSize][boardSize];
 
-        for(int i = 0; i < boardSize; i++){
-            for(int j = 0; j < boardSize; j++){
-                currentBoard[i][j] = EMPTY;
-            }
-        }
-        
+        IntStream.range(0, boardSize)
+                .forEach(r -> IntStream.range(0, boardSize)
+                        .forEach(c -> currentBoard[r][c] = EMPTY));
+
     }
-    
+
+    Character[][] getBoard() {
+
+        return this.currentBoard;
+    }
+
     String printBoard() {
 
-        String result = "";
+        StringBuilder str = new StringBuilder();
 
-        for(int i = 0; i < boardSize; i++){
-            for(int j = 0; j < boardSize; j++){
-                if(j == 0){
-                    result += "|";
-                }
-                result += currentBoard[i][j] + "|";
-            }
+        Consumer<Character[]> pipeDelimiter = (row) -> {
+            Arrays.stream(row).forEach((el) -> str.append("|" + el));
+            str.append("|" +"\n"); };
 
-            if(i != this.boardSize - 1){
-                result += "\n";
-            }
-        }
+        Arrays.stream(this.currentBoard)
+                .forEach((row) -> pipeDelimiter.accept(row));
 
-        return result;
+        return str.toString();
     }
 
     private void checkBounds(int coordinate) throws OutOfBoundsException {
