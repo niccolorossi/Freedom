@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-06T09:14:38" hostname="LAPTOP-1KLMQELM" time="0.005">
+<testsuite name="GameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-06T09:32:39" hostname="cli233-35.wireless-s.units.it" time="0.003">
   <properties/>
-  <testcase name="isEmptyBoard" classname="GameTest" time="0.005"/>
+  <testcase name="isEmptyBoard" classname="GameTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
