@@ -23,11 +23,6 @@ class Board {
 
     }
 
-    Character[][] getBoard() {
-
-        return this.currentBoard;
-    }
-
     String printBoard() {
 
         StringBuilder str = new StringBuilder();
