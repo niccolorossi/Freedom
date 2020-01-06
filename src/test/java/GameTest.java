@@ -7,79 +7,74 @@ import static org.junit.Assert.assertThat;
 
 public class GameTest {
 
-    private String emptyBoard10 = "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n";
+    private String emptyBoardSizeTen = "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                       "|_|_|_|_|_|_|_|_|_|_|\n";
 
-    private String oneMoveBoard10 = "|W|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|_|_|\n";
+    private String firstMoveBoardSizeTen = "|W|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n" +
+                                           "|_|_|_|_|_|_|_|_|_|_|\n";
 
-    private String emptyBoard8 = "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|\n" +
-            "|_|_|_|_|_|_|_|_|\n" ;
+    private String emptyBoardSizeEight = "|_|_|_|_|_|_|_|_|\n" +
+                                         "|_|_|_|_|_|_|_|_|\n" +
+                                         "|_|_|_|_|_|_|_|_|\n" +
+                                         "|_|_|_|_|_|_|_|_|\n" +
+                                         "|_|_|_|_|_|_|_|_|\n" +
+                                         "|_|_|_|_|_|_|_|_|\n" +
+                                         "|_|_|_|_|_|_|_|_|\n" +
+                                         "|_|_|_|_|_|_|_|_|\n" ;
 
-    private Game game10;
-    private Game game8;
+    private Game gameSizeTenBoard;
+    private Game gameSizeEightBoard;
 
     @Before
     public void startGame(){
-        game10 = new Game(10);
-        game8 = new Game(8);
+        gameSizeTenBoard = new Game(10);
+        gameSizeEightBoard = new Game(8);
     }
 
     @Test
-    public void isEmptyBoard10(){
-
-        assertThat(game10.toString(), is(emptyBoard10));
+    public void isSizeTenBoardEmpty(){
+        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
 
     }
 
     @Test
-    public void isEmptyBoard8(){
-
-        assertThat(game8.toString(), is(emptyBoard8));
+    public void isSizeEightBoardEmpty(){
+        assertThat(gameSizeEightBoard.toString(), is(emptyBoardSizeEight));
     }
 
     @Test
     public void whenXOutsideBoardThenOutOfBoundsException() {
-        
-        game10.move(11,1);
-        assertThat(game10.toString(), is(emptyBoard10));
+        gameSizeTenBoard.move(11,1);
+        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
 
     @Test
     public void whenYOutsideBoardThenOutOfBoundsException() {
-        
-        game10.move(1,11);
-        assertThat(game10.toString(), is(emptyBoard10));
+        gameSizeTenBoard.move(1,11);
+        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
 
     }
     
     @Test
-    public void checkOneMove(){
-        
-        game10.move(1,1);
-        assertThat(game10.toString(), is(oneMoveBoard10));
+    public void checkFirstMove(){
+        gameSizeTenBoard.move(1,1);
+        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
         
     }
     

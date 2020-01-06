@@ -1,22 +1,23 @@
 package it.freedom;
 
-import java.util.StringJoiner;
+import java.util.Arrays;
+import java.util.function.Consumer;
 
 class BoardPrinter {
     
     static String boardPrinter(Board board) {
-        
+
         Character[][] currentBoard = board.getCurrentBoard();
-        Integer boardSize = board.getBoardSize();
-        
-        StringJoiner toReturn = new StringJoiner("\n");
-        for(int row=0; row<boardSize; row++) {
-            StringJoiner rowString = new StringJoiner("|");
-            for(int column=0; column<boardSize; column++) {
-                rowString.add(String.valueOf(currentBoard[row][column]));
-            }
-            toReturn.add(rowString.toString());
-        }
+        StringBuilder toReturn = new StringBuilder();
+
+        Consumer<Character[]> pipeDelimiter = (row) -> {
+            Arrays.stream(row).forEach((el) -> toReturn.append("|" + el));
+            toReturn.append("|" +"\n"); 
+        };
+
+        Arrays.stream(currentBoard)
+                .forEach((row) -> pipeDelimiter.accept(row));
+
         return toReturn.toString();
     }
     

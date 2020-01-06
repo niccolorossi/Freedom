@@ -12,15 +12,11 @@ public class Game {
 
     @Override
     public String toString(){
-        return board.printBoard();
+        return BoardPrinter.boardPrinter(board);
     }
 
-    public void move(int x, int y) {
-        
-        board.setStone(currentStone, x, y);
-        
+    public void move(Integer row, Integer column) {
+        board.setStone(currentStone, row, column);
     }
-    
-    
     
 }
