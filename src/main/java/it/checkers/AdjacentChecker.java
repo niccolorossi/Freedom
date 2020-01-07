@@ -1,12 +1,12 @@
-package it.freedom;
+package it.checkers;
 
 import it.freedom.exceptions.NonAdjacentException;
 
 import java.util.Arrays;
 
-class AdjacentChecker {
+public class AdjacentChecker {
     
-    static void adjacentCheck(Integer previousRow, Integer previousColumn,
+    public static void adjacentCheck(Integer previousRow, Integer previousColumn,
                               Integer row, Integer column) throws NonAdjacentException {
         if((row < previousRow - 1 || row > previousRow + 1 || column < previousColumn - 1 || column > previousColumn + 1)
         && previousColumn != -1 && previousRow != -1) {

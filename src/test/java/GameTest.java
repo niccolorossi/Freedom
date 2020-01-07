@@ -1,13 +1,9 @@
 import it.freedom.Game;
-import it.freedom.OccupiedChecker;
-import it.freedom.exceptions.NonAdjacentException;
-import it.freedom.exceptions.OccupiedCellException;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameTest {

@@ -1,5 +1,8 @@
 package it.freedom;
 
+import it.checkers.AdjacentChecker;
+import it.checkers.BoundsChecker;
+import it.checkers.OccupiedChecker;
 import it.freedom.exceptions.NonAdjacentException;
 import it.freedom.exceptions.OccupiedCellException;
 import it.freedom.exceptions.OutOfBoundsException;
@@ -30,11 +33,16 @@ class Board {
         return this.currentBoard;
     }
     
+    private Character getStone(Integer row, Integer column) {
+        return currentBoard[row-1][column-1];
+    }
+    
     void setStone(Character symbol, int row, int column) {
         try {
             BoundsChecker.boundsCheck(boardSize, row);
             BoundsChecker.boundsCheck(boardSize, column);
-            OccupiedChecker.occupiedCheck(this, row, column);
+            Character currentStone = getStone(row, column);
+            OccupiedChecker.occupiedCheck(currentStone, emptyCellCharacter);
             AdjacentChecker.adjacentCheck(previousRow, previousColumn, row, column);
             currentBoard[row-1][column-1] = symbol;
             previousRow = row;

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-01-07T15:51:22" hostname="cli233-35.wireless-s.units.it" time="0.016">
+<testsuite name="GameTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-01-07T16:23:09" hostname="cli233-35.wireless-s.units.it" time="0.017">
   <properties/>
   <testcase name="testNextPlayer" classname="GameTest" time="0.007"/>
-  <testcase name="testOccupiedCellToStringReturnsPreviousBoard" classname="GameTest" time="0.004"/>
+  <testcase name="testOccupiedCellToStringReturnsPreviousBoard" classname="GameTest" time="0.005"/>
   <testcase name="whenXOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.0"/>
   <testcase name="whenYOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.001"/>
-  <testcase name="isSizeEightBoardEmpty" classname="GameTest" time="0.0"/>
-  <testcase name="testNonAdjacentCellToStringReturnsPreviousBoard" classname="GameTest" time="0.001"/>
+  <testcase name="isSizeEightBoardEmpty" classname="GameTest" time="0.001"/>
+  <testcase name="testNonAdjacentCellToStringReturnsPreviousBoard" classname="GameTest" time="0.0"/>
   <testcase name="isSizeTenBoardEmpty" classname="GameTest" time="0.0"/>
   <testcase name="checkFirstMove" classname="GameTest" time="0.001"/>
-  <system-out><![CDATA[Cell [1, 1] is already occupied!
+  <system-out><![CDATA[Cell is already occupied!
 11 is out of bounds!
 11 is out of bounds!
 This move must be adjacent to [1, 1]!
