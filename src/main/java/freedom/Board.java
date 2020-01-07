@@ -2,6 +2,7 @@ package freedom;
 
 import checkers.AdjacentChecker;
 import checkers.BoundsChecker;
+import checkers.MoveValidator;
 import checkers.OccupiedChecker;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
@@ -15,9 +16,8 @@ class Board {
     private Character[][] currentBoard;
     private int boardSize;
     private char emptyCellCharacter = '_';
-    private AdjacentChecker adjacentChecker;
     private BoundsChecker boundsChecker;
-    private OccupiedChecker occupiedChecker;
+    private MoveValidator moveValidator;
  
     Board(int boardSize) {
 
@@ -27,9 +27,8 @@ class Board {
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));
         
-        this.adjacentChecker = new AdjacentChecker(-1,-1);
         this.boundsChecker = new BoundsChecker(boardSize);
-        this.occupiedChecker = new OccupiedChecker(emptyCellCharacter);
+        this.moveValidator = new MoveValidator(emptyCellCharacter);
         
     }
     
@@ -46,12 +45,11 @@ class Board {
             boundsChecker.boundsCheck(row);
             boundsChecker.boundsCheck(column);
             Character currentStone = getStone(row, column);
-            occupiedChecker.occupiedCheck(currentStone);
-            adjacentChecker.adjacentCheck(row, column);
+            moveValidator.validateMove(row, column,currentStone);
             currentBoard[row-1][column-1] = symbol;
             
             
-        } catch (OutOfBoundsException | OccupiedCellException | NonAdjacentException e) {
+        } catch (OutOfBoundsException | NonAdjacentException | OccupiedCellException e) {
             System.out.println(e.getMessage());
         }
     }
