@@ -17,6 +17,7 @@ class Board {
     private char emptyCellCharacter = '_';
     private AdjacentChecker adjacentChecker;
     private BoundsChecker boundsChecker;
+    private OccupiedChecker occupiedChecker;
  
     Board(int boardSize) {
 
@@ -28,6 +29,7 @@ class Board {
         
         this.adjacentChecker = new AdjacentChecker(-1,-1);
         this.boundsChecker = new BoundsChecker(boardSize);
+        this.occupiedChecker = new OccupiedChecker(emptyCellCharacter);
         
     }
     
@@ -44,7 +46,7 @@ class Board {
             boundsChecker.boundsCheck(row);
             boundsChecker.boundsCheck(column);
             Character currentStone = getStone(row, column);
-            OccupiedChecker.occupiedCheck(currentStone, emptyCellCharacter);
+            occupiedChecker.occupiedCheck(currentStone);
             adjacentChecker.adjacentCheck(row, column);
             currentBoard[row-1][column-1] = symbol;
             
