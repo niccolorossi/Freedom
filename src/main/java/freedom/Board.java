@@ -16,6 +16,7 @@ class Board {
     private int boardSize;
     private char emptyCellCharacter = '_';
     private AdjacentChecker adjacentChecker;
+    private BoundsChecker boundsChecker;
  
     Board(int boardSize) {
 
@@ -26,6 +27,7 @@ class Board {
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));
         
         this.adjacentChecker = new AdjacentChecker(-1,-1);
+        this.boundsChecker = new BoundsChecker(boardSize);
         
     }
     
@@ -39,8 +41,8 @@ class Board {
     
     void setStone(Character symbol, int row, int column) {
         try {
-            BoundsChecker.boundsCheck(boardSize, row);
-            BoundsChecker.boundsCheck(boardSize, column);
+            boundsChecker.boundsCheck(row);
+            boundsChecker.boundsCheck(column);
             Character currentStone = getStone(row, column);
             OccupiedChecker.occupiedCheck(currentStone, emptyCellCharacter);
             adjacentChecker.adjacentCheck(row, column);

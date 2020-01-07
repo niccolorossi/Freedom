@@ -9,6 +9,7 @@ public class AdjacentChecker {
     
     private Integer previousRow;
     private Integer previousColumn;
+    private final Integer firstMove = -1;
     
     public AdjacentChecker(Integer row, Integer column){
         this.previousColumn = row;
@@ -21,7 +22,7 @@ public class AdjacentChecker {
     }
     
     private Boolean notFirstMove(){
-        return (previousColumn != -1 && previousRow != -1);
+        return (previousColumn != firstMove && previousRow != firstMove);
     }
     
     private Boolean checkCoordinate(Integer coordinate, Integer previousCoordinate){

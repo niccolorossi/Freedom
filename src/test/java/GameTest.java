@@ -97,4 +97,5 @@ public class GameTest {
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
+    
 }
