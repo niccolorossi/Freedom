@@ -63,37 +63,34 @@ public class GameTest {
     }
 
     @Test
-    public void whenXOutsideBoardThenOutOfBoundsException() throws OccupiedCellException {
+    public void whenXOutsideBoardThenOutOfBoundsException() {
         gameSizeTenBoard.move(11,1);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
 
     @Test
-    public void whenYOutsideBoardThenOutOfBoundsException() throws OccupiedCellException {
+    public void whenYOutsideBoardThenOutOfBoundsException() {
         gameSizeTenBoard.move(1,11);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
     
     @Test
-    public void checkFirstMove() throws OccupiedCellException {
+    public void checkFirstMove() {
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
     @Test
-    public void testNextPlayer() throws OccupiedCellException {
+    public void testNextPlayer() {
         gameSizeTenBoard.move(1, 1);
         assertThat(gameSizeTenBoard.getCurrentStone(), is('B'));
     }
     
     @Test
-    public void testOccupiedCell() throws OccupiedCellException {
+    public void testOccupiedCellToStringReturnsPreviousBoard() {
         gameSizeTenBoard.move(1,1);
-
-        OccupiedCellException thrown = assertThrows(OccupiedCellException.class,
-                () -> gameSizeTenBoard.move(1, 1));
-
-        assertTrue(thrown.getMessage().contains("Cell [1, 1] is already occupied!"));
+        gameSizeTenBoard.move(1,1);
+        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
 }

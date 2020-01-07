@@ -24,14 +24,14 @@ class Board {
         return this.currentBoard;
     }
     
-    void setStone(Character symbol, int row, int column) throws OccupiedCellException {
+    void setStone(Character symbol, int row, int column) {
         try {
             BoundsChecker.boundsChecker(boardSize, row);
             BoundsChecker.boundsChecker(boardSize, column);
             OccupiedChecker.occupiedChecker(this, row, column);
             currentBoard[row-1][column-1] = symbol;
-        } catch (OutOfBoundsException e1) {
-            System.out.println(e1.getMessage());
+        } catch (OutOfBoundsException | OccupiedCellException e) {
+            System.out.println(e.getMessage());
         }
     }
 

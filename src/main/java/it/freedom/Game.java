@@ -17,7 +17,7 @@ public class Game {
         return BoardPrinter.boardPrinter(board);
     }
 
-    public void move(Integer row, Integer column) throws OccupiedCellException {
+    public void move(Integer row, Integer column) {
         board.setStone(currentStone, row, column);
         currentStone = nextPlayer();
     }
