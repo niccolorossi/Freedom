@@ -1,6 +1,6 @@
-package it.checkers;
+package checkers;
 
-import it.freedom.exceptions.OccupiedCellException;
+import exceptions.OccupiedCellException;
 
 public class OccupiedChecker {
     

@@ -1,12 +1,13 @@
-package it.freedom;
+package freedom;
 
-import it.checkers.AdjacentChecker;
-import it.checkers.BoundsChecker;
-import it.checkers.OccupiedChecker;
-import it.freedom.exceptions.NonAdjacentException;
-import it.freedom.exceptions.OccupiedCellException;
-import it.freedom.exceptions.OutOfBoundsException;
+import checkers.AdjacentChecker;
+import checkers.BoundsChecker;
+import checkers.OccupiedChecker;
+import exceptions.NonAdjacentException;
+import exceptions.OccupiedCellException;
+import exceptions.OutOfBoundsException;
 
+import java.awt.event.AdjustmentEvent;
 import java.util.stream.IntStream;
 
 class Board {
@@ -14,8 +15,7 @@ class Board {
     private Character[][] currentBoard;
     private int boardSize;
     private char emptyCellCharacter = '_';
-    private Integer previousRow;
-    private  Integer previousColumn;
+    private AdjacentChecker adjacentChecker;
  
     Board(int boardSize) {
 
@@ -24,8 +24,8 @@ class Board {
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));
-        this.previousRow = -1;
-        this.previousColumn = -1;
+        
+        this.adjacentChecker = new AdjacentChecker(-1,-1);
         
     }
     
@@ -43,10 +43,9 @@ class Board {
             BoundsChecker.boundsCheck(boardSize, column);
             Character currentStone = getStone(row, column);
             OccupiedChecker.occupiedCheck(currentStone, emptyCellCharacter);
-            AdjacentChecker.adjacentCheck(previousRow, previousColumn, row, column);
+            adjacentChecker.adjacentCheck(row, column);
             currentBoard[row-1][column-1] = symbol;
-            previousRow = row;
-            previousColumn = column;
+            
             
         } catch (OutOfBoundsException | OccupiedCellException | NonAdjacentException e) {
             System.out.println(e.getMessage());

@@ -1,6 +1,6 @@
-package it.checkers;
+package checkers;
 
-import it.freedom.exceptions.OutOfBoundsException;
+import exceptions.OutOfBoundsException;
 
 public class BoundsChecker {
     

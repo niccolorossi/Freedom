@@ -1,4 +1,4 @@
-package it.freedom.exceptions;
+package exceptions;
 
 public class OccupiedCellException extends Exception {
     

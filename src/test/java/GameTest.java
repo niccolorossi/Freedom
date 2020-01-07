@@ -1,4 +1,4 @@
-import it.freedom.Game;
+import freedom.Game;
 import org.junit.Before;
 import org.junit.Test;
 

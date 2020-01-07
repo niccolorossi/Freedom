@@ -1,7 +1,4 @@
-package it.freedom;
-
-import it.freedom.exceptions.NonAdjacentException;
-import it.freedom.exceptions.OccupiedCellException;
+package freedom;
 
 public class Game {
     
