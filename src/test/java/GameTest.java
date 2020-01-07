@@ -1,5 +1,6 @@
 import it.freedom.Game;
 import it.freedom.OccupiedChecker;
+import it.freedom.exceptions.NonAdjacentException;
 import it.freedom.exceptions.OccupiedCellException;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,34 +64,43 @@ public class GameTest {
     }
 
     @Test
-    public void whenXOutsideBoardThenOutOfBoundsException() {
+    public void whenXOutsideBoardThenOutOfBoundsException() throws NonAdjacentException {
         gameSizeTenBoard.move(11,1);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
 
     @Test
-    public void whenYOutsideBoardThenOutOfBoundsException() {
+    public void whenYOutsideBoardThenOutOfBoundsException() throws NonAdjacentException {
         gameSizeTenBoard.move(1,11);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
     
     @Test
-    public void checkFirstMove() {
+    public void checkFirstMove() throws NonAdjacentException {
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
     @Test
-    public void testNextPlayer() {
+    public void testNextPlayer() throws NonAdjacentException {
         gameSizeTenBoard.move(1, 1);
         assertThat(gameSizeTenBoard.getCurrentStone(), is('B'));
     }
     
     @Test
-    public void testOccupiedCellToStringReturnsPreviousBoard() {
+    public void testOccupiedCellToStringReturnsPreviousBoard() throws NonAdjacentException {
         gameSizeTenBoard.move(1,1);
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
+    @Test
+    public void testNonAdjacentCellThrowsNonAdjacentException() throws NonAdjacentException {
+        gameSizeTenBoard.move(1, 1);
+        NonAdjacentException thrown = assertThrows(NonAdjacentException.class,
+                () -> gameSizeTenBoard.move(1, 4));
+        
+        assertThat(thrown.getMessage(), is("This move must be adjacent to [1, 1]!"));
+        
+    }
 }

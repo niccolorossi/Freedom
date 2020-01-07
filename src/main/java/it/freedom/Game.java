@@ -1,5 +1,6 @@
 package it.freedom;
 
+import it.freedom.exceptions.NonAdjacentException;
 import it.freedom.exceptions.OccupiedCellException;
 
 public class Game {
@@ -17,7 +18,7 @@ public class Game {
         return BoardPrinter.boardPrinter(board);
     }
 
-    public void move(Integer row, Integer column) {
+    public void move(Integer row, Integer column) throws NonAdjacentException {
         board.setStone(currentStone, row, column);
         currentStone = nextPlayer();
     }
