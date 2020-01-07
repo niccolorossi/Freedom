@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class OccupiedChecker {
     
-    public static void occupiedChecker(Board board, Integer row, Integer column) throws OccupiedCellException {
+    public static void occupiedCheck(Board board, Integer row, Integer column) throws OccupiedCellException {
         
         Character emptyCellCharacter = board.getEmptyCellCharacter();
         Character[][] currentBoard = board.getCurrentBoard();

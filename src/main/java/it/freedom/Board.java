@@ -26,9 +26,9 @@ class Board {
     
     void setStone(Character symbol, int row, int column) {
         try {
-            BoundsChecker.boundsChecker(boardSize, row);
-            BoundsChecker.boundsChecker(boardSize, column);
-            OccupiedChecker.occupiedChecker(this, row, column);
+            BoundsChecker.boundsCheck(boardSize, row);
+            BoundsChecker.boundsCheck(boardSize, column);
+            OccupiedChecker.occupiedCheck(this, row, column);
             currentBoard[row-1][column-1] = symbol;
         } catch (OutOfBoundsException | OccupiedCellException e) {
             System.out.println(e.getMessage());
