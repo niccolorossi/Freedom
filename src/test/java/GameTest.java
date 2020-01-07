@@ -64,43 +64,41 @@ public class GameTest {
     }
 
     @Test
-    public void whenXOutsideBoardThenOutOfBoundsException() throws NonAdjacentException {
+    public void whenXOutsideBoardThenOutOfBoundsException() {
         gameSizeTenBoard.move(11,1);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
 
     @Test
-    public void whenYOutsideBoardThenOutOfBoundsException() throws NonAdjacentException {
+    public void whenYOutsideBoardThenOutOfBoundsException() {
         gameSizeTenBoard.move(1,11);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
     
     @Test
-    public void checkFirstMove() throws NonAdjacentException {
+    public void checkFirstMove() {
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
     @Test
-    public void testNextPlayer() throws NonAdjacentException {
+    public void testNextPlayer() {
         gameSizeTenBoard.move(1, 1);
         assertThat(gameSizeTenBoard.getCurrentStone(), is('B'));
     }
     
     @Test
-    public void testOccupiedCellToStringReturnsPreviousBoard() throws NonAdjacentException {
+    public void testOccupiedCellToStringReturnsPreviousBoard() {
         gameSizeTenBoard.move(1,1);
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
     @Test
-    public void testNonAdjacentCellThrowsNonAdjacentException() throws NonAdjacentException {
-        gameSizeTenBoard.move(1, 1);
-        NonAdjacentException thrown = assertThrows(NonAdjacentException.class,
-                () -> gameSizeTenBoard.move(1, 4));
-        
-        assertThat(thrown.getMessage(), is("This move must be adjacent to [1, 1]!"));
-        
+    public void testNonAdjacentCellToStringReturnsPreviousBoard() {
+        gameSizeTenBoard.move(1,1);
+        gameSizeTenBoard.move(1,4);
+        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
+    
 }

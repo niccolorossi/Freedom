@@ -30,7 +30,7 @@ class Board {
         return this.currentBoard;
     }
     
-    void setStone(Character symbol, int row, int column) throws NonAdjacentException {
+    void setStone(Character symbol, int row, int column) {
         try {
             BoundsChecker.boundsCheck(boardSize, row);
             BoundsChecker.boundsCheck(boardSize, column);
@@ -40,7 +40,7 @@ class Board {
             previousRow = row;
             previousColumn = column;
             
-        } catch (OutOfBoundsException | OccupiedCellException e) {
+        } catch (OutOfBoundsException | OccupiedCellException | NonAdjacentException e) {
             System.out.println(e.getMessage());
         }
     }
