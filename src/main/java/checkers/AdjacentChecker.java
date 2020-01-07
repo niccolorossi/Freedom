@@ -1,5 +1,6 @@
 package checkers;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import exceptions.NonAdjacentException;
 
 import java.util.Arrays;
@@ -19,10 +20,20 @@ public class AdjacentChecker {
         this.previousColumn = column;
     }
     
+    private Boolean notFirstMove(){
+        return (previousColumn != -1 && previousRow != -1);
+    }
+    
+    private Boolean checkCoordinate(Integer coordinate, Integer previousCoordinate){
+        return (coordinate < previousCoordinate - 1 || coordinate > previousCoordinate + 1 );
+    }
     
     public void adjacentCheck(Integer row, Integer column) throws NonAdjacentException {
-        if((row < previousRow - 1 || row > previousRow + 1 || column < previousColumn - 1 || column > previousColumn + 1)
-        && previousColumn != -1 && previousRow != -1) {
+        
+        Boolean checkRow = checkCoordinate(row, previousRow);
+        Boolean checkColumn = checkCoordinate(column, previousColumn);
+        
+        if((checkRow|| checkColumn) && notFirstMove()) {
             String message = "This move must be adjacent to " + Arrays.asList(previousRow, previousColumn).toString() + "!";
             throw new NonAdjacentException(message);
         } else setPreviousCoordinates(row, column);
