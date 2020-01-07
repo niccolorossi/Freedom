@@ -1,5 +1,6 @@
 package it.freedom;
 
+import it.freedom.exceptions.OccupiedCellException;
 import it.freedom.exceptions.OutOfBoundsException;
 
 import java.util.stream.IntStream;
@@ -23,14 +24,18 @@ class Board {
         return this.currentBoard;
     }
     
-    void setStone(Character symbol, int row, int column) {
+    void setStone(Character symbol, int row, int column) throws OccupiedCellException {
         try {
             BoundsChecker.boundsChecker(boardSize, row);
             BoundsChecker.boundsChecker(boardSize, column);
+            OccupiedChecker.occupiedChecker(this, row, column);
             currentBoard[row-1][column-1] = symbol;
         } catch (OutOfBoundsException e1) {
             System.out.println(e1.getMessage());
         }
     }
-    
+
+    public Character getEmptyCellCharacter() {
+        return emptyCellCharacter;
+    }
 }

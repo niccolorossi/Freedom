@@ -1,5 +1,7 @@
 package it.freedom;
 
+import it.freedom.exceptions.OccupiedCellException;
+
 public class Game {
     
     private Board board;
@@ -15,7 +17,7 @@ public class Game {
         return BoardPrinter.boardPrinter(board);
     }
 
-    public void move(Integer row, Integer column) {
+    public void move(Integer row, Integer column) throws OccupiedCellException {
         board.setStone(currentStone, row, column);
         currentStone = nextPlayer();
     }

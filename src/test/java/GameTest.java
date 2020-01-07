@@ -1,9 +1,13 @@
 import it.freedom.Game;
+import it.freedom.OccupiedChecker;
+import it.freedom.exceptions.OccupiedCellException;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameTest {
 
@@ -59,27 +63,37 @@ public class GameTest {
     }
 
     @Test
-    public void whenXOutsideBoardThenOutOfBoundsException() {
+    public void whenXOutsideBoardThenOutOfBoundsException() throws OccupiedCellException {
         gameSizeTenBoard.move(11,1);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
 
     @Test
-    public void whenYOutsideBoardThenOutOfBoundsException() {
+    public void whenYOutsideBoardThenOutOfBoundsException() throws OccupiedCellException {
         gameSizeTenBoard.move(1,11);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
     }
     
     @Test
-    public void checkFirstMove() {
+    public void checkFirstMove() throws OccupiedCellException {
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
     
     @Test
-    public void testNextPlayer() {
+    public void testNextPlayer() throws OccupiedCellException {
         gameSizeTenBoard.move(1, 1);
         assertThat(gameSizeTenBoard.getCurrentStone(), is('B'));
+    }
+    
+    @Test
+    public void testOccupiedCell() throws OccupiedCellException {
+        gameSizeTenBoard.move(1,1);
+
+        OccupiedCellException thrown = assertThrows(OccupiedCellException.class,
+                () -> gameSizeTenBoard.move(1, 1));
+
+        assertTrue(thrown.getMessage().contains("Cell [1, 1] is already occupied!"));
     }
     
 }
