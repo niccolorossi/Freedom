@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-01-06T15:58:23" hostname="cli233-35.wireless-s.units.it" time="0.013">
+<testsuite name="GameTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-01-07T14:22:49" hostname="cli233-35.wireless-s.units.it" time="0.015">
   <properties/>
-  <testcase name="whenXOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.011"/>
-  <testcase name="whenYOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.001"/>
+  <testcase name="testNextPlayer" classname="GameTest" time="0.006"/>
+  <testcase name="whenXOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.005"/>
+  <testcase name="whenYOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.0"/>
   <testcase name="isSizeEightBoardEmpty" classname="GameTest" time="0.0"/>
   <testcase name="isSizeTenBoardEmpty" classname="GameTest" time="0.001"/>
-  <testcase name="checkFirstMove" classname="GameTest" time="0.0"/>
+  <testcase name="checkFirstMove" classname="GameTest" time="0.001"/>
   <system-out><![CDATA[11 is out of bounds!
 11 is out of bounds!
 ]]></system-out>

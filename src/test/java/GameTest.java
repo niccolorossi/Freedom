@@ -68,14 +68,18 @@ public class GameTest {
     public void whenYOutsideBoardThenOutOfBoundsException() {
         gameSizeTenBoard.move(1,11);
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
-
     }
     
     @Test
-    public void checkFirstMove(){
+    public void checkFirstMove() {
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
-        
+    }
+    
+    @Test
+    public void testNextPlayer() {
+        gameSizeTenBoard.move(1, 1);
+        assertThat(gameSizeTenBoard.getCurrentStone(), is('B'));
     }
     
 }
