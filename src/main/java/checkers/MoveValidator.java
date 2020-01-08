@@ -2,7 +2,6 @@ package checkers;
 
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
-import exceptions.OutOfBoundsException;
 
 public class MoveValidator {
     private AdjacentChecker adjacentChecker;
@@ -13,9 +12,11 @@ public class MoveValidator {
         this.occupiedChecker = new OccupiedChecker(emptyCellCharacter);
     }
     
-    public void validateMove(Integer row, Integer column, Character currentStone) throws OccupiedCellException, NonAdjacentException{
+    public void validateMove(Integer row, Integer column, Character currentStone, Boolean isFreedom) throws OccupiedCellException, NonAdjacentException{
             occupiedChecker.occupiedCheck(currentStone);
-            adjacentChecker.adjacentCheck(row, column);
+            adjacentChecker.adjacentCheck(row, column, isFreedom);
+
+
         
     }
     

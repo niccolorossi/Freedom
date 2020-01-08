@@ -36,4 +36,8 @@ class Board {
 
         return emptyCellCharacter;
     }
+
+    Integer getBoardSize() {
+        return boardSize;
+    }
 }

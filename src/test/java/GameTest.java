@@ -47,86 +47,18 @@ public class GameTest {
         gameSizeEightBoard = new Game(8);
     }
 
-    @Test
-    public void isSizeTenBoardEmpty(){
-        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
 
-    }
-
-    @Test
-    public void isSizeEightBoardEmpty(){
-        assertThat(gameSizeEightBoard.toString(), is(emptyBoardSizeEight));
-    }
-
-    @Test
-    public void whenXOutsideBoardThenOutOfBoundsException() {
-        gameSizeTenBoard.move(11,1);
-        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
-    }
-
-    @Test
-    public void whenYOutsideBoardThenOutOfBoundsException() {
-        gameSizeTenBoard.move(1,11);
-        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
-    }
-    
-    @Test
-    public void checkFirstMove() {
-        gameSizeTenBoard.move(1,1);
-        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
-    }
-    
     @Test
     public void testNextPlayer() {
         gameSizeTenBoard.move(1, 1);
         assertThat(gameSizeTenBoard.getCurrentStone(), is('B'));
     }
     
-    @Test
-    public void testOccupiedCellToStringReturnsPreviousBoard() {
-        gameSizeTenBoard.move(1,1);
-        gameSizeTenBoard.move(1,1);
-        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
-    }
+
+
+
     
-    @Test
-    public void testNonAdjacentCellToStringReturnsPreviousBoard() {
-        gameSizeTenBoard.move(1,1);
-        gameSizeTenBoard.move(1,4);
 
-        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
-    }
-
-    @Test
-    public void testNextMoveIsFreedom(){
-        gameSizeTenBoard.move(1,1);
-        gameSizeTenBoard.move(1,2);
-        gameSizeTenBoard.move(1,3);
-        gameSizeTenBoard.move(2,3);
-        gameSizeTenBoard.move(3,3);
-        gameSizeTenBoard.move(3,2);
-        gameSizeTenBoard.move(3,1);
-        gameSizeTenBoard.move(2,1);
-        gameSizeTenBoard.move(2,2);
-
-        assertThat(gameSizeTenBoard.isNextMoveFreedom(2, 2), is(true) );
-
-    }
-    
-    @Test
-    public void testNextMoveIsFreedomBorder() {
-        gameSizeTenBoard.move(1,1);
-        gameSizeTenBoard.move(2,1);
-        gameSizeTenBoard.move(3,1);
-        gameSizeTenBoard.move(3,2);
-        gameSizeTenBoard.move(3,3);
-        gameSizeTenBoard.move(2,3);
-        gameSizeTenBoard.move(1,3);
-        gameSizeTenBoard.move(2,2);
-        gameSizeTenBoard.move(1,2);
-
-        assertThat(gameSizeTenBoard.isNextMoveFreedom(1, 2), is(true) );
-    }
     
     
 }
