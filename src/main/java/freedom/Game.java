@@ -1,11 +1,15 @@
 package freedom;
 
 import checkers.BoundsChecker;
+import checkers.CloseCellsFinder;
 import checkers.MoveValidator;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import exceptions.OutOfBoundsException;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Game {
@@ -57,7 +61,19 @@ public class Game {
 
         Character[][] currentBoard = board.getCurrentBoard();
         Character empty = board.getEmptyCellCharacter();
-        return !Stream.of(row-2, row- 1, row ).flatMap(x -> Stream.of(currentBoard[x][column-2], currentBoard[x][column-1], currentBoard[x][column]))
-                .anyMatch(x -> x == empty);
+
+        Integer lowerLimitRow = CloseCellsFinder.getLowerLimit(row);
+        Integer upperLimitRow = CloseCellsFinder.getUpperLimit(row);
+        Integer lowerLimitColumn = CloseCellsFinder.getLowerLimit(column);
+        Integer upperLimitColumn = CloseCellsFinder.getUpperLimit(column);
+
+        List<Character> adjacentCellsCharacters = new ArrayList<>();
+        for(int i = lowerLimitRow-1; i <= upperLimitRow-1; i++) {
+            for(int j = lowerLimitColumn-1; j<= upperLimitColumn-1; j++) {
+                adjacentCellsCharacters.add(currentBoard[i][j]);
+            }
+        }
+        
+        return  !adjacentCellsCharacters.stream().anyMatch(x -> x == empty);
     }
 }
