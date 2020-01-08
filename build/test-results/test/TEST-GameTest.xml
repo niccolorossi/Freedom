@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-01-08T14:33:04" hostname="LAPTOP-1KLMQELM" time="0.032">
+<testsuite name="GameTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-01-08T15:45:19" hostname="LAPTOP-1KLMQELM" time="0.035">
   <properties/>
-  <testcase name="testNextPlayer" classname="GameTest" time="0.01"/>
-  <testcase name="testOccupiedCellToStringReturnsPreviousBoard" classname="GameTest" time="0.007"/>
-  <testcase name="whenXOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.002"/>
-  <testcase name="whenYOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.001"/>
-  <testcase name="isSizeEightBoardEmpty" classname="GameTest" time="0.008"/>
+  <testcase name="testNextPlayer" classname="GameTest" time="0.009"/>
+  <testcase name="testOccupiedCellToStringReturnsPreviousBoard" classname="GameTest" time="0.006"/>
+  <testcase name="testNextMoveIsFreedom" classname="GameTest" time="0.003"/>
+  <testcase name="whenXOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.0"/>
+  <testcase name="whenYOutsideBoardThenOutOfBoundsException" classname="GameTest" time="0.002"/>
+  <testcase name="isSizeEightBoardEmpty" classname="GameTest" time="0.0"/>
   <testcase name="testNonAdjacentCellToStringReturnsPreviousBoard" classname="GameTest" time="0.001"/>
-  <testcase name="isSizeTenBoardEmpty" classname="GameTest" time="0.002"/>
-  <testcase name="checkFirstMove" classname="GameTest" time="0.0"/>
+  <testcase name="isSizeTenBoardEmpty" classname="GameTest" time="0.001"/>
+  <testcase name="checkFirstMove" classname="GameTest" time="0.001"/>
   <system-out><![CDATA[Cell is already occupied!
 11 is out of bounds!
 11 is out of bounds!

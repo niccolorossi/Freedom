@@ -6,6 +6,8 @@ import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import exceptions.OutOfBoundsException;
 
+import java.util.stream.Stream;
+
 public class Game {
     
     private Board board;
@@ -49,5 +51,13 @@ public class Game {
     
     public Character getCurrentStone() {
         return this.currentStone;
+    }
+
+    public Boolean isNextMoveFreedom(Integer row, Integer column) {
+
+        Character[][] currentBoard = board.getCurrentBoard();
+        Character empty = board.getEmptyCellCharacter();
+        return !Stream.of(row-2, row- 1, row ).flatMap(x -> Stream.of(currentBoard[x][column-2], currentBoard[x][column-1], currentBoard[x][column]))
+                .anyMatch(x -> x == empty);
     }
 }

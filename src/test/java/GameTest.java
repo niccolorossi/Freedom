@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameTest {
 
@@ -94,7 +93,24 @@ public class GameTest {
     public void testNonAdjacentCellToStringReturnsPreviousBoard() {
         gameSizeTenBoard.move(1,1);
         gameSizeTenBoard.move(1,4);
+
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
+    }
+
+    @Test
+    public void testNextMoveIsFreedom(){
+        gameSizeTenBoard.move(1,1);
+        gameSizeTenBoard.move(1,2);
+        gameSizeTenBoard.move(1,3);
+        gameSizeTenBoard.move(2,3);
+        gameSizeTenBoard.move(3,3);
+        gameSizeTenBoard.move(3,2);
+        gameSizeTenBoard.move(3,1);
+        gameSizeTenBoard.move(2,1);
+        gameSizeTenBoard.move(2,2);
+
+        assertThat(gameSizeTenBoard.isNextMoveFreedom(2, 2), is(true) );
+
     }
     
     
