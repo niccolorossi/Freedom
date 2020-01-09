@@ -30,19 +30,19 @@ public class BoardTest {
     private Game gameSizeEightBoard;
 
     @Before
-    public void startGame(){
+    public void startGame() {
         gameSizeTenBoard = new Game(10);
         gameSizeEightBoard = new Game(8);
     }
 
     @Test
-    public void isSizeTenBoardEmpty(){
+    public void isSizeTenBoardEmpty() {
         assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
 
     }
 
     @Test
-    public void isSizeEightBoardEmpty(){
+    public void isSizeEightBoardEmpty() {
         assertThat(gameSizeEightBoard.toString(), is(emptyBoardSizeEight));
     }
 }

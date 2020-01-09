@@ -15,12 +15,12 @@ public class WinningRules {
             if(!isFifthElementEqual(currentRow, col)){
                 liveStones += check4(currentRow, col, currentStone);
             }
-            for (col = 1; col < 5; col++){
+            for (col = 1; col < 6; col++){
                 if(!isFifthElementEqual(fullBoard[row], col) && !isPreviousElementEqual(fullBoard[row], col)) {
                     liveStones += check4(currentRow, col, currentStone);
                 }
             }
-            col = 5;
+            col = 6;
             if(!isPreviousElementEqual(fullBoard[row], col)) {
                 liveStones += check4(currentRow, col, currentStone);
             }
