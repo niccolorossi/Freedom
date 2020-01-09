@@ -1,41 +1,57 @@
 package Win;
 
-import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
-import static java.util.stream.IntStream.range;
-
 public class WinningRules {
+    
+    private static Integer getBoardSize(Character[][] fullBoard) {
+        
+        return fullBoard[0].length;
+    }
+    
+    private static Character[] getCurrentRow(Character[][] fullBoard, Integer row) {
+        
+        return fullBoard[row];
+    }
+    
+    private static Boolean possibleFiveStonesStraightNext(Character[] row, Integer index) {
+        
+        if(index == 6) {
+            return true;
+        } else return !(row[index] == row[index + 4]);
+    }
+    
+    private static Boolean possibleFiveStonesStraightPrevious(Character[] row, Integer index) {
+        
+        if(index == 0) {
+            return true;
+        } else return !(row[index] == row[index-1]);
+    }
+    
+    private static Boolean isValidQuadruplet(Character[] row, Integer beginIndex) {
+        
+        return possibleFiveStonesStraightPrevious(row, beginIndex) && possibleFiveStonesStraightNext(row, beginIndex);
+    }
+    
+  
+    
+    
 
     public static Integer countHorizontal(Character[][] fullBoard, Character currentStone) {
+
+        Integer size = getBoardSize(fullBoard);
         Integer liveStones = 0;
-        for(int row = 0; row < 10; row++){
-            Character[] currentRow = fullBoard[row];
-            int col = 0;
-            if(!isFifthElementEqual(currentRow, col)){
-                liveStones += check4(currentRow, col, currentStone);
-            }
-            for (col = 1; col < 6; col++){
-                if(!isFifthElementEqual(fullBoard[row], col) && !isPreviousElementEqual(fullBoard[row], col)) {
+        
+        for(int row = 0; row < size; row++) {
+            Character[] currentRow = getCurrentRow(fullBoard, row);
+            for(int col = 0; col < 7; col++) {
+                if(row == 8) System.out.println(isValidQuadruplet(currentRow, col));
+                if(isValidQuadruplet(currentRow, col)) {
                     liveStones += check4(currentRow, col, currentStone);
                 }
             }
-            col = 6;
-            if(!isPreviousElementEqual(fullBoard[row], col)) {
-                liveStones += check4(currentRow, col, currentStone);
-            }
-            
         }
-        
         return liveStones;
-    }
-    
-    private static Boolean isFifthElementEqual(Character[] boardRow, Integer col){
-        return boardRow[col] == boardRow[col + 4];
-    }
-    
-    private static Boolean isPreviousElementEqual(Character[] boardRow, Integer col){
-        return boardRow[col] == boardRow[col - 1];
     }
     
     private static Integer check4(Character[] boardRow, Integer col, Character currentStone) {
