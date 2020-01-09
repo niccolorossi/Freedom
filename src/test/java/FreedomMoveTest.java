@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class FreedomTest {
+public class FreedomMoveTest {
 
     private String emptyBoardSizeTen = "|_|_|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|_|_|\n" +
