@@ -1,6 +1,9 @@
 package Win;
 
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class WinningRules {
     
@@ -14,53 +17,57 @@ public class WinningRules {
         return fullBoard[row];
     }
     
+    private static Integer getBeginOfLastQuadruplet(Integer boardSize) {
+        
+        return boardSize-4;
+    }
+    
     private static Boolean possibleFiveStonesStraightNext(Character[] row, Integer index) {
         
         if(index == 6) {
-            return true;
-        } else return !(row[index] == row[index + 4]);
+            return false;
+        } else return (row[index] == row[index + 4]);
     }
     
     private static Boolean possibleFiveStonesStraightPrevious(Character[] row, Integer index) {
         
         if(index == 0) {
-            return true;
-        } else return !(row[index] == row[index-1]);
+            return false;
+        } else return (row[index] == row[index-1]);
     }
     
     private static Boolean isValidQuadruplet(Character[] row, Integer beginIndex) {
         
-        return possibleFiveStonesStraightPrevious(row, beginIndex) && possibleFiveStonesStraightNext(row, beginIndex);
+        return !(possibleFiveStonesStraightPrevious(row, beginIndex) && possibleFiveStonesStraightNext(row, beginIndex));
     }
     
-  
-    
-    
-
     public static Integer countHorizontal(Character[][] fullBoard, Character currentStone) {
 
         Integer size = getBoardSize(fullBoard);
         Integer liveStones = 0;
+        Integer beginOfLastQuadruplet = getBeginOfLastQuadruplet(size);
         
         for(int row = 0; row < size; row++) {
             Character[] currentRow = getCurrentRow(fullBoard, row);
-            for(int col = 0; col < 7; col++) {
-                if(row == 8) System.out.println(isValidQuadruplet(currentRow, col));
+            for(int col = 0; col <= beginOfLastQuadruplet; col++) {
                 if(isValidQuadruplet(currentRow, col)) {
-                    liveStones += check4(currentRow, col, currentStone);
+                    liveStones += checkQuadruplet(currentRow, col, currentStone);
                 }
             }
         }
         return liveStones;
     }
     
-    private static Integer check4(Character[] boardRow, Integer col, Character currentStone) {
-        if(Stream.of(boardRow[col], boardRow[col + 1],boardRow[col + 2],boardRow[col + 3])
-                .allMatch(currentStone::equals)) {
+    private static Integer checkQuadruplet(Character[] currentRow, Integer beginIndex, Character currentStone) {
+        
+        List<Character> quadruplet = Arrays.stream(currentRow, beginIndex, beginIndex + 4).collect(Collectors.toList());
+
+        boolean quadrupletMatchesCurrentStone = quadruplet.stream().allMatch(currentStone::equals);
+        
+        if (quadrupletMatchesCurrentStone) {
             return 4;
         } else return 0;
     }
-    
     
 
     public static Integer countVertical(Character[][] fullBoard, Character currentStone) {

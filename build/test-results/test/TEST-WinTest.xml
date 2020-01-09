@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="WinTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T20:45:13" hostname="cli233-35.wireless-s.units.it" time="0.009">
+<testsuite name="WinTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T21:57:07" hostname="cli233-35.wireless-s.units.it" time="0.009">
   <properties/>
   <testcase name="testHorizontalBlackCount" classname="WinTest" time="0.009"/>
-  <system-out><![CDATA[true
-false
-false
-false
-true
-false
-true
-]]></system-out>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
