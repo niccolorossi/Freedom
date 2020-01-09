@@ -21,12 +21,17 @@ public class WinTest {
                 {'B', 'B', 'W', 'B', 'B', 'W', 'W', 'B', 'B', 'W'},
                 {'W', 'W', 'B', 'W', 'W', 'B', 'B', 'W', 'B', 'B'},
                 {'W', 'W', 'B', 'W', 'W', 'B', 'W', 'W', 'W', 'W'},
-                {'B', 'B', 'B', 'B', 'W', 'B', 'B', 'B', 'B', 'B'},
+                {'B', 'B', 'B', 'B', 'B', 'W', 'B', 'B', 'B', 'B'},
                 {'W', 'B', 'W', 'W', 'B', 'B', 'W', 'W', 'W', 'B'}};
     }
     
     @Test
     public void testHorizontalBlackCount(){
         assertThat(WinningRules.countHorizontal(fullBoard, 'B'), is(8));
+    }
+    
+    @Test
+    public void testVerticalBlackCount(){
+        assertThat(WinningRules.countVertical(fullBoard, 'B'), is(4));
     }
 }

@@ -1,6 +1,9 @@
 package Win;
 
+import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
+
+import static java.util.stream.IntStream.range;
 
 public class WinningRules {
 
@@ -40,5 +43,40 @@ public class WinningRules {
                 .allMatch(currentStone::equals)) {
             return 4;
         } else return 0;
+    }
+    
+    
+
+    public static Integer countVertical(Character[][] fullBoard, Character currentStone) {
+
+
+        Character[][] fullBoardTransposed;
+        fullBoardTransposed = transpose(fullBoard);
+        
+        return countHorizontal(fullBoardTransposed, currentStone);
+    }
+
+
+    /*private static  UnaryOperator<Character[][]> transpose(Character[][] board) {
+
+        
+
+        return m -> range(0, 10).mapToObj(r ->
+                range(0, 10).mapToDouble(c -> board[c][r]).toArray()
+        ).toArray(Character[][]::new);
+    }*/
+    
+    private static Character [][] transpose(Character[][] board){
+        
+        int size = board[0].length;
+        Character[][] transposedBoard = new Character[size][size];
+        
+        for(int row = 0;  row < 10; row++){
+            for(int col = 0; col < 10; col++){
+                transposedBoard[row][col] = board[col][row];
+            }
+        }
+        
+        return  transposedBoard;
     }
 }
