@@ -2,8 +2,12 @@ package Win;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.util.stream.IntStream.range;
 
 public class WinningRules {
     
@@ -75,19 +79,8 @@ public class WinningRules {
 
         Character[][] fullBoardTransposed;
         fullBoardTransposed = transpose(fullBoard);
-        
         return countHorizontal(fullBoardTransposed, currentStone);
     }
-
-
-    /*private static  UnaryOperator<Character[][]> transpose(Character[][] board) {
-
-        
-
-        return m -> range(0, 10).mapToObj(r ->
-                range(0, 10).mapToDouble(c -> board[c][r]).toArray()
-        ).toArray(Character[][]::new);
-    }*/
     
     private static Character [][] transpose(Character[][] board){
         
@@ -100,6 +93,6 @@ public class WinningRules {
             }
         }
         
-        return  transposedBoard;
+        return transposedBoard;
     }
 }
