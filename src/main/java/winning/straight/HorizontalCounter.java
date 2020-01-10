@@ -1,4 +1,6 @@
-package winning;
+package winning.straight;
+
+import winning.quadruplets.QuadrupletsCounter;
 
 public class HorizontalCounter {
     

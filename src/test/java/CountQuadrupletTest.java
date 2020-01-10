@@ -1,4 +1,4 @@
-import winning.QuadrupletsCounter;
+import winning.quadruplets.QuadrupletsCounter;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

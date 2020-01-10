@@ -1,11 +1,11 @@
-package winning;
+package winning.diagonals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiagonalExtractor {
-
-    public static List<Character[]> extractDiagonals(Character[][] fullBoard) {
+public class AntiDiagonalExtractor {
+    
+    public static List<Character[]> extractAntiDiagonals(Character[][] fullBoard) {
 
         List<Character[]> toReturn = new ArrayList<>();
         List<Character[]> upperDiagonalsList = new ArrayList<>();
@@ -14,42 +14,44 @@ public class DiagonalExtractor {
         Integer numberOfUpperDiagonals = size-4;
 
         for(int d=1; d<=numberOfUpperDiagonals; d++) {
-            upperDiagonalsList.add(extractDiagonal(fullBoard, d, true));
-            lowerDiagonalsList.add(extractDiagonal(fullBoard, d, false));
+            upperDiagonalsList.add(extractAntiDiagonal(fullBoard, d, true));
+            lowerDiagonalsList.add(extractAntiDiagonal(fullBoard, d, false));
         }
         toReturn.addAll(upperDiagonalsList);
         toReturn.addAll(lowerDiagonalsList);
-        toReturn.add(extractMainDiagonal(fullBoard));
+        toReturn.add(extractMainAntiDiagonal(fullBoard));
         return toReturn;
     }
     
-    private static Character[] extractDiagonal(Character[][] fullBoard, Integer diagonalIdentifier, Boolean isUpper) {
+    private static Character[] extractAntiDiagonal(Character[][] fullBoard, Integer diagonalIdentifier, Boolean isUpper) {
         
         int row;
         int column;
         Integer boardSize = fullBoard[0].length;
         Integer diagonalSize = boardSize-diagonalIdentifier;
         Character[] toReturn = new Character[diagonalSize];
-        
+
         for(int index=0; index<diagonalSize; index++) {
-            row=index;
-            column=index+diagonalIdentifier;
-            if(isUpper) {
+            if (!isUpper) {
+                row = index + diagonalIdentifier;
+                column = boardSize - index - 1;
                 toReturn[index] = fullBoard[row][column];
-            } else toReturn[index] = fullBoard[column][row];
+            } else {
+                row = index;
+                column = boardSize - index - 1 - diagonalIdentifier;
+                toReturn[index] = fullBoard[row][column];
+            }
         }
-        
         return toReturn;
     }
-    
-    private static Character[] extractMainDiagonal(Character[][] fullBoard) {
-        
+
+    private static Character[] extractMainAntiDiagonal(Character[][] fullBoard) {
+
         Integer size = fullBoard[0].length;
         Character[] toReturn = new Character[size];
         for(int row=0; row<size; row++) {
-            toReturn[row] = fullBoard[row][row];
+            toReturn[row] = fullBoard[row][size-row-1];
         }
         return toReturn;
     }
-    
 }

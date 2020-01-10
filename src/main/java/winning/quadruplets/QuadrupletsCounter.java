@@ -1,4 +1,4 @@
-package winning;
+package winning.quadruplets;
 
 import java.util.Arrays;
 import java.util.List;

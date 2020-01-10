@@ -1,4 +1,6 @@
-package winning;
+package winning.diagonals;
+
+import winning.quadruplets.QuadrupletsCounter;
 
 import java.util.List;
 
