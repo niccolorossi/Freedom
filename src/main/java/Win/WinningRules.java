@@ -47,11 +47,17 @@ public class WinningRules {
         Integer size = array.length;
         Integer beginOfLastQuadruplet = getBeginOfLastQuadruplet(size);
         
+        int index = 0;
         
-        for(int index = 0; index <= beginOfLastQuadruplet; index++) {
-            if(isValidQuadruplet(array, index)) {
-                liveStones += checkQuadruplet(array, index, currentStone);
+        //for(int index = 0; index <= beginOfLastQuadruplet; index++) {
+        while(index <= beginOfLastQuadruplet) {
+            if(isValidQuadruplet(array, index) && array[index] == currentStone) {
+                if(checkQuadruplet(array, index, currentStone)) {
+                    liveStones +=4;
+                    index += 4;
+                }
             }
+            index++;
         }
         
         return liveStones;
@@ -67,22 +73,22 @@ public class WinningRules {
             Character[] currentRow = getCurrentRow(fullBoard, row);
             for(int col = 0; col <= beginOfLastQuadruplet; col++) {
                 if(isValidQuadruplet(currentRow, col)) {
-                    liveStones += checkQuadruplet(currentRow, col, currentStone);
+                    if(checkQuadruplet(currentRow, col, currentStone)) {
+                        liveStones +=4;
+                    }
                 }
             }
         }
         return liveStones;
     }
     
-    private static Integer checkQuadruplet(Character[] currentRow, Integer beginIndex, Character currentStone) {
+    private static Boolean checkQuadruplet(Character[] currentRow, Integer beginIndex, Character currentStone) {
         
         List<Character> quadruplet = Arrays.stream(currentRow, beginIndex, beginIndex + 4).collect(Collectors.toList());
 
         boolean quadrupletMatchesCurrentStone = quadruplet.stream().allMatch(currentStone::equals);
         
-        if (quadrupletMatchesCurrentStone) {
-            return 4;
-        } else return 0;
+        return quadrupletMatchesCurrentStone;
     }
     
 
