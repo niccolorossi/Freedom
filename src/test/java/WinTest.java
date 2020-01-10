@@ -1,4 +1,5 @@
-import Win.WinningRules;
+import Win.HorizontalCounter;
+import Win.VerticalCounter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,11 +28,11 @@ public class WinTest {
     
     @Test
     public void testHorizontalBlackCount(){
-        assertThat(WinningRules.countHorizontal(fullBoard, 'B'), is(8));
+        assertThat(HorizontalCounter.countHorizontal(fullBoard, 'B'), is(8));
     }
     
     @Test
     public void testVerticalBlackCount(){
-        assertThat(WinningRules.countVertical(fullBoard, 'B'), is(4));
+        assertThat(VerticalCounter.countVertical(fullBoard, 'B'), is(4));
     }
 }
