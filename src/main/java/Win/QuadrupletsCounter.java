@@ -33,7 +33,9 @@ public class QuadrupletsCounter {
 
     private static Boolean isFifthElementEqualToFirst(Character[] row, Integer index) {
 
-        if (index == 6) {
+        Integer size = row.length;
+
+        if (index == size - 4) {
             return false;
         } else return (row[index] == row[index + 4]);
     }

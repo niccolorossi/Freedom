@@ -1,3 +1,4 @@
+import Win.DiagonalCounter;
 import Win.HorizontalCounter;
 import Win.TotalPointsCounter;
 import Win.VerticalCounter;
@@ -40,6 +41,11 @@ public class WinTest {
     @Test
     public void testTotalBlackCount() {
         assertThat(TotalPointsCounter.countPoints(fullBoard, 'B'), is(12));
+    }
+
+    @Test
+    public void testDiagonalBlackCount() {
+        assertThat(DiagonalCounter.countDiagonal(fullBoard, 'B'), is(4));
     }
     
 }

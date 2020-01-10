@@ -23,4 +23,5 @@ public class CountQuadrupletTest {
         Character[] sizeNineArray = {'B', 'B', 'W', 'W', 'W', 'W', 'B', 'B', 'B'};
         assertThat(QuadrupletsCounter.countQuadrupletsInArray(sizeNineArray, 'W'), is(4));
     }
+
 }
