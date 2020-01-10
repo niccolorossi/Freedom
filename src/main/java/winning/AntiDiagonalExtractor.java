@@ -27,28 +27,22 @@ public class AntiDiagonalExtractor {
         
         int row;
         int column;
-        Integer size = fullBoard[0].length;
-
-        Integer diagonalSize = getSizeOfDiagonalWithGivenIdentifier(size, diagonalIdentifier);
+        Integer boardSize = fullBoard[0].length;
+        Integer diagonalSize = boardSize-diagonalIdentifier;
         Character[] toReturn = new Character[diagonalSize];
 
         for(int index=0; index<diagonalSize; index++) {
             if (!isUpper) {
                 row = index + diagonalIdentifier;
-                column = size - index - 1;
+                column = boardSize - index - 1;
                 toReturn[index] = fullBoard[row][column];
             } else {
                 row = index;
-                column = size - index - 1 - diagonalIdentifier;
+                column = boardSize - index - 1 - diagonalIdentifier;
                 toReturn[index] = fullBoard[row][column];
             }
         }
         return toReturn;
-    }
-
-    private static Integer getSizeOfDiagonalWithGivenIdentifier(Integer boardSize, Integer diagonalIdentifier) {
-
-        return boardSize - diagonalIdentifier;
     }
 
     private static Character[] extractMainAntiDiagonal(Character[][] fullBoard) {

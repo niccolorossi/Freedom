@@ -27,9 +27,8 @@ public class DiagonalExtractor {
         
         int row;
         int column;
-        Integer size = fullBoard[0].length;
-        
-        Integer diagonalSize = getSizeOfDiagonalWithGivenIdentifier(size, diagonalIdentifier);
+        Integer boardSize = fullBoard[0].length;
+        Integer diagonalSize = boardSize-diagonalIdentifier;
         Character[] toReturn = new Character[diagonalSize];
         
         for(int index=0; index<diagonalSize; index++) {
@@ -43,11 +42,6 @@ public class DiagonalExtractor {
         return toReturn;
     }
     
-    private static Integer getSizeOfDiagonalWithGivenIdentifier(Integer boardSize, Integer diagonalIdentifier) {
-        
-        return boardSize - diagonalIdentifier;
-    }
-
     private static Character[] extractMainDiagonal(Character[][] fullBoard) {
         
         Integer size = fullBoard[0].length;
