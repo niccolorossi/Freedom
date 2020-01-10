@@ -47,5 +47,10 @@ public class WinTest {
     public void testDiagonalBlackCount() {
         assertThat(DiagonalCounter.countDiagonal(fullBoard, 'B'), is(4));
     }
+
+    @Test
+    public void testAntiDiagonalBlackCount() {
+        assertThat(DiagonalCounter.countAntiDiagonal(fullBoard, 'B'), is(8));
+    }
     
 }

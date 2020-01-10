@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AntiDiagonalTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-01-10T11:39:11" hostname="LAPTOP-1KLMQELM" time="0.005">
-  <properties/>
-  <testcase name="thirdUpperDiagonalExtractor" classname="AntiDiagonalTest" time="0.005"/>
-  <testcase name="thirdLowerDiagonalExtractor" classname="AntiDiagonalTest" time="0.0"/>
-  <testcase name="mainDiagonalExtractor" classname="AntiDiagonalTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
