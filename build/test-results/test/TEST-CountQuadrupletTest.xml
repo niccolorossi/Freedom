@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CountQuadrupletTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-10T08:28:42" hostname="cli233-35.wireless-s.units.it" time="0.007">
+  <properties/>
+  <testcase name="countBlackQuadrupletsInSizeTenArray" classname="CountQuadrupletTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

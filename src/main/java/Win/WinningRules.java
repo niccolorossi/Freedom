@@ -41,6 +41,22 @@ public class WinningRules {
         return !(possibleFiveStonesStraightPrevious(row, beginIndex) && possibleFiveStonesStraightNext(row, beginIndex));
     }
     
+    public static Integer countQuadrupletsInArray(Character[] array, Character currentStone) {
+        
+        Integer liveStones = 0;
+        Integer size = array.length;
+        Integer beginOfLastQuadruplet = getBeginOfLastQuadruplet(size);
+        
+        
+        for(int index = 0; index <= beginOfLastQuadruplet; index++) {
+            if(isValidQuadruplet(array, index)) {
+                liveStones += checkQuadruplet(array, index, currentStone);
+            }
+        }
+        
+        return liveStones;
+    }
+    
     public static Integer countHorizontal(Character[][] fullBoard, Character currentStone) {
 
         Integer size = getBoardSize(fullBoard);
