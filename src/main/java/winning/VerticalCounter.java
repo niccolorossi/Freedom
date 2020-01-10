@@ -1,6 +1,6 @@
-package Win;
+package winning;
 
-import static Win.HorizontalCounter.countHorizontal;
+import static winning.HorizontalCounter.countHorizontal;
 
 public class VerticalCounter {
 

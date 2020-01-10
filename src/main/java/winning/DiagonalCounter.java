@@ -1,4 +1,4 @@
-package Win;
+package winning;
 
 import java.util.List;
 

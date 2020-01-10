@@ -1,4 +1,4 @@
-import Win.AntiDiagonalExtractor;
+import winning.AntiDiagonalExtractor;
 import org.junit.Before;
 import org.junit.Test;
 

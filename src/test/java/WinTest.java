@@ -1,7 +1,7 @@
-import Win.DiagonalCounter;
-import Win.HorizontalCounter;
-import Win.TotalPointsCounter;
-import Win.VerticalCounter;
+import winning.DiagonalCounter;
+import winning.HorizontalCounter;
+import winning.TotalPointsCounter;
+import winning.VerticalCounter;
 import org.junit.Before;
 import org.junit.Test;
 

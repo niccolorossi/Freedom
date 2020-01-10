@@ -1,4 +1,4 @@
-package Win;
+package winning;
 
 public class TotalPointsCounter {
     
