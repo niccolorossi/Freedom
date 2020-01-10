@@ -41,4 +41,5 @@ public class WinTest {
     public void testTotalBlackCount() {
         assertThat(TotalPointsCounter.countPoints(fullBoard, 'B'), is(12));
     }
+    
 }
