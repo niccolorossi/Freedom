@@ -1,4 +1,5 @@
 import Win.HorizontalCounter;
+import Win.TotalPointsCounter;
 import Win.VerticalCounter;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,5 +35,10 @@ public class WinTest {
     @Test
     public void testVerticalBlackCount(){
         assertThat(VerticalCounter.countVertical(fullBoard, 'B'), is(4));
+    }
+    
+    @Test
+    public void testTotalBlackCount() {
+        assertThat(TotalPointsCounter.countPoints(fullBoard, 'B'), is(12));
     }
 }
