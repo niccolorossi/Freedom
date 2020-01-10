@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DiagonalExtractorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-01-10T16:09:47" hostname="cli-10-105-6-29.wireless-s.units.it" time="0.005">
-  <properties/>
-  <testcase name="thirdUpperDiagonalExtractor" classname="DiagonalExtractorTest" time="0.004"/>
-  <testcase name="thirdLowerDiagonalExtractor" classname="DiagonalExtractorTest" time="0.0"/>
-  <testcase name="mainDiagonalExtractor" classname="DiagonalExtractorTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
