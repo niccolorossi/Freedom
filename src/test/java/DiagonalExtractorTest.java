@@ -38,23 +38,19 @@ public class DiagonalExtractorTest {
     
     @Test
     public void mainDiagonalExtractor() {
-        assertThat(DiagonalExtractor.extractMainDiagonal(fullBoard), is(mainDiagonal));
-    }
-
-    @Test
-    public void firstUpperDiagonalExtractor() {
-        assertThat(DiagonalExtractor.extractFirstUpperDiagonal(fullBoard), is(firstUpperDiagonal));
+        List<Character[]> diagonals = DiagonalExtractor.extractDiagonals(fullBoard);
+        assertThat(diagonals.get(12), is(mainDiagonal));
     }
 
     @Test
     public void thirdUpperDiagonalExtractor() {
-        List<Character[]> upperDiagonals = DiagonalExtractor.extractUpperDiagonals(fullBoard);
-        assertThat(upperDiagonals.get(2), is(thirdUpperDiagonal));
+        List<Character[]> diagonals = DiagonalExtractor.extractDiagonals(fullBoard);
+        assertThat(diagonals.get(2), is(thirdUpperDiagonal));
     }
 
     @Test
     public void thirdLowerDiagonalExtractor() {
-        List<Character[]> lowerDiagonals = DiagonalExtractor.extractLowerDiagonals(fullBoard);
-        assertThat(lowerDiagonals.get(2), is(thirdLowerDiagonal));
+        List<Character[]> diagonals = DiagonalExtractor.extractDiagonals(fullBoard);
+        assertThat(diagonals.get(8), is(thirdLowerDiagonal));
     }
 }
