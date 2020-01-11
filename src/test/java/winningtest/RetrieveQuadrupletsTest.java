@@ -3,6 +3,7 @@ package winningtest;
 import org.junit.Before;
 import org.junit.Test;
 import winningnic.HorizontalCandidateChecker;
+import winningnic.VerticalCandidateChecker;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -28,10 +29,17 @@ public class RetrieveQuadrupletsTest {
     }
     
     @Test
-    public void doINeedToCheckHorizontalQuadrupletsElementOneOne() {
+    public void doINeedToCheckHorizontalQuadrupletsElementZeroZero() {
         HorizontalCandidateChecker horizontalCandidateChecker = new HorizontalCandidateChecker(fullBoard, 0, 0);
         assertThat(horizontalCandidateChecker.getIsCandidate(), is(false));
     }
-    
+
+    @Test
+    public void doINeedToCheckVerticalQuadrupletsElementZeroZero() {
+        VerticalCandidateChecker verticalCandidateChecker = new VerticalCandidateChecker(fullBoard, 0, 0);
+        assertThat(verticalCandidateChecker.getIsCandidate(), is(true));
+
+    }
+      
     
 }

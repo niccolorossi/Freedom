@@ -6,7 +6,7 @@ public class HorizontalCandidateChecker {
     private Boolean isCandidate;
     
     public HorizontalCandidateChecker(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
-        this.isCandidate = (fullBoard[beginRow][beginColumn] == fullBoard[beginRow+nextQuadrupletOffset][beginColumn]);
+        this.isCandidate = (fullBoard[beginRow][beginColumn] != fullBoard[beginRow][beginColumn+nextQuadrupletOffset]);
     }
     
     public Boolean getIsCandidate() {
