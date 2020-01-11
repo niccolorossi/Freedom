@@ -2,6 +2,7 @@ package winningtest;
 
 import org.junit.Before;
 import org.junit.Test;
+import winningnic.DiagonalCandidateChecker;
 import winningnic.HorizontalCandidateChecker;
 import winningnic.VerticalCandidateChecker;
 
@@ -29,16 +30,21 @@ public class RetrieveQuadrupletsTest {
     }
     
     @Test
-    public void doINeedToCheckHorizontalQuadrupletsElementZeroZero() {
+    public void doINeedToCheckHorizontalQuadrupletElementZeroZero() {
         HorizontalCandidateChecker horizontalCandidateChecker = new HorizontalCandidateChecker(fullBoard, 0, 0);
         assertThat(horizontalCandidateChecker.getIsCandidate(), is(false));
     }
 
     @Test
-    public void doINeedToCheckVerticalQuadrupletsElementZeroZero() {
+    public void doINeedToCheckVerticalQuadrupletElementZeroZero() {
         VerticalCandidateChecker verticalCandidateChecker = new VerticalCandidateChecker(fullBoard, 0, 0);
         assertThat(verticalCandidateChecker.getIsCandidate(), is(true));
+    }
 
+    @Test
+    public void doINeedToCheckDiagonalQuadrupletElementZeroZero() {
+        DiagonalCandidateChecker diagonalCandidateChecker = new DiagonalCandidateChecker(fullBoard, 0, 0);
+        assertThat(diagonalCandidateChecker.getIsCandidate(), is(true));
     }
       
     
