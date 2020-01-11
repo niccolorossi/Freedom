@@ -27,4 +27,12 @@ public class VerticalQuadruplet extends Quadruplet {
     Boolean checkNextQuadruplet() {
         return fullBoard[beginRow][beginColumn] != fullBoard[beginRow+nextQuadrupletOffset][beginColumn];
     }
+    
+    @Override
+    public void setStones(Boolean[][] board) {
+        for(int row = beginRow; row < beginRow+4; row++) {
+            board[row][beginColumn] = true;
+        }
+    }
+
 }

@@ -27,4 +27,11 @@ public class HorizontalQuadruplet extends Quadruplet {
     Boolean checkNextQuadruplet() {
         return fullBoard[beginRow][beginColumn] != fullBoard[beginRow][beginColumn+nextQuadrupletOffset];
     }
+
+    @Override
+    public void setStones(Boolean[][] board) {
+        for(int column = beginColumn; column < beginColumn+4; column++) {
+            board[beginRow][column] = true;
+        }
+    }
 }

@@ -1,8 +1,6 @@
 package winningnic;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 abstract class Quadruplet {
     
@@ -45,4 +43,5 @@ abstract class Quadruplet {
         return Arrays.stream(quadruplet).allMatch(currentStone::equals);
     }
     
+    abstract public void setStones(Boolean[][] board);
 }

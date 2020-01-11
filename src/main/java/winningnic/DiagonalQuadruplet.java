@@ -27,4 +27,12 @@ public class DiagonalQuadruplet extends Quadruplet {
     Boolean checkNextQuadruplet() {
         return fullBoard[beginRow][beginColumn] != fullBoard[beginRow+nextQuadrupletOffset][beginColumn+nextQuadrupletOffset];
     }
+
+    @Override
+    public void setStones(Boolean[][] board) {
+        for(int index = beginColumn; index < beginColumn+4; index++) {
+            board[index][index] = true;
+        }
+    }
+    
 }
