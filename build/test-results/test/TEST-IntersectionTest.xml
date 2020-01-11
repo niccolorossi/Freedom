@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IntersectionTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-11T11:01:15" hostname="LAPTOP-1KLMQELM" time="0.012">
-  <properties/>
-  <testcase name="testVerticalBlackCount" classname="IntersectionTest" time="0.009"/>
-  <testcase name="testHorizontalBlackCount" classname="IntersectionTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
