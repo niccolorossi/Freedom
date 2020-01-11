@@ -2,9 +2,9 @@ package winningtest;
 
 import org.junit.Before;
 import org.junit.Test;
-import winningnic.DiagonalCandidateChecker;
-import winningnic.HorizontalCandidateChecker;
-import winningnic.VerticalCandidateChecker;
+import winningnic.DiagonalQuadruplet;
+import winningnic.HorizontalQuadruplet;
+import winningnic.VerticalQuadruplet;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -31,20 +31,32 @@ public class RetrieveQuadrupletsTest {
     
     @Test
     public void doINeedToCheckHorizontalQuadrupletElementZeroZero() {
-        HorizontalCandidateChecker horizontalCandidateChecker = new HorizontalCandidateChecker(fullBoard, 0, 0);
-        assertThat(horizontalCandidateChecker.getIsCandidate(), is(false));
+        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 0);
+        assertThat(horizontalQuadruplet.isQuadrupletACandidate(), is(false));
     }
 
     @Test
     public void doINeedToCheckVerticalQuadrupletElementZeroZero() {
-        VerticalCandidateChecker verticalCandidateChecker = new VerticalCandidateChecker(fullBoard, 0, 0);
-        assertThat(verticalCandidateChecker.getIsCandidate(), is(true));
+        VerticalQuadruplet verticalQuadruplet = new VerticalQuadruplet(fullBoard, 0, 0);
+        assertThat(verticalQuadruplet.isQuadrupletACandidate(), is(true));
     }
 
     @Test
     public void doINeedToCheckDiagonalQuadrupletElementZeroZero() {
-        DiagonalCandidateChecker diagonalCandidateChecker = new DiagonalCandidateChecker(fullBoard, 0, 0);
-        assertThat(diagonalCandidateChecker.getIsCandidate(), is(true));
+        DiagonalQuadruplet diagonalQuadruplet = new DiagonalQuadruplet(fullBoard, 0, 0);
+        assertThat(diagonalQuadruplet.isQuadrupletACandidate(), is(true));
+    }
+
+    @Test
+    public void doINeedToCheckHorizontalQuadrupletElementZeroOne() {
+        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 1);
+        assertThat(horizontalQuadruplet.isQuadrupletACandidate(), is(true));
+    }
+    
+    @Test
+    public void doINeedToCheckHorizontalQuadrupletElementZeroFive() {
+        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 5);
+        assertThat(horizontalQuadruplet.isQuadrupletACandidate(), is(false));
     }
       
     
