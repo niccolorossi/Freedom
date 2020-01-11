@@ -1,6 +1,7 @@
 package winning.quadruplets;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,8 +9,8 @@ public class QuadrupletsCounter {
 
     public static Integer countQuadrupletsInArray(Character[] array, Character currentStone) {
 
-        Integer liveStones = 0;
         Integer size = array.length;
+        Integer liveStones = 0;
         Integer beginOfLastQuadruplet = getBeginOfLastQuadruplet(size);
 
         int index = 0;
@@ -17,7 +18,31 @@ public class QuadrupletsCounter {
         while (index <= beginOfLastQuadruplet) {
             if (isQuadrupletCandidate(array, index) && array[index] == currentStone) {
                 if (isQuadrupletValid(array, index, currentStone)) {
-                    liveStones += 4;
+                    liveStones+= 4;
+                    index+= 4;
+                }
+            }
+            index++;
+        }
+        return liveStones;
+    }
+
+    public static Integer[] setAliveStonesInArray(Character[] array, Character currentStone) {
+
+
+        Integer size = array.length;
+        Integer[] liveStones = Collections.nCopies(size, 0).toArray(new Integer[0]);;
+        Integer beginOfLastQuadruplet = getBeginOfLastQuadruplet(size);
+
+        int index = 0;
+
+        while (index <= beginOfLastQuadruplet) {
+            if (isQuadrupletCandidate(array, index) && array[index] == currentStone) {
+                if (isQuadrupletValid(array, index, currentStone)) {
+
+                    for(int i = index; i < index + 4; i ++){
+                        liveStones[i] = 1;
+                    }
                     index += 4;
                 }
             }
