@@ -58,6 +58,12 @@ public class RetrieveQuadrupletsTest {
         HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 5);
         assertThat(horizontalQuadruplet.isQuadrupletACandidate(), is(false));
     }
+    
+    @Test
+    public void testValidQuadruplet() {
+        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 8, 0);
+        assertThat(horizontalQuadruplet.isQuadrupletValid('B'), is(true));
+    }
       
     
 }

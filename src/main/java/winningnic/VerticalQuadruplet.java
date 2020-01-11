@@ -4,6 +4,8 @@ public class VerticalQuadruplet extends Quadruplet {
 
     public VerticalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         super(fullBoard, beginRow, beginColumn);
+        this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn],
+                fullBoard[beginRow+2][beginColumn], fullBoard[beginRow+3][beginColumn]};
     }
     
     @Override

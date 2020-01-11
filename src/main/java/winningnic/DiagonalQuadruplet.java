@@ -4,6 +4,8 @@ public class DiagonalQuadruplet extends Quadruplet {
     
     public DiagonalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         super(fullBoard, beginRow, beginColumn);
+        this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn+1],
+                fullBoard[beginRow+2][beginColumn+2], fullBoard[beginRow+3][beginColumn+3]};
     }
     
     @Override

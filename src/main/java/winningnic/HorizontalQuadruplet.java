@@ -4,6 +4,8 @@ public class HorizontalQuadruplet extends Quadruplet {
 
     public HorizontalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         super(fullBoard, beginRow, beginColumn);
+        this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow][beginColumn+1],
+                                            fullBoard[beginRow][beginColumn+2], fullBoard[beginRow][beginColumn+3]};
     }
     
     @Override
@@ -13,7 +15,7 @@ public class HorizontalQuadruplet extends Quadruplet {
 
     @Override
     Boolean quadrupleIsAtEnd() {
-        return beginColumn == fullBoard[0].length;
+        return beginColumn.equals(boardSize);
     }
     
     @Override
