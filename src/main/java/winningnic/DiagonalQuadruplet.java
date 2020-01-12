@@ -6,8 +6,14 @@ public class DiagonalQuadruplet extends Quadruplet {
         super(fullBoard, beginRow, beginColumn);
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn+1],
                 fullBoard[beginRow+2][beginColumn+2], fullBoard[beginRow+3][beginColumn+3]};
+        if(beginColumn != 0 && beginRow != 0) {
+            this.previousElement = fullBoard[beginRow+previousQuadrupletOffset][beginColumn+previousQuadrupletOffset];
+        }
+        if(beginColumn != boardSize-4 && beginColumn != boardSize-4) {
+            this.nextElement = fullBoard[beginRow+nextQuadrupletOffset][beginColumn+nextQuadrupletOffset];
+        }
     }
-    
+
     @Override
     Boolean quadrupleIsAtBeginning() {
         return beginRow == 0 || beginColumn == 0;
@@ -15,17 +21,7 @@ public class DiagonalQuadruplet extends Quadruplet {
 
     @Override
     Boolean quadrupleIsAtEnd() {
-        return beginRow == fullBoard[0].length || beginColumn == fullBoard[0].length;
-    }
-
-    @Override
-    Boolean checkPreviousQuadruplet() {
-        return fullBoard[beginRow][beginColumn] != fullBoard[beginRow+previousQuadrupletOffset][beginColumn+previousQuadrupletOffset];
-    }
-
-    @Override
-    Boolean checkNextQuadruplet() {
-        return fullBoard[beginRow][beginColumn] != fullBoard[beginRow+nextQuadrupletOffset][beginColumn+nextQuadrupletOffset];
+        return beginRow == boardSize-4 || beginColumn == boardSize-4;
     }
 
     @Override

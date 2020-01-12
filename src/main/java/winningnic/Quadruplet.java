@@ -8,26 +8,32 @@ abstract class Quadruplet {
     static final Integer previousQuadrupletOffset = - 1;
     
     Character[] quadruplet;
-    Character[][] fullBoard;
 
     Integer boardSize;
     
     Integer beginRow;
     Integer beginColumn;
+    
+    Character previousElement;
+    Character nextElement;
      
     Quadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         this.beginRow = beginRow;
         this.beginColumn = beginColumn;
         
-        this.fullBoard = fullBoard;
-        
         this.boardSize = fullBoard[0].length;
     }
-    
+
     abstract Boolean quadrupleIsAtBeginning();
     abstract Boolean quadrupleIsAtEnd();
-    abstract Boolean checkPreviousQuadruplet();
-    abstract Boolean checkNextQuadruplet();
+
+    Boolean checkPreviousQuadruplet() {
+        return quadruplet[0] != previousElement;
+    }
+
+    Boolean checkNextQuadruplet() {
+        return quadruplet[0] != nextElement;
+    }
     
     public Boolean isQuadrupletACandidate() {
         if(quadrupleIsAtBeginning()) {

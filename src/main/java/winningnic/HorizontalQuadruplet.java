@@ -6,8 +6,14 @@ public class HorizontalQuadruplet extends Quadruplet {
         super(fullBoard, beginRow, beginColumn);
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow][beginColumn+1],
                                             fullBoard[beginRow][beginColumn+2], fullBoard[beginRow][beginColumn+3]};
+        if(beginColumn != 0) {
+            this.previousElement = fullBoard[beginRow][beginColumn+previousQuadrupletOffset];
+        }
+        if(beginColumn != boardSize-4) {
+            this.nextElement = fullBoard[beginRow][beginColumn+nextQuadrupletOffset];
+        }
     }
-    
+
     @Override
     Boolean quadrupleIsAtBeginning() {
         return beginColumn == 0;
@@ -15,17 +21,7 @@ public class HorizontalQuadruplet extends Quadruplet {
 
     @Override
     Boolean quadrupleIsAtEnd() {
-        return beginColumn.equals(boardSize);
-    }
-    
-    @Override
-    Boolean checkPreviousQuadruplet() {
-        return fullBoard[beginRow][beginColumn] != fullBoard[beginRow][beginColumn+previousQuadrupletOffset];
-    }
-    
-    @Override
-    Boolean checkNextQuadruplet() {
-        return fullBoard[beginRow][beginColumn] != fullBoard[beginRow][beginColumn+nextQuadrupletOffset];
+        return beginColumn == boardSize-4;
     }
 
     @Override
