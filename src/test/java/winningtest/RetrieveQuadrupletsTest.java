@@ -2,7 +2,6 @@ package winningtest;
 
 import org.junit.Before;
 import org.junit.Test;
-import winning.quadruplets.QuadrupletsCounter;
 import winningnic.*;
 
 import static org.hamcrest.core.Is.is;
@@ -113,12 +112,35 @@ public class RetrieveQuadrupletsTest {
     }
     
     @Test
-    public void testInitializeQuadrupletFromNewClass() {
+    public void testInitializeHorizontalQuadrupletFromNewClass() { 
        HorizontalQuadrupletsGenerator horizontalQuadrupletsGenerator = new HorizontalQuadrupletsGenerator(fullBoard);
        HorizontalQuadruplet horizontalQuadruplet = horizontalQuadrupletsGenerator.generate(0,0);
        HorizontalQuadruplet anotherHorizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 0);
        assertThat(horizontalQuadruplet.getQuadruplet(), is(anotherHorizontalQuadruplet.getQuadruplet()));
-        
+    }
+
+    @Test
+    public void testInitializeVerticalQuadrupletFromNewClass() {
+        VerticalQuadrupletGenerator verticalQuadrupletsGenerator = new VerticalQuadrupletGenerator(fullBoard);
+        VerticalQuadruplet verticalQuadruplet = verticalQuadrupletsGenerator.generate(0,0);
+        VerticalQuadruplet anotherVerticalQuadruplet = new VerticalQuadruplet(fullBoard, 0, 0);
+        assertThat(verticalQuadruplet.getQuadruplet(), is(anotherVerticalQuadruplet.getQuadruplet()));
+    }
+
+    @Test
+    public void testInitializeDiagonalQuadrupletFromNewClass() {
+        DiagonalQuadrupletGenerator diagonalQuadrupletGenerator = new DiagonalQuadrupletGenerator(fullBoard);
+        DiagonalQuadruplet diagonalQuadruplet = diagonalQuadrupletGenerator.generate(0,0);
+        DiagonalQuadruplet anotherVerticalQuadruplet = new DiagonalQuadruplet(fullBoard, 0, 0);
+        assertThat(diagonalQuadruplet.getQuadruplet(), is(anotherVerticalQuadruplet.getQuadruplet()));
+    }
+    
+    @Test
+    public void testAllLeftmostHorizontalQuadrupletsAreSet() {
+        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        quadrupletChecker.setStones();
+        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterOneQ));
     }
       
     

@@ -27,11 +27,11 @@ abstract class Quadruplet {
         
     }
     
-    Boolean checkPreviousQuadruplet() {
+    private Boolean checkPreviousQuadruplet() {
         return quadruplet[0] != previousElement;
     }
 
-    Boolean checkNextQuadruplet() {
+    private Boolean checkNextQuadruplet() {
         return quadruplet[0] != nextElement;
     }
     
@@ -50,4 +50,9 @@ abstract class Quadruplet {
     }
     
     abstract public void setStones(Boolean[][] board);
+
+    public Character[] getQuadruplet() {
+        return quadruplet;
+    }
+    
 }

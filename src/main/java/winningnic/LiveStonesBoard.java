@@ -16,8 +16,6 @@ public class LiveStonesBoard {
                         .forEach(c -> currentBoard[r][c] = false));    
     }
     
-    
-    
     public void setStones(Quadruplet quadruplet) {
         quadruplet.setStones(currentBoard);
     }

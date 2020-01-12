@@ -10,7 +10,7 @@ public class DiagonalQuadruplet extends Quadruplet {
         if(beginColumn == 0 || beginRow == 0) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = false;
-        } else if(beginColumn == boardSize-quadruplet.length || beginColumn == boardSize-quadruplet.length) {
+        } else if(beginColumn == boardSize-quadruplet.length || beginRow == boardSize-quadruplet.length) {
             this.isQuadrupletAtBeginning = false;
             this.isQuadrupletAtEnd = true;
         } else {
