@@ -7,11 +7,14 @@ public class AntiDiagonalQuadruplet extends Quadruplet {
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow-1][beginColumn+1],
                 fullBoard[beginRow-2][beginColumn+2], fullBoard[beginRow-3][beginColumn+3]};
 
-        if(beginColumn == 0 || beginRow == fullBoard[0].length) {
+        if(beginColumn == 0 && beginRow != 4 || beginRow == 9 && beginColumn != 6) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = false;
-        } else if(beginColumn == fullBoard[0].length-quadruplet.length || beginRow == fullBoard[0].length-quadruplet.length) {
+        } else if(beginColumn == 6 && beginRow != 4 || beginRow == 4 && beginColumn != 6) {
             this.isQuadrupletAtBeginning = false;
+            this.isQuadrupletAtEnd = true;
+        } else if((beginRow == 4 && beginColumn == 0) || (beginRow == 9 && beginColumn == 6)) {
+            this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = true;
         } else {
             this.isQuadrupletAtBeginning = false;
