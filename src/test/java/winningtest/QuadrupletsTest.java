@@ -172,5 +172,15 @@ public class QuadrupletsTest {
         quadrupletChecker.setAllColumnStones();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVBlackStones));
     }
+
+    @Test
+    public void testAllHorizontalVerticalDiagonalQuadrupletsAreSet() {
+        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        quadrupletChecker.setAllRowStones();
+        quadrupletChecker.setAllColumnStones();
+        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVBlackStones));
+    }
+    
     
 }

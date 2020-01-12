@@ -45,4 +45,16 @@ public class QuadrupletChecker {
 
         }
     }
+
+    public void setAllDiagonalStones() {
+        for(int col=0; col<boardSize; col++) {
+            for(int row=0; row<=6; row++) {
+                VerticalQuadruplet verticalQuadruplet = new VerticalQuadruplet(fullBoard,row,col);
+                if(verticalQuadruplet.isQuadrupletValid('B')) {
+                    liveStonesBoard.setStones(verticalQuadruplet);
+                }
+            }
+
+        }
+    }
 }
