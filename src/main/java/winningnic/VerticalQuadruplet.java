@@ -6,22 +6,24 @@ public class VerticalQuadruplet extends Quadruplet {
         super(fullBoard, beginRow, beginColumn);
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn],
                 fullBoard[beginRow+2][beginColumn], fullBoard[beginRow+3][beginColumn]};
-        if(beginRow != 0) {
+
+        if(beginRow == 0) {
+            this.isQuadrupletAtBeginning = true;
+            this.isQuadrupletAtEnd = false;
+        } else if(beginRow == boardSize-quadruplet.length) {
+            this.isQuadrupletAtBeginning = false;
+            this.isQuadrupletAtEnd = true;
+        } else {
+            this.isQuadrupletAtBeginning = false;
+            this.isQuadrupletAtEnd = false;
+        }
+
+        if(!isQuadrupletAtBeginning) {
             this.previousElement = fullBoard[beginRow+previousQuadrupletOffset][beginColumn];
         }
-        if(beginRow != boardSize-4) {
+        if(!isQuadrupletAtEnd) {
             this.nextElement = fullBoard[beginRow+nextQuadrupletOffset][beginColumn];
         }
-    }
-
-    @Override
-    Boolean quadrupleIsAtBeginning() {
-        return beginRow == 0;
-    }
-
-    @Override
-    Boolean quadrupleIsAtEnd() {
-        return beginRow == boardSize;
     }
     
     @Override

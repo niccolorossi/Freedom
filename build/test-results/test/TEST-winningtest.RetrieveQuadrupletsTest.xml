@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="winningtest.RetrieveQuadrupletsTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-01-12T11:13:10" hostname="MacBook-Pro-di-Niccolo.local" time="0.01">
+<testsuite name="winningtest.RetrieveQuadrupletsTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-01-12T11:23:49" hostname="MacBook-Pro-di-Niccolo.local" time="0.011">
   <properties/>
-  <testcase name="doINeedToCheckVerticalQuadrupletElementZeroZero" classname="winningtest.RetrieveQuadrupletsTest" time="0.002"/>
-  <testcase name="testValidQuadruplet" classname="winningtest.RetrieveQuadrupletsTest" time="0.001"/>
-  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroFive" classname="winningtest.RetrieveQuadrupletsTest" time="0.001"/>
+  <testcase name="doINeedToCheckVerticalQuadrupletElementZeroZero" classname="winningtest.RetrieveQuadrupletsTest" time="0.003"/>
+  <testcase name="testValidQuadruplet" classname="winningtest.RetrieveQuadrupletsTest" time="0.002"/>
+  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroFive" classname="winningtest.RetrieveQuadrupletsTest" time="0.0"/>
   <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroZero" classname="winningtest.RetrieveQuadrupletsTest" time="0.0"/>
   <testcase name="doINeedToCheckDiagonalQuadrupletElementZeroZero" classname="winningtest.RetrieveQuadrupletsTest" time="0.001"/>
   <testcase name="testLiveStones" classname="winningtest.RetrieveQuadrupletsTest" time="0.003"/>
-  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroOne" classname="winningtest.RetrieveQuadrupletsTest" time="0.001"/>
+  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroOne" classname="winningtest.RetrieveQuadrupletsTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
