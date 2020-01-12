@@ -1,6 +1,7 @@
 package winningtest;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import winningnic.*;
 
@@ -12,6 +13,7 @@ public class RetrieveQuadrupletsTest {
     private Character[][] fullBoard;
     private Boolean[][] liveStonesBoardAfterOneQ;
     private Boolean[][] liveStonesBoardAfterTwoQ;
+    private Boolean[][] liveStonesBoardAfterSetHVStones;
 
     @Before
     public void initFullBoard(){
@@ -51,7 +53,18 @@ public class RetrieveQuadrupletsTest {
                         {false, false, false, false, false, false, false, false, false, false},
                         {true, true, true, true, false, false, true, true, true, true},
                         {false, false, false, false, false, false, false, false, false, false}};
-                
+
+        liveStonesBoardAfterSetHVStones = new Boolean[][]
+                        {{false, false, false, false, false, false, false, false, false, false},
+                        {false, false, false, false, false, false, true, false, false, false},
+                        {false, false, false, false, false, false, true, false, false, false},
+                        {false, false, false, false, false, false, true, false, false, false},
+                        {false, false, false, false, false, false, true, false, false, false},
+                        {false, false, false, false, false, false, false, false, false, false},
+                        {false, false, false, false, false, false, false, false, false, false},
+                        {false, false, false, false, false, false, false, false, false, false},
+                        {true, true, true, true, false, false, true, true, true, true},
+                        {false, false, false, false, false, false, false, false, false, false}};
     }
     
     @Test
@@ -142,6 +155,22 @@ public class RetrieveQuadrupletsTest {
         quadrupletChecker.setStones();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterOneQ));
     }
-      
+
+    @Test
+    public void testAllHorizontalQuadrupletsAreSet() {
+        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        quadrupletChecker.setAllRowStones();
+        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterTwoQ));
+    }
+
+    @Test
+    public void testAllHorizontalVerticalQuadrupletsAreSet() {
+        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        quadrupletChecker.setAllRowStones();
+        quadrupletChecker.setAllColumnStones();
+        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSetHVStones));
+    }
     
 }
