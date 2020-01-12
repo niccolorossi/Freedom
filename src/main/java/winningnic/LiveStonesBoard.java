@@ -15,12 +15,12 @@ public class LiveStonesBoard {
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = false));    
     }
+
+    public Boolean[][] getCurrentBoard() {
+        return currentBoard;
+    }
     
     public void setStones(Quadruplet quadruplet) {
         quadruplet.setStones(currentBoard);
-    }
-    
-    public Boolean[][] getCurrentBoard() {
-        return currentBoard;
     }
 }

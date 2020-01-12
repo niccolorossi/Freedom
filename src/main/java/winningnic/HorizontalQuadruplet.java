@@ -1,16 +1,16 @@
 package winningnic;
 
 public class HorizontalQuadruplet extends Quadruplet {
-
+    
     public HorizontalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
-        super(fullBoard, beginRow, beginColumn);
+        super(beginRow, beginColumn);
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow][beginColumn+1],
                                             fullBoard[beginRow][beginColumn+2], fullBoard[beginRow][beginColumn+3]};
         
         if(beginColumn == 0) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = false;
-        } else if(beginColumn == boardSize-quadruplet.length) {
+        } else if(beginColumn == fullBoard[0].length-quadruplet.length) {
             this.isQuadrupletAtBeginning = false;
             this.isQuadrupletAtEnd = true;
         } else {

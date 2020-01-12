@@ -3,14 +3,14 @@ package winningnic;
 public class DiagonalQuadruplet extends Quadruplet {
     
     public DiagonalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
-        super(fullBoard, beginRow, beginColumn);
+        super(beginRow, beginColumn);
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn+1],
                 fullBoard[beginRow+2][beginColumn+2], fullBoard[beginRow+3][beginColumn+3]};
         
         if(beginColumn == 0 || beginRow == 0) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = false;
-        } else if(beginColumn == boardSize-quadruplet.length || beginRow == boardSize-quadruplet.length) {
+        } else if(beginColumn == fullBoard[0].length-quadruplet.length || beginRow == fullBoard[0].length-quadruplet.length) {
             this.isQuadrupletAtBeginning = false;
             this.isQuadrupletAtEnd = true;
         } else {

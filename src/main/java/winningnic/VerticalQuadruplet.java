@@ -3,14 +3,14 @@ package winningnic;
 public class VerticalQuadruplet extends Quadruplet {
 
     public VerticalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
-        super(fullBoard, beginRow, beginColumn);
+        super(beginRow, beginColumn);
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn],
                 fullBoard[beginRow+2][beginColumn], fullBoard[beginRow+3][beginColumn]};
 
         if(beginRow == 0) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = false;
-        } else if(beginRow == boardSize-quadruplet.length) {
+        } else if(beginRow == fullBoard[0].length-quadruplet.length) {
             this.isQuadrupletAtBeginning = false;
             this.isQuadrupletAtEnd = true;
         } else {
