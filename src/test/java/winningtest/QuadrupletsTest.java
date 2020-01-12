@@ -14,6 +14,7 @@ public class QuadrupletsTest {
     private Boolean[][] liveStonesBoardAfterHorizontalQuadrupletEightZero;
     private Boolean[][] liveStonesBoardAfterHQEightZeroEightSix;
     private Boolean[][] liveStonesBoardAfterSettingHVBlackStones;
+    private Boolean[][] liveStonesBoardAfterSettingHVDBlackStones;
 
     @Before
     public void initFullBoard(){
@@ -65,6 +66,19 @@ public class QuadrupletsTest {
                         {false, false, false, false, false, false, false, false, false, false},
                         {true, true, true, true, false, false, true, true, true, true},
                         {false, false, false, false, false, false, false, false, false, false}};
+
+        liveStonesBoardAfterSettingHVDBlackStones = new Boolean[][]
+                        {{false, false, false, false, false, false, false, false, false, false},
+                        {false, false, false, false, false, false, true, false, false, false},
+                        {false, false, false, false, false, false, true, false, false, false},
+                        {false, false, false, false, false, false, true, false, false, false},
+                        {false, false, false, false, false, false, true, true, false, false},
+                        {false, false, false, false, false, false, false, false, true, false},
+                        {false, false, false, false, false, false, false, false, false, true},
+                        {false, false, false, false, false, false, false, false, false, false},
+                        {true, true, true, true, false, false, true, true, true, true},
+                        {false, false, false, false, false, false, false, false, false, false}};
+
     }
     
     @Test
@@ -179,7 +193,8 @@ public class QuadrupletsTest {
         QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
         quadrupletChecker.setAllRowStones();
         quadrupletChecker.setAllColumnStones();
-        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVBlackStones));
+        quadrupletChecker.setAllDiagonalStones();
+        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDBlackStones));
     }
     
     

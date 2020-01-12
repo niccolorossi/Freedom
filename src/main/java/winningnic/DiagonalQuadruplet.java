@@ -7,11 +7,14 @@ public class DiagonalQuadruplet extends Quadruplet {
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn+1],
                 fullBoard[beginRow+2][beginColumn+2], fullBoard[beginRow+3][beginColumn+3]};
         
-        if(beginColumn == 0 || beginRow == 0) {
+        if(beginColumn == 0 && beginRow != 6 || beginRow == 0 && beginColumn != 6) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = false;
-        } else if(beginColumn == fullBoard[0].length-quadruplet.length || beginRow == fullBoard[0].length-quadruplet.length) {
+        } else if(beginColumn == 6 && beginRow != 0 || beginRow == 6 && beginColumn != 0) {
             this.isQuadrupletAtBeginning = false;
+            this.isQuadrupletAtEnd = true;
+        } else if((beginRow == 0 && beginColumn == 6) || (beginRow == 6 && beginColumn == 0)) {
+            this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = true;
         } else {
             this.isQuadrupletAtBeginning = false;
@@ -28,8 +31,8 @@ public class DiagonalQuadruplet extends Quadruplet {
 
     @Override
     public void setStones(Boolean[][] board) {
-        for(int index = beginColumn; index < beginColumn+4; index++) {
-            board[index][index] = true;
+        for(int index = 0; index < 4; index++) {
+            board[beginRow+index][beginColumn+index] = true;
         }
     }
     
