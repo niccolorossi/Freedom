@@ -32,4 +32,8 @@ public class HorizontalQuadruplet extends Quadruplet {
             board[beginRow][column] = true;
         }
     }
+    
+    public Character[] getQuadruplet() {
+        return quadruplet;
+    }
 }
