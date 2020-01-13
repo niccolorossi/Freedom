@@ -129,36 +129,6 @@ public class QuadrupletsTest {
         HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 8, 0);
         assertThat(horizontalQuadruplet.isQuadrupletValid('B'), is(true));
     }
-    
-    @Test
-    public void testLiveStones() {
-        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 8, 0);
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        liveStonesBoard.setStones(horizontalQuadruplet);
-        Boolean[][] currentBoard = liveStonesBoard.getCurrentBoard();
-        assertThat(currentBoard, is(liveStonesBoardAfterHorizontalQuadrupletEightZero));
-    }
-
-    @Test
-    public void testLiveStonesAfterTwoQ() {
-        HorizontalQuadruplet horizontalQuadrupletOne = new HorizontalQuadruplet(fullBoard, 8, 0);
-        HorizontalQuadruplet horizontalQuadrupletTwo = new HorizontalQuadruplet(fullBoard, 8, 6);
-
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        liveStonesBoard.setStones(horizontalQuadrupletOne);
-        liveStonesBoard.setStones(horizontalQuadrupletTwo);
-        Boolean[][] currentBoard = liveStonesBoard.getCurrentBoard();
-        assertThat(currentBoard, is(liveStonesBoardAfterHQEightZeroEightSix));
-    }
-    
-    
-    @Test
-    public void testAllLeftmostHorizontalQuadrupletsAreSet() {
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
-        quadrupletChecker.setStones();
-        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterHorizontalQuadrupletEightZero));
-    }
 
     @Test
     public void testAllHorizontalQuadrupletsAreSet() {

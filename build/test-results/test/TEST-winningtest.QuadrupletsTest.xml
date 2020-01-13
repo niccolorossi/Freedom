@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="winningtest.QuadrupletsTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-01-13T11:41:17" hostname="MBP-di-Niccolo.homenet.telecomitalia.it" time="0.02">
+<testsuite name="winningtest.QuadrupletsTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-01-13T16:45:38" hostname="MBP-di-Niccolo.homenet.telecomitalia.it" time="0.021">
   <properties/>
-  <testcase name="testLiveStonesAfterTwoQ" classname="winningtest.QuadrupletsTest" time="0.005"/>
-  <testcase name="doINeedToCheckVerticalQuadrupletElementZeroZero" classname="winningtest.QuadrupletsTest" time="0.0"/>
-  <testcase name="testValidQuadruplet" classname="winningtest.QuadrupletsTest" time="0.002"/>
-  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroFive" classname="winningtest.QuadrupletsTest" time="0.001"/>
-  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroZero" classname="winningtest.QuadrupletsTest" time="0.0"/>
+  <testcase name="doINeedToCheckVerticalQuadrupletElementZeroZero" classname="winningtest.QuadrupletsTest" time="0.005"/>
+  <testcase name="testValidQuadruplet" classname="winningtest.QuadrupletsTest" time="0.001"/>
+  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroFive" classname="winningtest.QuadrupletsTest" time="0.0"/>
+  <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroZero" classname="winningtest.QuadrupletsTest" time="0.001"/>
   <testcase name="doINeedToCheckDiagonalQuadrupletElementZeroZero" classname="winningtest.QuadrupletsTest" time="0.001"/>
-  <testcase name="testAllHorizontalQuadrupletsAreSet" classname="winningtest.QuadrupletsTest" time="0.002"/>
-  <testcase name="testLiveStones" classname="winningtest.QuadrupletsTest" time="0.0"/>
+  <testcase name="testAllHorizontalQuadrupletsAreSet" classname="winningtest.QuadrupletsTest" time="0.004"/>
   <testcase name="testAllHorizontalVerticalQuadrupletsAreSet" classname="winningtest.QuadrupletsTest" time="0.001"/>
-  <testcase name="testAllLeftmostHorizontalQuadrupletsAreSet" classname="winningtest.QuadrupletsTest" time="0.0"/>
   <testcase name="testAllHorizontalVerticalDiagonalQuadrupletsAreSet" classname="winningtest.QuadrupletsTest" time="0.002"/>
-  <testcase name="testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet" classname="winningtest.QuadrupletsTest" time="0.002"/>
+  <testcase name="testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet" classname="winningtest.QuadrupletsTest" time="0.003"/>
   <testcase name="doINeedToCheckHorizontalQuadrupletElementZeroOne" classname="winningtest.QuadrupletsTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

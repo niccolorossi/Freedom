@@ -1,36 +1,49 @@
 package winningnic;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class VerticalQuadruplet extends Quadruplet {
 
     public VerticalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         super(beginRow, beginColumn);
-        this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn],
-                fullBoard[beginRow+2][beginColumn], fullBoard[beginRow+3][beginColumn]};
 
-        if(beginRow == 0) {
-            this.isQuadrupletAtBeginning = true;
-            this.isQuadrupletAtEnd = false;
-        } else if(beginRow == fullBoard[0].length-quadruplet.length) {
-            this.isQuadrupletAtBeginning = false;
-            this.isQuadrupletAtEnd = true;
+        Character[] quad = new Character[]{fullBoard[beginRow][beginColumn], fullBoard[beginRow + 1][beginColumn],
+                fullBoard[beginRow + 2][beginColumn], fullBoard[beginRow + 3][beginColumn]};
+        this.isQuadrupletValid = Arrays.stream(quad).allMatch(Character.valueOf('B')::equals);
+
+        boolean isQuadrupletAtBeginning;
+        boolean isQuadrupletAtEnd;
+
+        if (beginRow == 0) {
+            isQuadrupletAtBeginning = true;
+            isQuadrupletAtEnd = false;
+        } else if (beginRow == fullBoard[0].length - 4) {
+            isQuadrupletAtBeginning = false;
+            isQuadrupletAtEnd = true;
         } else {
-            this.isQuadrupletAtBeginning = false;
-            this.isQuadrupletAtEnd = false;
+            isQuadrupletAtBeginning = false;
+            isQuadrupletAtEnd = false;
         }
 
-        if(!isQuadrupletAtBeginning) {
-            this.previousElement = fullBoard[beginRow+previousQuadrupletOffset][beginColumn];
+        if (isQuadrupletAtBeginning) {
+            isQuadrupletCandidate = quad[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn];
+        } else if (isQuadrupletAtEnd) {
+            isQuadrupletCandidate = quad[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn];
+        } else {
+            isQuadrupletCandidate = quad[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn]
+                    && quad[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn];
         }
-        if(!isQuadrupletAtEnd) {
-            this.nextElement = fullBoard[beginRow+nextQuadrupletOffset][beginColumn];
-        }
+
     }
-    
+
     @Override
-    public void setStones(Boolean[][] board) {
-        for(int row = beginRow; row < beginRow+4; row++) {
-            board[row][beginColumn] = true;
+    public List<List<Integer>> getIndices() {
+        List<List<Integer>> toReturn = new ArrayList<>();
+        for (int row = beginRow; row < beginRow + 4; row++) {
+            toReturn.add(Arrays.asList(row, beginColumn));
         }
+        return toReturn;
     }
-
 }

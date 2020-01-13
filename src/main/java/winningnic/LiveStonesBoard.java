@@ -1,15 +1,14 @@
 package winningnic;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class LiveStonesBoard {
     
     private Boolean[][] currentBoard;
-    private Integer boardSize;
     
     public LiveStonesBoard(Integer boardSize) {
         
-        this.boardSize = boardSize;
         this.currentBoard = new Boolean[boardSize][boardSize];
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
@@ -20,7 +19,13 @@ public class LiveStonesBoard {
         return currentBoard;
     }
     
-    public void setStones(Quadruplet quadruplet) {
-        quadruplet.setStones(currentBoard);
+    void setStones(Quadruplet quadruplet) {
+        List<List<Integer>> indicesList = quadruplet.getIndices();
+        for(int i=0; i<4; i++) {
+            List<Integer> thisCell = indicesList.get(i);
+            Integer row = thisCell.get(0);
+            Integer column = thisCell.get(1);
+            currentBoard[row][column] = true;
+        }
     }
 }
