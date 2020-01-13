@@ -57,4 +57,16 @@ public class QuadrupletChecker {
 
         }
     }
+
+    public void setAllAntiDiagonalStones() {
+        for(int row=9; row>=3; row--) {
+            for(int col=0; col<=6; col++) {
+                AntiDiagonalQuadruplet antiDiagonalQuadruplet = new AntiDiagonalQuadruplet(fullBoard,row,col);
+                if(antiDiagonalQuadruplet.isQuadrupletValid('B')) {
+                    liveStonesBoard.setStones(antiDiagonalQuadruplet);
+                }
+            }
+
+        }
+    }
 }

@@ -7,13 +7,13 @@ public class AntiDiagonalQuadruplet extends Quadruplet {
         this.quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow-1][beginColumn+1],
                 fullBoard[beginRow-2][beginColumn+2], fullBoard[beginRow-3][beginColumn+3]};
 
-        if(beginColumn == 0 && beginRow != 4 || beginRow == 9 && beginColumn != 6) {
+        if(beginColumn == 0 && beginRow != 3 || beginRow == 9 && beginColumn != 6) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = false;
-        } else if(beginColumn == 6 && beginRow != 4 || beginRow == 4 && beginColumn != 6) {
+        } else if(beginColumn == 6 && beginRow != 9 || beginRow == 3 && beginColumn != 0) {
             this.isQuadrupletAtBeginning = false;
             this.isQuadrupletAtEnd = true;
-        } else if((beginRow == 4 && beginColumn == 0) || (beginRow == 9 && beginColumn == 6)) {
+        } else if((beginRow == 3 && beginColumn == 0) || (beginRow == 9 && beginColumn == 6)) {
             this.isQuadrupletAtBeginning = true;
             this.isQuadrupletAtEnd = true;
         } else {
@@ -22,10 +22,10 @@ public class AntiDiagonalQuadruplet extends Quadruplet {
         }
 
         if(!isQuadrupletAtBeginning) {
-            this.previousElement = fullBoard[beginRow+previousQuadrupletOffset][beginColumn-previousQuadrupletOffset];
+            this.previousElement = fullBoard[beginRow-previousQuadrupletOffset][beginColumn+previousQuadrupletOffset];
         }
         if(!isQuadrupletAtEnd) {
-            this.nextElement = fullBoard[beginRow+nextQuadrupletOffset][beginColumn-nextQuadrupletOffset];
+            this.nextElement = fullBoard[beginRow-nextQuadrupletOffset][beginColumn+nextQuadrupletOffset];
         }
     }
 

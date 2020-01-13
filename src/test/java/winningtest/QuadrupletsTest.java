@@ -15,6 +15,7 @@ public class QuadrupletsTest {
     private Boolean[][] liveStonesBoardAfterHQEightZeroEightSix;
     private Boolean[][] liveStonesBoardAfterSettingHVBlackStones;
     private Boolean[][] liveStonesBoardAfterSettingHVDBlackStones;
+    private Boolean[][] liveStonesBoardAfterSettingHVDABlackStones;
 
     @Before
     public void initFullBoard(){
@@ -74,6 +75,18 @@ public class QuadrupletsTest {
                         {false, false, false, false, false, false, true, false, false, false},
                         {false, false, false, false, false, false, true, true, false, false},
                         {false, false, false, false, false, false, false, false, true, false},
+                        {false, false, false, false, false, false, false, false, false, true},
+                        {false, false, false, false, false, false, false, false, false, false},
+                        {true, true, true, true, false, false, true, true, true, true},
+                        {false, false, false, false, false, false, false, false, false, false}};
+
+        liveStonesBoardAfterSettingHVDABlackStones = new Boolean[][]
+                        {{false, false, false, false, true, false, false, false, false, false},
+                        {false, false, false, true, false, false, true, false, false, false},
+                        {false, false, true, false, true, false, true, false, false, false},
+                        {false, true, false, true, false, false, true, false, false, false},
+                        {false, false, true, false, false, false, true, true, false, false},
+                        {false, true, false, false, false, false, false, false, true, false},
                         {false, false, false, false, false, false, false, false, false, true},
                         {false, false, false, false, false, false, false, false, false, false},
                         {true, true, true, true, false, false, true, true, true, true},
@@ -195,6 +208,17 @@ public class QuadrupletsTest {
         quadrupletChecker.setAllColumnStones();
         quadrupletChecker.setAllDiagonalStones();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDBlackStones));
+    }
+
+    @Test
+    public void testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet() {
+        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        quadrupletChecker.setAllRowStones();
+        quadrupletChecker.setAllColumnStones();
+        quadrupletChecker.setAllDiagonalStones();
+        quadrupletChecker.setAllAntiDiagonalStones();
+        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDABlackStones));
     }
     
     
