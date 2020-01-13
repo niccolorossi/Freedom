@@ -46,9 +46,5 @@ abstract class Quadruplet {
     }
     
     abstract public void setStones(Boolean[][] board);
-
-    public Character[] getQuadruplet() {
-        return quadruplet;
-    }
     
 }
