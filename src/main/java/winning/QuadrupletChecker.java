@@ -18,8 +18,9 @@ public class QuadrupletChecker {
     private VerticalRules vvr;
     private DiagonalRules dvr;
     private AntiDiagonalRules advr;
+    private Character currentStone;
     
-    public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard) {
+    public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
         this.liveStonesBoard = liveStonesBoard;
         this.fullBoard = fullBoard;
         this.boardSize = liveStonesBoard.getCurrentBoard().length;
@@ -27,13 +28,14 @@ public class QuadrupletChecker {
         this.vvr = new VerticalRules();
         this.dvr = new DiagonalRules();
         this.advr = new AntiDiagonalRules();
+        this.currentStone = currentStone;
     }
 
     public void setAllRowStones() {
         for(int row=0; row<boardSize; row++) {
             for(int col=0; col<=6; col++) {
                 HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(row,col);
-                if(hr.isValid(fullBoard, row, col) && hr.isCandidate(fullBoard, row, col)) {
+                if(hr.isValid(fullBoard, row, col, currentStone) && hr.isCandidate(fullBoard, row, col)) {
                     liveStonesBoard.setStones(horizontalQuadruplet);
                 }
             }
@@ -45,7 +47,7 @@ public class QuadrupletChecker {
         for(int col=0; col<boardSize; col++) {
             for(int row=0; row<=6; row++) {
                 VerticalQuadruplet verticalQuadruplet = new VerticalQuadruplet(row,col);
-                if(vvr.isValid(fullBoard, row, col) && vvr.isCandidate(fullBoard, row, col)) {
+                if(vvr.isValid(fullBoard, row, col, currentStone) && vvr.isCandidate(fullBoard, row, col)) {
                     liveStonesBoard.setStones(verticalQuadruplet);
                 }
             }
@@ -57,7 +59,7 @@ public class QuadrupletChecker {
         for(int row=0; row<=6; row++) {
             for(int col=0; col<=6; col++) {
                 DiagonalQuadruplet diagonalQuadruplet = new DiagonalQuadruplet(row,col);
-                if(dvr.isValid(fullBoard, row, col) && dvr.isCandidate(fullBoard, row, col)) {
+                if(dvr.isValid(fullBoard, row, col, currentStone) && dvr.isCandidate(fullBoard, row, col)) {
                     liveStonesBoard.setStones(diagonalQuadruplet);
                 }
             }
@@ -68,7 +70,7 @@ public class QuadrupletChecker {
         for(int row=9; row>=3; row--) {
             for(int col=0; col<=6; col++) {
                 AntiDiagonalQuadruplet antiDiagonalQuadruplet = new AntiDiagonalQuadruplet(row,col);
-                if(advr.isValid(fullBoard, row, col) && advr.isCandidate(fullBoard, row, col)) {
+                if(advr.isValid(fullBoard, row, col, currentStone) && advr.isCandidate(fullBoard, row, col)) {
                     liveStonesBoard.setStones(antiDiagonalQuadruplet);
                 }
             }

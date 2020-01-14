@@ -99,7 +99,7 @@ public class QuadrupletsTest {
     @Test
     public void testAllHorizontalQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
         quadrupletChecker.setAllRowStones();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterHQEightZeroEightSix));
     }
@@ -107,7 +107,7 @@ public class QuadrupletsTest {
     @Test
     public void testAllHorizontalVerticalQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
         quadrupletChecker.setAllRowStones();
         quadrupletChecker.setAllColumnStones();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVBlackStones));
@@ -116,7 +116,7 @@ public class QuadrupletsTest {
     @Test
     public void testAllHorizontalVerticalDiagonalQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
         quadrupletChecker.setAllRowStones();
         quadrupletChecker.setAllColumnStones();
         quadrupletChecker.setAllDiagonalStones();
@@ -126,7 +126,7 @@ public class QuadrupletsTest {
     @Test
     public void testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard);
+        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
         quadrupletChecker.setAllRowStones();
         quadrupletChecker.setAllColumnStones();
         quadrupletChecker.setAllDiagonalStones();

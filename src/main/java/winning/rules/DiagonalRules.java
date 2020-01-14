@@ -6,14 +6,14 @@ import java.util.stream.IntStream;
 public class DiagonalRules implements ValidRule, CandidateRule {
 
     @Override
-    public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
+    public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
         Character[] quadrupletArray = new Character[quadrupletSize];
 
         IntStream.range(0, quadrupletSize)
                 .forEach(r -> quadrupletArray[r] = fullBoard[beginRow + r][beginColumn + r]);
 
-        return Arrays.stream(quadrupletArray).allMatch(Character.valueOf('B')::equals);
+        return Arrays.stream(quadrupletArray).allMatch(Character.valueOf(currentStone)::equals);
     }
 
 
