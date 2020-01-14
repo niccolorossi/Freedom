@@ -9,10 +9,9 @@ public class HorizontalQuadruplet extends Quadruplet {
     public HorizontalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         super(beginRow, beginColumn);
         
-        Character[] quadruplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow][beginColumn+1],
-                fullBoard[beginRow][beginColumn+2], fullBoard[beginRow][beginColumn+3]};
-        this.isQuadrupletValid = Arrays.stream(quadruplet).allMatch(Character.valueOf('B')::equals);
-        
+        HorizontalValidRule hvr = new HorizontalValidRule();
+        this.isQuadrupletValid = hvr.isValid(fullBoard, beginRow, beginColumn);
+
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
         
