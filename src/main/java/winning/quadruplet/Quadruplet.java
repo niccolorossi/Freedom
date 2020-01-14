@@ -3,12 +3,7 @@ package winning.quadruplet;
 import java.util.List;
 
 public abstract class Quadruplet {
-    
-    static final Integer nextQuadrupletOffset = 4;
-    static final Integer previousQuadrupletOffset = - 1;
-    
-    Boolean isQuadrupletValid;
-    Boolean isQuadrupletCandidate;
+
     
     Integer beginRow;
     Integer beginColumn;
@@ -17,14 +12,6 @@ public abstract class Quadruplet {
         this.beginRow = beginRow;
         this.beginColumn = beginColumn;
     }
-    
-    public Boolean isQuadrupletACandidate() {
-        return isQuadrupletCandidate;
-    }
-    
-    public Boolean isQuadrupletValid(Character currentStone) {
-        return isQuadrupletValid;
-    }
-    
+
     abstract public List<List<Integer>> getIndices();
 }

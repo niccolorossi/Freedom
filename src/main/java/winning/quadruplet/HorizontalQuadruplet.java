@@ -6,7 +6,7 @@ import java.util.List;
 
 public class HorizontalQuadruplet extends Quadruplet {
     
-    public HorizontalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
+    public HorizontalQuadruplet(Integer beginRow, Integer beginColumn) {
 
         super(beginRow, beginColumn);
 

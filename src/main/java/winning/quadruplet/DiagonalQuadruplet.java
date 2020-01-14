@@ -1,17 +1,14 @@
 package winning.quadruplet;
 
-import winning.quadruplet.Quadruplet;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class DiagonalQuadruplet extends Quadruplet {
     
-    public DiagonalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
-        super(beginRow, beginColumn);
-        
+    public DiagonalQuadruplet( Integer beginRow, Integer beginColumn) {
 
+        super(beginRow, beginColumn);
     }
     
     @Override
