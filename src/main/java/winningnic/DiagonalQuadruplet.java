@@ -9,9 +9,9 @@ public class DiagonalQuadruplet extends Quadruplet {
     public DiagonalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         super(beginRow, beginColumn);
         
-        Character[] quad = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn+1],
+        Character[] quaduplet = new Character[] {fullBoard[beginRow][beginColumn], fullBoard[beginRow+1][beginColumn+1],
                 fullBoard[beginRow+2][beginColumn+2], fullBoard[beginRow+3][beginColumn+3]};
-        this.isQuadrupletValid = Arrays.stream(quad).allMatch(Character.valueOf('B')::equals);
+        this.isQuadrupletValid = Arrays.stream(quaduplet).allMatch(Character.valueOf('B')::equals);
         
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
@@ -31,12 +31,12 @@ public class DiagonalQuadruplet extends Quadruplet {
         }
         
         if(isQuadrupletAtBeginning && !isQuadrupletAtEnd) {
-            isQuadrupletCandidate = quad[0] != fullBoard[beginRow+nextQuadrupletOffset][beginColumn+nextQuadrupletOffset];
+            isQuadrupletCandidate = quaduplet[0] != fullBoard[beginRow+nextQuadrupletOffset][beginColumn+nextQuadrupletOffset];
         } else if(isQuadrupletAtEnd && !isQuadrupletAtBeginning) {
-            isQuadrupletCandidate = quad[0] != fullBoard[beginRow+previousQuadrupletOffset][beginColumn+previousQuadrupletOffset];
+            isQuadrupletCandidate = quaduplet[0] != fullBoard[beginRow+previousQuadrupletOffset][beginColumn+previousQuadrupletOffset];
         } else if(!isQuadrupletAtBeginning && !isQuadrupletAtEnd) {
-            isQuadrupletCandidate = quad[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn + previousQuadrupletOffset]
-                                            && quad[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn + nextQuadrupletOffset];
+            isQuadrupletCandidate = quaduplet[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn + previousQuadrupletOffset]
+                                            && quaduplet[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn + nextQuadrupletOffset];
         } else isQuadrupletCandidate = true;
     }
     

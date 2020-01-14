@@ -9,9 +9,9 @@ public class VerticalQuadruplet extends Quadruplet {
     public VerticalQuadruplet(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         super(beginRow, beginColumn);
 
-        Character[] quad = new Character[]{fullBoard[beginRow][beginColumn], fullBoard[beginRow + 1][beginColumn],
+        Character[] quadruplet = new Character[]{fullBoard[beginRow][beginColumn], fullBoard[beginRow + 1][beginColumn],
                 fullBoard[beginRow + 2][beginColumn], fullBoard[beginRow + 3][beginColumn]};
-        this.isQuadrupletValid = Arrays.stream(quad).allMatch(Character.valueOf('B')::equals);
+        this.isQuadrupletValid = Arrays.stream(quadruplet).allMatch(Character.valueOf('B')::equals);
 
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
@@ -28,12 +28,12 @@ public class VerticalQuadruplet extends Quadruplet {
         }
 
         if (isQuadrupletAtBeginning) {
-            isQuadrupletCandidate = quad[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn];
+            isQuadrupletCandidate = quadruplet[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn];
         } else if (isQuadrupletAtEnd) {
-            isQuadrupletCandidate = quad[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn];
+            isQuadrupletCandidate = quadruplet[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn];
         } else {
-            isQuadrupletCandidate = quad[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn]
-                    && quad[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn];
+            isQuadrupletCandidate = quadruplet[0] != fullBoard[beginRow + previousQuadrupletOffset][beginColumn]
+                    && quadruplet[0] != fullBoard[beginRow + nextQuadrupletOffset][beginColumn];
         }
 
     }
