@@ -35,7 +35,7 @@ public class AntiDiagonalRules implements Rules {
                 || beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfUppermostAntiDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if(beginColumn.equals(beginRowOfUppermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) 
+        } else if(beginColumn.equals(beginColOfUppermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) 
                 || beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfLowermostAntiDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
@@ -53,9 +53,9 @@ public class AntiDiagonalRules implements Rules {
             return currentElement != fullBoard[beginRow- QUADRUPLET_SIZE][beginColumn+ QUADRUPLET_SIZE];
         } else if(isQuadrupletAtEnd && !isQuadrupletAtBeginning) {
             return currentElement != fullBoard[beginRow- PREVIOUS_QUADRUPLET_OFFSET][beginColumn+ PREVIOUS_QUADRUPLET_OFFSET];
-        } else if(!isQuadrupletAtBeginning){
-            return currentElement != fullBoard[beginRow- PREVIOUS_QUADRUPLET_OFFSET][beginColumn+ PREVIOUS_QUADRUPLET_OFFSET]
-                    && (currentElement != fullBoard[beginRow- QUADRUPLET_SIZE][beginColumn+ QUADRUPLET_SIZE]);
+        } else if(!isQuadrupletAtBeginning && !isQuadrupletAtEnd){
+            return currentElement != fullBoard[beginRow-PREVIOUS_QUADRUPLET_OFFSET][beginColumn+PREVIOUS_QUADRUPLET_OFFSET]
+                    && (currentElement != fullBoard[beginRow-QUADRUPLET_SIZE][beginColumn+QUADRUPLET_SIZE]);
         } else return true;
     }
 }
