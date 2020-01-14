@@ -16,8 +16,13 @@ public class Winner {
 
         StringBuilder str = new StringBuilder();
         str.append(whitePoints + " - " + blackPoints);
+        String comment;
 
-        String comment = whitePoints > blackPoints ? " : White won!" : " : Black won!";
+        if(whitePoints == blackPoints) {
+            comment = " : the game is drawn!";
+        } else {
+            comment = whitePoints > blackPoints ? " : White won!" : " : Black won!";
+        }
         str.append(comment);
 
         return str.toString();

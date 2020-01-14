@@ -6,12 +6,13 @@ import winning.PointsCounter;
 import winning.Winner;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class WinnerTest {
 
     private Character[][] fullBoard;
-    private PointsCounter pc;
+    private Character[][] fullBoardDraw;
 
     @Before
     public void initFullBoard() {
@@ -28,7 +29,19 @@ public class WinnerTest {
                         {'B', 'B', 'B', 'B', 'W', 'W', 'B', 'B', 'B', 'B'},
                         {'W', 'B', 'W', 'W', 'B', 'B', 'W', 'W', 'W', 'B'}};
 
-        pc = new PointsCounter(fullBoard);
+
+        fullBoardDraw = new Character[][]
+                {{'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
+                        {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'}};
+
 
 
 
@@ -36,13 +49,22 @@ public class WinnerTest {
 
     @Test
     public void blackScoreis23() {
-
+        PointsCounter pc = new PointsCounter(fullBoard);
         assertThat(pc.getBlackPoints(), is(23));
     }
 
     @Test
-    public void whiteScoreis15() {
+    public void blackScoreIsTheSameAsWhite() {
+        PointsCounter pc = new PointsCounter(fullBoardDraw);
+        Integer blackPoints = pc.getBlackPoints();
+        Integer whitePoints = pc.getWhitePoints();
 
+        assertEquals(blackPoints, whitePoints);
+    }
+
+    @Test
+    public void whiteScoreis15() {
+        PointsCounter pc = new PointsCounter(fullBoard);
         assertThat(pc.getWhitePoints(), is(15));
     }
 
@@ -50,5 +72,11 @@ public class WinnerTest {
     public void blackIsWinner() {
         Winner winner = new Winner(fullBoard);
         assertThat(winner.getWinner(), is("15 - 23 : Black won!"));
+    }
+
+    @Test
+    public void theGameIsDrawn() {
+        Winner winner = new Winner(fullBoardDraw);
+        assertThat(winner.getWinner(), is("40 - 40 : the game is drawn!"));
     }
 }
