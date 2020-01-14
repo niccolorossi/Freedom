@@ -4,6 +4,21 @@ import java.util.stream.IntStream;
 
 public class DiagonalRules implements Rules {
 
+    private Integer beginRowOfUppermostDiagonalQuadruplets;
+    private Integer beginColOfUppermostDiagonalQuadruplets;
+    private Integer beginRowOfLowermostDiagonalQuadruplets;
+    private Integer beginColOfLowermostDiagonalQuadruplets;
+    
+    public DiagonalRules(Integer beginRowOfUppermostDiagonalQuadruplets,
+                         Integer beginColOfUppermostDiagonalQuadruplets,
+                         Integer beginRowOfLowermostDiagonalQuadruplets,
+                         Integer beginColOfLowermostDiagonalQuadruplets) {
+        this.beginRowOfUppermostDiagonalQuadruplets = beginRowOfUppermostDiagonalQuadruplets;
+        this.beginColOfUppermostDiagonalQuadruplets = beginColOfUppermostDiagonalQuadruplets;
+        this.beginRowOfLowermostDiagonalQuadruplets = beginRowOfLowermostDiagonalQuadruplets;
+        this.beginColOfLowermostDiagonalQuadruplets = beginColOfLowermostDiagonalQuadruplets;
+    }
+
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
@@ -16,13 +31,16 @@ public class DiagonalRules implements Rules {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
-        if(beginColumn == 0 && beginRow != 6 || beginRow == 0 && beginColumn != 6) {
+        if(beginColumn == beginColOfUppermostDiagonalQuadruplets && beginRow != beginRowOfLowermostDiagonalQuadruplets
+                || beginRow == beginRowOfUppermostDiagonalQuadruplets && beginColumn != beginColOfLowermostDiagonalQuadruplets) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if(beginColumn == 6 && beginRow != 0 || beginRow == 6 && beginColumn != 0) {
+        } else if(beginColumn == beginColOfLowermostDiagonalQuadruplets && beginRow != beginRowOfUppermostDiagonalQuadruplets 
+                || beginRow == beginRowOfLowermostDiagonalQuadruplets && beginColumn != beginColOfUppermostDiagonalQuadruplets) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
-        } else if((beginRow == 0 && beginColumn == 6) || (beginRow == 6 && beginColumn == 0)) {
+        } else if((beginRow == beginRowOfUppermostDiagonalQuadruplets && beginColumn == beginColOfLowermostDiagonalQuadruplets) 
+                || (beginRow == beginRowOfLowermostDiagonalQuadruplets && beginColumn == beginColOfUppermostDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = true;
         } else {
