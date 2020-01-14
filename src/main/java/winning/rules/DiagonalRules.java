@@ -23,7 +23,7 @@ public class DiagonalRules implements Rules {
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
         return IntStream.range(0, QUADRUPLET_SIZE).mapToObj(i -> fullBoard[beginRow+i][beginColumn+i])
-                .allMatch(Character.valueOf(currentStone)::equals);
+                .allMatch(currentStone::equals);
     }
     
     @Override
@@ -31,16 +31,15 @@ public class DiagonalRules implements Rules {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
-        if(beginColumn == beginColOfUppermostDiagonalQuadruplets && beginRow != beginRowOfLowermostDiagonalQuadruplets
-                || beginRow == beginRowOfUppermostDiagonalQuadruplets && beginColumn != beginColOfLowermostDiagonalQuadruplets) {
+        if(beginColumn.equals(beginColOfUppermostDiagonalQuadruplets) && !beginRow.equals(beginRowOfLowermostDiagonalQuadruplets)
+                || beginRow.equals(beginRowOfUppermostDiagonalQuadruplets) && !beginColumn.equals(beginColOfLowermostDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if(beginColumn == beginColOfLowermostDiagonalQuadruplets && beginRow != beginRowOfUppermostDiagonalQuadruplets 
-                || beginRow == beginRowOfLowermostDiagonalQuadruplets && beginColumn != beginColOfUppermostDiagonalQuadruplets) {
+        } else if(beginColumn.equals(beginColOfLowermostDiagonalQuadruplets) && !beginRow.equals(beginRowOfUppermostDiagonalQuadruplets) 
+                || beginRow.equals(beginRowOfLowermostDiagonalQuadruplets) && !beginColumn.equals(beginColOfUppermostDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
-        } else if((beginRow == beginRowOfUppermostDiagonalQuadruplets && beginColumn == beginColOfLowermostDiagonalQuadruplets) 
-                || (beginRow == beginRowOfLowermostDiagonalQuadruplets && beginColumn == beginColOfUppermostDiagonalQuadruplets)) {
+        } else if(beginRow.equals(beginRowOfUppermostDiagonalQuadruplets) || beginRow.equals(beginRowOfLowermostDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = true;
         } else {
@@ -54,7 +53,7 @@ public class DiagonalRules implements Rules {
             return currentElement != fullBoard[beginRow + QUADRUPLET_SIZE][beginColumn + QUADRUPLET_SIZE];
         } else if(isQuadrupletAtEnd && !isQuadrupletAtBeginning) {
             return currentElement != fullBoard[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn+ PREVIOUS_QUADRUPLET_OFFSET];
-        } else if(!isQuadrupletAtBeginning && !isQuadrupletAtEnd) {
+        } else if(!isQuadrupletAtBeginning) {
             return currentElement != fullBoard[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn + PREVIOUS_QUADRUPLET_OFFSET]
                     && currentElement != fullBoard[beginRow + QUADRUPLET_SIZE][beginColumn + QUADRUPLET_SIZE];
         } else return true;

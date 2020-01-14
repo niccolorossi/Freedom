@@ -24,7 +24,6 @@ public class HorizontalRules implements Rules {
     @Override
     public Boolean isCandidate(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
 
-        int boardSize = fullBoard[0].length;
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 

@@ -28,10 +28,10 @@ public class QuadrupletChecker {
     private static final Integer beginRowOfLowermostDiagonalQuadruplets = 6;
     private static final Integer beginColOfLowermostDiagonalQuadruplets = 6;
 
-    private static final Integer beginRowOfLowermostAntiDiagonals = 9;
-    private static final Integer beginColOfLowermostAntiDiagonals = 0;
-    private static final Integer beginRowOfUppermostAntiDiagonals = 3;
-    private static final Integer beginColOfUppermostAntiDiagonals = 6;
+    private static final Integer beginRowOfLowermostAntiDiagonalQuadruplets = 9;
+    private static final Integer beginColOfLowermostAntiDiagonalQuadruplets = 0;
+    private static final Integer beginRowOfUppermostAntiDiagonalQuadruplets = 3;
+    private static final Integer beginColOfUppermostAntiDiagonalQuadruplets = 6;
 
 
     public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
@@ -72,9 +72,9 @@ public class QuadrupletChecker {
 
     public void setAllDiagonalStones() {
         DiagonalRules diagonalRules = new DiagonalRules(beginRowOfUppermostDiagonalQuadruplets,
-                beginColOfUppermostDiagonalQuadruplets,
-                beginRowOfLowermostDiagonalQuadruplets,
-                beginColOfLowermostDiagonalQuadruplets);
+                                                        beginColOfUppermostDiagonalQuadruplets,
+                                                        beginRowOfLowermostDiagonalQuadruplets,
+                                                        beginColOfLowermostDiagonalQuadruplets);
         for(int row=beginRowOfUppermostDiagonalQuadruplets; row<=beginRowOfLowermostDiagonalQuadruplets; row++) {
             for(int col=beginColOfUppermostDiagonalQuadruplets; col<=beginColOfLowermostDiagonalQuadruplets; col++) {
                 DiagonalQuadruplet diagonalQuadruplet = new DiagonalQuadruplet(row,col);
@@ -86,12 +86,12 @@ public class QuadrupletChecker {
     }
 
     public void setAllAntiDiagonalStones() {
-        AntiDiagonalRules antiDiagonalRules = new AntiDiagonalRules(beginRowOfLowermostAntiDiagonals,
-                                                                    beginColOfLowermostAntiDiagonals,
-                                                                    beginRowOfUppermostAntiDiagonals,
-                                                                    beginColOfUppermostAntiDiagonals);
-        for(int row=beginRowOfLowermostAntiDiagonals; row>=beginRowOfUppermostAntiDiagonals; row--) {
-            for(int col=beginColOfLowermostAntiDiagonals; col<=beginColOfUppermostAntiDiagonals; col++) {
+        AntiDiagonalRules antiDiagonalRules = new AntiDiagonalRules(beginRowOfLowermostAntiDiagonalQuadruplets,
+                                                                    beginColOfLowermostAntiDiagonalQuadruplets,
+                                                                    beginRowOfUppermostAntiDiagonalQuadruplets,
+                                                                    beginColOfUppermostAntiDiagonalQuadruplets);
+        for(int row = beginRowOfLowermostAntiDiagonalQuadruplets; row>= beginRowOfUppermostAntiDiagonalQuadruplets; row--) {
+            for(int col = beginColOfLowermostAntiDiagonalQuadruplets; col<= beginColOfUppermostAntiDiagonalQuadruplets; col++) {
                 AntiDiagonalQuadruplet antiDiagonalQuadruplet = new AntiDiagonalQuadruplet(row,col);
                 if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
                         && antiDiagonalRules.isCandidate(fullBoard, row, col)) {

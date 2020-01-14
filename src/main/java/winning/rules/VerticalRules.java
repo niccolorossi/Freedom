@@ -17,7 +17,7 @@ public class VerticalRules implements Rules {
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
         return IntStream.range(0, QUADRUPLET_SIZE).mapToObj(i -> fullBoard[beginRow+i][beginColumn])
-                .allMatch(Character.valueOf(currentStone)::equals);
+                .allMatch(currentStone::equals);
     }
 
     @Override
@@ -25,10 +25,10 @@ public class VerticalRules implements Rules {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
-        if (beginRow == beginRowOfUppermostVerticalQuadruplets) {
+        if (beginRow.equals(beginRowOfUppermostVerticalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if (beginRow == beginRowOfLowermostVerticalQuadruplets) {
+        } else if (beginRow.equals(beginRowOfLowermostVerticalQuadruplets)) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
         } else {

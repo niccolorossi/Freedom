@@ -4,26 +4,26 @@ import java.util.stream.IntStream;
 
 public class AntiDiagonalRules implements Rules {
     
-    private Integer beginRowOfLowermostAntiDiagonals;
-    private Integer beginColOfLowermostAntiDiagonals;
-    private Integer beginRowOfUppermostAntiDiagonals;
-    private Integer beginColOfUppermostAntiDiagonals;
+    private Integer beginRowOfLowermostAntiDiagonalQuadruplets;
+    private Integer beginColOfLowermostAntiDiagonalQuadruplets;
+    private Integer beginRowOfUppermostAntiDiagonalQuadruplets;
+    private Integer beginColOfUppermostAntiDiagonalQuadruplets;
 
-    public AntiDiagonalRules(Integer beginRowOfLowermostAntiDiagonals,
-                             Integer beginColOfLowermostAntiDiagonals,
-                             Integer beginRowOfUppermostAntiDiagonals,
-                             Integer beginColOfUppermostAntiDiagonals) {
-        this.beginRowOfLowermostAntiDiagonals = beginRowOfLowermostAntiDiagonals;
-        this.beginColOfLowermostAntiDiagonals = beginColOfLowermostAntiDiagonals;
-        this.beginRowOfUppermostAntiDiagonals = beginRowOfUppermostAntiDiagonals;
-        this.beginColOfUppermostAntiDiagonals = beginColOfUppermostAntiDiagonals;
+    public AntiDiagonalRules(Integer beginRowOfLowermostAntiDiagonalQuadruplets,
+                             Integer beginColOfLowermostAntiDiagonalQuadruplets,
+                             Integer beginRowOfUppermostAntiDiagonalQuadruplets,
+                             Integer beginColOfUppermostAntiDiagonalQuadruplets) {
+        this.beginRowOfLowermostAntiDiagonalQuadruplets = beginRowOfLowermostAntiDiagonalQuadruplets;
+        this.beginColOfLowermostAntiDiagonalQuadruplets = beginColOfLowermostAntiDiagonalQuadruplets;
+        this.beginRowOfUppermostAntiDiagonalQuadruplets = beginRowOfUppermostAntiDiagonalQuadruplets;
+        this.beginColOfUppermostAntiDiagonalQuadruplets = beginColOfUppermostAntiDiagonalQuadruplets;
     }
  
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
         return IntStream.range(0, QUADRUPLET_SIZE).mapToObj(i -> fullBoard[beginRow-i][beginColumn+i])
-                .allMatch(Character.valueOf(currentStone)::equals);
+                .allMatch(currentStone::equals);
     }
 
     @Override
@@ -31,16 +31,15 @@ public class AntiDiagonalRules implements Rules {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
-        if(beginColumn == beginColOfLowermostAntiDiagonals && beginRow != beginRowOfUppermostAntiDiagonals 
-                || beginRow == beginRowOfLowermostAntiDiagonals && beginColumn != beginColOfUppermostAntiDiagonals) {
+        if(beginColumn.equals(beginColOfLowermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) 
+                || beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfUppermostAntiDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if(beginColumn == beginRowOfUppermostAntiDiagonals && beginRow != beginRowOfLowermostAntiDiagonals 
-                || beginRow == beginRowOfUppermostAntiDiagonals && beginColumn != beginColOfLowermostAntiDiagonals) {
+        } else if(beginColumn.equals(beginRowOfUppermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) 
+                || beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfLowermostAntiDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
-        } else if((beginRow == beginRowOfUppermostAntiDiagonals && beginColumn == beginColOfLowermostAntiDiagonals) 
-                || (beginRow == beginRowOfLowermostAntiDiagonals && beginColumn == beginColOfUppermostAntiDiagonals)) {
+        } else if(beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) || beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = true;
         } else {
@@ -54,7 +53,7 @@ public class AntiDiagonalRules implements Rules {
             return currentElement != fullBoard[beginRow- QUADRUPLET_SIZE][beginColumn+ QUADRUPLET_SIZE];
         } else if(isQuadrupletAtEnd && !isQuadrupletAtBeginning) {
             return currentElement != fullBoard[beginRow- PREVIOUS_QUADRUPLET_OFFSET][beginColumn+ PREVIOUS_QUADRUPLET_OFFSET];
-        } else if(!isQuadrupletAtBeginning && !isQuadrupletAtEnd){
+        } else if(!isQuadrupletAtBeginning){
             return currentElement != fullBoard[beginRow- PREVIOUS_QUADRUPLET_OFFSET][beginColumn+ PREVIOUS_QUADRUPLET_OFFSET]
                     && (currentElement != fullBoard[beginRow- QUADRUPLET_SIZE][beginColumn+ QUADRUPLET_SIZE]);
         } else return true;
