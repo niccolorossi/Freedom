@@ -8,17 +8,17 @@ public class HorizontalRules implements ValidRule, CandidateRule {
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
         
         return IntStream.range(0, quadrupletSize).mapToObj(i -> fullBoard[beginRow][beginColumn+i])
-                .allMatch(Character.valueOf(currentStone)::equals);
+                .allMatch(currentStone::equals);
     }
 
     @Override
     public Boolean isCandidate(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
 
         Integer boardSize = fullBoard[0].length;
-        Boolean isQuadrupletAtBeginning;
-        Boolean isQuadrupletAtEnd;
+        boolean isQuadrupletAtBeginning;
+        boolean isQuadrupletAtEnd;
 
-        if(beginColumn == firstIndex) {
+        if(beginColumn.equals(firstIndex)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
         } else if(beginColumn == boardSize - quadrupletSize) {
