@@ -3,7 +3,6 @@ package winning.quadruplet;
 import java.util.List;
 
 public abstract class Quadruplet {
-
     
     Integer beginRow;
     Integer beginColumn;

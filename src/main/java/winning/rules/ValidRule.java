@@ -2,8 +2,7 @@ package winning.rules;
 
 interface ValidRule {
 
-    final Integer quadrupletSize = 4;
-
-    Boolean isValid(Character[][] fullboard, Integer beginRow, Integer beginColumn, Character currentStone);
+    Integer quadrupletSize = 4;
+    Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone);
 
 }

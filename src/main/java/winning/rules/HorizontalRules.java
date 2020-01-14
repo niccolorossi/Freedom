@@ -4,18 +4,12 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class HorizontalRules implements ValidRule, CandidateRule {
-
-
-
+    
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
-
-        Character[] quadrupletArray = new Character[quadrupletSize];
-
-        IntStream.range(0, quadrupletSize)
-                .forEach(c -> quadrupletArray[c] = fullBoard[beginRow][beginColumn + c]);
-
-        return Arrays.stream(quadrupletArray).allMatch(Character.valueOf(currentStone)::equals);
+        
+        return IntStream.range(0, quadrupletSize).mapToObj(i -> fullBoard[beginRow][beginColumn+i])
+                .allMatch(Character.valueOf(currentStone)::equals);
     }
 
     @Override
