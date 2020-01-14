@@ -1,9 +1,9 @@
-package winning;
+package winning.rules;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class VerticalRules implements ValidRule , CandidateRule {
+public class VerticalRules implements ValidRule, CandidateRule {
 
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {

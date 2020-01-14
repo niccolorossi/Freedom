@@ -1,4 +1,4 @@
-package winning;
+package winning.rules;
 
 
 public interface CandidateRule {

@@ -1,9 +1,9 @@
-package winning;
+package winning.rules;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-class HorizontalRules implements ValidRule, CandidateRule {
+public class HorizontalRules implements ValidRule, CandidateRule {
 
 
 

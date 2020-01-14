@@ -1,5 +1,10 @@
 package winning;
 
+import winning.rules.AntiDiagonalRules;
+import winning.rules.DiagonalRules;
+import winning.rules.HorizontalRules;
+import winning.rules.VerticalRules;
+
 public class QuadrupletChecker {
     
     private LiveStonesBoard liveStonesBoard;
