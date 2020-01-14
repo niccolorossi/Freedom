@@ -4,6 +4,15 @@ import java.util.stream.IntStream;
 
 public class VerticalRules implements Rules {
 
+    private Integer beginRowOfUppermostVerticalQuadruplets;
+    private Integer beginRowOfLowermostVerticalQuadruplets;
+    
+    public VerticalRules(Integer beginRowOfUppermostVerticalQuadruplets,
+                         Integer beginRowOfLowermostVerticalQuadruplets) {
+        this.beginRowOfUppermostVerticalQuadruplets = beginRowOfUppermostVerticalQuadruplets;
+        this.beginRowOfLowermostVerticalQuadruplets = beginRowOfLowermostVerticalQuadruplets;
+    }
+    
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
@@ -15,12 +24,11 @@ public class VerticalRules implements Rules {
     public Boolean isCandidate(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
-        Integer boardSize = fullBoard[0].length;
 
-        if (beginRow == FIRST_INDEX) {
+        if (beginRow == beginRowOfUppermostVerticalQuadruplets) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if (beginRow == boardSize - 4) {
+        } else if (beginRow == beginRowOfLowermostVerticalQuadruplets) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
         } else {

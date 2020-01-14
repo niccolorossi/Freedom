@@ -14,8 +14,6 @@ public class QuadrupletChecker {
     private LiveStonesBoard liveStonesBoard;
     private Character[][] fullBoard;
     private Integer boardSize;
-    private HorizontalRules hr;
-    private VerticalRules vvr;
     private DiagonalRules dvr;
     private AntiDiagonalRules advr;
     private Character currentStone;
@@ -23,12 +21,14 @@ public class QuadrupletChecker {
     private Integer beginColOfLeftmostHorizontalQuadruplets = 0;
     private Integer beginColOfRightmostHorizontalQuadruplets = 6;
 
+    private Integer beginRowOfUppermostVerticalQuadruplets = 0;
+    private Integer beginRowOfLowermostVerticalQuadruplets = 6;
+
 
     public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
         this.liveStonesBoard = liveStonesBoard;
         this.fullBoard = fullBoard;
         this.boardSize = liveStonesBoard.getCurrentBoard().length;
-        this.vvr = new VerticalRules();
         this.dvr = new DiagonalRules();
         this.advr = new AntiDiagonalRules();
         this.currentStone = currentStone;
@@ -45,15 +45,17 @@ public class QuadrupletChecker {
                     liveStonesBoard.setStones(horizontalQuadruplet);
                 }
             }
-           
+      
         }
     }
     
     public void setAllColumnStones() {
+        VerticalRules verticalRules = new VerticalRules(beginRowOfUppermostVerticalQuadruplets,
+                                                        beginRowOfLowermostVerticalQuadruplets);         
         for(int col=0; col<boardSize; col++) {
-            for(int row=0; row<=6; row++) {
+            for(int row=beginRowOfUppermostVerticalQuadruplets; row<=beginRowOfLowermostVerticalQuadruplets; row++) {
                 VerticalQuadruplet verticalQuadruplet = new VerticalQuadruplet(row,col);
-                if(vvr.isValid(fullBoard, row, col, currentStone) && vvr.isCandidate(fullBoard, row, col)) {
+                if(verticalRules.isValid(fullBoard, row, col, currentStone) && verticalRules.isCandidate(fullBoard, row, col)) {
                     liveStonesBoard.setStones(verticalQuadruplet);
                 }
             }
