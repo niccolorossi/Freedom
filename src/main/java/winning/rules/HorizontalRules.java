@@ -4,6 +4,16 @@ import java.util.stream.IntStream;
 
 public class HorizontalRules implements Rules {
     
+    private Integer beginColOfLeftmostHorizontalQuadruplets;
+    private Integer beginColOfRightmostHorizontalQuadruplets;
+
+
+    public HorizontalRules(Integer beginColOfLeftmostHorizontalQuadruplets,
+                           Integer beginColOfRightmostHorizontalQuadruplets) {
+        this.beginColOfLeftmostHorizontalQuadruplets = beginColOfLeftmostHorizontalQuadruplets;
+        this.beginColOfRightmostHorizontalQuadruplets = beginColOfRightmostHorizontalQuadruplets;
+    }
+    
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
         
@@ -18,10 +28,10 @@ public class HorizontalRules implements Rules {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
-        if(beginColumn.equals(FIRST_INDEX)) {
+        if(beginColumn.equals(beginColOfLeftmostHorizontalQuadruplets)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if(beginColumn == boardSize - QUADRUPLET_SIZE) {
+        } else if(beginColumn.equals(beginColOfRightmostHorizontalQuadruplets)) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
         } else {
