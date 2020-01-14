@@ -1,5 +1,7 @@
 package winning;
 
+import winning.quadruplet.Quadruplet;
+
 import java.util.List;
 import java.util.stream.IntStream;
 

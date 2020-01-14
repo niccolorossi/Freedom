@@ -1,8 +1,8 @@
-package winning;
+package winning.quadruplet;
 
 import java.util.List;
 
-abstract class Quadruplet {
+public abstract class Quadruplet {
     
     static final Integer nextQuadrupletOffset = 4;
     static final Integer previousQuadrupletOffset = - 1;

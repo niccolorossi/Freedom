@@ -1,5 +1,9 @@
 package winning;
 
+import winning.quadruplet.AntiDiagonalQuadruplet;
+import winning.quadruplet.DiagonalQuadruplet;
+import winning.quadruplet.HorizontalQuadruplet;
+import winning.quadruplet.VerticalQuadruplet;
 import winning.rules.AntiDiagonalRules;
 import winning.rules.DiagonalRules;
 import winning.rules.HorizontalRules;

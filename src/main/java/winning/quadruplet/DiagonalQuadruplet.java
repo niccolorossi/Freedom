@@ -1,4 +1,6 @@
-package winning;
+package winning.quadruplet;
+
+import winning.quadruplet.Quadruplet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
