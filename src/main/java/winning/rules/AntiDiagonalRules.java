@@ -53,7 +53,7 @@ public class AntiDiagonalRules implements Rules {
             return currentElement != fullBoard[beginRow- QUADRUPLET_SIZE][beginColumn+ QUADRUPLET_SIZE];
         } else if(isQuadrupletAtEnd && !isQuadrupletAtBeginning) {
             return currentElement != fullBoard[beginRow- PREVIOUS_QUADRUPLET_OFFSET][beginColumn+ PREVIOUS_QUADRUPLET_OFFSET];
-        } else if(!isQuadrupletAtBeginning && !isQuadrupletAtEnd){
+        } else if(!isQuadrupletAtBeginning){
             return currentElement != fullBoard[beginRow-PREVIOUS_QUADRUPLET_OFFSET][beginColumn+PREVIOUS_QUADRUPLET_OFFSET]
                     && (currentElement != fullBoard[beginRow-QUADRUPLET_SIZE][beginColumn+QUADRUPLET_SIZE]);
         } else return true;
