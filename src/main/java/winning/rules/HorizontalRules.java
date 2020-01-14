@@ -1,6 +1,5 @@
 package winning.rules;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class HorizontalRules implements ValidRule, CandidateRule {

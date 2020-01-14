@@ -1,6 +1,5 @@
 package winning.rules;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class VerticalRules implements ValidRule, CandidateRule {
@@ -8,12 +7,8 @@ public class VerticalRules implements ValidRule, CandidateRule {
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
-        Character[] quadrupletArray = new Character[quadrupletSize];
-
-        IntStream.range(0, quadrupletSize)
-                .forEach(r -> quadrupletArray[r] = fullBoard[beginRow + r][beginColumn]);
-
-        return Arrays.stream(quadrupletArray).allMatch(Character.valueOf(currentStone)::equals);
+        return IntStream.range(0, quadrupletSize).mapToObj(i -> fullBoard[beginRow+i][beginColumn])
+                .allMatch(Character.valueOf(currentStone)::equals);
     }
 
     @Override
