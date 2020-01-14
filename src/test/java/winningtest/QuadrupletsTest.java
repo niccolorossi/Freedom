@@ -94,41 +94,7 @@ public class QuadrupletsTest {
 
     }
     
-    @Test
-    public void doINeedToCheckHorizontalQuadrupletElementZeroZero() {
-        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 0);
-        assertThat(horizontalQuadruplet.isQuadrupletACandidate(), is(false));
-    }
-
-    @Test
-    public void doINeedToCheckVerticalQuadrupletElementZeroZero() {
-        VerticalQuadruplet verticalQuadruplet = new VerticalQuadruplet(fullBoard, 0, 0);
-        assertThat(verticalQuadruplet.isQuadrupletACandidate(), is(true));
-    }
-
-    @Test
-    public void doINeedToCheckDiagonalQuadrupletElementZeroZero() {
-        DiagonalQuadruplet diagonalQuadruplet = new DiagonalQuadruplet(fullBoard, 0, 0);
-        assertThat(diagonalQuadruplet.isQuadrupletACandidate(), is(true));
-    }
-
-    @Test
-    public void doINeedToCheckHorizontalQuadrupletElementZeroOne() {
-        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 1);
-        assertThat(horizontalQuadruplet.isQuadrupletACandidate(), is(true));
-    }
     
-    @Test
-    public void doINeedToCheckHorizontalQuadrupletElementZeroFive() {
-        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 0, 5);
-        assertThat(horizontalQuadruplet.isQuadrupletACandidate(), is(false));
-    }
-    
-    @Test
-    public void testValidQuadruplet() {
-        HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(fullBoard, 8, 0);
-        assertThat(horizontalQuadruplet.isQuadrupletValid('B'), is(true));
-    }
 
     @Test
     public void testAllHorizontalQuadrupletsAreSet() {

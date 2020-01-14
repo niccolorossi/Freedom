@@ -13,31 +13,7 @@ public class AntiDiagonalQuadruplet extends Quadruplet {
                 fullBoard[beginRow-2][beginColumn+2], fullBoard[beginRow-3][beginColumn+3]};
         this.isQuadrupletValid = Arrays.stream(quadruplet).allMatch(Character.valueOf('B')::equals);
 
-        boolean isQuadrupletAtBeginning;
-        boolean isQuadrupletAtEnd;
-        
-        if(beginColumn == 0 && beginRow != 3 || beginRow == 9 && beginColumn != 6) {
-            isQuadrupletAtBeginning = true;
-            isQuadrupletAtEnd = false;
-        } else if(beginColumn == 6 && beginRow != 9 || beginRow == 3 && beginColumn != 0) {
-            isQuadrupletAtBeginning = false;
-            isQuadrupletAtEnd = true;
-        } else if((beginRow == 3 && beginColumn == 0) || (beginRow == 9 && beginColumn == 6)) { 
-            isQuadrupletAtBeginning = true;
-            isQuadrupletAtEnd = true;
-        } else {
-            isQuadrupletAtBeginning = false;
-            isQuadrupletAtEnd = false;
-        }
 
-        if(isQuadrupletAtBeginning && !isQuadrupletAtEnd) {
-            isQuadrupletCandidate =  quadruplet[0] != fullBoard[beginRow-nextQuadrupletOffset][beginColumn+nextQuadrupletOffset];
-        } else if(isQuadrupletAtEnd && !isQuadrupletAtBeginning) {
-            isQuadrupletCandidate = quadruplet[0] != fullBoard[beginRow-previousQuadrupletOffset][beginColumn+previousQuadrupletOffset];
-        } else if(!isQuadrupletAtBeginning && !isQuadrupletAtEnd){
-            isQuadrupletCandidate = quadruplet[0] != fullBoard[beginRow-previousQuadrupletOffset][beginColumn+previousQuadrupletOffset]
-                    && (quadruplet[0] != fullBoard[beginRow-nextQuadrupletOffset][beginColumn+nextQuadrupletOffset]);
-        } else isQuadrupletCandidate = true;
         
     }
     
