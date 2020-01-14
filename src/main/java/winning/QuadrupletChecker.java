@@ -14,26 +14,30 @@ public class QuadrupletChecker {
     private LiveStonesBoard liveStonesBoard;
     private Character[][] fullBoard;
     private Integer boardSize;
-    private AntiDiagonalRules advr;
+    
     private Character currentStone;
     
-    private Integer beginColOfLeftmostHorizontalQuadruplets = 0;
-    private Integer beginColOfRightmostHorizontalQuadruplets = 6;
+    private static final Integer beginColOfLeftmostHorizontalQuadruplets = 0;
+    private static final Integer beginColOfRightmostHorizontalQuadruplets = 6;
 
-    private Integer beginRowOfUppermostVerticalQuadruplets = 0;
-    private Integer beginRowOfLowermostVerticalQuadruplets = 6;
+    private static final Integer beginRowOfUppermostVerticalQuadruplets = 0;
+    private static final Integer beginRowOfLowermostVerticalQuadruplets = 6;
     
-    private Integer beginRowOfUppermostDiagonalQuadruplets = 0;
-    private Integer beginColOfUppermostDiagonalQuadruplets = 0;
-    private Integer beginRowOfLowermostDiagonalQuadruplets = 6;
-    private Integer beginColOfLowermostDiagonalQuadruplets = 6;
+    private static final Integer beginRowOfUppermostDiagonalQuadruplets = 0;
+    private static final Integer beginColOfUppermostDiagonalQuadruplets = 0;
+    private static final Integer beginRowOfLowermostDiagonalQuadruplets = 6;
+    private static final Integer beginColOfLowermostDiagonalQuadruplets = 6;
+
+    private static final Integer beginRowOfLowermostAntiDiagonals = 9;
+    private static final Integer beginColOfLowermostAntiDiagonals = 0;
+    private static final Integer beginRowOfUppermostAntiDiagonals = 3;
+    private static final Integer beginColOfUppermostAntiDiagonals = 6;
 
 
     public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
         this.liveStonesBoard = liveStonesBoard;
         this.fullBoard = fullBoard;
         this.boardSize = liveStonesBoard.getCurrentBoard().length;
-        this.advr = new AntiDiagonalRules();
         this.currentStone = currentStone;
     }
 
@@ -82,10 +86,15 @@ public class QuadrupletChecker {
     }
 
     public void setAllAntiDiagonalStones() {
-        for(int row=9; row>=3; row--) {
-            for(int col=0; col<=6; col++) {
+        AntiDiagonalRules antiDiagonalRules = new AntiDiagonalRules(beginRowOfLowermostAntiDiagonals,
+                                                                    beginColOfLowermostAntiDiagonals,
+                                                                    beginRowOfUppermostAntiDiagonals,
+                                                                    beginColOfUppermostAntiDiagonals);
+        for(int row=beginRowOfLowermostAntiDiagonals; row>=beginRowOfUppermostAntiDiagonals; row--) {
+            for(int col=beginColOfLowermostAntiDiagonals; col<=beginColOfUppermostAntiDiagonals; col++) {
                 AntiDiagonalQuadruplet antiDiagonalQuadruplet = new AntiDiagonalQuadruplet(row,col);
-                if(advr.isValid(fullBoard, row, col, currentStone) && advr.isCandidate(fullBoard, row, col)) {
+                if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
+                        && antiDiagonalRules.isCandidate(fullBoard, row, col)) {
                     liveStonesBoard.setStones(antiDiagonalQuadruplet);
                 }
             }

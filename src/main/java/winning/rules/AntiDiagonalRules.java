@@ -3,7 +3,22 @@ package winning.rules;
 import java.util.stream.IntStream;
 
 public class AntiDiagonalRules implements Rules {
+    
+    private Integer beginRowOfLowermostAntiDiagonals;
+    private Integer beginColOfLowermostAntiDiagonals;
+    private Integer beginRowOfUppermostAntiDiagonals;
+    private Integer beginColOfUppermostAntiDiagonals;
 
+    public AntiDiagonalRules(Integer beginRowOfLowermostAntiDiagonals,
+                             Integer beginColOfLowermostAntiDiagonals,
+                             Integer beginRowOfUppermostAntiDiagonals,
+                             Integer beginColOfUppermostAntiDiagonals) {
+        this.beginRowOfLowermostAntiDiagonals = beginRowOfLowermostAntiDiagonals;
+        this.beginColOfLowermostAntiDiagonals = beginColOfLowermostAntiDiagonals;
+        this.beginRowOfUppermostAntiDiagonals = beginRowOfUppermostAntiDiagonals;
+        this.beginColOfUppermostAntiDiagonals = beginColOfUppermostAntiDiagonals;
+    }
+ 
     @Override
     public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
@@ -16,13 +31,16 @@ public class AntiDiagonalRules implements Rules {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
-        if(beginColumn == 0 && beginRow != 3 || beginRow == 9 && beginColumn != 6) {
+        if(beginColumn == beginColOfLowermostAntiDiagonals && beginRow != beginRowOfUppermostAntiDiagonals 
+                || beginRow == beginRowOfLowermostAntiDiagonals && beginColumn != beginColOfUppermostAntiDiagonals) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = false;
-        } else if(beginColumn == 6 && beginRow != 9 || beginRow == 3 && beginColumn != 0) {
+        } else if(beginColumn == beginRowOfUppermostAntiDiagonals && beginRow != beginRowOfLowermostAntiDiagonals 
+                || beginRow == beginRowOfUppermostAntiDiagonals && beginColumn != beginColOfLowermostAntiDiagonals) {
             isQuadrupletAtBeginning = false;
             isQuadrupletAtEnd = true;
-        } else if((beginRow == 3 && beginColumn == 0) || (beginRow == 9 && beginColumn == 6)) {
+        } else if((beginRow == beginRowOfUppermostAntiDiagonals && beginColumn == beginColOfLowermostAntiDiagonals) 
+                || (beginRow == beginRowOfLowermostAntiDiagonals && beginColumn == beginColOfUppermostAntiDiagonals)) {
             isQuadrupletAtBeginning = true;
             isQuadrupletAtEnd = true;
         } else {
