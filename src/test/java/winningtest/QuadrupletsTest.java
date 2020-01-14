@@ -2,7 +2,7 @@ package winningtest;
 
 import org.junit.Before;
 import org.junit.Test;
-import winningnic.*;
+import winning.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
