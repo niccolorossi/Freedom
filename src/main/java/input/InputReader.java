@@ -8,22 +8,28 @@ import java.util.stream.Stream;
 
 public class InputReader {
 
-    private InputStream inputStream;
+    private String inputString;
 
-    public InputReader(InputStream stringStream) {
-        this.inputStream = stringStream;
+    public InputReader(InputStream stringStream)  {
+
+        try {
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(stringStream));
+            inputString = reader.readLine();
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    public int[] getMove() throws IOException {
-        BufferedReader reader =
-                new BufferedReader(new InputStreamReader(inputStream));
+    public int[] getMove() {
 
-        String moveString = reader.readLine();
-
-
-
-        int[] move = Stream.of(moveString.split(" ")).mapToInt(Integer::parseInt).toArray();
-
-        return move;
+        try {
+            return Stream.of(inputString.split(" ")).mapToInt(Integer::parseInt).toArray();
+        } catch (NumberFormatException e) {
+            System.out.println("You must insert two integers!");
+            return new int[] {-1, -1};
+        }
     }
+
+
 }

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.input.InputReaderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-15T10:53:57" hostname="LAPTOP-1KLMQELM" time="0.009">
+<testsuite name="test.input.InputReaderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-15T11:27:54" hostname="LAPTOP-1KLMQELM" time="0.011">
   <properties/>
-  <testcase name="playFirstCell" classname="test.input.InputReaderTest" time="0.009"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="whenNotIntegerInputThrowsException" classname="test.input.InputReaderTest" time="0.01"/>
+  <testcase name="playFirstCell" classname="test.input.InputReaderTest" time="0.0"/>
+  <system-out><![CDATA[You must insert two integers!
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
