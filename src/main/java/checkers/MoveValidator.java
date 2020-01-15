@@ -13,11 +13,9 @@ public class MoveValidator {
     }
     
     public void validateMove(Integer row, Integer column, Character currentStone, Boolean isFreedom) throws OccupiedCellException, NonAdjacentException{
-            occupiedChecker.occupiedCheck(currentStone);
-            adjacentChecker.adjacentCheck(row, column, isFreedom);
-
-
-        
+        occupiedChecker.occupiedCheck(currentStone);
+        adjacentChecker.adjacentCheck(row, column, isFreedom);
+            
     }
     
 }

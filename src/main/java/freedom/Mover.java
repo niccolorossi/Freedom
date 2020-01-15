@@ -20,8 +20,7 @@ public class Mover {
 
     public void move(Board board, Integer row, Integer column, Character currentStone) throws OutOfBoundsException, NonAdjacentException, OccupiedCellException {
 
-        boundsChecker.boundsCheck(row);
-        boundsChecker.boundsCheck(column);
+        boundsChecker.boundsCheck(row, column);
         Character cellStone = board.getStone(row, column);
         moveValidator.validateMove(row, column,cellStone, isFreedom);
         board.setStone(currentStone, row, column);

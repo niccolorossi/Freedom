@@ -28,7 +28,7 @@ public class InputReaderTest {
     }
 
     @Test
-    public void whenNotIntegerInputThrowsException() {
+    public void whenNotIntegerInputAnExceptionIsCaught() {
 
         String string = "e 1";
 
@@ -36,6 +36,18 @@ public class InputReaderTest {
         InputReader inputReader = new InputReader(stringStream);
         int[] move = inputReader.getMove();
         assertThat(move, is(invalidMove));
+    }
+    
+    @Test
+    public void whenOutOfBoundsAnExceptionIsCaught() {
+        
+        String string = "11 1";
+        
+        InputStream stringStream = new ByteArrayInputStream(string.getBytes());
+        InputReader inputReader = new InputReader(stringStream);
+        int[] move = inputReader.getMove();
+        assertThat(move, is(invalidMove));
+        
     }
 
 

@@ -1,5 +1,8 @@
 package input;
 
+import checkers.BoundsChecker;
+import exceptions.OutOfBoundsException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,8 +27,11 @@ public class InputReader {
     public int[] getMove() {
 
         try {
-            return Stream.of(inputString.split(" ")).mapToInt(Integer::parseInt).toArray();
-        } catch (NumberFormatException e) {
+            int[] move = Stream.of(inputString.split(" ")).mapToInt(Integer::parseInt).toArray();
+            BoundsChecker boundsChecker = new BoundsChecker(10);
+            boundsChecker.boundsCheck(move[0], move[1]);
+            return move;
+        } catch (NumberFormatException | OutOfBoundsException e) {
             System.out.println("You must insert two integers!");
             return new int[] {-1, -1};
         }

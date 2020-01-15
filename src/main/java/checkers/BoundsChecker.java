@@ -12,9 +12,9 @@ public class BoundsChecker {
         this.upperLimit = boardSize;
     }
     
-    public void boundsCheck(Integer coordinate) throws OutOfBoundsException {
-        if(coordinate < lowLimit || coordinate > upperLimit) {
-            String message = coordinate.toString() + " is out of bounds!";
+    public void boundsCheck(Integer row, Integer column) throws OutOfBoundsException {
+        if(row < lowLimit || row > upperLimit || column < lowLimit || column > lowLimit) {
+            String message = "something is out of bounds!";
             throw new OutOfBoundsException(message);
         }
     }
