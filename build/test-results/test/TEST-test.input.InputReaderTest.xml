@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.input.InputReaderTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-01-15T15:43:52" hostname="MBP-di-Nicola-2.station" time="0.016">
+  <properties/>
+  <testcase name="whenNotIntegerInputAnExceptionIsCaught" classname="test.input.InputReaderTest" time="0.012"/>
+  <testcase name="getMoveWorksWithBoardWithSizeDifferentThanTen" classname="test.input.InputReaderTest" time="0.0"/>
+  <testcase name="playFirstCell" classname="test.input.InputReaderTest" time="0.0"/>
+  <testcase name="whenOutOfBoundsAnExceptionIsCaught" classname="test.input.InputReaderTest" time="0.001"/>
+  <testcase name="whenNotTwoNumbersInputAnExceptionIsCaught" classname="test.input.InputReaderTest" time="0.001"/>
+  <system-out><![CDATA[You must insert two integers!
+Coordinate is out of bounds!
+Coordinate is out of bounds!
+You must insert two coordinates
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

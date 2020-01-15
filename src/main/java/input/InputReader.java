@@ -12,9 +12,12 @@ import java.util.stream.Stream;
 public class InputReader {
 
     private Integer boardSize;
+    private BoundsChecker boundsChecker;
 
     public InputReader(Integer boardSize){
         this.boardSize = boardSize;
+        boundsChecker = new BoundsChecker(boardSize);
+
     }
 
     public int[] getMove(InputStream stringStream) {
@@ -22,16 +25,21 @@ public class InputReader {
         try {
             String inputString = streamConvert(stringStream);
             int[] move = Stream.of(inputString.split(" ")).mapToInt(Integer::parseInt).toArray();
-            BoundsChecker boundsChecker = new BoundsChecker(boardSize);
             boundsChecker.boundsCheck(move[0], move[1]);
             return move;
         } catch (NumberFormatException  e) {
             System.out.println("You must insert two integers!");
-            return new int[] {-1, -1};
+            
         } catch (OutOfBoundsException e1) {
             System.out.println(e1.getMessage());
-            return new int[] {-1, -1};
         }
+        
+        catch (ArrayIndexOutOfBoundsException e2) {
+            System.out.println("You must insert two coordinates");
+            
+        }
+
+        return new int[] {-1, -1};
     }
 
     private String streamConvert(InputStream stringStream){

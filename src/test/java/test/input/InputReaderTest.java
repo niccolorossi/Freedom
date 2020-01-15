@@ -29,7 +29,7 @@ public class InputReaderTest {
     }
 
     @Test
-     public void playFirstCell() throws IOException {
+     public void playFirstCell() {
 
         String string = "1 1";
         InputStream stringStream = new ByteArrayInputStream(string.getBytes());
@@ -61,6 +61,15 @@ public class InputReaderTest {
         String string = "9 1";
         InputStream stringStream = new ByteArrayInputStream(string.getBytes());
         int[] move = inputReaderEight.getMove(stringStream);
+        assertThat(move, is(invalidMove));
+    }
+
+    @Test
+    public void whenSingleInputAnExceptionIsCaught() {
+
+        String string = "1 ";
+        InputStream stringStream = new ByteArrayInputStream(string.getBytes());
+        int[] move = inputReaderTen.getMove(stringStream);
         assertThat(move, is(invalidMove));
     }
 
