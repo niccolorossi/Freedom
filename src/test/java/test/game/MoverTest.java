@@ -1,3 +1,5 @@
+package test.game;
+
 import freedom.Game;
 import org.junit.Before;
 import org.junit.Test;

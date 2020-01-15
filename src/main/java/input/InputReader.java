@@ -1,23 +1,53 @@
 package input;
 
-import checkers.BoundsChecker;
-import exceptions.OutOfBoundsException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.stream.Stream;
+import java.io.*;
+import java.util.List;
 
 public class InputReader {
+    
+    private BufferedReader bufferedReader;
+    
+    public InputReader(String inputLine) {
+        BufferedReaderInitializer bufferedReaderInitializer = new BufferedReaderInitializer(inputLine);
+        this.bufferedReader = bufferedReaderInitializer.getBufferedReader();
+    }
 
-    private Integer boardSize;
-    private BoundsChecker boundsChecker;
+    public InputReader(InputStream inputStream) {
+        BufferedReaderInitializer bufferedReaderInitializer = new BufferedReaderInitializer(inputStream);
+        this.bufferedReader = bufferedReaderInitializer.getBufferedReader();
+    }
+    
+    private String getString() {
+        StringReader stringReader = new StringReader(bufferedReader);
+        return stringReader.getStringRead();
+    }
+    
+    private List<Integer> getParsedIntegers(String readString) {
+        IntegerParser integerParser = new IntegerParser(readString);
+        return integerParser.getParsedIntegers();
+    }
+    
+    public List<Integer> getMove(Integer boardSize) {
+        String readString = this.getString();
+        List<Integer> parsedIntegers = getParsedIntegers(readString);
+        MoveInBoundsValidator moveInBoundsValidator = new MoveInBoundsValidator(parsedIntegers);
+        moveInBoundsValidator.validateMove(boardSize);
+        return parsedIntegers;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
 
-    public InputReader(Integer boardSize){
-        this.boardSize = boardSize;
-        boundsChecker = new BoundsChecker(boardSize);
+    private MoveInBoundsValidator boundsChecker;
 
+    public InputReader(Integer boardSize) {
+        this.boundsChecker = new MoveInBoundsValidator(boardSize);
     }
 
     public int[] getMove(InputStream stringStream) {
@@ -54,6 +84,8 @@ public class InputReader {
             return " ";
         }
     }
+    
+     */
 
 
 }
