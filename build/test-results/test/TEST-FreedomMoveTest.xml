@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FreedomMoveTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-15T14:57:02" hostname="MBP-di-Nicola-2.station" time="0.017">
+  <properties/>
+  <testcase name="testNextMoveIsFreedom" classname="FreedomMoveTest" time="0.015"/>
+  <testcase name="testNextMoveIsFreedomBorder" classname="FreedomMoveTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
