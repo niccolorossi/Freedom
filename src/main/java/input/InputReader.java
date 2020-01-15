@@ -11,29 +11,39 @@ import java.util.stream.Stream;
 
 public class InputReader {
 
-    private String inputString;
+    private Integer boardSize;
 
-    public InputReader(InputStream stringStream)  {
+    public InputReader(Integer boardSize){
+        this.boardSize = boardSize;
+    }
+
+    public int[] getMove(InputStream stringStream) {
+
+        try {
+            String inputString = streamConvert(stringStream);
+            int[] move = Stream.of(inputString.split(" ")).mapToInt(Integer::parseInt).toArray();
+            BoundsChecker boundsChecker = new BoundsChecker(boardSize);
+            boundsChecker.boundsCheck(move[0], move[1]);
+            return move;
+        } catch (NumberFormatException  e) {
+            System.out.println("You must insert two integers!");
+            return new int[] {-1, -1};
+        } catch (OutOfBoundsException e1) {
+            System.out.println(e1.getMessage());
+            return new int[] {-1, -1};
+        }
+    }
+
+    private String streamConvert(InputStream stringStream){
 
         try {
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(stringStream));
-            inputString = reader.readLine();
+
+            return reader.readLine();
         } catch (IOException e){
             System.out.println(e.getMessage());
-        }
-    }
-
-    public int[] getMove() {
-
-        try {
-            int[] move = Stream.of(inputString.split(" ")).mapToInt(Integer::parseInt).toArray();
-            BoundsChecker boundsChecker = new BoundsChecker(10);
-            boundsChecker.boundsCheck(move[0], move[1]);
-            return move;
-        } catch (NumberFormatException | OutOfBoundsException e) {
-            System.out.println("You must insert two integers!");
-            return new int[] {-1, -1};
+            return " ";
         }
     }
 

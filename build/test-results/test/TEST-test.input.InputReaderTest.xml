@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.input.InputReaderTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-01-15T14:16:37" hostname="LAPTOP-1KLMQELM" time="0.038">
+  <properties/>
+  <testcase name="whenNotIntegerInputAnExceptionIsCaught" classname="test.input.InputReaderTest" time="0.014"/>
+  <testcase name="getMoveWorksWithBoardWithSizeDifferentThanTen" classname="test.input.InputReaderTest" time="0.002"/>
+  <testcase name="playFirstCell" classname="test.input.InputReaderTest" time="0.001"/>
+  <testcase name="whenOutOfBoundsAnExceptionIsCaught" classname="test.input.InputReaderTest" time="0.021"/>
+  <system-out><![CDATA[You must insert two integers!
+something is out of bounds!
+something is out of bounds!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

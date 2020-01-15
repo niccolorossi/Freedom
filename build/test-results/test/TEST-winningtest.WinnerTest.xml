@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="winningtest.WinnerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-15T11:51:35" hostname="cli232-178.wireless-s.units.it" time="0.019">
-  <properties/>
-  <testcase name="theGameIsDrawn" classname="winningtest.WinnerTest" time="0.019"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
