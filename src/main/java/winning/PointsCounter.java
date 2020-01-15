@@ -12,8 +12,10 @@ public class PointsCounter {
 
     public PointsCounter(Character[][] fullBoard) {
         this.boardSize = fullBoard[0].length;
+
         this.blackBoard = new LiveStonesBoard(boardSize);
         this.blackQuadrupletChecker = new  QuadrupletChecker(blackBoard, fullBoard, 'B');
+
         this.whiteBoard = new LiveStonesBoard(boardSize);
         this.whiteQuadrupletChecker = new QuadrupletChecker(whiteBoard, fullBoard, 'W');
     }
