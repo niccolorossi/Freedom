@@ -17,21 +17,21 @@ public class QuadrupletChecker {
     
     private Character currentStone;
     
-    private static final Integer beginColOfLeftmostHorizontalQuadruplets = 0;
-    private static final Integer beginColOfRightmostHorizontalQuadruplets = 6;
+    private Integer beginColOfLeftmostHorizontalQuadruplets = 0;
+    private Integer beginColOfRightmostHorizontalQuadruplets = 6;
 
-    private static final Integer beginRowOfUppermostVerticalQuadruplets = 0;
-    private static final Integer beginRowOfLowermostVerticalQuadruplets = 6;
+    private Integer beginRowOfUppermostVerticalQuadruplets = 0;
+    private Integer beginRowOfLowermostVerticalQuadruplets = 6;
     
-    private static final Integer beginRowOfUppermostDiagonalQuadruplets = 0;
-    private static final Integer beginColOfUppermostDiagonalQuadruplets = 0;
-    private static final Integer beginRowOfLowermostDiagonalQuadruplets = 6;
-    private static final Integer beginColOfLowermostDiagonalQuadruplets = 6;
+    private Integer beginRowOfUppermostDiagonalQuadruplets = 0;
+    private Integer beginColOfUppermostDiagonalQuadruplets = 0;
+    private Integer beginRowOfLowermostDiagonalQuadruplets = 6;
+    private Integer beginColOfLowermostDiagonalQuadruplets = 6;
 
-    private static final Integer beginRowOfLowermostAntiDiagonalQuadruplets = 9;
-    private static final Integer beginColOfLowermostAntiDiagonalQuadruplets = 0;
-    private static final Integer beginRowOfUppermostAntiDiagonalQuadruplets = 3;
-    private static final Integer beginColOfUppermostAntiDiagonalQuadruplets = 6;
+    private Integer beginRowOfLowermostAntiDiagonalQuadruplets = 9;
+    private Integer beginColOfLowermostAntiDiagonalQuadruplets = 0;
+    private Integer beginRowOfUppermostAntiDiagonalQuadruplets = 3;
+    private Integer beginColOfUppermostAntiDiagonalQuadruplets = 6;
 
 
     public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
@@ -39,15 +39,36 @@ public class QuadrupletChecker {
         this.fullBoard = fullBoard;
         this.boardSize = liveStonesBoard.getCurrentBoard().length;
         this.currentStone = currentStone;
+        this.beginColOfLeftmostHorizontalQuadruplets
+                = this.beginRowOfUppermostDiagonalQuadruplets
+                = this.beginRowOfUppermostVerticalQuadruplets
+                = this.beginColOfUppermostDiagonalQuadruplets
+                = this.beginColOfLowermostAntiDiagonalQuadruplets = 0;
+
+        this.beginColOfRightmostHorizontalQuadruplets
+                = this.beginRowOfLowermostVerticalQuadruplets
+                = this.beginRowOfLowermostDiagonalQuadruplets
+                = this.beginColOfLowermostDiagonalQuadruplets
+                = this.beginColOfUppermostAntiDiagonalQuadruplets = fullBoard[0].length - 4;
+
+        this.beginRowOfLowermostAntiDiagonalQuadruplets = fullBoard[0].length - 1;
+        this.beginRowOfUppermostAntiDiagonalQuadruplets = 3;
+
+
+
     }
 
     public void setAllRowStones() {
         HorizontalRules horizontalRules = new HorizontalRules(beginColOfLeftmostHorizontalQuadruplets,
                                                               beginColOfRightmostHorizontalQuadruplets);
+
         for(int row=0; row<boardSize; row++) {
+
             for(int col=beginColOfLeftmostHorizontalQuadruplets; col<=beginColOfRightmostHorizontalQuadruplets; col++) {
+
                 HorizontalQuadruplet horizontalQuadruplet = new HorizontalQuadruplet(row,col);
-                if(horizontalRules.isValid(fullBoard, row, col, currentStone) 
+
+                if(horizontalRules.isValid(fullBoard, row, col, currentStone)
                    && horizontalRules.isCandidate(fullBoard, row, col)) {
                     liveStonesBoard.setStones(horizontalQuadruplet);
                 }
