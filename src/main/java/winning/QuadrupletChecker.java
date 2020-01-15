@@ -17,21 +17,21 @@ public class QuadrupletChecker {
     
     private Character currentStone;
     
-    private Integer beginColOfLeftmostHorizontalQuadruplets = 0;
-    private Integer beginColOfRightmostHorizontalQuadruplets = 6;
+    private Integer beginColOfLeftmostHorizontalQuadruplets ;
+    private Integer beginColOfRightmostHorizontalQuadruplets;
 
-    private Integer beginRowOfUppermostVerticalQuadruplets = 0;
-    private Integer beginRowOfLowermostVerticalQuadruplets = 6;
+    private Integer beginRowOfUppermostVerticalQuadruplets;
+    private Integer beginRowOfLowermostVerticalQuadruplets;
     
-    private Integer beginRowOfUppermostDiagonalQuadruplets = 0;
-    private Integer beginColOfUppermostDiagonalQuadruplets = 0;
-    private Integer beginRowOfLowermostDiagonalQuadruplets = 6;
-    private Integer beginColOfLowermostDiagonalQuadruplets = 6;
+    private Integer beginRowOfUppermostDiagonalQuadruplets;
+    private Integer beginColOfUppermostDiagonalQuadruplets;
+    private Integer beginRowOfLowermostDiagonalQuadruplets;
+    private Integer beginColOfLowermostDiagonalQuadruplets;
 
-    private Integer beginRowOfLowermostAntiDiagonalQuadruplets = 9;
-    private Integer beginColOfLowermostAntiDiagonalQuadruplets = 0;
-    private Integer beginRowOfUppermostAntiDiagonalQuadruplets = 3;
-    private Integer beginColOfUppermostAntiDiagonalQuadruplets = 6;
+    private Integer beginRowOfLowermostAntiDiagonalQuadruplets;
+    private Integer beginColOfLowermostAntiDiagonalQuadruplets;
+    private Integer beginRowOfUppermostAntiDiagonalQuadruplets;
+    private Integer beginColOfUppermostAntiDiagonalQuadruplets;
 
 
     public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
