@@ -13,19 +13,14 @@ public class Points {
     public Points(Character[][] fullBoard) {
         this.boardSize = fullBoard[0].length;
 
-        this.blackBoard = new LiveStonesBoard(boardSize);
-        this.blackPlayerQuadruplets = new PlayerQuadruplets(blackBoard, fullBoard, 'B');
+        this.blackBoard = new LiveStonesBoard(fullBoard, 'W');
+        this.whiteBoard = new LiveStonesBoard(fullBoard, 'B');
 
-        this.whiteBoard = new LiveStonesBoard(boardSize);
-        this.whitePlayerQuadruplets = new PlayerQuadruplets(whiteBoard, fullBoard, 'W');
     }
 
     public Integer getBlackPoints() {
 
-        blackPlayerQuadruplets.findHorizontalQuadruplets();
-        blackPlayerQuadruplets.findVerticalQuadruplets();
-        blackPlayerQuadruplets.findDiagonalQuadruplets();
-        blackPlayerQuadruplets.findAntiDiagonalQuadruplets();
+        blackBoard.aliveStonesForCurrentPlayer();
 
         Integer count = 0;
 
@@ -41,10 +36,7 @@ public class Points {
 
     public Integer getWhitePoints() {
 
-        whitePlayerQuadruplets.findHorizontalQuadruplets();
-        whitePlayerQuadruplets.findVerticalQuadruplets();
-        whitePlayerQuadruplets.findDiagonalQuadruplets();
-        whitePlayerQuadruplets.findAntiDiagonalQuadruplets();
+        whiteBoard.aliveStonesForCurrentPlayer();
 
         Integer count = 0;
 

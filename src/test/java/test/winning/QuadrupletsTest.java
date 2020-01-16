@@ -1,3 +1,4 @@
+
 package test.winning;
 
 import org.junit.Before;
@@ -95,7 +96,7 @@ public class QuadrupletsTest {
     }
     
     
-
+    /**
     @Test
     public void testAllHorizontalQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
@@ -122,15 +123,12 @@ public class QuadrupletsTest {
         playerQuadruplets.findDiagonalQuadruplets();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDBlackStones));
     }
+    */
 
     @Test
     public void testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet() {
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
-        playerQuadruplets.findHorizontalQuadruplets();
-        playerQuadruplets.findVerticalQuadruplets();
-        playerQuadruplets.findDiagonalQuadruplets();
-        playerQuadruplets.findAntiDiagonalQuadruplets();
+        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard, 'B');
+        liveStonesBoard.aliveStonesForCurrentPlayer();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDABlackStones));
     }
     
