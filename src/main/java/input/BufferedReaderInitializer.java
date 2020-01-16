@@ -7,6 +7,7 @@ class BufferedReaderInitializer {
     private BufferedReader bufferedReader;
     
     BufferedReaderInitializer(String inputLine) {
+
         InputStream stringStream = new ByteArrayInputStream(inputLine.getBytes());
         InputStreamReader inputStreamReader = new InputStreamReader(stringStream);
         this.bufferedReader = new BufferedReader(inputStreamReader);
