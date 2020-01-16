@@ -1,6 +1,6 @@
 package game;
 
-import input.InputReader;
+import input.UserInput;
 
 import java.util.List;
 import java.util.Scanner;
@@ -27,9 +27,9 @@ public class Start implements Runnable {
             Scanner in = new Scanner(System.in);
             String inputString = in.nextLine();
             
-            InputReader inputReader = new InputReader(inputString);
+            UserInput userInput = new UserInput(inputString);
 
-            List<Integer> coordinate = inputReader.getMove(boardSize);
+            List<Integer> coordinate = userInput.getMove(boardSize);
             
             game.move(coordinate.get(0), coordinate.get(1));
 

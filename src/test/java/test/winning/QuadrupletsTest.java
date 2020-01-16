@@ -99,38 +99,38 @@ public class QuadrupletsTest {
     @Test
     public void testAllHorizontalQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
-        quadrupletChecker.setAllRowStones();
+        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
+        playerQuadruplets.findHorizontalQuadruplets();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterHQEightZeroEightSix));
     }
 
     @Test
     public void testAllHorizontalVerticalQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
-        quadrupletChecker.setAllRowStones();
-        quadrupletChecker.setAllColumnStones();
+        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
+        playerQuadruplets.findHorizontalQuadruplets();
+        playerQuadruplets.findVerticalQuadruplets();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVBlackStones));
     }
 
     @Test
     public void testAllHorizontalVerticalDiagonalQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
-        quadrupletChecker.setAllRowStones();
-        quadrupletChecker.setAllColumnStones();
-        quadrupletChecker.setAllDiagonalStones();
+        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
+        playerQuadruplets.findHorizontalQuadruplets();
+        playerQuadruplets.findVerticalQuadruplets();
+        playerQuadruplets.findDiagonalQuadruplets();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDBlackStones));
     }
 
     @Test
     public void testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        QuadrupletChecker quadrupletChecker = new QuadrupletChecker(liveStonesBoard, fullBoard, 'B');
-        quadrupletChecker.setAllRowStones();
-        quadrupletChecker.setAllColumnStones();
-        quadrupletChecker.setAllDiagonalStones();
-        quadrupletChecker.setAllAntiDiagonalStones();
+        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
+        playerQuadruplets.findHorizontalQuadruplets();
+        playerQuadruplets.findVerticalQuadruplets();
+        playerQuadruplets.findDiagonalQuadruplets();
+        playerQuadruplets.findAntiDiagonalQuadruplets();
         assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDABlackStones));
     }
     

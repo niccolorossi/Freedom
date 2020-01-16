@@ -9,7 +9,7 @@ import winning.rules.DiagonalRules;
 import winning.rules.HorizontalRules;
 import winning.rules.VerticalRules;
 
-public class QuadrupletChecker {
+public class PlayerQuadruplets {
     
     private LiveStonesBoard liveStonesBoard;
     private Character[][] fullBoard;
@@ -34,7 +34,7 @@ public class QuadrupletChecker {
     private Integer beginColOfUppermostAntiDiagonalQuadruplets;
 
 
-    public QuadrupletChecker(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
+    public PlayerQuadruplets(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
 
         this.liveStonesBoard = liveStonesBoard;
         this.fullBoard = fullBoard;
@@ -62,7 +62,7 @@ public class QuadrupletChecker {
 
 
 
-    public void setAllRowStones() {
+    public void findHorizontalQuadruplets() {
         HorizontalRules horizontalRules = new HorizontalRules(beginColOfLeftmostHorizontalQuadruplets,
                                                               beginColOfRightmostHorizontalQuadruplets);
 
@@ -80,7 +80,7 @@ public class QuadrupletChecker {
         }
     }
     
-    public void setAllColumnStones() {
+    public void findVerticalQuadruplets() {
         VerticalRules verticalRules = new VerticalRules(beginRowOfUppermostVerticalQuadruplets,
                                                         beginRowOfLowermostVerticalQuadruplets);         
         for(int col=0; col<boardSize; col++) {
@@ -94,7 +94,7 @@ public class QuadrupletChecker {
         }
     }
 
-    public void setAllDiagonalStones() {
+    public void findDiagonalQuadruplets() {
 
         DiagonalRules diagonalRules = new DiagonalRules(beginRowOfUppermostDiagonalQuadruplets,
                                                         beginColOfUppermostDiagonalQuadruplets,
@@ -111,7 +111,7 @@ public class QuadrupletChecker {
         }
     }
 
-    public void setAllAntiDiagonalStones() {
+    public void findAntiDiagonalQuadruplets() {
         AntiDiagonalRules antiDiagonalRules = new AntiDiagonalRules(beginRowOfLowermostAntiDiagonalQuadruplets,
                                                                     beginColOfLowermostAntiDiagonalQuadruplets,
                                                                     beginRowOfUppermostAntiDiagonalQuadruplets,

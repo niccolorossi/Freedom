@@ -2,11 +2,11 @@ package winning;
 
 public class Winner {
 
-    private PointsCounter pc;
+    private Points pc;
 
     public Winner(Character[][] fullBoard) {
 
-        this.pc = new PointsCounter(fullBoard);
+        this.pc = new Points(fullBoard);
     }
 
     public String getWinner() {
