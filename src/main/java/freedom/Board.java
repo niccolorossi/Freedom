@@ -5,12 +5,11 @@ import java.util.stream.IntStream;
 class Board {
     
     private Character[][] currentBoard;
-    private int boardSize;
     private char emptyCellCharacter = '_';
+    
 
     Board(int boardSize) {
 
-        this.boardSize = boardSize;
         this.currentBoard = new Character[boardSize][boardSize];
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
@@ -36,8 +35,7 @@ class Board {
 
         return emptyCellCharacter;
     }
-
-    Integer getBoardSize() {
-        return boardSize;
-    }
+    
+    Integer getBoardSize(){return currentBoard[0].length;}
+    
 }

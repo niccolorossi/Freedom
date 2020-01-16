@@ -16,6 +16,7 @@ public class Mover {
         //this.boundsChecker = new MoveInBoundsValidator(board.getBoardSize());
         this.moveValidator = new MoveValidator(board.getEmptyCellCharacter());
         this.isFreedom = true;
+        
     }
 
     public void move(Board board, Integer row, Integer column, Character currentStone) throws OutOfBoundsException, NonAdjacentException, OccupiedCellException {
@@ -24,6 +25,7 @@ public class Mover {
         Character cellStone = board.getStone(row, column);
         moveValidator.validateMove(row, column,cellStone, isFreedom);
         board.setStone(currentStone, row, column);
-        isFreedom = FreedomFinder.isNextFreedom(board, row, column);
+        FreedomFinder freedomFinder = new FreedomFinder(board,row,column);
+        isFreedom = freedomFinder.isNextFreedom();
     }
 }

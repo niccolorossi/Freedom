@@ -50,8 +50,9 @@ public class FreedomMoveTest {
         gameSizeTenBoard.move(3,1);
         gameSizeTenBoard.move(2,1);
         gameSizeTenBoard.move(2,2);
-
-        assertThat(FreedomFinder.isNextFreedom(gameSizeTenBoard.getBoard(), 2, 2), is(true) );
+        
+        FreedomFinder freedomFinder = new FreedomFinder(gameSizeTenBoard.getBoard(), 2,2);
+        assertThat(freedomFinder.isNextFreedom(), is(true) );
 
     }
 
@@ -64,9 +65,7 @@ public class FreedomMoveTest {
         gameSizeTenBoard.move(3,3);
         gameSizeTenBoard.move(2,3);
         gameSizeTenBoard.move(1,3);
-        gameSizeTenBoard.move(2,2);
-        gameSizeTenBoard.move(1,2);
 
-        assertThat(FreedomFinder.isNextFreedom(gameSizeTenBoard.getBoard(), 1, 2), is(true) );
-    }
+        FreedomFinder freedomFinder = new FreedomFinder(gameSizeTenBoard.getBoard(), 1,3);
+        assertThat(freedomFinder.isNextFreedom(), is(false) );    }
 }

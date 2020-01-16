@@ -1,29 +1,16 @@
 package freedom;
 
-import checkers.CloseCellsFinder;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class FreedomFinder {
+    
+    private CloseCells closeCell;
+    private Boolean isNextFreedom;
+    
+    public FreedomFinder(Board board, Integer row, Integer column){
+        closeCell = new CloseCells(board, row, column);
+        isNextFreedom = !closeCell.getCloseValues().stream().anyMatch(x -> x == board.getEmptyCellCharacter());
+    }
 
-    public static Boolean isNextFreedom(Board board, Integer row, Integer column) {
-
-        Character[][] currentBoard = board.getCurrentBoard();
-        Character empty = board.getEmptyCellCharacter();
-
-        Integer lowerLimitRow = CloseCellsFinder.getLowerLimit(row);
-        Integer upperLimitRow = CloseCellsFinder.getUpperLimit(row);
-        Integer lowerLimitColumn = CloseCellsFinder.getLowerLimit(column);
-        Integer upperLimitColumn = CloseCellsFinder.getUpperLimit(column);
-
-        List<Character> adjacentCellsCharacters = new ArrayList<>();
-        for(int i = lowerLimitRow-1; i <= upperLimitRow-1; i++) {
-            for(int j = lowerLimitColumn-1; j<= upperLimitColumn-1; j++) {
-                adjacentCellsCharacters.add(currentBoard[i][j]);
-            }
-        }
-
-        return  !adjacentCellsCharacters.stream().anyMatch(x -> x == empty);
+    public  Boolean isNextFreedom() {
+        return  isNextFreedom;
     }
 }
