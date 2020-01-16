@@ -10,20 +10,15 @@ public class LiveStonesBoard {
     private Boolean[][] currentBoard;
     private Character currentStone;
     private PlayerQuadruplets playerQuadruplets;
-    
-    public LiveStonesBoard(Integer boardSize) {
-        
-        this.currentBoard = new Boolean[boardSize][boardSize];
-        IntStream.range(0, boardSize)
-                .forEach(r -> IntStream.range(0, boardSize)
-                        .forEach(c -> currentBoard[r][c] = false));    
-    }
+
 
     public LiveStonesBoard(Character[][] fullBoard, Character currentStone) {
 
         this.playerQuadruplets = new PlayerQuadruplets(fullBoard);
         this.currentStone = currentStone;
+
         Integer boardSize = fullBoard[0].length;
+
         this.currentBoard = new Boolean[boardSize][boardSize];
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
@@ -36,6 +31,7 @@ public class LiveStonesBoard {
             updateLiveStones(allDiagonals.get(element));
         }
     }
+
     public Boolean[][] getCurrentBoard() {
         return currentBoard;
     }

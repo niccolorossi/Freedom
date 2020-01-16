@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.winning.QuadrupletsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-16T21:00:13" hostname="LAPTOP-1KLMQELM" time="0.023">
-  <properties/>
-  <testcase name="testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet" classname="test.winning.QuadrupletsTest" time="0.023"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -13,9 +13,6 @@ public class PlayerQuadruplets {
     
 
     private Character[][] fullBoard;
-    private Character currentStone;
-
-
     private HorizontalQuadruplets horizontalQuadruplets;
     private VerticalQuadruplets verticalQuadruplets;
     private DiagonalQuadruplets diagonalQuadruplets;

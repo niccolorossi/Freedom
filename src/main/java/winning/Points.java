@@ -11,10 +11,10 @@ public class Points {
 
 
     public Points(Character[][] fullBoard) {
-        this.boardSize = fullBoard[0].length;
 
-        this.blackBoard = new LiveStonesBoard(fullBoard, 'W');
-        this.whiteBoard = new LiveStonesBoard(fullBoard, 'B');
+        this.boardSize = fullBoard[0].length;
+        this.blackBoard = new LiveStonesBoard(fullBoard, 'B');
+        this.whiteBoard = new LiveStonesBoard(fullBoard, 'W');
 
     }
 
