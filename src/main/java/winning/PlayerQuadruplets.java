@@ -4,14 +4,10 @@ import winning.indeces.AntiDiagonalIndeces;
 import winning.indeces.DiagonalIndeces;
 import winning.indeces.HorizontalIndeces;
 import winning.indeces.VerticalIndeces;
-import winning.limits.AntiDiagonalLimits;
-import winning.limits.DiagonalLimits;
-import winning.limits.HorizontalLimits;
-import winning.limits.VerticalLimits;
+import winning.quadruplets.AntiDiagonalQuadruplets;
 import winning.quadruplets.DiagonalQuadruplets;
 import winning.quadruplets.HorizontalQuadruplets;
 import winning.quadruplets.VerticalQuadruplets;
-import winning.rules.AntiDiagonalRules;
 
 import java.util.List;
 
@@ -24,15 +20,7 @@ public class PlayerQuadruplets {
     private HorizontalQuadruplets horizontalQuadruplets;
     private VerticalQuadruplets verticalQuadruplets;
     private DiagonalQuadruplets diagonalQuadruplets;
-
-
-    private HorizontalLimits horizontalLimits;
-    private VerticalLimits verticalLimits;
-    private DiagonalLimits diagonalLimits;
-    private AntiDiagonalLimits antiDiagonalLimits;
-    
-
-
+    private AntiDiagonalQuadruplets antiDiagonalQuadruplets;
 
     public PlayerQuadruplets(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
 
@@ -42,18 +30,9 @@ public class PlayerQuadruplets {
         this.horizontalQuadruplets = new HorizontalQuadruplets(fullBoard);
         this.verticalQuadruplets = new VerticalQuadruplets(fullBoard);
         this.diagonalQuadruplets = new DiagonalQuadruplets(fullBoard);
-
-        this.verticalLimits = new VerticalLimits(fullBoard[0].length);
-        this.diagonalLimits = new DiagonalLimits(fullBoard[0].length);
-        this.antiDiagonalLimits = new AntiDiagonalLimits(fullBoard[0].length);
-
-
-
-
+        this.antiDiagonalQuadruplets = new AntiDiagonalQuadruplets(fullBoard);
 
     }
-
-
 
     public void findHorizontalQuadruplets() {
 
@@ -85,26 +64,10 @@ public class PlayerQuadruplets {
     }
 
     public void findAntiDiagonalQuadruplets() {
+        List<AntiDiagonalIndeces> allAntiDiagonal = antiDiagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
-        Integer beginRowOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginRowOfLowermostAntiDiagonalQuadruplets();
-        Integer beginColOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginColOfLowermostAntiDiagonalQuadruplets();
-        Integer beginRowOfUppermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginRowOfUppermostAntiDiagonalQuadruplets();
-        Integer beginColOfUppermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginColOfUppermostAntiDiagonalQuadruplets();
-
-        AntiDiagonalRules antiDiagonalRules = new AntiDiagonalRules(beginRowOfLowermostAntiDiagonalQuadruplets,
-                                                                    beginColOfLowermostAntiDiagonalQuadruplets,
-                                                                    beginRowOfUppermostAntiDiagonalQuadruplets,
-                                                                    beginColOfUppermostAntiDiagonalQuadruplets);
-
-        for(int row = beginRowOfLowermostAntiDiagonalQuadruplets; row>= beginRowOfUppermostAntiDiagonalQuadruplets; row--) {
-
-            for(int col = beginColOfLowermostAntiDiagonalQuadruplets; col<= beginColOfUppermostAntiDiagonalQuadruplets; col++) {
-
-                if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
-                        && antiDiagonalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.updateLiveStones(new AntiDiagonalIndeces(row,col));
-                }
-            }
+        for (int quadruplet = 0; quadruplet < allAntiDiagonal.size(); quadruplet++) {
+            liveStonesBoard.updateLiveStones(allAntiDiagonal.get(quadruplet));
         }
     }
 }
