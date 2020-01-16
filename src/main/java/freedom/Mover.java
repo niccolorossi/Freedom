@@ -6,10 +6,6 @@ import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import exceptions.OutOfBoundsException;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
-
 public class Mover {
 
     private MoveValidator moveValidator;
