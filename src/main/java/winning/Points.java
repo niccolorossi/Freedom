@@ -1,31 +1,31 @@
 package winning;
 
-public class PointsCounter {
+public class Points {
 
 
     private LiveStonesBoard blackBoard;
     private LiveStonesBoard whiteBoard;
-    private QuadrupletChecker blackQuadrupletChecker;
-    private QuadrupletChecker whiteQuadrupletChecker;
+    private PlayerQuadruplets blackPlayerQuadruplets;
+    private PlayerQuadruplets whitePlayerQuadruplets;
     private Integer boardSize;
 
 
-    public PointsCounter(Character[][] fullBoard) {
+    public Points(Character[][] fullBoard) {
         this.boardSize = fullBoard[0].length;
 
         this.blackBoard = new LiveStonesBoard(boardSize);
-        this.blackQuadrupletChecker = new  QuadrupletChecker(blackBoard, fullBoard, 'B');
+        this.blackPlayerQuadruplets = new PlayerQuadruplets(blackBoard, fullBoard, 'B');
 
         this.whiteBoard = new LiveStonesBoard(boardSize);
-        this.whiteQuadrupletChecker = new QuadrupletChecker(whiteBoard, fullBoard, 'W');
+        this.whitePlayerQuadruplets = new PlayerQuadruplets(whiteBoard, fullBoard, 'W');
     }
 
     public Integer getBlackPoints() {
 
-        blackQuadrupletChecker.setAllRowStones();
-        blackQuadrupletChecker.setAllColumnStones();
-        blackQuadrupletChecker.setAllDiagonalStones();
-        blackQuadrupletChecker.setAllAntiDiagonalStones();
+        blackPlayerQuadruplets.findHorizontalQuadruplets();
+        blackPlayerQuadruplets.findVerticalQuadruplets();
+        blackPlayerQuadruplets.findDiagonalQuadruplets();
+        blackPlayerQuadruplets.findAntiDiagonalQuadruplets();
 
         Integer count = 0;
 
@@ -41,10 +41,10 @@ public class PointsCounter {
 
     public Integer getWhitePoints() {
 
-        whiteQuadrupletChecker.setAllRowStones();
-        whiteQuadrupletChecker.setAllColumnStones();
-        whiteQuadrupletChecker.setAllDiagonalStones();
-        whiteQuadrupletChecker.setAllAntiDiagonalStones();
+        whitePlayerQuadruplets.findHorizontalQuadruplets();
+        whitePlayerQuadruplets.findVerticalQuadruplets();
+        whitePlayerQuadruplets.findDiagonalQuadruplets();
+        whitePlayerQuadruplets.findAntiDiagonalQuadruplets();
 
         Integer count = 0;
 

@@ -2,16 +2,16 @@ package checkers;
 
 import exceptions.OccupiedCellException;
 
-public class OccupiedChecker {
+public class EmptyCell {
     
     private Character emptyCellCharacter;
     
-    public OccupiedChecker(Character emptyCellCharacter) {
+    public EmptyCell(Character emptyCellCharacter) {
         this.emptyCellCharacter = emptyCellCharacter;
     }
     
     
-    public void occupiedCheck(Character currentStone) throws OccupiedCellException {
+    public void isEmpty(Character currentStone) throws OccupiedCellException {
         
         if(currentStone != emptyCellCharacter) {
             String message = "Cell is already occupied!";

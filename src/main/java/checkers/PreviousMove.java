@@ -4,18 +4,18 @@ import exceptions.NonAdjacentException;
 
 import java.util.Arrays;
 
-public class AdjacentChecker {
+public class PreviousMove {
     
     private Integer previousRow;
     private Integer previousColumn;
 
     
-    public AdjacentChecker(Integer row, Integer column){
+    public PreviousMove(Integer row, Integer column){
         this.previousColumn = row;
         this.previousRow = column;
     }
     
-    private void setPreviousCoordinates(Integer row, Integer column){
+    private void updatePreviousMove(Integer row, Integer column){
         this.previousRow = row;
         this.previousColumn = column;
     }
@@ -25,7 +25,7 @@ public class AdjacentChecker {
         return (coordinate < previousCoordinate - 1 || coordinate > previousCoordinate + 1 );
     }
     
-    public void adjacentCheck(Integer row, Integer column, Boolean isFreedom) throws NonAdjacentException {
+    public void isAdjacentTo(Integer row, Integer column, Boolean isFreedom) throws NonAdjacentException {
         
         Boolean checkRow = checkCoordinate(row, previousRow);
         Boolean checkColumn = checkCoordinate(column, previousColumn);
@@ -33,6 +33,6 @@ public class AdjacentChecker {
         if((checkRow|| checkColumn) && !isFreedom) {
             String message = "This move must be adjacent to " + Arrays.asList(previousRow, previousColumn).toString() + "!";
             throw new NonAdjacentException(message);
-        } else setPreviousCoordinates(row, column);
+        } else updatePreviousMove(row, column);
     }
 }

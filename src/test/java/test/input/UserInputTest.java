@@ -1,6 +1,6 @@
 package test.input;
 
-import input.InputReader;
+import input.UserInput;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class InputReaderTest {
+public class UserInputTest {
 
     private final List<Integer> firstCell = Arrays.asList(1,1);
     private final Integer boardTenSize = 10;
@@ -19,8 +19,8 @@ public class InputReaderTest {
      public void playFirstCell() {
 
         String stringMove = "1 1";
-        InputReader inputReader = new InputReader(stringMove);
-        List<Integer> firstMove = inputReader.getMove(boardTenSize);
+        UserInput userInput = new UserInput(stringMove);
+        List<Integer> firstMove = userInput.getMove(boardTenSize);
         assertThat(firstMove, is(firstCell));
     }
 
@@ -28,31 +28,31 @@ public class InputReaderTest {
     public void whenNotIntegerInputAnExceptionIsCaught() {
 
         String stringMove = "e 1";
-        InputReader inputReader = new InputReader(stringMove);
-        inputReader.getMove(boardTenSize);
+        UserInput userInput = new UserInput(stringMove);
+        userInput.getMove(boardTenSize);
     }
     
     @Test
     public void whenOutOfBoundsAnExceptionIsCaught() {
         
         String stringMove = "11 1";
-        InputReader inputReader = new InputReader(stringMove);
-        inputReader.getMove(boardTenSize);
+        UserInput userInput = new UserInput(stringMove);
+        userInput.getMove(boardTenSize);
     }
     
     @Test
     public void getMoveWorksWithBoardWithSizeDifferentThanTen() {
 
         String stringMove = "9 1";
-        InputReader inputReader = new InputReader(stringMove);
-        inputReader.getMove(boardEightSize);
+        UserInput userInput = new UserInput(stringMove);
+        userInput.getMove(boardEightSize);
     }
 
     @Test
     public void whenSingleInputAnExceptionIsCaught() {
 
         String stringMove = "1 ";
-        InputReader inputReader = new InputReader(stringMove);
-        inputReader.getMove(boardEightSize);
+        UserInput userInput = new UserInput(stringMove);
+        userInput.getMove(boardEightSize);
     }
 }

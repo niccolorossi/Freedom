@@ -3,11 +3,11 @@ package input;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class StringReader {
+public class InputString {
     
     private String stringRead;
     
-    StringReader (BufferedReader bufferedReader) {
+    InputString(BufferedReader bufferedReader) {
         try {
             stringRead = bufferedReader.readLine();
         } catch(IOException e) {

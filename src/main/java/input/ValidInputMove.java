@@ -5,16 +5,16 @@ import exceptions.OutOfBoundsException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoveInBoundsValidator {
+public class ValidInputMove {
     
     private List<Integer> move;
     
-    MoveInBoundsValidator(Integer boardSize, List<Integer> parsedIntegers){
+    ValidInputMove(Integer boardSize, List<Integer> parsedIntegers){
         try {
-            Integer row = getRow(parsedIntegers);
+            Integer row = currentRow(parsedIntegers);
             ValidateCoordinate validateRow = new ValidateCoordinate(row);
             validateRow.validate(boardSize);
-            Integer column = getColumn(parsedIntegers);
+            Integer column = currentColumn(parsedIntegers);
             ValidateCoordinate validateColumn = new ValidateCoordinate(column);
             validateColumn.validate(boardSize);
             move = new ArrayList<>();
@@ -25,15 +25,15 @@ public class MoveInBoundsValidator {
         }
     }
     
-    private Integer getRow(List<Integer> parsedInteger) {
+    private Integer currentRow(List<Integer> parsedInteger) {
         return parsedInteger.get(0);
     }
 
-    private Integer getColumn(List<Integer> parsedInteger) {
+    private Integer currentColumn(List<Integer> parsedInteger) {
         return parsedInteger.get(1);
     }
     
-    List<Integer> getMove() {
+    List<Integer> currentMove() {
         return this.move;
     }
 }

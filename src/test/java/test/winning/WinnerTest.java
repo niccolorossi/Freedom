@@ -2,7 +2,7 @@ package test.winning;
 
 import org.junit.Before;
 import org.junit.Test;
-import winning.PointsCounter;
+import winning.Points;
 import winning.Winner;
 
 import static org.hamcrest.core.Is.is;
@@ -49,13 +49,13 @@ public class WinnerTest {
 
     @Test
     public void blackScoreis23() {
-        PointsCounter pc = new PointsCounter(fullBoard);
+        Points pc = new Points(fullBoard);
         assertThat(pc.getBlackPoints(), is(23));
     }
 
     @Test
     public void blackScoreIsTheSameAsWhite() {
-        PointsCounter pc = new PointsCounter(fullBoardDraw);
+        Points pc = new Points(fullBoardDraw);
         Integer blackPoints = pc.getBlackPoints();
         Integer whitePoints = pc.getWhitePoints();
 
@@ -64,7 +64,7 @@ public class WinnerTest {
 
     @Test
     public void whiteScoreis15() {
-        PointsCounter pc = new PointsCounter(fullBoard);
+        Points pc = new Points(fullBoard);
         assertThat(pc.getWhitePoints(), is(15));
     }
 

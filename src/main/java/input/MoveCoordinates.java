@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
-public class IntegerParser {
+public class MoveCoordinates {
     
     private List<Integer> parsedIntegers;
     
-    IntegerParser(String inputString) {
+    MoveCoordinates(String inputString) {
         try {
             this.parsedIntegers = Stream.of(inputString.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
         } catch (NumberFormatException e) {
@@ -16,7 +16,7 @@ public class IntegerParser {
         }
     }
     
-    List<Integer> getParsedIntegers() {
+    List<Integer> currentMove() {
         return parsedIntegers;
     }
     
