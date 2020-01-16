@@ -15,7 +15,6 @@ public class BufferAsString {
         try {
             return bufferedReader.readLine();
         } catch(IOException e) {
-            System.out.println(e.getMessage());
             return " ";
         }
     }

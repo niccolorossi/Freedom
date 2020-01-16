@@ -12,7 +12,7 @@ public class MoveCoordinates {
         try {
             this.parsedIntegers = Stream.of(inputString.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Insert two integers separated by whitespace!");
         }
     }
     

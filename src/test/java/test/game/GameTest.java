@@ -49,11 +49,7 @@ public class GameTest {
         gameSizeEightBoard = new Game(8);
     }
 
-    @Test
-    public void testNextPlayer() {
-        gameSizeTenBoard.move(1, 1);
-        assertThat(gameSizeTenBoard.getCurrentStone(), is('B'));
-    }
+ 
     
 
 

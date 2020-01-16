@@ -12,16 +12,18 @@ public class ValidInputMove {
     ValidInputMove(Integer boardSize, List<Integer> parsedIntegers){
         try {
             Integer row = currentRow(parsedIntegers);
-            ValidateCoordinate validateRow = new ValidateCoordinate(row);
+            ValidateCoordinateInBounds validateRow = new ValidateCoordinateInBounds(row);
             validateRow.validate(boardSize);
             Integer column = currentColumn(parsedIntegers);
-            ValidateCoordinate validateColumn = new ValidateCoordinate(column);
+            ValidateCoordinateInBounds validateColumn = new ValidateCoordinateInBounds(column);
             validateColumn.validate(boardSize);
             move = new ArrayList<>();
             move.add(row);
             move.add(column);
-        } catch(OutOfBoundsException | NullPointerException | IndexOutOfBoundsException e) {
+        } catch(OutOfBoundsException | IndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
+        } catch (NullPointerException ignore) {
+            
         }
     }
     

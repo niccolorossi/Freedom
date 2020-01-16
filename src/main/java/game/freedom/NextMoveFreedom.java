@@ -2,11 +2,11 @@ package game.freedom;
 
 import game.Board;
 
-public class FreedomMove {
+public class NextMoveFreedom {
     
     private Boolean isMoveFreedom;
     
-    public FreedomMove(Board board, Integer row, Integer column) {
+    public NextMoveFreedom(Board board, Integer row, Integer column) {
         CloseCellsValues closeCellsValues = new CloseCellsValues(board, row, column);
         isMoveFreedom = !closeCellsValues.getCloseValues().stream().anyMatch(x -> x == board.getEmptyCellCharacter());
     }

@@ -1,6 +1,6 @@
 package test.game;
 
-import game.freedom.FreedomMove;
+import game.freedom.NextMoveFreedom;
 import game.Game;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,7 +51,7 @@ public class FreedomMoveTest {
         gameSizeTenBoard.move(2,1);
         gameSizeTenBoard.move(2,2);
         
-        FreedomMove freedomFinder = new FreedomMove(gameSizeTenBoard.getBoard(), 2,2);
+        NextMoveFreedom freedomFinder = new NextMoveFreedom(gameSizeTenBoard.getBoard(), 2,2);
         assertThat(freedomFinder.isNextFreedom(), is(true) );
 
     }
@@ -66,6 +66,6 @@ public class FreedomMoveTest {
         gameSizeTenBoard.move(2,3);
         gameSizeTenBoard.move(1,3);
 
-        FreedomMove freedomFinder = new FreedomMove(gameSizeTenBoard.getBoard(), 1,3);
+        NextMoveFreedom freedomFinder = new NextMoveFreedom(gameSizeTenBoard.getBoard(), 1,3);
         assertThat(freedomFinder.isNextFreedom(), is(false) );    }
 }

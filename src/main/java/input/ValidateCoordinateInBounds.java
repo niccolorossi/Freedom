@@ -2,11 +2,11 @@ package input;
 
 import exceptions.OutOfBoundsException;
 
-class ValidateCoordinate {
+class ValidateCoordinateInBounds {
     
     private Integer coordinate;
     
-    ValidateCoordinate(Integer coordinate) {
+    ValidateCoordinateInBounds(Integer coordinate) {
         this.coordinate = coordinate;
     }
     

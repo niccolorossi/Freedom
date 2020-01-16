@@ -2,57 +2,61 @@ package game;
 
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
+import game.freedom.NextMoveFreedom;
 
 public class Game {
     
     private Board board;
     private BoardAsString boardAsString;
-    private Character currentStone;
-    private Mover mover;
-    private Integer moveCounter;
-    private Integer maxNumberOfMoves;
+        
+    private Boolean isFreedom;
+    private Boolean isFirstMove;
     
+    private Integer previousRow;
+    private Integer previousColumn;
+
     public Game(int size) {
         this.board = new Board(size);
-        this.currentStone = 'W';
-        this.mover = new Mover(board);
-        this.moveCounter = 0;
-        this.maxNumberOfMoves = size*size;
+        this.isFreedom = false;
+        this.isFirstMove = true;
         this.boardAsString = new BoardAsString();
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return boardAsString.parsedBoard(board);
     }
-
-    public void move(Integer row, Integer column) {
-        try {
-
-            mover.move(board, row, column, currentStone);
-            moveCounter ++;
-            currentStone = nextPlayer();
-
-        }catch ( NonAdjacentException | OccupiedCellException e) {
-            System.out.println(e.getMessage());
+    
+    public void move(Character newStone, Integer row, Integer column) 
+    throws NonAdjacentException, OccupiedCellException {
+        Move move;
+        
+        if(isFirstMove) {
+            move = new FirstMove(row, column);
+        } else if(isFreedom) {
+            move = new FreedomMove(row, column, newStone);
+        } else {
+            move = new RegularMove(row, column, previousRow, previousColumn,
+                                    newStone, '_', board.getStone(row, column));
         }
+        move.setMove(board);
     }
     
-    private Character nextPlayer() {
-        if(currentStone == 'B') {
-           return 'W'; 
-        } else return 'B';
+    public void isNextMoveFreedom(Integer row, Integer column) {
+        NextMoveFreedom nextMoveFreedom = new NextMoveFreedom(board, row, column);
+        this.isFreedom = nextMoveFreedom.isNextFreedom();
     }
     
-    public Character getCurrentStone() {
-        return this.currentStone;
+    public void setPreviousCoordinates(Integer row, Integer column) {
+        this.previousRow = row;
+        this.previousColumn = column;
+    }
+    
+    public void setFirstMove() {
+        this.isFirstMove = false;
     }
 
-    public Board getBoard(){
+    public Board getBoard() {
         return board;
     }
-    
-    public Integer getMoveCounter() {return moveCounter;}
-    
-    public Integer getMaxNumberOfMoves() {return maxNumberOfMoves;}
 }
