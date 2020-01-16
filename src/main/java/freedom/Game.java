@@ -27,7 +27,7 @@ public class Game {
             mover.move(board, row, column, currentStone);
             currentStone = nextPlayer();
 
-        }catch (OutOfBoundsException | NonAdjacentException | OccupiedCellException e) {
+        }catch ( NonAdjacentException | OccupiedCellException e) {
             System.out.println(e.getMessage());
         }
     }

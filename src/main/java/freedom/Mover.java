@@ -19,9 +19,7 @@ public class Mover {
         
     }
 
-    public void move(Board board, Integer row, Integer column, Character currentStone) throws OutOfBoundsException, NonAdjacentException, OccupiedCellException {
-
-      
+    public void move(Board board, Integer row, Integer column, Character currentStone) throws  NonAdjacentException, OccupiedCellException {
         Character cellStone = board.getStone(row, column);
         moveValidator.validateMove(row, column,cellStone, isFreedom);
         board.setStone(currentStone, row, column);
