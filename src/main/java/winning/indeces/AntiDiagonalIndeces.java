@@ -1,12 +1,12 @@
-package winning.quadruplet;
+package winning.indeces;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AntiDiagonalQuadruplet extends Quadruplet {
+public class AntiDiagonalIndeces extends Indeces {
     
-    public AntiDiagonalQuadruplet(Integer beginRow, Integer beginColumn) {
+    public AntiDiagonalIndeces(Integer beginRow, Integer beginColumn) {
         super(beginRow, beginColumn);
     }
     

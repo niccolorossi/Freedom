@@ -1,23 +1,23 @@
-package winning.quadruplet;
+package winning.indeces;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DiagonalQuadruplet extends Quadruplet {
+public class HorizontalIndeces extends Indeces {
     
-    public DiagonalQuadruplet( Integer beginRow, Integer beginColumn) {
+    public HorizontalIndeces(Integer beginRow, Integer beginColumn) {
 
         super(beginRow, beginColumn);
+
     }
-    
+
     @Override
     public List<List<Integer>> getIndices() {
         List<List<Integer>> toReturn = new ArrayList<>();
-        for (int index = 0; index < 4; index++) {
-            toReturn.add(Arrays.asList(beginRow+index, beginColumn+index));
+        for(int column = beginColumn; column < beginColumn+4; column++) {
+            toReturn.add(Arrays.asList(beginRow, column));
         }
         return toReturn;
     }
-    
 }

@@ -1,13 +1,13 @@
-package winning.quadruplet;
+package winning.indeces;
 
 import java.util.List;
 
-public abstract class Quadruplet {
+public abstract class Indeces {
     
     Integer beginRow;
     Integer beginColumn;
      
-    Quadruplet(Integer beginRow, Integer beginColumn) {
+    Indeces(Integer beginRow, Integer beginColumn) {
         this.beginRow = beginRow;
         this.beginColumn = beginColumn;
     }

@@ -1,60 +1,54 @@
 package winning;
 
-import winning.quadruplet.AntiDiagonalQuadruplet;
-import winning.quadruplet.DiagonalQuadruplet;
-import winning.quadruplet.HorizontalQuadruplet;
-import winning.quadruplet.VerticalQuadruplet;
+import winning.indeces.AntiDiagonalIndeces;
+import winning.indeces.DiagonalIndeces;
+import winning.indeces.HorizontalIndeces;
+import winning.indeces.VerticalIndeces;
+import winning.limits.AntiDiagonalLimits;
+import winning.limits.DiagonalLimits;
+import winning.limits.HorizontalLimits;
+import winning.limits.VerticalLimits;
+import winning.quadruplets.DiagonalQuadruplets;
+import winning.quadruplets.HorizontalQuadruplets;
+import winning.quadruplets.VerticalQuadruplets;
 import winning.rules.AntiDiagonalRules;
 import winning.rules.DiagonalRules;
-import winning.rules.HorizontalRules;
-import winning.rules.VerticalRules;
+
+import java.util.List;
 
 public class PlayerQuadruplets {
     
     private LiveStonesBoard liveStonesBoard;
     private Character[][] fullBoard;
-    private Integer boardSize;
-    
     private Character currentStone;
-    
-    private Integer beginColOfLeftmostHorizontalQuadruplets ;
-    private Integer beginColOfRightmostHorizontalQuadruplets;
 
-    private Integer beginRowOfUppermostVerticalQuadruplets;
-    private Integer beginRowOfLowermostVerticalQuadruplets;
-    
-    private Integer beginRowOfUppermostDiagonalQuadruplets;
-    private Integer beginColOfUppermostDiagonalQuadruplets;
-    private Integer beginRowOfLowermostDiagonalQuadruplets;
-    private Integer beginColOfLowermostDiagonalQuadruplets;
+    private HorizontalQuadruplets horizontalQuadruplets;
+    private VerticalQuadruplets verticalQuadruplets;
+    private DiagonalQuadruplets diagonalQuadruplets;
 
-    private Integer beginRowOfLowermostAntiDiagonalQuadruplets;
-    private Integer beginColOfLowermostAntiDiagonalQuadruplets;
-    private Integer beginRowOfUppermostAntiDiagonalQuadruplets;
-    private Integer beginColOfUppermostAntiDiagonalQuadruplets;
+
+    private HorizontalLimits horizontalLimits;
+    private VerticalLimits verticalLimits;
+    private DiagonalLimits diagonalLimits;
+    private AntiDiagonalLimits antiDiagonalLimits;
+    
+
 
 
     public PlayerQuadruplets(LiveStonesBoard liveStonesBoard, Character[][] fullBoard, Character currentStone) {
 
         this.liveStonesBoard = liveStonesBoard;
         this.fullBoard = fullBoard;
-        this.boardSize = liveStonesBoard.getCurrentBoard().length;
         this.currentStone = currentStone;
+        this.horizontalQuadruplets = new HorizontalQuadruplets(fullBoard);
+        this.verticalQuadruplets = new VerticalQuadruplets(fullBoard);
+        this.diagonalQuadruplets = new DiagonalQuadruplets(fullBoard);
 
-        this.beginColOfLeftmostHorizontalQuadruplets
-                = this.beginRowOfUppermostDiagonalQuadruplets
-                = this.beginRowOfUppermostVerticalQuadruplets
-                = this.beginColOfUppermostDiagonalQuadruplets
-                = this.beginColOfLowermostAntiDiagonalQuadruplets = 0;
+        this.verticalLimits = new VerticalLimits(fullBoard[0].length);
+        this.diagonalLimits = new DiagonalLimits(fullBoard[0].length);
+        this.antiDiagonalLimits = new AntiDiagonalLimits(fullBoard[0].length);
 
-        this.beginColOfRightmostHorizontalQuadruplets
-                = this.beginRowOfLowermostVerticalQuadruplets
-                = this.beginRowOfLowermostDiagonalQuadruplets
-                = this.beginColOfLowermostDiagonalQuadruplets
-                = this.beginColOfUppermostAntiDiagonalQuadruplets = fullBoard[0].length - 4;
 
-        this.beginRowOfLowermostAntiDiagonalQuadruplets = fullBoard[0].length - 1;
-        this.beginRowOfUppermostAntiDiagonalQuadruplets = 3;
 
 
 
@@ -63,38 +57,30 @@ public class PlayerQuadruplets {
 
 
     public void findHorizontalQuadruplets() {
-        HorizontalRules horizontalRules = new HorizontalRules(beginColOfLeftmostHorizontalQuadruplets,
-                                                              beginColOfRightmostHorizontalQuadruplets);
 
-        for(int row=0; row<boardSize; row++) {
+        List<HorizontalIndeces> allHorizontal = horizontalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
-            for(int col=beginColOfLeftmostHorizontalQuadruplets; col<=beginColOfRightmostHorizontalQuadruplets; col++) {
-
-                if(horizontalRules.isValid(fullBoard, row, col, currentStone)
-                   && horizontalRules.isCandidate(fullBoard, row, col)) {
-
-                    liveStonesBoard.updateLiveStones(new HorizontalQuadruplet(row,col));
-                }
-            }
-      
+        for(int quadruplet = 0; quadruplet < allHorizontal.size(); quadruplet ++) {
+            liveStonesBoard.updateLiveStones(allHorizontal.get(quadruplet));
         }
+
+
     }
     
     public void findVerticalQuadruplets() {
-        VerticalRules verticalRules = new VerticalRules(beginRowOfUppermostVerticalQuadruplets,
-                                                        beginRowOfLowermostVerticalQuadruplets);         
-        for(int col=0; col<boardSize; col++) {
-            for(int row=beginRowOfUppermostVerticalQuadruplets; row<=beginRowOfLowermostVerticalQuadruplets; row++) {
 
-                if(verticalRules.isValid(fullBoard, row, col, currentStone) && verticalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.updateLiveStones(new VerticalQuadruplet(row,col));
-                }
-            }
+        List<VerticalIndeces> allVertical = verticalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
+        for(int quadruplet = 0; quadruplet < allVertical.size(); quadruplet ++) {
+            liveStonesBoard.updateLiveStones(allVertical.get(quadruplet));
         }
     }
 
     public void findDiagonalQuadruplets() {
+        Integer beginRowOfUppermostDiagonalQuadruplets = diagonalLimits.beginRowOfUppermostDiagonalQuadruplets();
+        Integer beginColOfUppermostDiagonalQuadruplets = diagonalLimits.beginColOfUppermostDiagonalQuadruplets();
+        Integer beginRowOfLowermostDiagonalQuadruplets = diagonalLimits.beginRowOfLowermostDiagonalQuadruplets();
+        Integer beginColOfLowermostDiagonalQuadruplets = diagonalLimits.beginColOfLowermostDiagonalQuadruplets();
 
         DiagonalRules diagonalRules = new DiagonalRules(beginRowOfUppermostDiagonalQuadruplets,
                                                         beginColOfUppermostDiagonalQuadruplets,
@@ -105,13 +91,19 @@ public class PlayerQuadruplets {
             for(int col=beginColOfUppermostDiagonalQuadruplets; col<=beginColOfLowermostDiagonalQuadruplets; col++) {
 
                 if(diagonalRules.isValid(fullBoard, row, col, currentStone) && diagonalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.updateLiveStones(new DiagonalQuadruplet(row,col));
+                    liveStonesBoard.updateLiveStones(new DiagonalIndeces(row,col));
                 }
             }
         }
     }
 
     public void findAntiDiagonalQuadruplets() {
+
+        Integer beginRowOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginRowOfLowermostAntiDiagonalQuadruplets();
+        Integer beginColOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginColOfLowermostAntiDiagonalQuadruplets();
+        Integer beginRowOfUppermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginRowOfUppermostAntiDiagonalQuadruplets();
+        Integer beginColOfUppermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginColOfUppermostAntiDiagonalQuadruplets();
+
         AntiDiagonalRules antiDiagonalRules = new AntiDiagonalRules(beginRowOfLowermostAntiDiagonalQuadruplets,
                                                                     beginColOfLowermostAntiDiagonalQuadruplets,
                                                                     beginRowOfUppermostAntiDiagonalQuadruplets,
@@ -123,7 +115,7 @@ public class PlayerQuadruplets {
 
                 if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
                         && antiDiagonalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.updateLiveStones(new AntiDiagonalQuadruplet(row,col));
+                    liveStonesBoard.updateLiveStones(new AntiDiagonalIndeces(row,col));
                 }
             }
         }

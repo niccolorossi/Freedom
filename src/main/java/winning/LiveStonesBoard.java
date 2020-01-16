@@ -1,6 +1,6 @@
 package winning;
 
-import winning.quadruplet.Quadruplet;
+import winning.indeces.Indeces;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -21,8 +21,8 @@ public class LiveStonesBoard {
         return currentBoard;
     }
     
-    void updateLiveStones(Quadruplet quadruplet) {
-        List<List<Integer>> indicesList = quadruplet.getIndices();
+    void updateLiveStones(Indeces indeces) {
+        List<List<Integer>> indicesList = indeces.getIndices();
         for(int i=0; i<4; i++) {
             List<Integer> thisCell = indicesList.get(i);
             Integer row = thisCell.get(0);
