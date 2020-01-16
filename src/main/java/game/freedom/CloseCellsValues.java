@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class CloseCells {
+public class CloseCellsValues {
     
     private List<Character> closeValues;
     
-    CloseCells(Board board, Integer row, Integer column) {
+    CloseCellsValues(Board board, Integer row, Integer column) {
 
         CloseCellsIndexes closeCellsIndexes = new CloseCellsIndexes(board.getBoardSize(), row, column);
 

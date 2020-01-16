@@ -1,39 +1,37 @@
 package game.freedom;
 
 public class CloseCellsIndexes {
+    
     private Integer leftColumnIndex;
     private Integer rightColumnIndex;
     private Integer lowerRowIndex;
     private Integer upperRowIndex;
     
-    CloseCellsIndexes(Integer boardSize, Integer row, Integer column){
+    CloseCellsIndexes(Integer boardSize, Integer row, Integer column) {
         if(row == 1) {
             upperRowIndex = row;
-        }
-        else {
+        }  else {
             upperRowIndex = row-1;
         }
         
-        if(column == 1){
+        if(column == 1) {
             leftColumnIndex = column;
-        }
-        else {
+        }  else {
             leftColumnIndex = column-1;
         }
         
         if(row == boardSize){
             lowerRowIndex = row;
-        }
-        else{
+        } else {
             lowerRowIndex = row+1;
         }
         
-        if(column == boardSize){
+        if(column == boardSize) {
             rightColumnIndex = column;
-        }
-        else {
+        }  else {
             rightColumnIndex = column+1;
         }
+        
     }
     
     Integer getLeftColumnIndex() {
