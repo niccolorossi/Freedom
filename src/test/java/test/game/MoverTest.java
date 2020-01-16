@@ -50,18 +50,6 @@ public class MoverTest {
     }
 
     @Test
-    public void whenXOutsideBoardThenOutOfBoundsException() {
-        gameSizeTenBoard.move(11,1);
-        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
-    }
-
-    @Test
-    public void whenYOutsideBoardThenOutOfBoundsException() {
-        gameSizeTenBoard.move(1,11);
-        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
-    }
-
-    @Test
     public void checkFirstMove() {
         gameSizeTenBoard.move(1,1);
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
