@@ -22,17 +22,12 @@ public class DiagonalQuadruplets {
     }
 
     public List<DiagonalIndeces> findQuadruplets(Character[][] fullBoard, Character currentStone) {
-        Integer boardSize = fullBoard[0].length;
+
         ArrayList<DiagonalIndeces> allDiagonals = new ArrayList<>();
         Integer beginRowOfUppermostDiagonalQuadruplets = diagonalLimits.beginRowOfUppermostDiagonalQuadruplets();
         Integer beginColOfUppermostDiagonalQuadruplets = diagonalLimits.beginColOfUppermostDiagonalQuadruplets();
         Integer beginRowOfLowermostDiagonalQuadruplets = diagonalLimits.beginRowOfLowermostDiagonalQuadruplets();
         Integer beginColOfLowermostDiagonalQuadruplets = diagonalLimits.beginColOfLowermostDiagonalQuadruplets();
-
-        DiagonalRules diagonalRules = new DiagonalRules(beginRowOfUppermostDiagonalQuadruplets,
-                beginColOfUppermostDiagonalQuadruplets,
-                beginRowOfLowermostDiagonalQuadruplets,
-                beginColOfLowermostDiagonalQuadruplets);
 
         for(int row=beginRowOfUppermostDiagonalQuadruplets; row<=beginRowOfLowermostDiagonalQuadruplets; row++) {
             for(int col=beginColOfUppermostDiagonalQuadruplets; col<=beginColOfLowermostDiagonalQuadruplets; col++) {

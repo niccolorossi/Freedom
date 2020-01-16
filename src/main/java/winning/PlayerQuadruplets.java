@@ -16,6 +16,7 @@ public class PlayerQuadruplets {
     private LiveStonesBoard liveStonesBoard;
     private Character[][] fullBoard;
     private Character currentStone;
+    private Boolean[][] currentPlayerStonesAlive;
 
     private HorizontalQuadruplets horizontalQuadruplets;
     private VerticalQuadruplets verticalQuadruplets;
