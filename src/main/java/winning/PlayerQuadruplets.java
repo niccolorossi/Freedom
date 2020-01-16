@@ -12,7 +12,6 @@ import winning.quadruplets.DiagonalQuadruplets;
 import winning.quadruplets.HorizontalQuadruplets;
 import winning.quadruplets.VerticalQuadruplets;
 import winning.rules.AntiDiagonalRules;
-import winning.rules.DiagonalRules;
 
 import java.util.List;
 
@@ -77,24 +76,12 @@ public class PlayerQuadruplets {
     }
 
     public void findDiagonalQuadruplets() {
-        Integer beginRowOfUppermostDiagonalQuadruplets = diagonalLimits.beginRowOfUppermostDiagonalQuadruplets();
-        Integer beginColOfUppermostDiagonalQuadruplets = diagonalLimits.beginColOfUppermostDiagonalQuadruplets();
-        Integer beginRowOfLowermostDiagonalQuadruplets = diagonalLimits.beginRowOfLowermostDiagonalQuadruplets();
-        Integer beginColOfLowermostDiagonalQuadruplets = diagonalLimits.beginColOfLowermostDiagonalQuadruplets();
+        List<DiagonalIndeces> allDiagonal = diagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
-        DiagonalRules diagonalRules = new DiagonalRules(beginRowOfUppermostDiagonalQuadruplets,
-                                                        beginColOfUppermostDiagonalQuadruplets,
-                                                        beginRowOfLowermostDiagonalQuadruplets,
-                                                        beginColOfLowermostDiagonalQuadruplets);
-
-        for(int row=beginRowOfUppermostDiagonalQuadruplets; row<=beginRowOfLowermostDiagonalQuadruplets; row++) {
-            for(int col=beginColOfUppermostDiagonalQuadruplets; col<=beginColOfLowermostDiagonalQuadruplets; col++) {
-
-                if(diagonalRules.isValid(fullBoard, row, col, currentStone) && diagonalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.updateLiveStones(new DiagonalIndeces(row,col));
-                }
-            }
+        for(int quadruplet = 0; quadruplet < allDiagonal.size(); quadruplet ++) {
+            liveStonesBoard.updateLiveStones(allDiagonal.get(quadruplet));
         }
+
     }
 
     public void findAntiDiagonalQuadruplets() {
