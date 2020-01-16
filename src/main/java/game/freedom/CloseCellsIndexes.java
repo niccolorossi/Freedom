@@ -35,6 +35,7 @@ public class CloseCellsIndexes {
     }
     
     Integer getLeftColumnIndex() {
+
         return leftColumnIndex;
     }
     Integer getRightColumnIndex() {

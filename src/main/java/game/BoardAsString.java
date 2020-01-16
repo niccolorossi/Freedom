@@ -3,9 +3,9 @@ package game;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-class BoardPrinter {
-    
-    static String boardPrinter(Board board) {
+class BoardAsString {
+
+    public String parsedBoard(Board board) {
 
         Character[][] currentBoard = board.getCurrentBoard();
         StringBuilder toReturn = new StringBuilder();

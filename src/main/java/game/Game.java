@@ -6,6 +6,7 @@ import exceptions.OccupiedCellException;
 public class Game {
     
     private Board board;
+    private BoardAsString boardAsString;
     private Character currentStone;
     private Mover mover;
     private Integer moveCounter;
@@ -17,11 +18,12 @@ public class Game {
         this.mover = new Mover(board);
         this.moveCounter = 0;
         this.maxNumberOfMoves = size*size;
+        this.boardAsString = new BoardAsString();
     }
 
     @Override
     public String toString(){
-        return BoardPrinter.boardPrinter(board);
+        return boardAsString.parsedBoard(board);
     }
 
     public void move(Integer row, Integer column) {

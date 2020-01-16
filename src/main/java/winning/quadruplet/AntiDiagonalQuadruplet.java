@@ -7,7 +7,6 @@ import java.util.List;
 public class AntiDiagonalQuadruplet extends Quadruplet {
     
     public AntiDiagonalQuadruplet(Integer beginRow, Integer beginColumn) {
-
         super(beginRow, beginColumn);
     }
     

@@ -8,7 +8,7 @@ public class FreedomMove {
     
     public FreedomMove(Board board, Integer row, Integer column) {
         CloseCellsValues closeCellsValues = new CloseCellsValues(board, row, column);
-        isMoveFreedom = !closeCellsValues.getCloseValues().stream().anyMatch(x -> x == board.getEmptyCellCharacter());
+        isMoveFreedom = !closeCellsValues.getCloseValues(board).stream().anyMatch(x -> x == board.getEmptyCellCharacter());
     }
 
     public Boolean isNextFreedom() {

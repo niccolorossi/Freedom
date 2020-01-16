@@ -21,7 +21,7 @@ public class LiveStonesBoard {
         return currentBoard;
     }
     
-    void setStones(Quadruplet quadruplet) {
+    void updateLiveStones(Quadruplet quadruplet) {
         List<List<Integer>> indicesList = quadruplet.getIndices();
         for(int i=0; i<4; i++) {
             List<Integer> thisCell = indicesList.get(i);

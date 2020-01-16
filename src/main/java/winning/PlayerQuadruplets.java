@@ -73,7 +73,7 @@ public class PlayerQuadruplets {
                 if(horizontalRules.isValid(fullBoard, row, col, currentStone)
                    && horizontalRules.isCandidate(fullBoard, row, col)) {
 
-                    liveStonesBoard.setStones(new HorizontalQuadruplet(row,col));
+                    liveStonesBoard.updateLiveStones(new HorizontalQuadruplet(row,col));
                 }
             }
       
@@ -87,7 +87,7 @@ public class PlayerQuadruplets {
             for(int row=beginRowOfUppermostVerticalQuadruplets; row<=beginRowOfLowermostVerticalQuadruplets; row++) {
 
                 if(verticalRules.isValid(fullBoard, row, col, currentStone) && verticalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.setStones(new VerticalQuadruplet(row,col));
+                    liveStonesBoard.updateLiveStones(new VerticalQuadruplet(row,col));
                 }
             }
 
@@ -105,7 +105,7 @@ public class PlayerQuadruplets {
             for(int col=beginColOfUppermostDiagonalQuadruplets; col<=beginColOfLowermostDiagonalQuadruplets; col++) {
 
                 if(diagonalRules.isValid(fullBoard, row, col, currentStone) && diagonalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.setStones(new DiagonalQuadruplet(row,col));
+                    liveStonesBoard.updateLiveStones(new DiagonalQuadruplet(row,col));
                 }
             }
         }
@@ -123,7 +123,7 @@ public class PlayerQuadruplets {
 
                 if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
                         && antiDiagonalRules.isCandidate(fullBoard, row, col)) {
-                    liveStonesBoard.setStones(new AntiDiagonalQuadruplet(row,col));
+                    liveStonesBoard.updateLiveStones(new AntiDiagonalQuadruplet(row,col));
                 }
             }
         }
