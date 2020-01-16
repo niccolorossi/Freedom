@@ -8,11 +8,15 @@ public class Game {
     private Board board;
     private Character currentStone;
     private Mover mover;
-
+    private Integer moveCounter;
+    private Integer maxNumberOfMoves;
+    
     public Game(int size) {
         this.board = new Board(size);
         this.currentStone = 'W';
         this.mover = new Mover(board);
+        this.moveCounter = 0;
+        this.maxNumberOfMoves = size*size;
     }
 
     @Override
@@ -24,6 +28,7 @@ public class Game {
         try {
 
             mover.move(board, row, column, currentStone);
+            moveCounter ++;
             currentStone = nextPlayer();
 
         }catch ( NonAdjacentException | OccupiedCellException e) {
@@ -44,4 +49,8 @@ public class Game {
     public Board getBoard(){
         return board;
     }
+    
+    public Integer getMoveCounter() {return moveCounter;}
+    
+    public Integer getMaxNumberOfMoves() {return maxNumberOfMoves;}
 }

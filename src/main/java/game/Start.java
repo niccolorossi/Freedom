@@ -22,7 +22,7 @@ public class Start implements Runnable {
         System.out.println("Players must enter the coordinate of the move");
         System.out.println("White player start");
 
-        for(int moveNumber = 1; moveNumber < 99; moveNumber++ ){
+        while(game.getMoveCounter() < game.getMaxNumberOfMoves()){
             
             Scanner in = new Scanner(System.in);
             String inputString = in.nextLine();
