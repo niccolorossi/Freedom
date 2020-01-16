@@ -12,11 +12,6 @@ public class UserInput {
         this.bufferedReader = bufferedReaderInitializer.getBufferedReader();
     }
 
-    public UserInput(InputStream inputStream) {
-        BufferedReaderInitializer bufferedReaderInitializer = new BufferedReaderInitializer(inputStream);
-        this.bufferedReader = bufferedReaderInitializer.getBufferedReader();
-    }
-    
     private String asString() {
         InputString inputString = new InputString(bufferedReader);
         return inputString.getStringRead();

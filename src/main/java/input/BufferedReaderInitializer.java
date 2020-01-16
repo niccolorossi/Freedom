@@ -11,12 +11,7 @@ class BufferedReaderInitializer {
         InputStreamReader inputStreamReader = new InputStreamReader(stringStream);
         this.bufferedReader = new BufferedReader(inputStreamReader);
     }
-    
-    BufferedReaderInitializer(InputStream inputStream) {
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-        this.bufferedReader = new BufferedReader(inputStreamReader);
-    }
-    
+
     BufferedReader getBufferedReader() {
         return this.bufferedReader;
     }
