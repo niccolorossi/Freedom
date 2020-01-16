@@ -1,4 +1,4 @@
-package freedom;
+package game;
 
 import java.util.Arrays;
 import java.util.function.Consumer;

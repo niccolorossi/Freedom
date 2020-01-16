@@ -1,10 +1,10 @@
-package freedom;
+package game;
 
+import game.freedom.FreedomMove;
 import input.MoveInBoundsValidator;
 import checkers.MoveValidator;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
-import exceptions.OutOfBoundsException;
 
 public class Mover {
 
@@ -23,7 +23,7 @@ public class Mover {
         Character cellStone = board.getStone(row, column);
         moveValidator.validateMove(row, column,cellStone, isFreedom);
         board.setStone(currentStone, row, column);
-        FreedomFinder freedomFinder = new FreedomFinder(board,row,column);
+        FreedomMove freedomFinder = new FreedomMove(board,row,column);
         isFreedom = freedomFinder.isNextFreedom();
     }
 }

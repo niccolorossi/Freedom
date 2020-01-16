@@ -1,8 +1,7 @@
-package freedom;
+package game;
 
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
-import exceptions.OutOfBoundsException;
 
 public class Game {
     

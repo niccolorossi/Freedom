@@ -16,6 +16,6 @@ The objective of Freedom is to have more "live" stones at the end of the game, t
 ![alt text](https://cf.geekdo-images.com/imagepage/img/nbLF1l1ef8d43TWnVNLzkKxcLcU=/fit-in/900x600/filters:no_upscale()/pic1017751.png)
 
 ### Play
-A game begins with an empty board. Each player has an allocated color: White and Black. White plays first, putting one white stone anywhere on the board. After this move players take turns placing their stones on empty cells adjacent to the last opponent's stone. If all cells adjacent to the last opponent's stone are occupied then the player gets the right ("freedom") to place his stone on any empty cell of the board. The game ends when the board is filled with stones. The last player has the right to pass on his last turn (and leave the last cell empty) if placing his stone reduces his score.
+A game begins with an empty board. Each player has an allocated color: White and Black. White plays first, putting one white stone anywhere on the board. After this move players take turns placing their stones on empty cells adjacent to the last opponent's stone. If all cells adjacent to the last opponent's stone are occupied then the player gets the right ("game") to place his stone on any empty cell of the board. The game ends when the board is filled with stones. The last player has the right to pass on his last turn (and leave the last cell empty) if placing his stone reduces his score.
 
 

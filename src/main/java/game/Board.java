@@ -1,8 +1,8 @@
-package freedom;
+package game;
 
 import java.util.stream.IntStream;
 
-class Board {
+public class Board {
     
     private Character[][] currentBoard;
     private char emptyCellCharacter = '_';
@@ -16,12 +16,12 @@ class Board {
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));
     }
     
-    Character[][] getCurrentBoard() {
+    public Character[][] getCurrentBoard() {
 
         return this.currentBoard;
     }
     
-    Character getStone(Integer row, Integer column) {
+    public Character getStone(Integer row, Integer column) {
 
         return currentBoard[row-1][column-1];
     }
@@ -31,11 +31,13 @@ class Board {
         currentBoard[row-1][column-1] = symbol;
     }
 
-    Character getEmptyCellCharacter() {
+    public Character getEmptyCellCharacter() {
 
         return emptyCellCharacter;
     }
     
-    Integer getBoardSize(){return currentBoard[0].length;}
+    public Integer getBoardSize() {
+        return currentBoard[0].length;
+    }
     
 }

@@ -1,4 +1,4 @@
-package freedom;
+package game.freedom;
 
 public class CloseCellsIndexes {
     private Integer leftColumnIndex;

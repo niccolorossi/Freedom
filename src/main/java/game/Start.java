@@ -1,6 +1,5 @@
-package freedom;
+package game;
 
-import com.sun.java.swing.action.AboutAction;
 import input.InputReader;
 
 import java.util.List;
