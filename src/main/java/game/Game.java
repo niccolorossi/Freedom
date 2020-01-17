@@ -9,47 +9,49 @@ import java.util.Scanner;
 
 public class Game implements Runnable {
     
-    private GameState game;
+    private GameStatus gameStatus;
     private Integer boardSize;
     
     public Game(Integer boardSize) {
         this.boardSize = boardSize; 
-        this.game = new GameState(boardSize);
+        this.gameStatus = new GameStatus(boardSize);
+    }
+    
+    private Integer numberOfMoves() {
+        return this.boardSize*this.boardSize;
+    }
+    
+    private Character currentPlayer() {
+        return gameStatus.currentPlayer();
     }
 
     @Override
     public void run() {
         System.out.println("Players must enter the coordinate of the move!");
-
-        for(int moveNumber = 1; moveNumber < 99; moveNumber++) {
-            System.out.println("Player " + game.currentPlayer() + ", it's your turn!");
-            
+        Integer totalNumberOfMoves = numberOfMoves();
+        for(int turnNumber = 1; turnNumber <= totalNumberOfMoves - 1; turnNumber++) {
             turn();
-            
-            System.out.println(game.toString());
+            System.out.println(gameStatus.toString());
         }
-        
     }
     
-    private void turn(){
+    private void turn() {
 
-        Scanner in = new Scanner(System.in);
-        UserInput userInput;
-        List<Integer> coordinate;
+        Character currentPlayer = this.currentPlayer();
+        System.out.println("Player " + currentPlayer + ", it's your turn!");
         while(true) {
             try {
+                Scanner in = new Scanner(System.in);
                 String inputString = in.nextLine();
-                userInput = new UserInput(inputString);
-                coordinate = userInput.getMove(boardSize);
-                game.updateState(coordinate.get(0), coordinate.get(1));
+                UserInput userInput = new UserInput(inputString);
+                List<Integer> coordinate = userInput.getMove(boardSize);
+                gameStatus.updateStatus(coordinate.get(0), coordinate.get(1));
                 break;
             } catch(NonAdjacentException | OccupiedCellException e) {
                 System.out.println(e.getMessage());
             } catch(NullPointerException ignored) {
-
             }
         }
-        
     }
     
 }

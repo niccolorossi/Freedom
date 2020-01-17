@@ -1,6 +1,6 @@
 package test.game;
 
-import game.GameState;
+import game.GameStatus;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,13 +28,13 @@ public class BoardTest {
             "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" ;
 
-    private GameState gameSizeTenBoard;
-    private GameState gameSizeEightBoard;
+    private GameStatus gameSizeTenBoard;
+    private GameStatus gameSizeEightBoard;
 
     @Before
     public void startGame() {
-        gameSizeTenBoard = new GameState(10);
-        gameSizeEightBoard = new GameState(8);
+        gameSizeTenBoard = new GameStatus(10);
+        gameSizeEightBoard = new GameStatus(8);
     }
 
     @Test

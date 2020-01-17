@@ -1,5 +1,8 @@
 package input;
 
+import exceptions.BoardTooSmall;
+import game.Board;
+
 import java.io.*;
 import java.util.List;
 
@@ -27,5 +30,13 @@ public class UserInput {
         List<Integer> moveCoordinates = inputCoordinates(readString);
         ValidInputMove validInputMove = new ValidInputMove(boardSize, moveCoordinates);
         return validInputMove.currentMove();
+    }
+
+    public Integer getBoardSize() throws BoardTooSmall {
+        String stringSize = this.asString();
+        Integer boardSize = Integer.parseInt(stringSize);
+        if(boardSize < 4) {
+            throw new BoardTooSmall("Board size must be greater than or equal to 4!");
+        } else return boardSize;
     }
 }

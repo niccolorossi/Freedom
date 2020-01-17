@@ -1,5 +1,6 @@
 package test.input;
 
+import exceptions.BoardTooSmall;
 import input.UserInput;
 import org.junit.Test;
 
@@ -8,6 +9,8 @@ import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserInputTest {
 
@@ -55,4 +58,24 @@ public class UserInputTest {
         UserInput userInput = new UserInput(stringMove);
         userInput.getMove(boardEightSize);
     }
-}
+    
+    @Test
+    public void testUserInputForGettingBoardSize() throws BoardTooSmall {
+        
+        String stringSize = "10";
+        UserInput userInput = new UserInput(stringSize);
+        assertThat(userInput.getBoardSize(), is(10));
+    }
+    
+    @Test
+    public void testWhenBoardSizeIsLessThanFourException() {
+        
+        String stringSize = "3";
+        UserInput userInput = new UserInput(stringSize);
+        BoardTooSmall thrown = assertThrows(BoardTooSmall.class,
+                            () -> userInput.getBoardSize());
+                            
+         assertTrue(thrown.getMessage().contains("Board size must be greater than or equal to 4!"));
+        }
+    }
+

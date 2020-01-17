@@ -4,7 +4,7 @@ import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import game.freedom.NextMoveFreedom;
 
-public class GameState {
+public class GameStatus {
     
     private Board board;
     private BoardAsString boardAsString;
@@ -13,7 +13,7 @@ public class GameState {
     private Integer previousColumn;
     private Character newStone;
     
-    public GameState(int size) {
+    public GameStatus(int size) {
         this.board = new Board(size);
         this.newStone = 'W';
         this.isFreedom = true;
@@ -25,7 +25,7 @@ public class GameState {
         return boardAsString.parsedBoard(board);
     }
     
-    public void updateState( Integer row, Integer column) 
+    public void updateStatus(Integer row, Integer column) 
     throws NonAdjacentException, OccupiedCellException {
         Move move;
         if(isFreedom) {
