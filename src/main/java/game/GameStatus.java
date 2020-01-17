@@ -12,12 +12,14 @@ public class GameStatus {
     private Integer previousRow;
     private Integer previousColumn;
     private Character newStone;
+    private Boolean isLastMove;
     
     public GameStatus(int size) {
         this.board = new Board(size);
         this.newStone = 'W';
         this.isFreedom = true;
         this.boardAsString = new BoardAsString();
+        this.isLastMove = false;
     }
 
     @Override
@@ -30,6 +32,8 @@ public class GameStatus {
         Move move;
         if(isFreedom) {
             move = new FreedomMove(row, column, newStone);
+        } else if(isLastMove) {
+            move = new LastMove(newStone);
         } else {
             move = new RegularMove(row, column, previousRow, previousColumn,
                                     newStone, '_', board.stone(row, column));
@@ -65,7 +69,10 @@ public class GameStatus {
         return newStone;
     }
     
-    public Board getBoard() {
-        return board;
+    public void lastMove() {
+        this.isLastMove = true;
+        this.isFreedom = false;
+        Move move = new LastMove(newStone);
+        move.setMove(board);
     }
 }

@@ -39,4 +39,8 @@ public class UserInput {
             throw new BoardTooSmall("Board size must be greater than or equal to 4!");
         } else return boardSize;
     }
+
+    public String passMessage() {
+        return this.asString();
+    }
 }
