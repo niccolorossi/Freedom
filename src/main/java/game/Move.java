@@ -8,7 +8,7 @@ abstract public class Move {
     
     void setMove(Board board) {
         try {
-            board.setStone(newStone, row, column);
+            board.placeStone(newStone, row, column);
         } catch (NullPointerException e) {
         }
     }

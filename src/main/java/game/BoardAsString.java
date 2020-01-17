@@ -7,7 +7,7 @@ class BoardAsString {
 
     public String parsedBoard(Board board) {
 
-        Character[][] currentBoard = board.getCurrentBoard();
+        Character[][] currentBoard = board.currentBoard();
         StringBuilder toReturn = new StringBuilder();
 
         Consumer<Character[]> pipeDelimiter = (row) -> {

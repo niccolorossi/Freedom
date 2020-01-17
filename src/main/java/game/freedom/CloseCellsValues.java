@@ -13,7 +13,7 @@ public class CloseCellsValues {
     
     CloseCellsValues(Board board, Integer row, Integer column) {
 
-        CloseCellsIndexes closeCellsIndexes = new CloseCellsIndexes(board.getBoardSize(), row, column);
+        CloseCellsIndexes closeCellsIndexes = new CloseCellsIndexes(board.size(), row, column);
 
         Integer upperRow = closeCellsIndexes.getUpperRowIndex();
         Integer lowerRow = closeCellsIndexes.getLowerRowIndex();
@@ -24,7 +24,7 @@ public class CloseCellsValues {
 
         for (row = upperRow; row <= lowerRow; row++) {
             List<Character> rowCharactersList = IntStream.rangeClosed(leftColumn, rightColumn)
-                    .mapToObj(c -> board.getStone(upperRow, c)).collect(Collectors.toList());
+                    .mapToObj(c -> board.stone(upperRow, c)).collect(Collectors.toList());
             closeValues.addAll(rowCharactersList);
         }
     }

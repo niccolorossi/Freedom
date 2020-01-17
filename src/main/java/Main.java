@@ -1,9 +1,9 @@
-import game.Play;
+import game.Game;
 
 public class Main {
     public static void main(String[] args) {
     
-        Play start = new Play(10);
+        Game start = new Game(10);
         start.run();
     }
     

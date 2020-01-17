@@ -16,27 +16,27 @@ public class Board {
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));
     }
     
-    public Character[][] getCurrentBoard() {
+    public Character[][] currentBoard() {
 
         return this.currentBoard;
     }
     
-    public Character getStone(Integer row, Integer column) {
+    public Character stone(Integer row, Integer column) {
 
         return currentBoard[row-1][column-1];
     }
     
-    void setStone(Character symbol, int row, int column) {
+    void placeStone(Character symbol, int row, int column) {
 
         currentBoard[row-1][column-1] = symbol;
     }
 
-    public Character getEmptyCellCharacter() {
+    public Character emptyCellCharacter() {
 
         return emptyCellCharacter;
     }
     
-    public Integer getBoardSize() {
+    public Integer size() {
         return currentBoard[0].length;
     }
     
