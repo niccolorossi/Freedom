@@ -38,7 +38,7 @@ public class FreedomMoveTest {
         gameSizeTenBoard = new Game(10);
         gameSizeEightBoard = new Game(8);
     }
-
+/*
     @Test
     public void testNextMoveIsFreedom(){
         gameSizeTenBoard.move(1,1);
@@ -68,4 +68,6 @@ public class FreedomMoveTest {
 
         NextMoveFreedom freedomFinder = new NextMoveFreedom(gameSizeTenBoard.getBoard(), 1,3);
         assertThat(freedomFinder.isNextFreedom(), is(false) );    }
+        
+ */
 }
