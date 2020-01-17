@@ -48,7 +48,8 @@ public class MoverTest {
         gameSizeTenBoard = new Game(10);
         gameSizeEightBoard = new Game(8);
     }
-
+    
+    /*
     @Test
     public void checkFirstMove() {
         gameSizeTenBoard.move(1,1);
@@ -69,4 +70,6 @@ public class MoverTest {
 
         assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
     }
+    
+     */
 }
