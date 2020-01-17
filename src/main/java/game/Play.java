@@ -21,7 +21,7 @@ public class Play implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Players must enter the coordinate of the move");
+        System.out.println("Players must enter the coordinate of the move!");
 
         for(int moveNumber = 1; moveNumber < 99; moveNumber++) {
             System.out.println("Player " + newStone + ", it's your turn!");
@@ -49,8 +49,6 @@ public class Play implements Runnable {
             game.setFirstMove();
             
             System.out.println(game.toString());
-            
-            
         }
         
     }
