@@ -1,9 +1,8 @@
 package input;
 
 import exceptions.BoardTooSmall;
-import game.Board;
 
-import java.io.*;
+import java.io.BufferedReader;
 import java.util.List;
 
 public class UserInput {
@@ -35,7 +34,7 @@ public class UserInput {
     public Integer getBoardSize() throws BoardTooSmall {
         String stringSize = this.asString();
         Integer boardSize = Integer.parseInt(stringSize);
-        if(boardSize < 4) {
+        if(boardSize < 6) {
             throw new BoardTooSmall("Board size must be greater than or equal to 4!");
         } else return boardSize;
     }

@@ -3,6 +3,7 @@ package game;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import game.freedom.NextMoveFreedom;
+import winning.Winner;
 
 public class GameStatus {
     
@@ -74,5 +75,9 @@ public class GameStatus {
         this.isFreedom = false;
         Move move = new LastMove(newStone);
         move.setMove(board);
+    }
+
+    public String winner() {
+        return new Winner(board.currentBoard()).getWinner();
     }
 }

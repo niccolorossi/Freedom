@@ -3,7 +3,6 @@ package game;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import input.UserInput;
-import org.graalvm.compiler.lir.LIRInstruction;
 
 import java.util.List;
 import java.util.Scanner;
@@ -43,7 +42,11 @@ public class Game implements Runnable {
         if(passMessage.equals("N")) {
             gameStatus.lastMove();
             System.out.println(gameStatus.toString());
+        } else {
+            System.out.println(gameStatus.toString());
         }
+        System.out.println(gameStatus.winner());
+
         
     }
     
