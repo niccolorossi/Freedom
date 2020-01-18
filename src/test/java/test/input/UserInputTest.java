@@ -75,7 +75,7 @@ public class UserInputTest {
         BoardTooSmall thrown = assertThrows(BoardTooSmall.class,
                             () -> userInput.getBoardSize());
                             
-         assertTrue(thrown.getMessage().contains("Board size must be greater than or equal to 4!"));
+         assertTrue(thrown.getMessage().contains("Board size must be greater than or equal to 6!"));
         }
     }
 
