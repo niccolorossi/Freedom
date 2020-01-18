@@ -1,4 +1,5 @@
 package winning.limits;
+import winning.rules.Rules;
 
 public class DiagonalLimits {
 
@@ -18,9 +19,9 @@ public class DiagonalLimits {
     }
 
     public Integer beginRowOfLowermostDiagonalQuadruplets() {
-        return boardSize - 4;
+        return boardSize - Rules.QUADRUPLET_SIZE;
     }
     public Integer beginColOfLowermostDiagonalQuadruplets() {
-        return boardSize - 4;
+        return boardSize - Rules.QUADRUPLET_SIZE;
     };
 }

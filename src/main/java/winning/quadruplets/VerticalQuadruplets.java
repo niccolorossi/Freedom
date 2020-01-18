@@ -1,6 +1,6 @@
 package winning.quadruplets;
 
-import winning.indeces.VerticalIndeces;
+import winning.indexes.VerticalIndexes;
 import winning.limits.VerticalLimits;
 import winning.rules.VerticalRules;
 
@@ -18,10 +18,10 @@ public class VerticalQuadruplets {
 
     }
 
-    public List<VerticalIndeces> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<VerticalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
 
         Integer boardSize = fullBoard[0].length;
-        ArrayList<VerticalIndeces> verticalQuadruplets = new ArrayList<>();
+        ArrayList<VerticalIndexes> verticalQuadruplets = new ArrayList<>();
 
         Integer beginRowOfUppermostVerticalQuadruplets = verticalLimits.beginRowOfUppermostVerticalQuadruplets();
         Integer beginRowOfLowermostVerticalQuadruplets = verticalLimits.beginRowOfLowermostVerticalQuadruplets();
@@ -31,7 +31,7 @@ public class VerticalQuadruplets {
             for(int row=beginRowOfUppermostVerticalQuadruplets; row<=beginRowOfLowermostVerticalQuadruplets; row++) {
 
                 if(verticalRules.isValid(fullBoard, row, col, currentStone) && verticalRules.isCandidate(fullBoard, row, col)) {
-                   verticalQuadruplets.add(new VerticalIndeces(row,col));
+                   verticalQuadruplets.add(new VerticalIndexes(row,col));
                 }
             }
 

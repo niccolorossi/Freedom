@@ -1,4 +1,6 @@
 package winning.limits;
+import winning.rules.Rules;
+
 
 public class HorizontalLimits {
 
@@ -13,7 +15,7 @@ public class HorizontalLimits {
     }
 
     public Integer beginColOfRightmostHorizontalQuadruplets(){
-        return boardSize - 4;
+        return boardSize - Rules.QUADRUPLET_SIZE;
     }
 
 

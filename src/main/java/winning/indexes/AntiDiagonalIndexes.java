@@ -1,23 +1,22 @@
-package winning.indeces;
+package winning.indexes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DiagonalIndeces extends Indeces {
+public class AntiDiagonalIndexes extends Indexes {
     
-    public DiagonalIndeces(Integer beginRow, Integer beginColumn) {
-
+    public AntiDiagonalIndexes(Integer beginRow, Integer beginColumn) {
         super(beginRow, beginColumn);
     }
     
     @Override
-    public List<List<Integer>> getIndices() {
+    public List<List<Integer>> getIndexes() {
         List<List<Integer>> toReturn = new ArrayList<>();
         for (int index = 0; index < 4; index++) {
-            toReturn.add(Arrays.asList(beginRow+index, beginColumn+index));
+            toReturn.add(Arrays.asList(beginRow-index, beginColumn+index));
         }
         return toReturn;
     }
-    
+
 }

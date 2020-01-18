@@ -1,7 +1,7 @@
 package winning.quadruplets;
 
 
-import winning.indeces.HorizontalIndeces;
+import winning.indexes.HorizontalIndexes;
 import winning.limits.HorizontalLimits;
 import winning.rules.HorizontalRules;
 
@@ -20,13 +20,13 @@ public class HorizontalQuadruplets {
                                                     horizontalLimits.beginColOfRightmostHorizontalQuadruplets());
     }
 
-    public List<HorizontalIndeces> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<HorizontalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
 
         Integer boardSize = fullBoard[0].length;
         Integer beginColOfLeftmostHorizontalQuadruplets = horizontalLimits.beginColOfLeftmostHorizontalQuadruplets();
         Integer beginColOfRightmostHorizontalQuadruplets = horizontalLimits.beginColOfRightmostHorizontalQuadruplets();
 
-        ArrayList<HorizontalIndeces> horizontalQuadruplets = new ArrayList<>();
+        ArrayList<HorizontalIndexes> horizontalQuadruplets = new ArrayList<>();
 
         for(int row=0; row<boardSize; row++) {
 
@@ -35,7 +35,7 @@ public class HorizontalQuadruplets {
                 if(horizontalRules.isValid(fullBoard, row, col, currentStone)
                         && horizontalRules.isCandidate(fullBoard, row, col)) {
 
-                    horizontalQuadruplets.add(new HorizontalIndeces(row,col));
+                    horizontalQuadruplets.add(new HorizontalIndexes(row,col));
                 }
             }
 

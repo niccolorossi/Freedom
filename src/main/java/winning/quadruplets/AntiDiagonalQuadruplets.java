@@ -1,6 +1,6 @@
 package winning.quadruplets;
 
-import winning.indeces.AntiDiagonalIndeces;
+import winning.indexes.AntiDiagonalIndexes;
 import winning.limits.AntiDiagonalLimits;
 import winning.rules.AntiDiagonalRules;
 
@@ -20,9 +20,9 @@ public class AntiDiagonalQuadruplets {
                                                         antiDiagonalLimits.beginColOfUppermostAntiDiagonalQuadruplets());
     }
 
-    public List<AntiDiagonalIndeces> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<AntiDiagonalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
 
-        ArrayList<AntiDiagonalIndeces> allAntiDiagonals = new ArrayList<>();
+        ArrayList<AntiDiagonalIndexes> allAntiDiagonals = new ArrayList<>();
 
         Integer beginRowOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginRowOfLowermostAntiDiagonalQuadruplets();
         Integer beginColOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginColOfLowermostAntiDiagonalQuadruplets();
@@ -36,7 +36,7 @@ public class AntiDiagonalQuadruplets {
 
                 if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
                         && antiDiagonalRules.isCandidate(fullBoard, row, col)) {
-                    allAntiDiagonals.add(new AntiDiagonalIndeces(row,col));
+                    allAntiDiagonals.add(new AntiDiagonalIndexes(row,col));
                 }
             }
         }

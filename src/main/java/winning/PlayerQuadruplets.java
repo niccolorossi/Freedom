@@ -1,6 +1,6 @@
 package winning;
 
-import winning.indeces.*;
+import winning.indexes.*;
 import winning.quadruplets.AntiDiagonalQuadruplets;
 import winning.quadruplets.DiagonalQuadruplets;
 import winning.quadruplets.HorizontalQuadruplets;
@@ -28,41 +28,41 @@ public class PlayerQuadruplets {
 
     }
 
-    public List<Indeces> findAllDiagonals(Character currentStone) {
+    public List<Indexes> findAllQuadruplets(Character currentStone) {
 
-        ArrayList<Indeces> allDiagonals = new ArrayList<>();
-        allDiagonals.addAll(findHorizontalQuadruplets(currentStone));
-        allDiagonals.addAll(findVerticalQuadruplets(currentStone));
-        allDiagonals.addAll(findAntiDiagonalQuadruplets(currentStone));
-        allDiagonals.addAll(findDiagonalQuadruplets(currentStone));
+        ArrayList<Indexes> allQuadruplets = new ArrayList<>();
+        allQuadruplets.addAll(findHorizontalQuadruplets(currentStone));
+        allQuadruplets.addAll(findVerticalQuadruplets(currentStone));
+        allQuadruplets.addAll(findAntiDiagonalQuadruplets(currentStone));
+        allQuadruplets.addAll(findDiagonalQuadruplets(currentStone));
 
-        return allDiagonals;
+        return allQuadruplets;
 
     }
 
-    public List<HorizontalIndeces> findHorizontalQuadruplets(Character currentStone) {
+    private List<HorizontalIndexes> findHorizontalQuadruplets(Character currentStone) {
 
-        List<HorizontalIndeces> allHorizontal = horizontalQuadruplets.findQuadruplets(fullBoard, currentStone);
+        List<HorizontalIndexes> allHorizontal = horizontalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
         return allHorizontal;
     }
-    
-    public List<VerticalIndeces> findVerticalQuadruplets(Character currentStone) {
 
-        List<VerticalIndeces> allVertical = verticalQuadruplets.findQuadruplets(fullBoard, currentStone);
+    private List<VerticalIndexes> findVerticalQuadruplets(Character currentStone) {
+
+        List<VerticalIndexes> allVertical = verticalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
         return allVertical;
     }
 
-    public List<DiagonalIndeces> findDiagonalQuadruplets(Character currentStone) {
-        List<DiagonalIndeces> allDiagonal = diagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
+    private List<DiagonalIndexes> findDiagonalQuadruplets(Character currentStone) {
+        List<DiagonalIndexes> allDiagonal = diagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
         return allDiagonal;
 
     }
 
-    public List<AntiDiagonalIndeces> findAntiDiagonalQuadruplets(Character currentStone) {
-        List<AntiDiagonalIndeces> allAntiDiagonal = antiDiagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
+    private List<AntiDiagonalIndexes> findAntiDiagonalQuadruplets(Character currentStone) {
+        List<AntiDiagonalIndexes> allAntiDiagonal = antiDiagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
         return allAntiDiagonal;
     }

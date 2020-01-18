@@ -1,6 +1,10 @@
 package winning.limits;
 
+import winning.rules.Rules;
+
 public class AntiDiagonalLimits {
+    
+    
 
     private Integer boardSize;
     public AntiDiagonalLimits(Integer length) {
@@ -8,7 +12,7 @@ public class AntiDiagonalLimits {
     }
 
     public Integer beginRowOfLowermostAntiDiagonalQuadruplets() {
-        return boardSize - 1;
+        return boardSize + Rules.PREVIOUS_QUADRUPLET_OFFSET;
     }
 
     public Integer beginColOfLowermostAntiDiagonalQuadruplets(){
@@ -16,9 +20,9 @@ public class AntiDiagonalLimits {
     }
 
     public Integer beginRowOfUppermostAntiDiagonalQuadruplets() {
-        return 3;
+        return Rules.QUADRUPLET_SIZE + Rules.PREVIOUS_QUADRUPLET_OFFSET;
     }
     public Integer beginColOfUppermostAntiDiagonalQuadruplets() {
-        return boardSize - 4;
+        return boardSize - Rules.QUADRUPLET_SIZE;
     }
 }

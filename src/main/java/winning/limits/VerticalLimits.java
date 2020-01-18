@@ -1,4 +1,6 @@
 package winning.limits;
+import winning.rules.Rules;
+
 
 public class VerticalLimits {
     private Integer boardSize;
@@ -14,6 +16,6 @@ public class VerticalLimits {
     }
 
     public Integer beginRowOfLowermostVerticalQuadruplets() {
-        return boardSize - 4;
+        return boardSize - Rules.QUADRUPLET_SIZE;
     }
 }

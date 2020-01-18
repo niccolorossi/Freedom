@@ -1,6 +1,6 @@
 package winning.quadruplets;
 
-import winning.indeces.DiagonalIndeces;
+import winning.indexes.DiagonalIndexes;
 import winning.limits.DiagonalLimits;
 import winning.rules.DiagonalRules;
 
@@ -21,9 +21,9 @@ public class DiagonalQuadruplets {
 
     }
 
-    public List<DiagonalIndeces> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<DiagonalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
 
-        ArrayList<DiagonalIndeces> allDiagonals = new ArrayList<>();
+        ArrayList<DiagonalIndexes> allDiagonals = new ArrayList<>();
         Integer beginRowOfUppermostDiagonalQuadruplets = diagonalLimits.beginRowOfUppermostDiagonalQuadruplets();
         Integer beginColOfUppermostDiagonalQuadruplets = diagonalLimits.beginColOfUppermostDiagonalQuadruplets();
         Integer beginRowOfLowermostDiagonalQuadruplets = diagonalLimits.beginRowOfLowermostDiagonalQuadruplets();
@@ -33,7 +33,7 @@ public class DiagonalQuadruplets {
             for(int col=beginColOfUppermostDiagonalQuadruplets; col<=beginColOfLowermostDiagonalQuadruplets; col++) {
 
                 if(diagonalRules.isValid(fullBoard, row, col, currentStone) && diagonalRules.isCandidate(fullBoard, row, col)) {
-                    allDiagonals.add(new DiagonalIndeces(row,col));
+                    allDiagonals.add(new DiagonalIndexes(row,col));
                 }
             }
         }

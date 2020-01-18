@@ -1,6 +1,6 @@
 package winning;
 
-import winning.indeces.Indeces;
+import winning.indexes.Indexes;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -26,9 +26,9 @@ public class LiveStonesBoard {
     }
 
     public void aliveStonesForCurrentPlayer() {
-        List<Indeces> allDiagonals = playerQuadruplets.findAllDiagonals(currentStone);
-        for (int element = 0; element < allDiagonals.size(); element ++){
-            updateLiveStones(allDiagonals.get(element));
+        List<Indexes> allQuadruplets = playerQuadruplets.findAllQuadruplets(currentStone);
+        for (int element = 0; element < allQuadruplets.size(); element ++){
+            updateLiveStones(allQuadruplets.get(element));
         }
     }
 
@@ -36,10 +36,10 @@ public class LiveStonesBoard {
         return currentBoard;
     }
     
-    private void updateLiveStones(Indeces indeces) {
-        List<List<Integer>> indicesList = indeces.getIndices();
+    private void updateLiveStones(Indexes indexes) {
+        List<List<Integer>> indexesList = indexes.getIndexes();
         for(int i=0; i<4; i++) {
-            List<Integer> thisCell = indicesList.get(i);
+            List<Integer> thisCell = indexesList.get(i);
             Integer row = thisCell.get(0);
             Integer column = thisCell.get(1);
             currentBoard[row][column] = true;
