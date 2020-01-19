@@ -37,7 +37,7 @@ public class GameStatus {
             move = new LastMove(newStone);
         } else {
             move = new RegularMove(row, column, previousRow, previousColumn,
-                                    newStone, '_', board.stone(row, column));
+                                    newStone, board);
         }
         move.setMove(board);
         

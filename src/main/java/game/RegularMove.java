@@ -9,10 +9,12 @@ public class RegularMove extends Move {
     
     public RegularMove(Integer row, Integer column,
                        Integer previousRow, Integer previousColumn,
-                       Character newStone, Character emptyCellCharacter, Character currentStone) 
+                       Character newStone, Board board) 
     throws OccupiedCellException, NonAdjacentException {
         
         this.newStone = newStone;
+        Character emptyCellCharacter = board.emptyCellCharacter();
+        Character currentStone = board.stone(row, column);
         ValidateOccupiedCell validateOccupiedCell = new ValidateOccupiedCell(emptyCellCharacter);
         validateOccupiedCell.isCellOccupied(currentStone);
         ValidateAdjacentCoordinate validateRow = new ValidateAdjacentCoordinate(row);
