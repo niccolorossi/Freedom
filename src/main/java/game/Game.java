@@ -54,19 +54,14 @@ public class Game implements Runnable {
 
         Character currentPlayer = this.currentPlayer();
         System.out.println("Player " + currentPlayer + ", it's your turn!");
-        while(true) {
-            try {
-                Scanner in = new Scanner(System.in);
-                String inputString = in.nextLine();
-                UserInput userInput = new UserInput(inputString);
-                List<Integer> coordinate = userInput.getMove(boardSize);
-                gameStatus.updateStatus(coordinate.get(0), coordinate.get(1));
-                break;
-            } catch(NonAdjacentException | OccupiedCellException e) {
-                System.out.println(e.getMessage());
-            } catch(NullPointerException ignored) {
-            }
+        UserInput userInput = new UserInput();
+        List<Integer> coordinate = userInput.getMove(boardSize);
+        try {
+            gameStatus.updateStatus(coordinate.get(0), coordinate.get(1));
+        } catch (NonAdjacentException | OccupiedCellException e) {
+            System.out.println(e.getMessage());
         }
+        
     }
     
 }

@@ -4,6 +4,7 @@ import exceptions.BoardTooSmall;
 import input.UserInput;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -77,5 +78,14 @@ public class UserInputTest {
                             
          assertTrue(thrown.getMessage().contains("Board size must be greater than or equal to 6!"));
         }
+        
+    @Test
+    public void whenUserInputsEightBoardSizeIsEight() {
+        
+        String stringBoardSize = "8";
+        
     }
+        
+}
+    
 
