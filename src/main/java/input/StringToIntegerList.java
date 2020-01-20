@@ -8,11 +8,11 @@ public class StringToIntegerList {
 
     private String inputString;
 
-    StringToIntegerList(String inputString) {
+    public StringToIntegerList(String inputString) {
         this.inputString = inputString;
     }
 
-    List<Integer> integerList() {
+    public List<Integer> integerList() {
         return Stream.of(inputString.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
     }
 }

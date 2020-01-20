@@ -2,10 +2,10 @@ package game;
 
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
+import input.InputString;
 import input.UserInput;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Game implements Runnable {
     
@@ -36,7 +36,8 @@ public class Game implements Runnable {
         Character lastTurnPlayer = gameStatus.currentPlayer();
         System.out.println("Player " + lastTurnPlayer + ", do you want to pass? Y/N");
         UserInput userInput = new UserInput();
-        String passMessage = userInput.getPassMessage();
+        InputString inputString = new InputString(userInput.inputString());
+        String passMessage = inputString.getPassMessage();
         if(passMessage.equals("N")) {
             gameStatus.lastMove();
             System.out.println(gameStatus.toString());
@@ -53,7 +54,8 @@ public class Game implements Runnable {
         Character currentPlayer = this.currentPlayer();
         System.out.println("Player " + currentPlayer + ", it's your turn!");
         UserInput userInput = new UserInput();
-        List<Integer> coordinate = userInput.getMove(boardSize);
+        InputString inputString = new InputString(userInput.inputString());
+        List<Integer> coordinate = inputString.getMove(boardSize);
         try {
             gameStatus.updateStatus(coordinate.get(0), coordinate.get(1));
         } catch (NonAdjacentException | OccupiedCellException e) {
