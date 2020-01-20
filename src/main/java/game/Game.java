@@ -3,11 +3,10 @@ package game;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import input.InputString;
-import input.UserInput;
 
 import java.util.List;
 
-public class Game implements Runnable {
+public class Game {
     
     private GameStatus gameStatus;
     private Integer boardSize;
@@ -25,8 +24,8 @@ public class Game implements Runnable {
         return gameStatus.currentPlayer();
     }
 
-    @Override
-    public void run() {
+
+    public void start() {
         System.out.println("Players must enter the coordinate of the move!");
         Integer totalNumberOfMoves = numberOfMoves();
         for(int turnNumber = 1; turnNumber <= totalNumberOfMoves - 1; turnNumber++) {
@@ -35,8 +34,7 @@ public class Game implements Runnable {
         }
         Character lastTurnPlayer = gameStatus.currentPlayer();
         System.out.println("Player " + lastTurnPlayer + ", do you want to pass? Y/N");
-        UserInput userInput = new UserInput();
-        InputString inputString = new InputString(userInput.inputString());
+        InputString inputString = new InputString();
         String passMessage = inputString.getPassMessage();
         if(passMessage.equals("N")) {
             gameStatus.lastMove();
@@ -53,8 +51,7 @@ public class Game implements Runnable {
 
         Character currentPlayer = this.currentPlayer();
         System.out.println("Player " + currentPlayer + ", it's your turn!");
-        UserInput userInput = new UserInput();
-        InputString inputString = new InputString(userInput.inputString());
+        InputString inputString = new InputString();
         List<Integer> coordinate = inputString.getMove(boardSize);
         try {
             gameStatus.updateStatus(coordinate.get(0), coordinate.get(1));

@@ -21,7 +21,7 @@ public class InputStringTest {
     private final Integer boardEightSize = 8;
     
     @Test
-     public void whenSizeisTenAndRowPlayedIsElevenExceptionIsThrown() {
+     public void whenSizeIsTenAndRowPlayedIsElevenExceptionIsThrown() {
 
         List<Integer> moveList = Arrays.asList(11,9);
         ValidInputMove validInputMove = new ValidInputMove(boardTenSize, moveList);
@@ -32,14 +32,6 @@ public class InputStringTest {
         assertTrue(thrown.getMessage().contains("Input coordinates must be between 1 and " + boardTenSize + "!"));
     }
 
-    @Test
-    public void isFirstCellTest() {
-
-        String input = "1 1";
-        InputString inputString = new InputString(input);
-
-        assertThat(inputString.getMove(boardTenSize), is(firstCell));
-    }
 
     @Test
     public void whenNotIntegerInputAnExceptionIsCaught() {
@@ -66,15 +58,6 @@ public class InputStringTest {
             validInputMove.inputMove();
         });
     }
-    
-    @Test
-    public void testUserInputForGettingBoardSize() throws BoardTooSmallException {
-        
-        String stringSize = "10";
-        InputString inputString = new InputString(stringSize);
-        assertThat(inputString.getBoardSize(), is(10));
-    }
-    
     @Test
     public void testWhenBoardSizeIsLessThanSixException() {
 
