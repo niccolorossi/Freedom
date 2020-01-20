@@ -1,6 +1,6 @@
 package input;
 
-import exceptions.BoardTooSmall;
+import exceptions.BoardTooSmallException;
 
 class ValidBoardSize {
     
@@ -10,9 +10,9 @@ class ValidBoardSize {
         this.boardSize = boardSize;
     }
     
-    Integer boardSize() throws BoardTooSmall {
+    Integer boardSize() throws BoardTooSmallException {
         if(boardSize < 6) {
-            throw new BoardTooSmall("Board size must be greater or equal than 6!");
+            throw new BoardTooSmallException("Board size must be greater or equal than 6!");
         } else return boardSize;
     }
 }

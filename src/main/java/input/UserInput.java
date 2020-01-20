@@ -1,37 +1,24 @@
 package input;
 
-import exceptions.BoardTooSmall;
+import exceptions.BoardTooSmallException;
 import exceptions.OutOfBoundsException;
+import exceptions.WrongPassMessageException;
 
-import java.io.BufferedReader;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInput {
     
-    private BufferedReader bufferedReader;
-    
-    public UserInput(String inputLine) {
-        BufferedReaderInitializer bufferedReaderInitializer = new BufferedReaderInitializer(inputLine);
-        this.bufferedReader = bufferedReaderInitializer.getBufferedReader();
-    }
+    private Scanner scanner;
 
     public UserInput() {
-        
+        this.scanner = new Scanner(System.in);
     }
-
-    private String asString() {
-        InputString inputString = new InputString(bufferedReader);
-        return inputString.getStringRead();
-    }
-
     
     public List<Integer> getMove(Integer boardSize) {
         
         while(true) {
             try {
-                Scanner scanner = new Scanner(System.in);
                 String inputString = scanner.nextLine();
                 StringToIntegerList stringToIntegerList = new StringToIntegerList(inputString);
                 List<Integer> moveList = stringToIntegerList.integerList();
@@ -47,18 +34,26 @@ public class UserInput {
         
         while(true) {
             try {
-                Scanner scanner = new Scanner(System.in);
                 String inputString = scanner.nextLine();
                 Integer inputInteger = Integer.parseInt(inputString);
                 ValidBoardSize validBoardSize = new ValidBoardSize(inputInteger);
                 return validBoardSize.boardSize();
-            } catch (BoardTooSmall | NumberFormatException e) {
+            } catch (BoardTooSmallException | NumberFormatException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    public String passMessage() {
-        return this.asString();
+    public String getPassMessage() {
+        
+        while(true) {
+            try {
+                String inputString = scanner.nextLine();
+                ValidPassMessage validPassMessage = new ValidPassMessage(inputString);
+                return validPassMessage.passMessage();
+            } catch (WrongPassMessageException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }

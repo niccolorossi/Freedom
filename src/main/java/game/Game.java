@@ -35,10 +35,8 @@ public class Game implements Runnable {
         }
         Character lastTurnPlayer = gameStatus.currentPlayer();
         System.out.println("Player " + lastTurnPlayer + ", do you want to pass? Y/N");
-        Scanner scanner = new Scanner(System.in);
-        String passString = scanner.nextLine();
-        UserInput userInput = new UserInput(passString);
-        String passMessage = userInput.passMessage();
+        UserInput userInput = new UserInput();
+        String passMessage = userInput.getPassMessage();
         if(passMessage.equals("N")) {
             gameStatus.lastMove();
             System.out.println(gameStatus.toString());

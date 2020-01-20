@@ -1,10 +1,9 @@
 package test.input;
 
-import exceptions.BoardTooSmall;
+import exceptions.BoardTooSmallException;
 import input.UserInput;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,7 +60,7 @@ public class UserInputTest {
     }
     
     @Test
-    public void testUserInputForGettingBoardSize() throws BoardTooSmall {
+    public void testUserInputForGettingBoardSize() throws BoardTooSmallException {
         
         String stringSize = "10";
         UserInput userInput = new UserInput(stringSize);
@@ -73,7 +72,7 @@ public class UserInputTest {
         
         String stringSize = "3";
         UserInput userInput = new UserInput(stringSize);
-        BoardTooSmall thrown = assertThrows(BoardTooSmall.class,
+        BoardTooSmallException thrown = assertThrows(BoardTooSmallException.class,
                             () -> userInput.getBoardSize());
                             
          assertTrue(thrown.getMessage().contains("Board size must be greater than or equal to 6!"));

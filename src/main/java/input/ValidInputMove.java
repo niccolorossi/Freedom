@@ -4,7 +4,7 @@ import exceptions.OutOfBoundsException;
 
 import java.util.List;
 
-public class ValidInputMove {
+class ValidInputMove {
     
     private List<Integer> move;
     private Integer boardSize;
