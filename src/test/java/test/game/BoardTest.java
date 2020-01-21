@@ -30,7 +30,7 @@ public class BoardTest {
             "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" ;
 
-    private BoardAsString gameSizeTenBoard  ;
+    private BoardAsString gameSizeTenBoard;
     private BoardAsString gameSizeEightBoard;
 
     @Before

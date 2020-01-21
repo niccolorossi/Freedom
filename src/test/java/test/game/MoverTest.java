@@ -1,7 +1,12 @@
 package test.game;
 
 import game.GameStatus;
+import game.RegularMove;
 import org.junit.Before;
+import org.junit.Test;
+import output.BoardAsString;
+
+import java.util.Arrays;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -41,34 +46,37 @@ public class MoverTest {
 
     private GameStatus gameSizeTenBoard;
     private GameStatus gameSizeEightBoard;
+    private BoardAsString boardAsString;
 
     @Before
     public void startGame(){
         gameSizeTenBoard = new GameStatus(10);
         gameSizeEightBoard = new GameStatus(8);
+        boardAsString = new BoardAsString();
     }
     
-    /*
+    
     @Test
     public void checkFirstMove() {
-        gameSizeTenBoard.move(1,1);
-        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
+        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
+        assertThat(boardAsString.parsedBoard(gameSizeTenBoard.getBoard()), is(firstMoveBoardSizeTen));
     }
 
-    @Test
+   /* @Test
     public void testOccupiedCellToStringReturnsPreviousBoard() {
-        gameSizeTenBoard.move(1,1);
-        gameSizeTenBoard.move(1,1);
-        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
+        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
+        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'B'));
+        
+        assertThat(boardAsString.parsedBoard(gameSizeTenBoard.getBoard()), is(firstMoveBoardSizeTen));
     }
 
     @Test
     public void testNonAdjacentCellToStringReturnsPreviousBoard() {
-        gameSizeTenBoard.move(1,1);
-        gameSizeTenBoard.move(1,4);
+        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
+        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,4), 'B'));
 
-        assertThat(gameSizeTenBoard.toString(), is(firstMoveBoardSizeTen));
-    }
+        assertThat(boardAsString.parsedBoard(gameSizeTenBoard.getBoard()), is(firstMoveBoardSizeTen));
+    }*/
     
-     */
+     
 }
