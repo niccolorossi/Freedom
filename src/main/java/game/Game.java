@@ -33,6 +33,7 @@ public class Game {
         OutputManager outputManager = new OutputManager();
         outputManager.greetingsMessage();
         Integer totalNumberOfMoves = numberOfMoves();
+
         for(int turnNumber = 1; turnNumber <= totalNumberOfMoves - 1; turnNumber++) {
             turn();
             outputManager.printBoard(gameStatus.getBoard());
@@ -40,8 +41,8 @@ public class Game {
         Character lastTurnPlayer = gameStatus.currentPlayer();
         outputManager.lastTurnMessage(lastTurnPlayer);
         InputString inputString = new InputString();
-        String passMessage = inputString.getPassMessage();
-        if(passMessage.equals("N")) {
+
+        if(inputString.getPassMessage()) {
             LastMove lastMove = new LastMove(lastTurnPlayer, gameStatus.getBoard());
             gameStatus.updateStatus(lastMove);
             outputManager.printBoard(gameStatus.getBoard());

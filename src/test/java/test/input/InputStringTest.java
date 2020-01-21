@@ -16,10 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class InputStringTest {
 
-    private final List<Integer> firstCell = Arrays.asList(1,1);
     private final Integer boardTenSize = 10;
-    private final Integer boardEightSize = 8;
-    
+
     @Test
      public void whenSizeIsTenAndRowPlayedIsElevenExceptionIsThrown() {
 
@@ -42,24 +40,8 @@ public class InputStringTest {
          NumberFormatException thrown = assertThrows(NumberFormatException.class, () -> {
             stringToIntegerList.integerList();
         });
-
     }
-    
 
-    @Test
-    public void whenSingleInputAnExceptionIsCaught() {
-
-        String stringMove = "1 ";
-        StringToIntegerList stringToIntegerList = new StringToIntegerList(stringMove);
-        List<Integer> wrongMove = stringToIntegerList.integerList();
-        ValidInputMove validInputMove = new ValidInputMove(boardTenSize, wrongMove);
-
-        IndexOutOfBoundsException thrown = assertThrows(IndexOutOfBoundsException.class, () -> {
-            validInputMove.inputMove();
-        });
-
-
-    }
     @Test
     public void testWhenBoardSizeIsLessThanSixException() {
 
@@ -89,9 +71,6 @@ public class InputStringTest {
 
         assertThat(validPassMessage.passMessage(), is("Y"));
     }
-
-
-        
 }
     
 

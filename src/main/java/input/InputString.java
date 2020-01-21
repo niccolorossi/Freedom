@@ -57,13 +57,13 @@ public class InputString {
         }
     }
 
-    public String getPassMessage() {
+    public Boolean getPassMessage() {
         
         while(true) {
             try {
                 String inputString = scanner.nextLine();
                 ValidPassMessage validPassMessage = new ValidPassMessage(inputString);
-                return validPassMessage.passMessage();
+                return validPassMessage.passMessage().equals("N");
             } catch (WrongPassMessageException e) {
                 System.out.println(e.getMessage());
             }
