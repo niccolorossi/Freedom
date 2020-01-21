@@ -10,10 +10,7 @@ public class GameStatus {
     private Board board;
     private BoardAsString boardAsString;
     private Boolean isFreedom;
-    private Integer previousRow;
-    private Integer previousColumn;
     private Character newStone;
-    private Boolean isLastMove;
     
     
     public GameStatus(int size) {
@@ -21,7 +18,6 @@ public class GameStatus {
         this.newStone = 'W';
         this.isFreedom = true;
         this.boardAsString = new BoardAsString();
-        this.isLastMove = false;
     }
 
     @Override
@@ -53,11 +49,6 @@ public class GameStatus {
     
     Character currentPlayer(){
         return newStone;
-    }
-    
-    public void lastMove() {
-        this.isLastMove = true;
-        this.isFreedom = false;
     }
 
     public String winner() {

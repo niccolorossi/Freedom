@@ -40,8 +40,7 @@ public class Game {
         InputString inputString = new InputString();
         String passMessage = inputString.getPassMessage();
         if(passMessage.equals("N")) {
-            gameStatus.lastMove();
-            LastMove lastMove = new LastMove(lastTurnPlayer);
+            LastMove lastMove = new LastMove(lastTurnPlayer, gameStatus.getBoard());
             gameStatus.updateStatus(lastMove);
             System.out.println(gameStatus.toString());
         } else {

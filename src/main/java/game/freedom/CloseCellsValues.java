@@ -23,8 +23,9 @@ public class CloseCellsValues {
         this.closeValues = new ArrayList<>();
 
         for (row = upperRow; row <= lowerRow; row++) {
+            Integer currentRow = row;
             List<Character> rowCharactersList = IntStream.rangeClosed(leftColumn, rightColumn)
-                    .mapToObj(c -> board.stone(upperRow, c)).collect(Collectors.toList());
+                    .mapToObj(c -> board.stone(currentRow, c)).collect(Collectors.toList());
             closeValues.addAll(rowCharactersList);
         }
     }
