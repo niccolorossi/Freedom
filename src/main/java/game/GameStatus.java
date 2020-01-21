@@ -1,14 +1,12 @@
 package game;
 
-import exceptions.NonAdjacentException;
-import exceptions.OccupiedCellException;
 import game.freedom.NextMoveFreedom;
+import output.OutputManager;
 import winning.Winner;
 
 public class GameStatus {
     
     private Board board;
-    private BoardAsString boardAsString;
     private Boolean isFreedom;
     private Character newStone;
     
@@ -17,12 +15,6 @@ public class GameStatus {
         this.board = new Board(size);
         this.newStone = 'W';
         this.isFreedom = true;
-        this.boardAsString = new BoardAsString();
-    }
-
-    @Override
-    public String toString() {
-        return boardAsString.parsedBoard(board);
     }
     
     public void updateStatus(Move move) {
@@ -37,6 +29,10 @@ public class GameStatus {
     public void updateMoveFreedom(Integer row, Integer column) {
         NextMoveFreedom nextMoveFreedom = new NextMoveFreedom(board, row, column);
         this.isFreedom = nextMoveFreedom.isNextFreedom();
+        if(isFreedom) {
+            OutputManager outputManager = new OutputManager();
+            outputManager.freedomMessage();
+        }
     }
     
     private void changeStone(){

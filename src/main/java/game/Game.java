@@ -4,6 +4,7 @@ import checkers.MoveValidator;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import input.InputString;
+import output.OutputManager;
 
 import java.util.List;
 
@@ -29,31 +30,33 @@ public class Game {
 
 
     public void start() {
-        System.out.println("Players must enter the coordinate of the move!");
+        OutputManager outputManager = new OutputManager();
+        outputManager.greetingsMessage();
         Integer totalNumberOfMoves = numberOfMoves();
         for(int turnNumber = 1; turnNumber <= totalNumberOfMoves - 1; turnNumber++) {
             turn();
-            System.out.println(gameStatus.toString());
+            outputManager.printBoard(gameStatus.getBoard());
         }
         Character lastTurnPlayer = gameStatus.currentPlayer();
-        System.out.println("Player " + lastTurnPlayer + ", do you want to pass? Y/N");
+        outputManager.lastTurnMessage(lastTurnPlayer);
         InputString inputString = new InputString();
         String passMessage = inputString.getPassMessage();
         if(passMessage.equals("N")) {
             LastMove lastMove = new LastMove(lastTurnPlayer, gameStatus.getBoard());
             gameStatus.updateStatus(lastMove);
-            System.out.println(gameStatus.toString());
+            outputManager.printBoard(gameStatus.getBoard());
         } else {
-            System.out.println(gameStatus.toString());
+            outputManager.printBoard(gameStatus.getBoard());
         }
-        System.out.println(gameStatus.winner());
-
+        String winnerString = gameStatus.winner();
+        outputManager.displayMessage(winnerString);
         
     }
     
     private void turn() {
         Character currentPlayer = this.currentPlayer();
-        System.out.println("Player " + currentPlayer + ", it's your turn!");
+        OutputManager outputManager = new OutputManager();
+        outputManager.changeTurnMessage(currentPlayer);
         while(true) {
             InputString inputString = new InputString();
             List<Integer> coordinates = inputString.getMove(boardSize);
@@ -62,8 +65,9 @@ public class Game {
                 RegularMove regularMove = new RegularMove(coordinates, currentPlayer);
                 gameStatus.updateStatus(regularMove);
                 break;
-            } catch (NonAdjacentException | OccupiedCellException e) {
-                System.out.println(e.getMessage());
+            } catch (NonAdjacentException | OccupiedCellException e) { 
+                String errorMessage = e.getMessage();
+                outputManager.displayMessage(errorMessage);
             }
         }
         

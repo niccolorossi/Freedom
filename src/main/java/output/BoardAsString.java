@@ -1,18 +1,20 @@
-package game;
+package output;
+
+import game.Board;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
 
 class BoardAsString {
 
-    public String parsedBoard(Board board) {
+    String parsedBoard(Board board) {
 
         Character[][] currentBoard = board.currentBoard();
         StringBuilder toReturn = new StringBuilder();
 
         Consumer<Character[]> pipeDelimiter = (row) -> {
             Arrays.stream(row).forEach((el) -> toReturn.append("|" + el));
-            toReturn.append("|" +"\n"); 
+            toReturn.append("|" +"\n");
         };
 
         Arrays.stream(currentBoard)
@@ -20,5 +22,5 @@ class BoardAsString {
 
         return toReturn.toString();
     }
-    
+
 }
