@@ -1,10 +1,12 @@
 package winning;
 
+import game.Board;
+
 public class Winner {
 
     private Points pc;
 
-    public Winner(Character[][] fullBoard) {
+    public Winner(Board fullBoard) {
 
         this.pc = new Points(fullBoard);
     }

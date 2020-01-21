@@ -1,5 +1,6 @@
 package winning.quadruplets;
 
+import game.Board;
 import winning.indexes.AntiDiagonalIndexes;
 import winning.limits.AntiDiagonalLimits;
 import winning.rules.AntiDiagonalRules;
@@ -12,15 +13,15 @@ public class AntiDiagonalQuadruplets {
     private AntiDiagonalLimits antiDiagonalLimits;
     private AntiDiagonalRules antiDiagonalRules;
 
-    public AntiDiagonalQuadruplets(Character[][] fullBoard) {
-        this.antiDiagonalLimits = new AntiDiagonalLimits(fullBoard[0].length);
+    public AntiDiagonalQuadruplets(Board fullBoard) {
+        this.antiDiagonalLimits = new AntiDiagonalLimits(fullBoard.size());
         this.antiDiagonalRules = new AntiDiagonalRules(antiDiagonalLimits.beginRowOfLowermostAntiDiagonalQuadruplets(),
                                                         antiDiagonalLimits.beginColOfLowermostAntiDiagonalQuadruplets(),
                                                         antiDiagonalLimits.beginRowOfUppermostAntiDiagonalQuadruplets(),
                                                         antiDiagonalLimits.beginColOfUppermostAntiDiagonalQuadruplets());
     }
 
-    public List<AntiDiagonalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<AntiDiagonalIndexes> findQuadruplets(Board fullBoard, Character currentStone) {
 
         ArrayList<AntiDiagonalIndexes> allAntiDiagonals = new ArrayList<>();
 

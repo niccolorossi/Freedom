@@ -1,5 +1,6 @@
 package winning;
 
+import game.Board;
 import winning.indexes.Indexes;
 
 import java.util.List;
@@ -12,12 +13,12 @@ public class LiveStonesBoard {
     private PlayerQuadruplets playerQuadruplets;
 
 
-    public LiveStonesBoard(Character[][] fullBoard, Character currentStone) {
+    public LiveStonesBoard(Board fullBoard, Character currentStone) {
 
         this.playerQuadruplets = new PlayerQuadruplets(fullBoard);
         this.currentStone = currentStone;
 
-        Integer boardSize = fullBoard[0].length;
+        Integer boardSize = fullBoard.size();
 
         this.currentBoard = new Boolean[boardSize][boardSize];
         IntStream.range(0, boardSize)

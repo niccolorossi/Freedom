@@ -17,6 +17,10 @@ public class Board {
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));
     }
     
+    public Board(Character[][] characterBoard){
+        this.currentBoard = characterBoard;
+    }
+    
     public Character[][] currentBoard() {
 
         return this.currentBoard;

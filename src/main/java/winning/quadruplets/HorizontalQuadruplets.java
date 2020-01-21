@@ -1,6 +1,7 @@
 package winning.quadruplets;
 
 
+import game.Board;
 import winning.indexes.HorizontalIndexes;
 import winning.limits.HorizontalLimits;
 import winning.rules.HorizontalRules;
@@ -14,15 +15,15 @@ public class HorizontalQuadruplets {
     private HorizontalRules horizontalRules;
 
 
-    public HorizontalQuadruplets(Character[][] fullBoard){
-        this.horizontalLimits = new HorizontalLimits(fullBoard[0].length);
+    public HorizontalQuadruplets(Board fullBoard){
+        this.horizontalLimits = new HorizontalLimits(fullBoard.size());
         this.horizontalRules = new HorizontalRules(horizontalLimits.beginColOfLeftmostHorizontalQuadruplets(),
                                                     horizontalLimits.beginColOfRightmostHorizontalQuadruplets());
     }
 
-    public List<HorizontalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<HorizontalIndexes> findQuadruplets(Board fullBoard, Character currentStone) {
 
-        Integer boardSize = fullBoard[0].length;
+        Integer boardSize = fullBoard.size();
         Integer beginColOfLeftmostHorizontalQuadruplets = horizontalLimits.beginColOfLeftmostHorizontalQuadruplets();
         Integer beginColOfRightmostHorizontalQuadruplets = horizontalLimits.beginColOfRightmostHorizontalQuadruplets();
 

@@ -1,6 +1,7 @@
 
 package test.winning;
 
+import game.Board;
 import org.junit.Before;
 import org.junit.Test;
 import winning.*;
@@ -10,8 +11,8 @@ import static org.junit.Assert.assertThat;
 
 public class QuadrupletsTest {
 
-    private Character[][] fullBoard;
-    
+    private Character[][] fullBoardCharacter;
+    private Board fullBoard;
     private Boolean[][] liveStonesBoardAfterHorizontalQuadrupletEightZero;
     private Boolean[][] liveStonesBoardAfterHQEightZeroEightSix;
     private Boolean[][] liveStonesBoardAfterSettingHVBlackStones;
@@ -21,7 +22,7 @@ public class QuadrupletsTest {
     @Before
     public void initFullBoard(){
 
-        fullBoard = new Character[][]
+        fullBoardCharacter = new Character[][]
                         {{'B', 'W', 'B', 'W', 'B', 'B', 'W', 'W', 'B', 'W'},
                         {'B', 'W', 'B', 'B', 'W', 'W', 'B', 'B', 'B', 'W'},
                         {'W', 'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B', 'B'},
@@ -92,6 +93,9 @@ public class QuadrupletsTest {
                         {false, false, false, false, false, false, false, false, false, false},
                         {true, true, true, true, false, false, true, true, true, true},
                         {false, false, false, false, false, false, false, false, false, false}};
+
+        fullBoard = new Board(fullBoardCharacter);
+
 
     }
     

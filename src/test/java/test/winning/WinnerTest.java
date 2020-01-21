@@ -1,5 +1,6 @@
 package test.winning;
 
+import game.Board;
 import org.junit.Before;
 import org.junit.Test;
 import winning.Points;
@@ -11,13 +12,16 @@ import static org.junit.Assert.assertThat;
 
 public class WinnerTest {
 
-    private Character[][] fullBoard;
-    private Character[][] fullBoardDraw;
+    private Character[][] fullBoardCharacter;
+    private Character[][] fullBoardDrawCharacter;
+
+    private Board fullBoard;
+    private Board fullBoardDraw;
 
     @Before
     public void initFullBoard() {
 
-        fullBoard = new Character[][]
+        fullBoardCharacter = new Character[][]
                 {{'B', 'W', 'B', 'W', 'B', 'B', 'W', 'W', 'B', 'W'},
                         {'B', 'W', 'B', 'B', 'W', 'W', 'B', 'B', 'B', 'W'},
                         {'W', 'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B', 'B'},
@@ -30,7 +34,7 @@ public class WinnerTest {
                         {'W', 'B', 'W', 'W', 'B', 'B', 'W', 'W', 'W', 'B'}};
 
 
-        fullBoardDraw = new Character[][]
+        fullBoardDrawCharacter = new Character[][]
                 {{'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
                         {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
                         {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
@@ -43,8 +47,8 @@ public class WinnerTest {
                         {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'}};
 
 
-
-
+        fullBoard = new Board(fullBoardCharacter);
+        fullBoardDraw = new Board(fullBoardDrawCharacter);
     }
 
     @Test

@@ -1,5 +1,7 @@
 package winning.rules;
 
+import game.Board;
+
 import java.util.stream.IntStream;
 
 public class VerticalRules implements Rules {
@@ -14,14 +16,14 @@ public class VerticalRules implements Rules {
     }
     
     @Override
-    public Boolean isValid(Character[][] fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
+    public Boolean isValid(Board fullBoard, Integer beginRow, Integer beginColumn, Character currentStone) {
 
-        return IntStream.range(0, QUADRUPLET_SIZE).mapToObj(i -> fullBoard[beginRow+i][beginColumn])
+        return IntStream.range(0, QUADRUPLET_SIZE).mapToObj(i -> fullBoard.currentBoard()[beginRow+i][beginColumn])
                 .allMatch(currentStone::equals);
     }
 
     @Override
-    public Boolean isCandidate(Character[][] fullBoard, Integer beginRow, Integer beginColumn) {
+    public Boolean isCandidate(Board fullBoard, Integer beginRow, Integer beginColumn) {
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
@@ -36,15 +38,15 @@ public class VerticalRules implements Rules {
             isQuadrupletAtEnd = false;
         }
 
-        Character currentElement = fullBoard[beginRow][beginColumn];
+        Character currentElement = fullBoard.currentBoard()[beginRow][beginColumn];
 
         if (isQuadrupletAtBeginning) {
-            return currentElement != fullBoard[beginRow + QUADRUPLET_SIZE][beginColumn];
+            return currentElement != fullBoard.currentBoard()[beginRow + QUADRUPLET_SIZE][beginColumn];
         } else if (isQuadrupletAtEnd) {
-           return currentElement != fullBoard[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn];
+           return currentElement != fullBoard.currentBoard()[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn];
         } else {
-            return currentElement != fullBoard[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn]
-                    && currentElement != fullBoard[beginRow + QUADRUPLET_SIZE][beginColumn];
+            return currentElement != fullBoard.currentBoard()[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn]
+                    && currentElement != fullBoard.currentBoard()[beginRow + QUADRUPLET_SIZE][beginColumn];
         }
     }
 }

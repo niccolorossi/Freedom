@@ -1,5 +1,6 @@
 package winning.quadruplets;
 
+import game.Board;
 import winning.indexes.DiagonalIndexes;
 import winning.limits.DiagonalLimits;
 import winning.rules.DiagonalRules;
@@ -12,8 +13,8 @@ public class DiagonalQuadruplets {
     private DiagonalLimits diagonalLimits;
     private DiagonalRules diagonalRules;
 
-    public DiagonalQuadruplets(Character[][] fullBoard) {
-        this.diagonalLimits = new DiagonalLimits(fullBoard[0].length);
+    public DiagonalQuadruplets(Board fullBoard) {
+        this.diagonalLimits = new DiagonalLimits(fullBoard.size());
         this.diagonalRules = new DiagonalRules(diagonalLimits.beginRowOfUppermostDiagonalQuadruplets(),
                                                 diagonalLimits.beginRowOfUppermostDiagonalQuadruplets(),
                                                 diagonalLimits.beginRowOfLowermostDiagonalQuadruplets(),
@@ -21,7 +22,7 @@ public class DiagonalQuadruplets {
 
     }
 
-    public List<DiagonalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<DiagonalIndexes> findQuadruplets(Board fullBoard, Character currentStone) {
 
         ArrayList<DiagonalIndexes> allDiagonals = new ArrayList<>();
         Integer beginRowOfUppermostDiagonalQuadruplets = diagonalLimits.beginRowOfUppermostDiagonalQuadruplets();

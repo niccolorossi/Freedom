@@ -1,5 +1,6 @@
 package winning;
 
+import game.Board;
 import winning.indexes.*;
 import winning.quadruplets.AntiDiagonalQuadruplets;
 import winning.quadruplets.DiagonalQuadruplets;
@@ -12,13 +13,13 @@ import java.util.List;
 public class PlayerQuadruplets {
     
 
-    private Character[][] fullBoard;
+    private Board fullBoard;
     private HorizontalQuadruplets horizontalQuadruplets;
     private VerticalQuadruplets verticalQuadruplets;
     private DiagonalQuadruplets diagonalQuadruplets;
     private AntiDiagonalQuadruplets antiDiagonalQuadruplets;
 
-    public PlayerQuadruplets(Character[][] fullBoard) {
+    public PlayerQuadruplets(Board fullBoard) {
 
         this.fullBoard = fullBoard;
         this.horizontalQuadruplets = new HorizontalQuadruplets(fullBoard);

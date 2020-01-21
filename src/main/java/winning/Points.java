@@ -1,18 +1,18 @@
 package winning;
 
+import game.Board;
+
 public class Points {
 
 
     private LiveStonesBoard blackBoard;
     private LiveStonesBoard whiteBoard;
-    private PlayerQuadruplets blackPlayerQuadruplets;
-    private PlayerQuadruplets whitePlayerQuadruplets;
     private Integer boardSize;
 
 
-    public Points(Character[][] fullBoard) {
+    public Points(Board fullBoard) {
 
-        this.boardSize = fullBoard[0].length;
+        this.boardSize = fullBoard.size();
         this.blackBoard = new LiveStonesBoard(fullBoard, 'B');
         this.whiteBoard = new LiveStonesBoard(fullBoard, 'W');
 

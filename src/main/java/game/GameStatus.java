@@ -52,7 +52,7 @@ public class GameStatus {
     }
 
     public String winner() {
-        return new Winner(board.currentBoard()).getWinner();
+        return new Winner(board).getWinner();
     }
     
     public Board getBoard(){

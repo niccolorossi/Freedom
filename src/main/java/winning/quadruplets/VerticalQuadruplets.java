@@ -1,5 +1,6 @@
 package winning.quadruplets;
 
+import game.Board;
 import winning.indexes.VerticalIndexes;
 import winning.limits.VerticalLimits;
 import winning.rules.VerticalRules;
@@ -11,16 +12,16 @@ public class VerticalQuadruplets {
     private VerticalLimits verticalLimits;
     private VerticalRules verticalRules;
 
-    public VerticalQuadruplets(Character[][] fullBoard) {
-        this.verticalLimits = new VerticalLimits(fullBoard[0].length);
+    public VerticalQuadruplets(Board fullBoard) {
+        this.verticalLimits = new VerticalLimits(fullBoard.size());
         this.verticalRules = new VerticalRules(verticalLimits.beginRowOfUppermostVerticalQuadruplets(),
                                                 verticalLimits.beginRowOfLowermostVerticalQuadruplets());
 
     }
 
-    public List<VerticalIndexes> findQuadruplets(Character[][] fullBoard, Character currentStone) {
+    public List<VerticalIndexes> findQuadruplets(Board fullBoard, Character currentStone) {
 
-        Integer boardSize = fullBoard[0].length;
+        Integer boardSize = fullBoard.size();
         ArrayList<VerticalIndexes> verticalQuadruplets = new ArrayList<>();
 
         Integer beginRowOfUppermostVerticalQuadruplets = verticalLimits.beginRowOfUppermostVerticalQuadruplets();
