@@ -57,6 +57,8 @@ public class InputStringTest {
         IndexOutOfBoundsException thrown = assertThrows(IndexOutOfBoundsException.class, () -> {
             validInputMove.inputMove();
         });
+
+
     }
     @Test
     public void testWhenBoardSizeIsLessThanSixException() {

@@ -1,5 +1,6 @@
 package output;
 
+import exceptions.OutOfBoundsException;
 import game.Board;
 
 import java.io.PrintStream;
@@ -38,5 +39,13 @@ public class OutputManager {
 
     public void freedomMessage() {
         printStream.println("Next move is freedom!");
+    }
+
+    public void invalidInputFormat(Exception e) {
+        printStream.println("You must enter TWO numbers separated by a whitespace");
+    }
+
+    public void outOfBounds(OutOfBoundsException e) {
+        printStream.println(e.getMessage());
     }
 }
