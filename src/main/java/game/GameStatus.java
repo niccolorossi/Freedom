@@ -43,11 +43,6 @@ public class GameStatus {
         this.isFreedom = nextMoveFreedom.isNextFreedom();
     }
     
-    public void updatePreviousCoordinates(Integer row, Integer column) {
-        this.previousRow = row;
-        this.previousColumn = column;
-    }
-    
     private void changeStone(){
         if (newStone == 'W'){
             newStone = 'B';
