@@ -22,13 +22,12 @@ public class MoveValidator {
         
         Integer row = coordinates.get(0);
         Integer column = coordinates.get(1);
-        
-        ValidateAdjacentCoordinate validateAdjacentRow = new ValidateAdjacentCoordinate(previousRow);
+        ValidateAdjacentCoordinate validateAdjacentCell = new ValidateAdjacentCoordinate(previousRow, previousColumn);
+        /**ValidateAdjacentCoordinate validateAdjacentRow = new ValidateAdjacentCoordinate(previousRow);
         ValidateAdjacentCoordinate validateAdjacentColumn = new ValidateAdjacentCoordinate(previousColumn);
-        
+        */
         if(!isFreedom){
-            validateAdjacentRow.isCoordinateAdjacent(row);
-            validateAdjacentColumn.isCoordinateAdjacent(column);
+            validateAdjacentCell.coordinateAdjacent(row, column);
         }
         
         ValidateOccupiedCell validateOccupiedCell = new ValidateOccupiedCell(board.emptyCellCharacter());

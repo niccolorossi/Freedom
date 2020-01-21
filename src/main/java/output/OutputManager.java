@@ -25,7 +25,7 @@ public class OutputManager {
         printStream.println("Player " + playerStone + ", do you want to pass? Y/N");
     }
 
-    public void changeTurnMessage(Character playerStone) {
+    public void currentPlayerTurnMessage(Character playerStone) {
         printStream.println("Player " + playerStone + ", it's your turn!");
     }
 

@@ -57,7 +57,7 @@ public class Game {
     private void turn() {
         Character currentPlayer = this.currentPlayer();
         OutputManager outputManager = new OutputManager();
-        outputManager.changeTurnMessage(currentPlayer);
+        outputManager.currentPlayerTurnMessage(currentPlayer);
         while(true) {
             InputString inputString = new InputString();
             List<Integer> coordinates = inputString.getMove(boardSize);
