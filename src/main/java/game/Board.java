@@ -6,10 +6,10 @@ import java.util.stream.IntStream;
 public class Board {
     
     private Character[][] currentBoard;
-    private char emptyCellCharacter = '_';
+    private final char emptyCellCharacter = '_';
     
 
-    Board(int boardSize) {
+    public Board (int boardSize) {
 
         this.currentBoard = new Character[boardSize][boardSize];
         IntStream.range(0, boardSize)

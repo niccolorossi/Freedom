@@ -8,7 +8,7 @@ import winning.rules.DiagonalRules;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiagonalQuadruplets {
+public class DiagonalQuadruplets implements Quadruplets {
 
     private DiagonalLimits diagonalLimits;
     private DiagonalRules diagonalRules;

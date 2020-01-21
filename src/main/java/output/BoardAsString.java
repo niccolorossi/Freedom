@@ -5,9 +5,9 @@ import game.Board;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-class BoardAsString {
+public class BoardAsString {
 
-    String parsedBoard(Board board) {
+    public String parsedBoard(Board board) {
 
         Character[][] currentBoard = board.currentBoard();
         StringBuilder toReturn = new StringBuilder();

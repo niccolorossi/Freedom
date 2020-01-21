@@ -8,7 +8,7 @@ import winning.rules.AntiDiagonalRules;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AntiDiagonalQuadruplets {
+public class AntiDiagonalQuadruplets implements Quadruplets {
 
     private AntiDiagonalLimits antiDiagonalLimits;
     private AntiDiagonalRules antiDiagonalRules;

@@ -9,7 +9,7 @@ import winning.rules.HorizontalRules;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HorizontalQuadruplets {
+public class HorizontalQuadruplets implements Quadruplets {
 
     private HorizontalLimits horizontalLimits;
     private HorizontalRules horizontalRules;

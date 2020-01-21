@@ -1,8 +1,10 @@
 package test.game;
 
+import game.Board;
 import game.GameStatus;
 import org.junit.Before;
 import org.junit.Test;
+import output.BoardAsString;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -28,23 +30,23 @@ public class BoardTest {
             "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" ;
 
-    private GameStatus gameSizeTenBoard;
-    private GameStatus gameSizeEightBoard;
+    private BoardAsString gameSizeTenBoard  ;
+    private BoardAsString gameSizeEightBoard;
 
     @Before
     public void startGame() {
-        gameSizeTenBoard = new GameStatus(10);
-        gameSizeEightBoard = new GameStatus(8);
+        gameSizeTenBoard = new BoardAsString();
+        gameSizeEightBoard = new BoardAsString();
     }
 
     @Test
     public void isSizeTenBoardEmpty() {
-        assertThat(gameSizeTenBoard.toString(), is(emptyBoardSizeTen));
+        assertThat(gameSizeTenBoard.parsedBoard(new Board(10)) , is(emptyBoardSizeTen));
 
     }
 
     @Test
     public void isSizeEightBoardEmpty() {
-        assertThat(gameSizeEightBoard.toString(), is(emptyBoardSizeEight));
+        assertThat(gameSizeTenBoard.parsedBoard(new Board(8)), is(emptyBoardSizeEight));
     }
 }

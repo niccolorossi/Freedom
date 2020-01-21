@@ -8,7 +8,7 @@ import winning.rules.VerticalRules;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerticalQuadruplets {
+public class VerticalQuadruplets implements Quadruplets{
     private VerticalLimits verticalLimits;
     private VerticalRules verticalRules;
 
