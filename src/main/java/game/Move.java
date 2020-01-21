@@ -1,16 +1,22 @@
 package game;
 
+import java.util.List;
+
 abstract public class Move {
     
     Character newStone;
-    Integer row;
-    Integer column;
+    List<Integer> coordinates;
     
     void setMove(Board board) {
-        try {
-            board.placeStone(newStone, row, column);
-        } catch (NullPointerException e) {
-        }
+            board.placeStone(newStone, coordinates);
+    }
+    
+    Integer getRow() {
+        return coordinates.get(0);
+    }
+    
+    Integer getColumn() {
+        return coordinates.get(1);
     }
     
 }

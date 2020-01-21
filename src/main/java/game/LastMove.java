@@ -1,7 +1,7 @@
 package game;
 
+
 import java.util.Arrays;
-import java.util.List;
 
 public class LastMove extends Move {
     
@@ -20,7 +20,7 @@ public class LastMove extends Move {
         for(int row=0; row<boardSize; row++) {
             for(int col=0; col<boardSize; col++) {
                 if(currentBoard[row][col].equals(emptyCellCharacter)) {
-                    board.placeStone(newStone, row+1, col+1);
+                    board.placeStone(newStone, Arrays.asList(row+1, col+1));
                 }
             }
         }

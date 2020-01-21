@@ -1,5 +1,6 @@
 package game;
 
+import checkers.MoveValidator;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import input.InputString;
@@ -10,10 +11,12 @@ public class Game {
     
     private GameStatus gameStatus;
     private Integer boardSize;
+    private MoveValidator moveValidator;
     
     public Game(Integer boardSize) {
         this.boardSize = boardSize; 
         this.gameStatus = new GameStatus(boardSize);
+        this.moveValidator = new MoveValidator();
     }
     
     private Integer numberOfMoves() {
@@ -38,6 +41,8 @@ public class Game {
         String passMessage = inputString.getPassMessage();
         if(passMessage.equals("N")) {
             gameStatus.lastMove();
+            LastMove lastMove = new LastMove(lastTurnPlayer);
+            gameStatus.updateStatus(lastMove);
             System.out.println(gameStatus.toString());
         } else {
             System.out.println(gameStatus.toString());
@@ -48,15 +53,19 @@ public class Game {
     }
     
     private void turn() {
-
         Character currentPlayer = this.currentPlayer();
         System.out.println("Player " + currentPlayer + ", it's your turn!");
-        InputString inputString = new InputString();
-        List<Integer> coordinate = inputString.getMove(boardSize);
-        try {
-            gameStatus.updateStatus(coordinate.get(0), coordinate.get(1));
-        } catch (NonAdjacentException | OccupiedCellException e) {
-            System.out.println(e.getMessage());
+        while(true) {
+            InputString inputString = new InputString();
+            List<Integer> coordinates = inputString.getMove(boardSize);
+            try {
+                moveValidator.validate(coordinates, gameStatus.isFreedom(), gameStatus.getBoard());
+                RegularMove regularMove = new RegularMove(coordinates, currentPlayer);
+                gameStatus.updateStatus(regularMove);
+                break;
+            } catch (NonAdjacentException | OccupiedCellException e) {
+                System.out.println(e.getMessage());
+            }
         }
         
     }

@@ -1,5 +1,6 @@
 package game;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Board {
@@ -26,8 +27,10 @@ public class Board {
         return currentBoard[row-1][column-1];
     }
     
-    void placeStone(Character symbol, int row, int column) {
-
+    void placeStone(Character symbol, List<Integer> coordinates) {
+        
+        Integer row = coordinates.get(0);
+        Integer column = coordinates.get(1);
         currentBoard[row-1][column-1] = symbol;
     }
 

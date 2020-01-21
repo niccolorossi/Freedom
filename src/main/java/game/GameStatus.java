@@ -15,6 +15,7 @@ public class GameStatus {
     private Character newStone;
     private Boolean isLastMove;
     
+    
     public GameStatus(int size) {
         this.board = new Board(size);
         this.newStone = 'W';
@@ -28,24 +29,13 @@ public class GameStatus {
         return boardAsString.parsedBoard(board);
     }
     
-    public void updateStatus(Integer row, Integer column) 
-    throws NonAdjacentException, OccupiedCellException {
-        Move move;
-        if(isFreedom) {
-            move = new FreedomMove(row, column, newStone);
-        } else if(isLastMove) {
-            move = new LastMove(newStone);
-        } else {
-            move = new RegularMove(row, column, previousRow, previousColumn,
-                                    newStone, board);
-        }
+    public void updateStatus(Move move) {
+        
         move.setMove(board);
-        
         changeStone();
-        
+        Integer row = move.getRow();
+        Integer column = move.getColumn();
         updateMoveFreedom(row, column);
-        
-        updatePreviousCoordinates(row, column);
     }
     
     public void updateMoveFreedom(Integer row, Integer column) {
@@ -73,11 +63,17 @@ public class GameStatus {
     public void lastMove() {
         this.isLastMove = true;
         this.isFreedom = false;
-        Move move = new LastMove(newStone);
-        move.setMove(board);
     }
 
     public String winner() {
         return new Winner(board.currentBoard()).getWinner();
+    }
+    
+    public Board getBoard(){
+        return this.board;
+    }
+    
+    public Boolean isFreedom(){
+        return isFreedom;
     }
 }
