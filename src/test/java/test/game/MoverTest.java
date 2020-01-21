@@ -1,15 +1,23 @@
 package test.game;
 
+import checkers.MoveValidator;
+import exceptions.NonAdjacentException;
+import exceptions.OccupiedCellException;
 import game.GameStatus;
 import game.RegularMove;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import output.BoardAsString;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MoverTest {
 
@@ -62,21 +70,36 @@ public class MoverTest {
         assertThat(boardAsString.parsedBoard(gameSizeTenBoard.getBoard()), is(firstMoveBoardSizeTen));
     }
 
-   /* @Test
+    @Rule
+    public ExpectedException exception =
+            ExpectedException.none();
+
+   @Test
     public void testOccupiedCellToStringReturnsPreviousBoard() {
-        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
-        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'B'));
-        
-        assertThat(boardAsString.parsedBoard(gameSizeTenBoard.getBoard()), is(firstMoveBoardSizeTen));
+
+       gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
+       List<Integer> occupiedMove = Arrays.asList(1, 1);
+       MoveValidator moveValidator = new MoveValidator(1, 1);
+
+       OccupiedCellException thrown = assertThrows(OccupiedCellException.class,
+               () -> moveValidator.validate(occupiedMove, false, gameSizeTenBoard.getBoard()));
+
+       assertTrue(thrown.getMessage().contains("Cell is already occupied!"));
+
+
     }
 
     @Test
     public void testNonAdjacentCellToStringReturnsPreviousBoard() {
         gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
-        gameSizeTenBoard.updateStatus(new RegularMove(Arrays.asList(1,4), 'B'));
+        List<Integer> occupiedMove = Arrays.asList(5, 1);
+        MoveValidator moveValidator = new MoveValidator(1, 1);
 
-        assertThat(boardAsString.parsedBoard(gameSizeTenBoard.getBoard()), is(firstMoveBoardSizeTen));
-    }*/
+        NonAdjacentException thrown = assertThrows(NonAdjacentException.class,
+                () -> moveValidator.validate(occupiedMove, false, gameSizeTenBoard.getBoard()));
+
+        assertTrue(thrown.getMessage().contains("This move must be adjacent to the previous one!"));
+    }
     
      
 }

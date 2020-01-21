@@ -29,6 +29,7 @@ public class GameStatus {
     public void updateMoveFreedom(Integer row, Integer column) {
         NextMoveFreedom nextMoveFreedom = new NextMoveFreedom(board, row, column);
         this.isFreedom = nextMoveFreedom.isNextFreedom();
+
         if(isFreedom) {
             OutputManager outputManager = new OutputManager();
             outputManager.freedomMessage();

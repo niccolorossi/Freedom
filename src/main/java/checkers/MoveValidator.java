@@ -7,10 +7,17 @@ import game.Board;
 import java.util.List;
 
 public class MoveValidator {
-    
+
     private Integer previousRow;
     private Integer previousColumn;
-    
+
+    public MoveValidator(){}
+
+    public MoveValidator(Integer previousRow, Integer previousColumn) {
+        this.previousRow = previousRow;
+        this.previousColumn = previousColumn;
+    }
+
     public void validate(List<Integer> coordinates, Boolean isFreedom, Board board) throws NonAdjacentException, OccupiedCellException{
         
         Integer row = coordinates.get(0);
