@@ -13,6 +13,7 @@ public class LiveStonesBoard {
     private PlayerQuadruplets playerQuadruplets;
 
 
+
     public LiveStonesBoard(Board fullBoard, Character currentStone) {
 
         this.playerQuadruplets = new PlayerQuadruplets(fullBoard);
@@ -27,6 +28,7 @@ public class LiveStonesBoard {
     }
 
     public void aliveStonesForCurrentPlayer() {
+
         List<Indexes> allQuadruplets = playerQuadruplets.findAllQuadruplets(currentStone);
         for (int element = 0; element < allQuadruplets.size(); element ++){
             updateLiveStones(allQuadruplets.get(element));
@@ -38,6 +40,7 @@ public class LiveStonesBoard {
     }
     
     private void updateLiveStones(Indexes indexes) {
+
         List<List<Integer>> indexesList = indexes.getIndexes();
         for(int i=0; i<4; i++) {
             List<Integer> thisCell = indexesList.get(i);
@@ -45,5 +48,9 @@ public class LiveStonesBoard {
             Integer column = thisCell.get(1);
             currentBoard[row][column] = true;
         }
+    }
+
+    public int size() {
+        return currentBoard[0].length;
     }
 }
