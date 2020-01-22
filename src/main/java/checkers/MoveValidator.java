@@ -13,6 +13,9 @@ public class MoveValidator {
 
     public MoveValidator(){}
 
+    /*
+     * This ctor is for testing purposes only
+     */
     public MoveValidator(Integer previousRow, Integer previousColumn) {
         this.previousRow = previousRow;
         this.previousColumn = previousColumn;
@@ -22,11 +25,9 @@ public class MoveValidator {
         
         Integer row = coordinates.get(0);
         Integer column = coordinates.get(1);
-        ValidateAdjacentCoordinate validateAdjacentCell = new ValidateAdjacentCoordinate(previousRow, previousColumn);
-        /**ValidateAdjacentCoordinate validateAdjacentRow = new ValidateAdjacentCoordinate(previousRow);
-        ValidateAdjacentCoordinate validateAdjacentColumn = new ValidateAdjacentCoordinate(previousColumn);
-        */
+
         if(!isFreedom){
+            ValidateAdjacentCoordinate validateAdjacentCell = new ValidateAdjacentCoordinate(previousRow, previousColumn);
             validateAdjacentCell.coordinateAdjacent(row, column);
         }
         
@@ -40,6 +41,4 @@ public class MoveValidator {
         this.previousRow = row;
         this.previousColumn = column;
     }
-    
-    
 }

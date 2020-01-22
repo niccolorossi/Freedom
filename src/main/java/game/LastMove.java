@@ -25,6 +25,7 @@ public class LastMove extends Move {
                 }
             }
         }
+
         return toReturn;
     }
 }

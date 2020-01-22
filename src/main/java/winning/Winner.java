@@ -2,6 +2,9 @@ package winning;
 
 import game.Board;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Winner {
 
     private Points pc;
@@ -11,22 +14,12 @@ public class Winner {
         this.pc = new Points(fullBoard);
     }
 
-    public String getWinner() {
+    public List<Integer> getWinner() {
 
         Integer whitePoints = pc.getWhitePoints();
         Integer blackPoints = pc.getBlackPoints();
 
-        StringBuilder str = new StringBuilder();
-        str.append(whitePoints + " - " + blackPoints);
-        String comment;
+        return Arrays.asList(whitePoints, blackPoints);
 
-        if(whitePoints == blackPoints) {
-            comment = " : the game is drawn!";
-        } else {
-            comment = whitePoints > blackPoints ? " : White won!" : " : Black won!";
-        }
-        str.append(comment);
-
-        return str.toString();
     }
 }

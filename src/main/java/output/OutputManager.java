@@ -4,6 +4,7 @@ import exceptions.OutOfBoundsException;
 import game.Board;
 
 import java.io.PrintStream;
+import java.util.List;
 
 public class OutputManager {
 
@@ -29,6 +30,24 @@ public class OutputManager {
         printStream.println("Player " + playerStone + ", it's your turn!");
     }
 
+    public void winnerMessage(List<Integer> points) {
+
+        Integer whitePoints = points.get(0);
+        Integer blackPoints = points.get(1);
+
+        StringBuilder str = new StringBuilder();
+        str.append(whitePoints + " - " + blackPoints);
+        String comment;
+
+        if(whitePoints == blackPoints) {
+            comment = " : the game is drawn!";
+        } else {
+            comment = whitePoints > blackPoints ? " : White won!" : " : Black won!";
+        }
+        str.append(comment);
+
+       printStream.println(str.toString());
+    }
     public void displayMessage(String message) {
         printStream.println(message);
     }
@@ -37,8 +56,10 @@ public class OutputManager {
         printStream.println(new BoardAsString().parsedBoard(board));
     }
 
-    public void freedomMessage() {
-        printStream.println("Next move is freedom!");
+    public void freedomMessage(Boolean freedom) {
+        if(freedom) {
+            printStream.println("This move is freedom! You can place the stone wherever you want!");
+        }
     }
 
     public void invalidInputFormat(Exception e) {

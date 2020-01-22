@@ -57,7 +57,7 @@ public class InputString {
         }
     }
 
-    public Boolean getPassMessage() {
+    public Boolean notPassedTurn() {
         
         while(true) {
             try {

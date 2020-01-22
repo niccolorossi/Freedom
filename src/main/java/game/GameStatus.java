@@ -1,8 +1,9 @@
 package game;
 
 import game.freedom.NextMoveFreedom;
-import output.OutputManager;
 import winning.Winner;
+
+import java.util.List;
 
 public class GameStatus {
     
@@ -17,7 +18,7 @@ public class GameStatus {
         this.isFreedom = true;
     }
     
-    public void updateStatus(Move move) {
+    public void updateStatus(RegularMove move) {
         
         move.setMove(board);
         changeStone();
@@ -25,30 +26,25 @@ public class GameStatus {
         Integer column = move.getColumn();
         updateMoveFreedom(row, column);
     }
+
+    public void updateStatus(LastMove move) {
+
+        move.setMove(board);
+    }
     
     public void updateMoveFreedom(Integer row, Integer column) {
+
         NextMoveFreedom nextMoveFreedom = new NextMoveFreedom(board, row, column);
         this.isFreedom = nextMoveFreedom.isNextFreedom();
-
-        if(isFreedom) {
-            OutputManager outputManager = new OutputManager();
-            outputManager.freedomMessage();
-        }
     }
     
-    private void changeStone(){
-        if (newStone == 'W'){
-            newStone = 'B';
-        } else if (newStone == 'B'){
-            newStone = 'W';
-        }
-    }
+    private void changeStone() { newStone = (newStone == 'W') ? 'B' : 'W'; }
     
     Character currentPlayer(){
         return newStone;
     }
 
-    public String winner() {
+    public List<Integer> winner() {
         return new Winner(board).getWinner();
     }
     
