@@ -1,5 +1,6 @@
 package output;
 
+import exceptions.BoardTooSmallException;
 import exceptions.OutOfBoundsException;
 import game.Board;
 
@@ -62,11 +63,18 @@ public class OutputManager {
         }
     }
 
+    public void invalidBoardInput(Exception e) {
+        printStream.println("You must enter an integer number greater than 5!");
+    }
     public void invalidInputFormat(Exception e) {
         printStream.println("You must enter TWO numbers separated by a whitespace");
     }
 
     public void outOfBounds(OutOfBoundsException e) {
+        printStream.println(e.getMessage());
+    }
+
+    public void boardTooSmall(BoardTooSmallException e) {
         printStream.println(e.getMessage());
     }
 }

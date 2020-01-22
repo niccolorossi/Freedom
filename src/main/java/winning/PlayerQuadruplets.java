@@ -44,27 +44,25 @@ public class PlayerQuadruplets {
     private List<HorizontalIndexes> findHorizontalQuadruplets(Character currentStone) {
 
         List<HorizontalIndexes> allHorizontal = horizontalQuadruplets.findQuadruplets(fullBoard, currentStone);
-
         return allHorizontal;
     }
 
     private List<VerticalIndexes> findVerticalQuadruplets(Character currentStone) {
 
         List<VerticalIndexes> allVertical = verticalQuadruplets.findQuadruplets(fullBoard, currentStone);
-
         return allVertical;
     }
 
     private List<DiagonalIndexes> findDiagonalQuadruplets(Character currentStone) {
-        List<DiagonalIndexes> allDiagonal = diagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
+        List<DiagonalIndexes> allDiagonal = diagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
         return allDiagonal;
 
     }
 
     private List<AntiDiagonalIndexes> findAntiDiagonalQuadruplets(Character currentStone) {
-        List<AntiDiagonalIndexes> allAntiDiagonal = antiDiagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
 
+        List<AntiDiagonalIndexes> allAntiDiagonal = antiDiagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
         return allAntiDiagonal;
     }
 }

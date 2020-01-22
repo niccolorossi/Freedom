@@ -11,19 +11,18 @@ public class Points {
     public Points(Board fullBoard) {
 
         this.blackBoard = new LiveStonesBoard(fullBoard, 'B');
+        blackBoard.aliveStonesForCurrentPlayer();
         this.whiteBoard = new LiveStonesBoard(fullBoard, 'W');
+        whiteBoard.aliveStonesForCurrentPlayer();
 
     }
 
     public Integer getBlackPoints() {
-
-        blackBoard.aliveStonesForCurrentPlayer();
         return countStonesAlive(blackBoard);
     }
 
     public Integer getWhitePoints() {
 
-        whiteBoard.aliveStonesForCurrentPlayer();
         return countStonesAlive(whiteBoard);
     }
 

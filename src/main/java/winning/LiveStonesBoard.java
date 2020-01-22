@@ -12,8 +12,6 @@ public class LiveStonesBoard {
     private Character currentStone;
     private PlayerQuadruplets playerQuadruplets;
 
-
-
     public LiveStonesBoard(Board fullBoard, Character currentStone) {
 
         this.playerQuadruplets = new PlayerQuadruplets(fullBoard);

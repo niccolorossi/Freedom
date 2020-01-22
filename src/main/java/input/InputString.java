@@ -51,8 +51,12 @@ public class InputString {
                 Integer inputInteger = Integer.parseInt(inputString);
                 ValidBoardSize validBoardSize = new ValidBoardSize(inputInteger);
                 return validBoardSize.boardSize();
-            } catch (BoardTooSmallException | NumberFormatException e) {
-                System.out.println(e.getMessage());
+            } catch ( NumberFormatException e) {
+                OutputManager outputManager = new OutputManager();
+                outputManager.invalidBoardInput(e);
+            } catch (BoardTooSmallException e) {
+                OutputManager outputManager = new OutputManager();
+                outputManager.boardTooSmall(e);
             }
         }
     }
