@@ -98,7 +98,7 @@ public class MoverTest {
         NonAdjacentException thrown = assertThrows(NonAdjacentException.class,
                 () -> moveValidator.validate(occupiedMove, false, gameSizeTenBoard.getBoard()));
 
-        assertTrue(thrown.getMessage().contains("This move must be adjacent to the previous one!"));
+        assertTrue(thrown.getMessage().contains("This move must be adjacent to " + Arrays.asList(1, 1)));
     }
     
      
