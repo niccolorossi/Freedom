@@ -13,14 +13,11 @@ public class QuadrupletsTest {
 
     private Character[][] fullBoardCharacter;
     private Board fullBoard;
-    private Boolean[][] liveStonesBoardAfterHorizontalQuadrupletEightZero;
-    private Boolean[][] liveStonesBoardAfterHQEightZeroEightSix;
-    private Boolean[][] liveStonesBoardAfterSettingHVBlackStones;
-    private Boolean[][] liveStonesBoardAfterSettingHVDBlackStones;
-    private Boolean[][] liveStonesBoardAfterSettingHVDABlackStones;
+    
+    private Boolean[][] fullLiveStonesBoard;
 
     @Before
-    public void initFullBoard(){
+    public void initFullBoard() {
 
         fullBoardCharacter = new Character[][]
                         {{'B', 'W', 'B', 'W', 'B', 'B', 'W', 'W', 'B', 'W'},
@@ -33,56 +30,8 @@ public class QuadrupletsTest {
                         {'W', 'W', 'B', 'W', 'W', 'B', 'W', 'W', 'W', 'W'},
                         {'B', 'B', 'B', 'B', 'W', 'W', 'B', 'B', 'B', 'B'},
                         {'W', 'B', 'W', 'W', 'B', 'B', 'W', 'W', 'W', 'B'}};
-        
-        liveStonesBoardAfterHorizontalQuadrupletEightZero = new Boolean[][]
-                                {{false, false, false, false, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false},
-                                {true, true, true, true, false, false, false, false, false, false},
-                                {false, false, false, false, false, false, false, false, false, false}};
 
-        liveStonesBoardAfterHQEightZeroEightSix = new Boolean[][]
-                        {{false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {true, true, true, true, false, false, true, true, true, true},
-                        {false, false, false, false, false, false, false, false, false, false}};
-
-        liveStonesBoardAfterSettingHVBlackStones = new Boolean[][]
-                        {{false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, true, false, false, false},
-                        {false, false, false, false, false, false, true, false, false, false},
-                        {false, false, false, false, false, false, true, false, false, false},
-                        {false, false, false, false, false, false, true, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {true, true, true, true, false, false, true, true, true, true},
-                        {false, false, false, false, false, false, false, false, false, false}};
-
-        liveStonesBoardAfterSettingHVDBlackStones = new Boolean[][]
-                        {{false, false, false, false, false, false, false, false, false, false},
-                        {false, false, false, false, false, false, true, false, false, false},
-                        {false, false, false, false, false, false, true, false, false, false},
-                        {false, false, false, false, false, false, true, false, false, false},
-                        {false, false, false, false, false, false, true, true, false, false},
-                        {false, false, false, false, false, false, false, false, true, false},
-                        {false, false, false, false, false, false, false, false, false, true},
-                        {false, false, false, false, false, false, false, false, false, false},
-                        {true, true, true, true, false, false, true, true, true, true},
-                        {false, false, false, false, false, false, false, false, false, false}};
-
-        liveStonesBoardAfterSettingHVDABlackStones = new Boolean[][]
+        fullLiveStonesBoard = new Boolean[][]
                         {{false, false, false, false, true, false, false, false, false, false},
                         {false, false, false, true, false, false, true, false, false, false},
                         {false, false, true, false, true, false, true, false, false, false},
@@ -95,46 +44,12 @@ public class QuadrupletsTest {
                         {false, false, false, false, false, false, false, false, false, false}};
 
         fullBoard = new Board(fullBoardCharacter);
-
-
     }
-    
-    
-    /**
-    @Test
-    public void testAllHorizontalQuadrupletsAreSet() {
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
-        playerQuadruplets.findHorizontalQuadruplets();
-        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterHQEightZeroEightSix));
-    }
-
-    @Test
-    public void testAllHorizontalVerticalQuadrupletsAreSet() {
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
-        playerQuadruplets.findHorizontalQuadruplets();
-        playerQuadruplets.findVerticalQuadruplets();
-        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVBlackStones));
-    }
-
-    @Test
-    public void testAllHorizontalVerticalDiagonalQuadrupletsAreSet() {
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard.length);
-        PlayerQuadruplets playerQuadruplets = new PlayerQuadruplets(liveStonesBoard, fullBoard, 'B');
-        playerQuadruplets.findHorizontalQuadruplets();
-        playerQuadruplets.findVerticalQuadruplets();
-        playerQuadruplets.findDiagonalQuadruplets();
-        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDBlackStones));
-    }
-    */
 
     @Test
     public void testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet() {
         LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard, 'B');
         liveStonesBoard.aliveStonesForCurrentPlayer();
-        assertThat(liveStonesBoard.getCurrentBoard(), is(liveStonesBoardAfterSettingHVDABlackStones));
+        assertThat(liveStonesBoard.getCurrentBoard(), is(fullLiveStonesBoard));
     }
-    
-    
 }

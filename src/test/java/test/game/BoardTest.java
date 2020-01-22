@@ -1,7 +1,6 @@
 package test.game;
 
 import game.Board;
-import game.GameStatus;
 import org.junit.Before;
 import org.junit.Test;
 import output.BoardAsString;
@@ -30,23 +29,21 @@ public class BoardTest {
             "|_|_|_|_|_|_|_|_|\n" +
             "|_|_|_|_|_|_|_|_|\n" ;
 
-    private BoardAsString gameSizeTenBoard;
-    private BoardAsString gameSizeEightBoard;
+    private BoardAsString boardAsString;
 
     @Before
     public void startGame() {
-        gameSizeTenBoard = new BoardAsString();
-        gameSizeEightBoard = new BoardAsString();
+        boardAsString = new BoardAsString();
     }
 
     @Test
     public void isSizeTenBoardEmpty() {
-        assertThat(gameSizeTenBoard.parsedBoard(new Board(10)) , is(emptyBoardSizeTen));
+        assertThat(boardAsString.parsedBoard(new Board(10)) , is(emptyBoardSizeTen));
 
     }
 
     @Test
     public void isSizeEightBoardEmpty() {
-        assertThat(gameSizeTenBoard.parsedBoard(new Board(8)), is(emptyBoardSizeEight));
+        assertThat(boardAsString.parsedBoard(new Board(8)), is(emptyBoardSizeEight));
     }
 }
