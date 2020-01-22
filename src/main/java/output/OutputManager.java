@@ -18,7 +18,7 @@ public class OutputManager {
     }
 
     public void greetingsMessage() {
-        printStream.println("Welcome to Freedom!\n You must enter the coordinate of the move\n separated by whitespace.");
+        printStream.println("Welcome to Freedom!\nYou must enter the coordinates of the move\nseparated by whitespace.");
     }
 
     public void lastTurnMessage(Character playerStone) {

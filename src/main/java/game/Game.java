@@ -27,11 +27,9 @@ public class Game {
     private Character currentPlayer() {
         return gameStatus.currentPlayer();
     }
-
-
+    
     public void start() {
         OutputManager outputManager = new OutputManager();
-        outputManager.greetingsMessage();
         Integer totalNumberOfMoves = numberOfMoves();
 
         for(int turnNumber = 1; turnNumber <= totalNumberOfMoves - 1; turnNumber++) {
@@ -45,10 +43,8 @@ public class Game {
         if(inputString.getPassMessage()) {
             LastMove lastMove = new LastMove(lastTurnPlayer, gameStatus.getBoard());
             gameStatus.updateStatus(lastMove);
-            outputManager.printBoard(gameStatus.getBoard());
-        } else {
-            outputManager.printBoard(gameStatus.getBoard());
         }
+        outputManager.printBoard(gameStatus.getBoard());
         String winnerString = gameStatus.winner();
         outputManager.displayMessage(winnerString);
         
