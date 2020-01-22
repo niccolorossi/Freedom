@@ -1,23 +1,18 @@
 package winning.indexes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import winning.LiveStonesBoard;
 
 public class VerticalIndexes extends Indexes {
 
     public VerticalIndexes(Integer beginRow, Integer beginColumn) {
 
         super(beginRow, beginColumn);
-
     }
 
     @Override
-    public List<List<Integer>> getIndexes() {
-        List<List<Integer>> toReturn = new ArrayList<>();
-        for (int row = beginRow; row < beginRow + 4; row++) {
-            toReturn.add(Arrays.asList(row, beginColumn));
+    public void setIndexes(LiveStonesBoard liveStonesBoard) {
+        for(int row = beginRow; row < beginRow+4; row++) {
+            liveStonesBoard.placeLiveStones(row, beginColumn);
         }
-        return toReturn;
     }
 }

@@ -1,27 +1,31 @@
 package winning.limits;
 import winning.rules.Rules;
 
-public class DiagonalLimits {
+public class DiagonalLimits implements Limits {
 
     private Integer boardSize;
 
     public DiagonalLimits(Integer boardSize) {
         this.boardSize= boardSize;
     }
-
-
-    public Integer beginRowOfUppermostDiagonalQuadruplets() {
+    
+    @Override
+    public int beginRow() {
         return 0;
     }
 
-    public Integer beginColOfUppermostDiagonalQuadruplets() {
+    @Override
+    public int beginCol() {
         return 0;
     }
 
-    public Integer beginRowOfLowermostDiagonalQuadruplets() {
-        return boardSize - Rules.QUADRUPLET_SIZE;
+    @Override
+    public int endRowInclusive() {
+        return boardSize-QUADRUPLET_SIZE;
     }
-    public Integer beginColOfLowermostDiagonalQuadruplets() {
-        return boardSize - Rules.QUADRUPLET_SIZE;
-    };
+
+    @Override
+    public int endColInclusive() {
+        return boardSize-QUADRUPLET_SIZE;
+    }
 }

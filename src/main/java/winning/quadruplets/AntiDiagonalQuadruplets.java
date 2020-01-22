@@ -1,12 +1,10 @@
 package winning.quadruplets;
 
 import game.Board;
+import winning.LiveStonesBoard;
 import winning.indexes.AntiDiagonalIndexes;
 import winning.limits.AntiDiagonalLimits;
 import winning.rules.AntiDiagonalRules;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AntiDiagonalQuadruplets implements Quadruplets {
 
@@ -15,33 +13,28 @@ public class AntiDiagonalQuadruplets implements Quadruplets {
 
     public AntiDiagonalQuadruplets(Board fullBoard) {
         this.antiDiagonalLimits = new AntiDiagonalLimits(fullBoard.size());
-        this.antiDiagonalRules = new AntiDiagonalRules(antiDiagonalLimits.beginRowOfLowermostAntiDiagonalQuadruplets(),
-                                                        antiDiagonalLimits.beginColOfLowermostAntiDiagonalQuadruplets(),
-                                                        antiDiagonalLimits.beginRowOfUppermostAntiDiagonalQuadruplets(),
-                                                        antiDiagonalLimits.beginColOfUppermostAntiDiagonalQuadruplets());
+        this.antiDiagonalRules = new AntiDiagonalRules(antiDiagonalLimits.beginRow(),
+                                                       antiDiagonalLimits.beginCol(),
+                                                       antiDiagonalLimits.endRowInclusive(),
+                                                       antiDiagonalLimits.endColInclusive());
     }
 
-    public List<AntiDiagonalIndexes> findQuadruplets(Board fullBoard, Character currentStone) {
-
-        ArrayList<AntiDiagonalIndexes> allAntiDiagonals = new ArrayList<>();
-
-        Integer beginRowOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginRowOfLowermostAntiDiagonalQuadruplets();
-        Integer beginColOfLowermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginColOfLowermostAntiDiagonalQuadruplets();
-        Integer beginRowOfUppermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginRowOfUppermostAntiDiagonalQuadruplets();
-        Integer beginColOfUppermostAntiDiagonalQuadruplets = antiDiagonalLimits.beginColOfUppermostAntiDiagonalQuadruplets();
-
-
-        for(int row = beginRowOfLowermostAntiDiagonalQuadruplets; row>= beginRowOfUppermostAntiDiagonalQuadruplets; row--) {
-
-            for(int col = beginColOfLowermostAntiDiagonalQuadruplets; col<= beginColOfUppermostAntiDiagonalQuadruplets; col++) {
+    public void findQuadruplets(Board fullBoard, Character currentStone, LiveStonesBoard liveStonesBoard) {
+        
+        int beginRow = antiDiagonalLimits.beginRow();
+        int beginCol = antiDiagonalLimits.beginCol();
+        int endRow = antiDiagonalLimits.endRowInclusive();
+        int endCol = antiDiagonalLimits.endColInclusive();
+        
+        for(int row=beginRow; row>=endRow; row--) {
+            for(int col=beginCol; col<=endCol; col++) {
 
                 if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
                         && antiDiagonalRules.isCandidate(fullBoard, row, col)) {
-                    allAntiDiagonals.add(new AntiDiagonalIndexes(row,col));
+                    AntiDiagonalIndexes indexes = new AntiDiagonalIndexes(row, col);
+                    indexes.setIndexes(liveStonesBoard);
                 }
             }
         }
-
-        return allAntiDiagonals;
     }
 }

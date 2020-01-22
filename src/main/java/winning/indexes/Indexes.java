@@ -1,6 +1,6 @@
 package winning.indexes;
 
-import java.util.List;
+import winning.LiveStonesBoard;
 
 public abstract class Indexes {
     
@@ -12,5 +12,5 @@ public abstract class Indexes {
         this.beginColumn = beginColumn;
     }
 
-    abstract public List<List<Integer>> getIndexes();
+    abstract public void setIndexes(LiveStonesBoard liveStonesBoard);
 }

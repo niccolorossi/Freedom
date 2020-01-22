@@ -1,28 +1,30 @@
 package winning.limits;
 
-import winning.rules.Rules;
-
-public class AntiDiagonalLimits {
+public class AntiDiagonalLimits implements Limits {
     
-    
-
     private Integer boardSize;
+    
     public AntiDiagonalLimits(Integer length) {
         this.boardSize = length;
     }
 
-    public Integer beginRowOfLowermostAntiDiagonalQuadruplets() {
-        return boardSize + Rules.PREVIOUS_QUADRUPLET_OFFSET;
+    @Override
+    public int beginRow() {
+        return boardSize-1;
     }
 
-    public Integer beginColOfLowermostAntiDiagonalQuadruplets(){
+    @Override
+    public int beginCol() {
         return 0;
     }
 
-    public Integer beginRowOfUppermostAntiDiagonalQuadruplets() {
-        return Rules.QUADRUPLET_SIZE + Rules.PREVIOUS_QUADRUPLET_OFFSET;
+    @Override
+    public int endRowInclusive() {
+        return QUADRUPLET_SIZE-1;
     }
-    public Integer beginColOfUppermostAntiDiagonalQuadruplets() {
-        return boardSize - Rules.QUADRUPLET_SIZE;
+
+    @Override
+    public int endColInclusive() {
+        return boardSize-QUADRUPLET_SIZE;
     }
 }

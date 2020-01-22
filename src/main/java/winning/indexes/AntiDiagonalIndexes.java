@@ -1,22 +1,17 @@
 package winning.indexes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import winning.LiveStonesBoard;
 
 public class AntiDiagonalIndexes extends Indexes {
     
     public AntiDiagonalIndexes(Integer beginRow, Integer beginColumn) {
         super(beginRow, beginColumn);
     }
-    
-    @Override
-    public List<List<Integer>> getIndexes() {
-        List<List<Integer>> toReturn = new ArrayList<>();
-        for (int index = 0; index < 4; index++) {
-            toReturn.add(Arrays.asList(beginRow-index, beginColumn+index));
-        }
-        return toReturn;
-    }
 
+    @Override
+    public void setIndexes(LiveStonesBoard liveStonesBoard) {
+        for (int index = 0; index < 4; index++) {
+            liveStonesBoard.placeLiveStones(beginRow-index, beginColumn+index);
+        }
+    }
 }

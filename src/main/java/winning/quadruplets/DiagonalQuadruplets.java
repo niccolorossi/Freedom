@@ -1,12 +1,10 @@
 package winning.quadruplets;
 
 import game.Board;
+import winning.LiveStonesBoard;
 import winning.indexes.DiagonalIndexes;
 import winning.limits.DiagonalLimits;
 import winning.rules.DiagonalRules;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DiagonalQuadruplets implements Quadruplets {
 
@@ -15,30 +13,30 @@ public class DiagonalQuadruplets implements Quadruplets {
 
     public DiagonalQuadruplets(Board fullBoard) {
         this.diagonalLimits = new DiagonalLimits(fullBoard.size());
-        this.diagonalRules = new DiagonalRules(diagonalLimits.beginRowOfUppermostDiagonalQuadruplets(),
-                                                diagonalLimits.beginRowOfUppermostDiagonalQuadruplets(),
-                                                diagonalLimits.beginRowOfLowermostDiagonalQuadruplets(),
-                                                diagonalLimits.beginColOfLowermostDiagonalQuadruplets());
+        this.diagonalRules = new DiagonalRules(diagonalLimits.beginRow(),
+                                                diagonalLimits.beginRow(),
+                                                diagonalLimits.endRowInclusive(),
+                                                diagonalLimits.endColInclusive());
 
     }
 
-    public List<DiagonalIndexes> findQuadruplets(Board fullBoard, Character currentStone) {
+    public void findQuadruplets(Board fullBoard, Character currentStone, LiveStonesBoard liveStonesBoard) {
 
-        ArrayList<DiagonalIndexes> allDiagonals = new ArrayList<>();
-        Integer beginRowOfUppermostDiagonalQuadruplets = diagonalLimits.beginRowOfUppermostDiagonalQuadruplets();
-        Integer beginColOfUppermostDiagonalQuadruplets = diagonalLimits.beginColOfUppermostDiagonalQuadruplets();
-        Integer beginRowOfLowermostDiagonalQuadruplets = diagonalLimits.beginRowOfLowermostDiagonalQuadruplets();
-        Integer beginColOfLowermostDiagonalQuadruplets = diagonalLimits.beginColOfLowermostDiagonalQuadruplets();
+        int beginRow = diagonalLimits.beginRow();
+        int beginCol = diagonalLimits.beginCol();
+        int endRow = diagonalLimits.endRowInclusive();
+        int endCol = diagonalLimits.endColInclusive();
 
-        for(int row=beginRowOfUppermostDiagonalQuadruplets; row<=beginRowOfLowermostDiagonalQuadruplets; row++) {
-            for(int col=beginColOfUppermostDiagonalQuadruplets; col<=beginColOfLowermostDiagonalQuadruplets; col++) {
+        for(int row=beginRow; row<=endRow; row++) {
+            for(int col=beginCol; col<=endCol; col++) {
 
-                if(diagonalRules.isValid(fullBoard, row, col, currentStone) && diagonalRules.isCandidate(fullBoard, row, col)) {
-                    allDiagonals.add(new DiagonalIndexes(row,col));
+                if(diagonalRules.isValid(fullBoard, row, col, currentStone) 
+                        && diagonalRules.isCandidate(fullBoard, row, col)) {
+                    DiagonalIndexes indexes = new DiagonalIndexes(row, col);
+                    indexes.setIndexes(liveStonesBoard);
                 }
             }
         }
-
-        return allDiagonals;
     }
+    
 }

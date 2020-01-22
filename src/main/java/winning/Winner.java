@@ -20,6 +20,6 @@ public class Winner {
         Integer blackPoints = pc.getBlackPoints();
 
         return Arrays.asList(whitePoints, blackPoints);
-
     }
+    
 }

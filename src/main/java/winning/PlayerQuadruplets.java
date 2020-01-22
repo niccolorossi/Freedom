@@ -1,68 +1,69 @@
 package winning;
 
 import game.Board;
-import winning.indexes.*;
 import winning.quadruplets.AntiDiagonalQuadruplets;
 import winning.quadruplets.DiagonalQuadruplets;
 import winning.quadruplets.HorizontalQuadruplets;
 import winning.quadruplets.VerticalQuadruplets;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class PlayerQuadruplets {
+class PlayerQuadruplets {
     
 
     private Board fullBoard;
-    private HorizontalQuadruplets horizontalQuadruplets;
-    private VerticalQuadruplets verticalQuadruplets;
-    private DiagonalQuadruplets diagonalQuadruplets;
-    private AntiDiagonalQuadruplets antiDiagonalQuadruplets;
-
-    public PlayerQuadruplets(Board fullBoard) {
+    private Character playerCharacter;
+    private LiveStonesBoard liveStonesBoard;
+    
+    PlayerQuadruplets(Board fullBoard, Character playerCharacter) {
 
         this.fullBoard = fullBoard;
-        this.horizontalQuadruplets = new HorizontalQuadruplets(fullBoard);
-        this.verticalQuadruplets = new VerticalQuadruplets(fullBoard);
-        this.diagonalQuadruplets = new DiagonalQuadruplets(fullBoard);
-        this.antiDiagonalQuadruplets = new AntiDiagonalQuadruplets(fullBoard);
+        this.playerCharacter = playerCharacter;
+        this.liveStonesBoard = new LiveStonesBoard(fullBoard);
+    }
+
+    private void findAllQuadruplets() {
+        
+        findHorizontalQuadruplets();
+        findVerticalQuadruplets();
+        findDiagonalQuadruplets();
+        findAntiDiagonalQuadruplets();
+    }
+
+    private void findHorizontalQuadruplets() {
+        
+        HorizontalQuadruplets horizontalQuadruplets = new HorizontalQuadruplets(fullBoard);
+        horizontalQuadruplets.findQuadruplets(fullBoard, playerCharacter, liveStonesBoard);
+    }
+
+    private void findVerticalQuadruplets() {
+
+        VerticalQuadruplets verticalQuadruplets = new VerticalQuadruplets(fullBoard);
+        verticalQuadruplets.findQuadruplets(fullBoard, playerCharacter, liveStonesBoard);
+    }
+
+    private void findDiagonalQuadruplets() {
+
+        DiagonalQuadruplets diagonalQuadruplets = new DiagonalQuadruplets(fullBoard);
+        diagonalQuadruplets.findQuadruplets(fullBoard, playerCharacter, liveStonesBoard);
 
     }
 
-    public List<Indexes> findAllQuadruplets(Character currentStone) {
+    private void findAntiDiagonalQuadruplets() {
 
-        ArrayList<Indexes> allQuadruplets = new ArrayList<>();
-        allQuadruplets.addAll(findHorizontalQuadruplets(currentStone));
-        allQuadruplets.addAll(findVerticalQuadruplets(currentStone));
-        allQuadruplets.addAll(findAntiDiagonalQuadruplets(currentStone));
-        allQuadruplets.addAll(findDiagonalQuadruplets(currentStone));
-
-        return allQuadruplets;
-
+        AntiDiagonalQuadruplets antiDiagonalQuadruplets = new AntiDiagonalQuadruplets(fullBoard);
+        antiDiagonalQuadruplets.findQuadruplets(fullBoard, playerCharacter, liveStonesBoard);
     }
 
-    private List<HorizontalIndexes> findHorizontalQuadruplets(Character currentStone) {
-
-        List<HorizontalIndexes> allHorizontal = horizontalQuadruplets.findQuadruplets(fullBoard, currentStone);
-        return allHorizontal;
-    }
-
-    private List<VerticalIndexes> findVerticalQuadruplets(Character currentStone) {
-
-        List<VerticalIndexes> allVertical = verticalQuadruplets.findQuadruplets(fullBoard, currentStone);
-        return allVertical;
-    }
-
-    private List<DiagonalIndexes> findDiagonalQuadruplets(Character currentStone) {
-
-        List<DiagonalIndexes> allDiagonal = diagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
-        return allDiagonal;
-
-    }
-
-    private List<AntiDiagonalIndexes> findAntiDiagonalQuadruplets(Character currentStone) {
-
-        List<AntiDiagonalIndexes> allAntiDiagonal = antiDiagonalQuadruplets.findQuadruplets(fullBoard, currentStone);
-        return allAntiDiagonal;
+    int countLiveStones() {
+        findAllQuadruplets();
+        int boardSize = liveStonesBoard.size();
+        
+        int count = 0;
+        
+        for(int row = 0; row < boardSize; row ++){
+            for (int col = 0; col < boardSize; col ++){
+                count += liveStonesBoard.getCurrentBoard()[row][col] ? 1 : 0;
+            }
+        }
+        return count;
     }
 }

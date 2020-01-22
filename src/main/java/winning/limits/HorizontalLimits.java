@@ -1,22 +1,31 @@
 package winning.limits;
-import winning.rules.Rules;
 
+public class HorizontalLimits implements Limits {
 
-public class HorizontalLimits {
-
-    private Integer boardSize;
+    private int boardSize;
 
     public HorizontalLimits(Integer length) {
+        
         this.boardSize = length;
     }
 
-    public Integer beginColOfLeftmostHorizontalQuadruplets(){
+    @Override
+    public int beginRow() {
         return 0;
     }
-
-    public Integer beginColOfRightmostHorizontalQuadruplets(){
-        return boardSize - Rules.QUADRUPLET_SIZE;
+    
+    @Override
+    public int beginCol() {
+        return 0;
     }
-
-
+    
+    @Override
+    public int endRowInclusive() {
+        return boardSize-1;
+    }
+    
+    @Override
+    public int endColInclusive() {
+        return boardSize-QUADRUPLET_SIZE;
+    }
 }

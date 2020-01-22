@@ -6,6 +6,8 @@ import org.junit.Test;
 import winning.Points;
 import winning.Winner;
 
+import java.util.Arrays;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -75,12 +77,12 @@ public class WinnerTest {
     @Test
     public void blackIsWinner() {
         Winner winner = new Winner(fullBoard);
-        assertThat(winner.getWinner(), is("15 - 23 : Black won!"));
+        assertThat(winner.getWinner(), is(Arrays.asList(15, 23)));
     }
 
     @Test
     public void theGameIsDrawn() {
         Winner winner = new Winner(fullBoardDraw);
-        assertThat(winner.getWinner(), is("40 - 40 : the game is drawn!"));
+        assertThat(winner.getWinner(), is(Arrays.asList(40, 40)));
     }
 }

@@ -1,21 +1,30 @@
 package winning.limits;
-import winning.rules.Rules;
 
-
-public class VerticalLimits {
+public class VerticalLimits implements Limits {
+    
     private Integer boardSize;
 
     public VerticalLimits(Integer boardSize) {
         this.boardSize = boardSize;
     }
 
-
-
-    public Integer beginRowOfUppermostVerticalQuadruplets(){
+    @Override
+    public int beginRow() {
         return 0;
     }
 
-    public Integer beginRowOfLowermostVerticalQuadruplets() {
-        return boardSize - Rules.QUADRUPLET_SIZE;
+    @Override
+    public int beginCol() {
+        return 0;
+    }
+
+    @Override
+    public int endRowInclusive() {
+        return boardSize-QUADRUPLET_SIZE;
+    }
+
+    @Override
+    public int endColInclusive() {
+        return boardSize-1;
     }
 }
