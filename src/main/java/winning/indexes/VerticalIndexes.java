@@ -1,6 +1,6 @@
 package winning.indexes;
 
-import winning.LiveStonesBoard;
+import winning.PlayerLiveStonesBoard;
 
 public class VerticalIndexes extends Indexes {
 
@@ -10,9 +10,9 @@ public class VerticalIndexes extends Indexes {
     }
 
     @Override
-    public void setIndexes(LiveStonesBoard liveStonesBoard) {
+    public void setIndexes(PlayerLiveStonesBoard liveStonesBoard) {
         for(int row = beginRow; row < beginRow+4; row++) {
-            liveStonesBoard.placeLiveStones(row, beginColumn);
+            liveStonesBoard.setLiveStones(row, beginColumn);
         }
     }
 }

@@ -1,9 +1,8 @@
 package winning.quadruplets;
 
-import game.Board;
-import winning.LiveStonesBoard;
+import winning.PlayerLiveStonesBoard;
 
 interface Quadruplets {
     
-    void findQuadruplets(Board fullBoard, Character currentStone, LiveStonesBoard liveStonesBoard);
+    void findQuadruplets(Character currentStone, PlayerLiveStonesBoard liveStonesBoard);
 }

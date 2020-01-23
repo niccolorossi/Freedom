@@ -3,22 +3,28 @@ package winning;
 import game.Board;
 
 public class Points {
+    
+    private PlayerLiveStonesBoard playerLiveStonesBoard;
 
+    public Points(Board fullBoard, Character playerCharacter) {
 
-    private PlayerQuadruplets blackQuadruplets;
-    private PlayerQuadruplets whiteQuadruplets;
-
-    public Points(Board fullBoard) {
-
-        this.blackQuadruplets = new PlayerQuadruplets(fullBoard, 'B');
-        this.whiteQuadruplets = new PlayerQuadruplets(fullBoard, 'W');
+        this.playerLiveStonesBoard = new PlayerLiveStonesBoard(fullBoard, playerCharacter);
     }
 
-    public Integer getBlackPoints() {
-        return blackQuadruplets.countLiveStones();
-    }
+    public Integer getScore() {
+        
+        playerLiveStonesBoard.setAllPlayerLiveStones();
+        int boardSize = playerLiveStonesBoard.size();
+        int count = 0;
 
-    public Integer getWhitePoints() {
-        return whiteQuadruplets.countLiveStones();
-    }
+        for(int row = 0; row < boardSize; row ++){
+            for (int col = 0; col < boardSize; col ++){
+                count += playerLiveStonesBoard.getLiveStone(row, col) ? 1 : 0;
+            }
+        }
+        return count;
+    }    
 }
+    
+    //responsabilità: contare i punti
+

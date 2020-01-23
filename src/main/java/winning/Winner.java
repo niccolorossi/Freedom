@@ -7,19 +7,24 @@ import java.util.List;
 
 public class Winner {
 
-    private Points pc;
+    private Points whitePoints;
+    private Points blackPoints;
 
     public Winner(Board fullBoard) {
 
-        this.pc = new Points(fullBoard);
+        this.whitePoints = new Points(fullBoard, 'W');
+        this.blackPoints = new Points(fullBoard, 'B');
     }
 
     public List<Integer> getWinner() {
 
-        Integer whitePoints = pc.getWhitePoints();
-        Integer blackPoints = pc.getBlackPoints();
+        Integer whiteScore = whitePoints.getScore();
+        Integer blackScore = blackPoints.getScore();
 
-        return Arrays.asList(whitePoints, blackPoints);
+        return Arrays.asList(whiteScore, blackScore);
     }
+    
+    //possibly a String method that says winner is W / winner is B / game is drawn
+    //responsabilità: stabilire il vincitore
     
 }

@@ -1,7 +1,7 @@
 package winning.quadruplets;
 
 import game.Board;
-import winning.LiveStonesBoard;
+import winning.PlayerLiveStonesBoard;
 import winning.indexes.AntiDiagonalIndexes;
 import winning.limits.AntiDiagonalLimits;
 import winning.rules.AntiDiagonalRules;
@@ -10,6 +10,7 @@ public class AntiDiagonalQuadruplets implements Quadruplets {
 
     private AntiDiagonalLimits antiDiagonalLimits;
     private AntiDiagonalRules antiDiagonalRules;
+    private Board fullBoard;
 
     public AntiDiagonalQuadruplets(Board fullBoard) {
         this.antiDiagonalLimits = new AntiDiagonalLimits(fullBoard.size());
@@ -17,9 +18,10 @@ public class AntiDiagonalQuadruplets implements Quadruplets {
                                                        antiDiagonalLimits.beginCol(),
                                                        antiDiagonalLimits.endRowInclusive(),
                                                        antiDiagonalLimits.endColInclusive());
+        this.fullBoard = fullBoard;
     }
 
-    public void findQuadruplets(Board fullBoard, Character currentStone, LiveStonesBoard liveStonesBoard) {
+    public void findQuadruplets(Character currentStone, PlayerLiveStonesBoard liveStonesBoard) {
         
         int beginRow = antiDiagonalLimits.beginRow();
         int beginCol = antiDiagonalLimits.beginCol();

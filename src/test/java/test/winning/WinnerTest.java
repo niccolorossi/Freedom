@@ -14,16 +14,13 @@ import static org.junit.Assert.assertThat;
 
 public class WinnerTest {
 
-    private Character[][] fullBoardCharacter;
-    private Character[][] fullBoardDrawCharacter;
-
     private Board fullBoard;
     private Board fullBoardDraw;
 
     @Before
     public void initFullBoard() {
 
-        fullBoardCharacter = new Character[][]
+        Character[][] fullBoardCharacter = new Character[][]
                 {{'B', 'W', 'B', 'W', 'B', 'B', 'W', 'W', 'B', 'W'},
                         {'B', 'W', 'B', 'B', 'W', 'W', 'B', 'B', 'B', 'W'},
                         {'W', 'W', 'B', 'W', 'B', 'W', 'B', 'W', 'B', 'B'},
@@ -36,7 +33,7 @@ public class WinnerTest {
                         {'W', 'B', 'W', 'W', 'B', 'B', 'W', 'W', 'W', 'B'}};
 
 
-        fullBoardDrawCharacter = new Character[][]
+        Character[][] fullBoardDrawCharacter = new Character[][]
                 {{'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
                         {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
                         {'B', 'B', 'B', 'B', 'W', 'B', 'W', 'W', 'W', 'W'},
@@ -55,23 +52,25 @@ public class WinnerTest {
 
     @Test
     public void blackScoreis23() {
-        Points pc = new Points(fullBoard);
-        assertThat(pc.getBlackPoints(), is(23));
+        Points blackPoints = new Points(fullBoard, 'B');
+        assertThat(blackPoints.getScore(), is(23));
     }
 
     @Test
     public void blackScoreIsTheSameAsWhite() {
-        Points pc = new Points(fullBoardDraw);
-        Integer blackPoints = pc.getBlackPoints();
-        Integer whitePoints = pc.getWhitePoints();
+        Points blackPoints = new Points(fullBoardDraw, 'B');
+        Points whitePoints = new Points(fullBoardDraw, 'W');
 
-        assertEquals(blackPoints, whitePoints);
+        Integer blackScore = blackPoints.getScore();
+        Integer whiteScore = whitePoints.getScore();
+
+        assertEquals(blackScore, whiteScore);
     }
 
     @Test
     public void whiteScoreis15() {
-        Points pc = new Points(fullBoard);
-        assertThat(pc.getWhitePoints(), is(15));
+        Points whitePoints = new Points(fullBoard, 'W');
+        assertThat(whitePoints.getScore(), is(15));
     }
 
     @Test

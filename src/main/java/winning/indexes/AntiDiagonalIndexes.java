@@ -1,6 +1,6 @@
 package winning.indexes;
 
-import winning.LiveStonesBoard;
+import winning.PlayerLiveStonesBoard;
 
 public class AntiDiagonalIndexes extends Indexes {
     
@@ -9,9 +9,9 @@ public class AntiDiagonalIndexes extends Indexes {
     }
 
     @Override
-    public void setIndexes(LiveStonesBoard liveStonesBoard) {
+    public void setIndexes(PlayerLiveStonesBoard liveStonesBoard) {
         for (int index = 0; index < 4; index++) {
-            liveStonesBoard.placeLiveStones(beginRow-index, beginColumn+index);
+            liveStonesBoard.setLiveStones(beginRow-index, beginColumn+index);
         }
     }
 }
