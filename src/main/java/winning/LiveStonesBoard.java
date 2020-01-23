@@ -12,6 +12,7 @@ public class LiveStonesBoard {
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = false));
+
     }
     
     Boolean getLiveStone(int row, int column) {

@@ -30,51 +30,94 @@ public class Game {
     
     public void start() {
 
-        Integer totalNumberOfMoves = numberOfMoves();
-        for(int turnNumber = 1; turnNumber <= totalNumberOfMoves - 1; turnNumber++) {
+        gameUntilLastTurn();
+        lastTurn();
+    }
+
+    private void gameUntilLastTurn() {
+
+        for(int turnNumber = 1; turnNumber <= numberOfMoves() - 1; turnNumber++) {
             turn();
         }
-        final_turn();
     }
     
     private void turn() {
 
-        Character currentPlayer = this.currentPlayer();
-        OutputManager outputManager = new OutputManager();
-        outputManager.freedomMessage(gameStatus.isFreedom());
-        outputManager.currentPlayerTurnMessage(currentPlayer);
+        printNewTurnMessages();
 
         while(true) {
 
-            InputString inputString = new InputString();
-            List<Integer> coordinates = inputString.getMove(boardSize);
-
+            List<Integer> coordinates = askForMove();
             try {
-                moveValidator.validate(coordinates, gameStatus.isFreedom(), gameStatus.getBoard());
-                RegularMove regularMove = new RegularMove(coordinates, currentPlayer);
-                gameStatus.updateStatus(regularMove);
-                outputManager.printBoard(gameStatus.getBoard());
+                validateMoveAndUpdate(coordinates);
+                printUpdatedBoard();
                 break;
             } catch (NonAdjacentException | OccupiedCellException e) { 
-                outputManager.displayMessage(e.getMessage());
+                printErrorMessage(e);
             }
         }
         
     }
 
-    private void final_turn() {
-        OutputManager  outputManager = new OutputManager();
-        Character lastTurnPlayer = gameStatus.currentPlayer();
-        outputManager.lastTurnMessage(lastTurnPlayer);
+    private void lastTurn() {
 
+        printLastTurnMessage();
+        askForPassAndUpdate();
+        printUpdatedBoard();
+        printWinner();
+    }
+
+
+
+    private void validateMoveAndUpdate(List<Integer> coordinates) throws NonAdjacentException, OccupiedCellException{
+        moveValidator.validate(coordinates, gameStatus.isFreedom(), gameStatus.getBoard());
+        RegularMove regularMove = new RegularMove(coordinates, currentPlayer());
+        gameStatus.updateStatus(regularMove);
+    }
+
+    private void askForPassAndUpdate(){
         InputString inputString = new InputString();
 
         if(inputString.notPassedTurn()) {
-            LastMove lastMove = new LastMove(lastTurnPlayer, gameStatus.getBoard());
+            LastMove lastMove = new LastMove(currentPlayer(), gameStatus.getBoard());
             gameStatus.updateStatus(lastMove);
         }
+    }
+
+    private List<Integer> askForMove(){
+        InputString inputString = new InputString();
+        return inputString.getMove(boardSize);
+    }
+
+    private void printNewTurnMessages() {
+        Character currentPlayer = this.currentPlayer();
+        OutputManager outputManager = new OutputManager();
+        outputManager.freedomMessage(gameStatus.isFreedom());
+        outputManager.currentPlayerTurnMessage(currentPlayer);
+    }
+
+    private void printLastTurnMessage() {
+        OutputManager  outputManager = new OutputManager();
+        outputManager.lastTurnMessage(currentPlayer());
+
+    }
+
+    private void printUpdatedBoard(){
+        OutputManager outputManager = new OutputManager();
         outputManager.printBoard(gameStatus.getBoard());
+    }
+
+    private void printErrorMessage(Exception e) {
+        OutputManager outputManager = new OutputManager();
+        outputManager.displayMessage(e.getMessage());
+    }
+
+
+    private void printWinner() {
+        OutputManager outputManager = new OutputManager();
         outputManager.winnerMessage(gameStatus.winner());
     }
+
+
     
 }
