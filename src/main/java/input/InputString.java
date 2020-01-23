@@ -14,9 +14,7 @@ public class InputString {
     private Scanner scanner;
 
     public InputString(String inputString) {
-
         this.inputString = inputString;
-
     }
 
     public InputString() {
@@ -27,20 +25,32 @@ public class InputString {
         
         while(true) {
             try {
+                askForMoveAndValidateIt(boardSize);
 
-                String inputString =  scanner.nextLine();
-                StringToIntegerList stringToIntegerList = new StringToIntegerList(inputString);
-                List<Integer> moveList = stringToIntegerList.integerList();
-                ValidInputMove validInputMove = new ValidInputMove(boardSize, moveList);
-                return validInputMove.inputMove();
-            } catch (IndexOutOfBoundsException | NumberFormatException e) {
-                OutputManager outputManager = new OutputManager();
-                outputManager.invalidInputFormat(e);
-            } catch (OutOfBoundsException e) {
-                OutputManager outputManager = new OutputManager();
-                outputManager.outOfBounds(e);
+            } catch (IndexOutOfBoundsException | NumberFormatException e1) {
+                printInvalidFormatMessage(e1);
+            } catch (OutOfBoundsException e2) {
+                printOutOfBoundsMessage(e2);
             }
         }
+    }
+
+    private List<Integer> askForMoveAndValidateIt(Integer boardSize) throws OutOfBoundsException{
+        String inputString =  scanner.nextLine();
+        StringToIntegerList stringToIntegerList = new StringToIntegerList(inputString);
+        List<Integer> moveList = stringToIntegerList.integerList();
+        ValidInputMove validInputMove = new ValidInputMove(boardSize, moveList);
+        return validInputMove.inputMove();
+    }
+
+    private void printInvalidFormatMessage(Exception e) {
+        OutputManager outputManager = new OutputManager();
+        outputManager.invalidInputFormat(e);
+    }
+
+    private void printOutOfBoundsMessage(OutOfBoundsException e){
+        OutputManager outputManager = new OutputManager();
+        outputManager.outOfBounds(e);
     }
     
     public Integer getBoardSize() {

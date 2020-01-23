@@ -23,24 +23,25 @@ public class MoveValidator {
 
     public void validate(List<Integer> coordinates, Boolean isFreedom, Board board) throws NonAdjacentException, OccupiedCellException{
 
-        Integer row = coordinates.get(0);
-        Integer column = coordinates.get(1);
-
         if(!isFreedom){
-            ValidateAdjacentCoordinate validateAdjacentCell = new ValidateAdjacentCoordinate(previousRow, previousColumn);
-            validateAdjacentCell.coordinateAdjacent(row, column);
+            checkIfAdjacent(coordinates);
         }
-
-        ValidateOccupiedCell validateOccupiedCell = new ValidateOccupiedCell(board.emptyCellCharacter());
-        validateOccupiedCell.isCellOccupied(board.stone(row,column));
-
-        updatePreviousCoordinates(row, column);
+        checkIfOccupied(coordinates, board);
+        updatePreviousCoordinates(coordinates);
     }
 
+    private void checkIfAdjacent(List<Integer> coordinates) throws NonAdjacentException{
+        ValidateAdjacentCoordinate validateAdjacentCell = new ValidateAdjacentCoordinate(previousRow, previousColumn);
+        validateAdjacentCell.coordinateAdjacent(coordinates);
+    }
 
+    private void checkIfOccupied(List<Integer> coordinates, Board board) throws OccupiedCellException{
+        ValidateOccupiedCell validateOccupiedCell = new ValidateOccupiedCell(board.emptyCellCharacter());
+        validateOccupiedCell.isCellOccupied(board.stone(coordinates));
+    }
     
-    private void updatePreviousCoordinates(Integer row, Integer column){
-        this.previousRow = row;
-        this.previousColumn = column;
+    private void updatePreviousCoordinates(List<Integer> coordinates){
+        this.previousRow = coordinates.get(0);
+        this.previousColumn = coordinates.get(1);
     }
 }

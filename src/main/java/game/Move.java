@@ -4,18 +4,18 @@ import java.util.List;
 
 abstract public class Move {
     
-    Character newStone;
+    Character currentPlayer;
     List<Integer> coordinates;
-    
-    void setMove(Board board) {
-            board.placeStone(newStone, coordinates);
+
+    public Character currentPlayer() {
+        return currentPlayer;
     }
     
-    Integer getRow() {
+    public Integer getRow() {
         return coordinates.get(0);
     }
     
-    Integer getColumn() {
+    public Integer getColumn() {
         return coordinates.get(1);
     }
     

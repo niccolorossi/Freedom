@@ -9,19 +9,21 @@ public class CloseCellsLimits {
     
     CloseCellsLimits(Integer boardSize, Integer row, Integer column) {
 
-        upperRowIndex = (row == 1) ? row : row - 1;
+        upperRowIndex = startingIndex(row);
+        leftColumnIndex = startingIndex(column);
+        lowerRowIndex = endingIndex(row, boardSize);
+        rightColumnIndex = endingIndex(column, boardSize);
+    }
 
-        leftColumnIndex = (column == 1) ? column : column - 1;
+    private Integer startingIndex(Integer coordinate) {
+        return (coordinate == 1) ? coordinate : coordinate - 1;
+    }
 
-        lowerRowIndex = (row == boardSize) ? row : row + 1;
-
-        rightColumnIndex = (column == boardSize) ? column : column + 1;
+    private Integer endingIndex(Integer coordinate, Integer boardSize) {
+        return (coordinate == boardSize) ? coordinate : coordinate + 1;
     }
     
-    Integer getLeftColumnIndex() {
-
-        return leftColumnIndex;
-    }
+    Integer getLeftColumnIndex() { return leftColumnIndex; }
     Integer getRightColumnIndex() {
         return rightColumnIndex;
     }

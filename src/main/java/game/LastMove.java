@@ -7,7 +7,7 @@ import java.util.List;
 public class LastMove extends Move {
     
     public LastMove(Character newStone, Board board) {
-        this.newStone = newStone;
+        this.currentPlayer = newStone;
         this.coordinates = findCoordinates(board);
     }
     

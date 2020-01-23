@@ -3,6 +3,7 @@ package checkers;
 import exceptions.NonAdjacentException;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class ValidateAdjacentCoordinate {
     
@@ -14,9 +15,9 @@ public class ValidateAdjacentCoordinate {
         this.previousColumn = previousColumn;
     }
 
-    public void coordinateAdjacent(Integer currentRow, Integer currentColumn) throws NonAdjacentException {
+    public void coordinateAdjacent(List<Integer> coordinates) throws NonAdjacentException {
 
-        if( isRowAdjacentTo(currentRow) || isColAdjacentTo(currentColumn)) {
+        if( isRowAdjacentTo(coordinates.get(0)) || isColAdjacentTo(coordinates.get(1))) {
             String message = "This move must be adjacent to " + Arrays.asList(previousRow, previousColumn);
             throw new NonAdjacentException(message);
         }

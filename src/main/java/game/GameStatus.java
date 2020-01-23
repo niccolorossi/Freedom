@@ -19,26 +19,24 @@ public class GameStatus {
     }
     
     public void updateStatus(RegularMove move) {
-        
-        move.setMove(board);
-        changeStone();
-        Integer row = move.getRow();
-        Integer column = move.getColumn();
-        updateMoveFreedom(row, column);
+
+        board.placeStone(move);
+        changePlayer();
+        checkIfNextMoveIsFreedom(move);
     }
 
     public void updateStatus(LastMove move) {
 
-        move.setMove(board);
+        board.placeStone(move);
     }
     
-    public void updateMoveFreedom(Integer row, Integer column) {
+    public void checkIfNextMoveIsFreedom(Move move) {
 
-        NextMoveFreedom nextMoveFreedom = new NextMoveFreedom(board, row, column);
+        NextMoveFreedom nextMoveFreedom = new NextMoveFreedom(board, move);
         this.isFreedom = nextMoveFreedom.isNextFreedom();
     }
     
-    private void changeStone() { newStone = (newStone == 'W') ? 'B' : 'W'; }
+    private void changePlayer() { newStone = (newStone == 'W') ? 'B' : 'W'; }
     
     Character currentPlayer(){
         return newStone;

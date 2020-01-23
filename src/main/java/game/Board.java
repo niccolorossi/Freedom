@@ -31,16 +31,18 @@ public class Board {
         return this.currentBoard;
     }
     
-    public Character stone(Integer row, Integer column) {
-
+    public Character stone(List<Integer> coordinates) {
+        Integer row = coordinates.get(0);
+        Integer column = coordinates.get(1);
         return currentBoard[row-1][column-1];
     }
     
-    void placeStone(Character symbol, List<Integer> coordinates) {
+    void placeStone(Move move) {
         
-        Integer row = coordinates.get(0);
-        Integer column = coordinates.get(1);
-        currentBoard[row-1][column-1] = symbol;
+        Integer row = move.getRow();
+        Integer column = move.getColumn();
+
+        currentBoard[row-1][column-1] = move.currentPlayer();
     }
 
     public Character emptyCellCharacter() {
