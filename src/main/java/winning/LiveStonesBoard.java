@@ -1,7 +1,5 @@
 package winning;
 
-import winning.indexes.*;
-
 import java.util.stream.IntStream;
 
 public class LiveStonesBoard {
