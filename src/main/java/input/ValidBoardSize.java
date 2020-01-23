@@ -12,7 +12,7 @@ public class ValidBoardSize {
     
     public Integer boardSize() throws BoardTooSmallException {
         if(boardSize < 6) {
-            throw new BoardTooSmallException("Board size must be greater or equal than 6!");
+            throw new BoardTooSmallException("Board size must be greater than or equal to 6!");
         } else return boardSize;
     }
 }

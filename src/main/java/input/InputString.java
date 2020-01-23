@@ -10,13 +10,7 @@ import java.util.Scanner;
 
 public class InputString {
 
-    private String inputString;
     private Scanner scanner;
-
-    public InputString(String inputString) {
-        this.inputString = inputString;
-    }
-
     public InputString() {
         this.scanner = new Scanner(System.in);
     }
@@ -25,8 +19,7 @@ public class InputString {
         
         while(true) {
             try {
-                askForMoveAndValidateIt(boardSize);
-
+                return askForMoveAndValidateIt(boardSize);
             } catch (IndexOutOfBoundsException | NumberFormatException e1) {
                 printInvalidFormatMessage(e1);
             } catch (OutOfBoundsException e2) {
@@ -53,35 +46,57 @@ public class InputString {
         outputManager.outOfBounds(e);
     }
     
+
     public Integer getBoardSize() {
         
         while(true) {
             try {
-                String inputString = scanner.nextLine();
-                Integer inputInteger = Integer.parseInt(inputString);
-                ValidBoardSize validBoardSize = new ValidBoardSize(inputInteger);
-                return validBoardSize.boardSize();
+                return askForBoardSizeAndValidatesIt();
             } catch ( NumberFormatException e) {
-                OutputManager outputManager = new OutputManager();
-                outputManager.invalidBoardInput(e);
+                printInvalidInputMessage(e);
             } catch (BoardTooSmallException e) {
-                OutputManager outputManager = new OutputManager();
-                outputManager.boardTooSmall(e);
+                printBoardTooSmallMessage(e);
             }
         }
     }
-    
+
+    private Integer askForBoardSizeAndValidatesIt() throws BoardTooSmallException{
+        String inputString = scanner.nextLine();
+        Integer inputInteger = Integer.parseInt(inputString);
+        ValidBoardSize validBoardSize = new ValidBoardSize(inputInteger);
+        return validBoardSize.boardSize();
+
+    }
+
+    private void printInvalidInputMessage( Exception e) {
+        OutputManager outputManager = new OutputManager();
+        outputManager.invalidBoardInput(e);
+    }
+
+    private void printBoardTooSmallMessage(BoardTooSmallException e) {
+        OutputManager outputManager = new OutputManager();
+        outputManager.boardTooSmall(e);
+    }
 
     public Boolean notPassedTurn() {
         
         while(true) {
             try {
-                String inputString = scanner.nextLine();
-                ValidPassMessage validPassMessage = new ValidPassMessage(inputString);
-                return validPassMessage.passMessage().equals("N");
+               return askIfWantToPassTurn();
             } catch (WrongPassMessageException e) {
-                System.out.println(e.getMessage());
+                printWrongPassMessage(e);
             }
         }
+    }
+
+    private Boolean askIfWantToPassTurn() throws WrongPassMessageException{
+        String inputString = scanner.nextLine();
+        ValidPassMessage validPassMessage = new ValidPassMessage(inputString);
+        return validPassMessage.passMessage().equals("N");
+    }
+
+    private void printWrongPassMessage(WrongPassMessageException e) {
+        OutputManager outputManager = new OutputManager();
+        outputManager.displayMessage(e.getMessage());
     }
 }

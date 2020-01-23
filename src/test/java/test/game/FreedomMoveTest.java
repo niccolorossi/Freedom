@@ -32,7 +32,7 @@ public class FreedomMoveTest {
         gameStatus.updateStatus(new RegularMove(Arrays.asList(2,1), 'B'));
         gameStatus.updateStatus(new RegularMove(Arrays.asList(2,2), 'W'));
 
-        NextMoveFreedom freedomFinder = new NextMoveFreedom(gameStatus.getBoard(), 2, 2);
+        NextMoveFreedom freedomFinder = new NextMoveFreedom(gameStatus.getBoard(), new RegularMove(Arrays.asList(2,2), 'W'));
         assertThat(freedomFinder.isNextFreedom(), is(true));
 
     }
@@ -48,7 +48,7 @@ public class FreedomMoveTest {
         gameStatus.updateStatus(new RegularMove(Arrays.asList(2,3), 'B'));
         gameStatus.updateStatus(new RegularMove(Arrays.asList(1,3), 'W'));
 
-        NextMoveFreedom freedomFinder = new NextMoveFreedom(gameStatus.getBoard(), 1,3);
+        NextMoveFreedom freedomFinder = new NextMoveFreedom(gameStatus.getBoard(), new RegularMove(Arrays.asList(1,3), 'W'));
         assertThat(freedomFinder.isNextFreedom(), is(false) );    }
         
  

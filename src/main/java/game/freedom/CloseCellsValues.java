@@ -3,6 +3,7 @@ package game.freedom;
 import game.Board;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -30,7 +31,7 @@ public class CloseCellsValues {
         for (int row = upperRow; row <= lowerRow; row++) {
             Integer currentRow = row;
             List<Character> rowCharactersList = IntStream.rangeClosed(leftColumn, rightColumn)
-                    .mapToObj(c -> board.stone(currentRow, c)).collect(Collectors.toList());
+                    .mapToObj(c -> board.stone(Arrays.asList(currentRow, c))).collect(Collectors.toList());
             closeValues.addAll(rowCharactersList);
         }
         return closeValues;
