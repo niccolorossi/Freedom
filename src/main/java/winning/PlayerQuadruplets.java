@@ -18,7 +18,7 @@ class PlayerQuadruplets {
     
     private LiveStonesBoard playerLiveStonesBoard;
     
-    PlayerQuadruplets(Board fullBoard, Character playerCharacter, LiveStonesBoard playerLiveStonesBoard) {
+    PlayerQuadruplets(Board fullBoard, Character playerCharacter) {
 
         this.playerCharacter = playerCharacter;
         
@@ -27,7 +27,8 @@ class PlayerQuadruplets {
         this.diagonalQuadruplets = new DiagonalQuadruplets(fullBoard);
         this.antiDiagonalQuadruplets = new AntiDiagonalQuadruplets(fullBoard);
         
-        this.playerLiveStonesBoard = playerLiveStonesBoard;
+        Integer boardSize = fullBoard.size();
+        this.playerLiveStonesBoard = new LiveStonesBoard(boardSize);
     }
 
     void findAllQuadruplets() {
@@ -56,5 +57,9 @@ class PlayerQuadruplets {
     private void findAntiDiagonalQuadruplets() {
 
         antiDiagonalQuadruplets.findQuadruplets(playerCharacter, playerLiveStonesBoard);
+    }
+    
+    LiveStonesBoard getPlayerLiveStonesBoard() {
+        return this.playerLiveStonesBoard;
     }
 }

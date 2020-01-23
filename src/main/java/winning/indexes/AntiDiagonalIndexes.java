@@ -11,7 +11,7 @@ public class AntiDiagonalIndexes extends Indexes {
     @Override
     public void setIndexes(LiveStonesBoard liveStonesBoard) {
         for (int index = 0; index < 4; index++) {
-            liveStonesBoard.setLiveStones(beginRow-index, beginColumn+index);
+            liveStonesBoard.setLiveStone(beginRow-index, beginColumn+index);
         }
     }
 }

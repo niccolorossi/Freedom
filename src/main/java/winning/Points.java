@@ -4,17 +4,17 @@ import game.Board;
 
 public class Points {
     
-    private PlayerLiveStones playerLiveStones;
+    private PlayerQuadruplets playerQuadruplets;
 
     public Points(Board fullBoard, Character playerCharacter) {
         
-        this.playerLiveStones = new PlayerLiveStones(fullBoard, playerCharacter);
+        this.playerQuadruplets = new PlayerQuadruplets(fullBoard, playerCharacter);
     }
 
     public Integer getScore() {
         
-        playerLiveStones.setAllPlayerLiveStones();
-        LiveStonesBoard playerLiveStonesBoard = playerLiveStones.getLiveStonesBoard();
+        playerQuadruplets.findAllQuadruplets();
+        LiveStonesBoard playerLiveStonesBoard = playerQuadruplets.getPlayerLiveStonesBoard();
         
         int boardSize = playerLiveStonesBoard.size();
         int count = 0;

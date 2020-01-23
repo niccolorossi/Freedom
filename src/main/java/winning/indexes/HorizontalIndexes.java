@@ -12,7 +12,7 @@ public class HorizontalIndexes extends Indexes {
     @Override
     public void setIndexes(LiveStonesBoard liveStonesBoard) {
         for(int column = beginColumn; column < beginColumn+4; column++) {
-            liveStonesBoard.setLiveStones(beginRow, column);
+            liveStonesBoard.setLiveStone(beginRow, column);
         }
     }
 }

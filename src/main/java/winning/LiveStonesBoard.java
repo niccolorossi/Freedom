@@ -1,30 +1,20 @@
 package winning;
 
-import game.Board;
-
 import java.util.stream.IntStream;
 
 public class LiveStonesBoard {
     
     private Boolean[][] currentBoard;
-    
-    private Character playerCharacter;
-    private PlayerQuadruplets playerQuadruplets;
 
-    public LiveStonesBoard(Board fullBoard, Character playerCharacter) {
-        
-        Integer boardSize = fullBoard.size();
+    public LiveStonesBoard(Integer boardSize) {
         
         this.currentBoard = new Boolean[boardSize][boardSize];
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = false));
-        
-        this.playerCharacter = playerCharacter;
-        this.playerQuadruplets = new PlayerQuadruplets(fullBoard, playerCharacter, this);
     }
     
-    public void setLiveStones(int row, int column) {
+    public void setLiveStone(int row, int column) {
         currentBoard[row][column] = true;
     }
     
@@ -35,12 +25,6 @@ public class LiveStonesBoard {
     public int size() {
         return currentBoard[0].length;
     }
-    
-    void setAllPlayerLiveStones() {
-        playerQuadruplets.findAllQuadruplets();
-    }
-    
-    
     
 }
 
