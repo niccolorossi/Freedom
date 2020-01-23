@@ -1,6 +1,6 @@
 package winning.indexes;
 
-import winning.PlayerLiveStonesBoard;
+import winning.LiveStonesBoard;
 
 public abstract class Indexes {
     
@@ -12,5 +12,5 @@ public abstract class Indexes {
         this.beginColumn = beginColumn;
     }
 
-    abstract public void setIndexes(PlayerLiveStonesBoard liveStonesBoard);
+    abstract public void setIndexes(LiveStonesBoard liveStonesBoard);
 }

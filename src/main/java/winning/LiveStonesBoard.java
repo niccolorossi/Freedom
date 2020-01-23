@@ -4,14 +4,14 @@ import game.Board;
 
 import java.util.stream.IntStream;
 
-public class PlayerLiveStonesBoard {
+public class LiveStonesBoard {
     
     private Boolean[][] currentBoard;
     
     private Character playerCharacter;
     private PlayerQuadruplets playerQuadruplets;
 
-    public PlayerLiveStonesBoard(Board fullBoard, Character playerCharacter) {
+    public LiveStonesBoard(Board fullBoard, Character playerCharacter) {
         
         Integer boardSize = fullBoard.size();
         

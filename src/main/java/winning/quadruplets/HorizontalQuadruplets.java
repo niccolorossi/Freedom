@@ -1,7 +1,7 @@
 package winning.quadruplets;
 
 import game.Board;
-import winning.PlayerLiveStonesBoard;
+import winning.LiveStonesBoard;
 import winning.indexes.HorizontalIndexes;
 import winning.limits.HorizontalLimits;
 import winning.rules.HorizontalRules;
@@ -18,7 +18,7 @@ public class HorizontalQuadruplets implements Quadruplets {
         this.fullBoard = fullBoard;
     }
 
-    public void findQuadruplets(Character currentStone, PlayerLiveStonesBoard liveStonesBoard) {
+    public void findQuadruplets(Character currentStone, LiveStonesBoard liveStonesBoard) {
 
         int beginRow = horizontalLimits.beginRow();
         int beginCol = horizontalLimits.beginCol();

@@ -4,16 +4,18 @@ import game.Board;
 
 public class Points {
     
-    private PlayerLiveStonesBoard playerLiveStonesBoard;
+    private PlayerLiveStones playerLiveStones;
 
     public Points(Board fullBoard, Character playerCharacter) {
-
-        this.playerLiveStonesBoard = new PlayerLiveStonesBoard(fullBoard, playerCharacter);
+        
+        this.playerLiveStones = new PlayerLiveStones(fullBoard, playerCharacter);
     }
 
     public Integer getScore() {
         
-        playerLiveStonesBoard.setAllPlayerLiveStones();
+        playerLiveStones.setAllPlayerLiveStones();
+        LiveStonesBoard playerLiveStonesBoard = playerLiveStones.getLiveStonesBoard();
+        
         int boardSize = playerLiveStonesBoard.size();
         int count = 0;
 

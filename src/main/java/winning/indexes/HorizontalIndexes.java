@@ -1,6 +1,6 @@
 package winning.indexes;
 
-import winning.PlayerLiveStonesBoard;
+import winning.LiveStonesBoard;
 
 public class HorizontalIndexes extends Indexes {
     
@@ -10,7 +10,7 @@ public class HorizontalIndexes extends Indexes {
     }
 
     @Override
-    public void setIndexes(PlayerLiveStonesBoard liveStonesBoard) {
+    public void setIndexes(LiveStonesBoard liveStonesBoard) {
         for(int column = beginColumn; column < beginColumn+4; column++) {
             liveStonesBoard.setLiveStones(beginRow, column);
         }

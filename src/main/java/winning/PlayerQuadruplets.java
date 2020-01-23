@@ -16,9 +16,9 @@ class PlayerQuadruplets {
     private DiagonalQuadruplets diagonalQuadruplets;
     private AntiDiagonalQuadruplets antiDiagonalQuadruplets;
     
-    private PlayerLiveStonesBoard playerLiveStonesBoard;
+    private LiveStonesBoard playerLiveStonesBoard;
     
-    PlayerQuadruplets(Board fullBoard, Character playerCharacter, PlayerLiveStonesBoard playerLiveStonesBoard) {
+    PlayerQuadruplets(Board fullBoard, Character playerCharacter, LiveStonesBoard playerLiveStonesBoard) {
 
         this.playerCharacter = playerCharacter;
         
