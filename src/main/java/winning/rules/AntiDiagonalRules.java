@@ -2,6 +2,8 @@ package winning.rules;
 
 import game.Board;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class AntiDiagonalRules implements Rules {
@@ -30,27 +32,50 @@ public class AntiDiagonalRules implements Rules {
 
     @Override
     public Boolean isCandidate(Board fullBoard, Integer beginRow, Integer beginColumn) {
-        boolean isQuadrupletAtBeginning;
-        boolean isQuadrupletAtEnd;
 
-        if(beginColumn.equals(beginColOfLowermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) 
-                || beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfUppermostAntiDiagonalQuadruplets)) {
-            isQuadrupletAtBeginning = true;
-            isQuadrupletAtEnd = false;
-        } else if(beginColumn.equals(beginColOfUppermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) 
-                || beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfLowermostAntiDiagonalQuadruplets)) {
-            isQuadrupletAtBeginning = false;
-            isQuadrupletAtEnd = true;
-        } else if(beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) || beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets)) {
-            isQuadrupletAtBeginning = true;
-            isQuadrupletAtEnd = true;
+        return checkIfQuadrupletIsCandidate(fullBoard, beginRow,beginColumn);
+    }
+
+    private List<Boolean> positionOfQuadruplet(Integer beginRow, Integer beginColumn) {
+        List<Boolean> postionOnTheBoard = new ArrayList<>();
+        if(checkIfQuadrupletIsAtTheBeginningAndNotAtTheEnd(beginRow, beginColumn)) {
+            postionOnTheBoard.add(true);
+            postionOnTheBoard.add(false);
+        } else if(checkIfQuadrupletIsAtTheEndAndNotAtTheBeginning(beginRow, beginColumn)) {
+            postionOnTheBoard.add(false);
+            postionOnTheBoard.add(true);
+        } else if(checkIfQuadrupletIsBothAtTheBeginningAndAtTheEnd(beginRow, beginColumn)) {
+            postionOnTheBoard.add(true);
+            postionOnTheBoard.add(true);
         } else {
-            isQuadrupletAtBeginning = false;
-            isQuadrupletAtEnd = false;
+            postionOnTheBoard.add(false);
+            postionOnTheBoard.add(false);
         }
 
-        Character currentElement = fullBoard.currentBoard()[beginRow][beginColumn];
+        return postionOnTheBoard;
+    }
 
+    private Boolean checkIfQuadrupletIsAtTheBeginningAndNotAtTheEnd(Integer beginRow, Integer beginColumn){
+        return beginColumn.equals(beginColOfLowermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets)
+                || beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfUppermostAntiDiagonalQuadruplets);
+    }
+
+    private Boolean checkIfQuadrupletIsAtTheEndAndNotAtTheBeginning(Integer beginRow, Integer beginColumn) {
+        return beginColumn.equals(beginColOfUppermostAntiDiagonalQuadruplets) && !beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets)
+                || beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) && !beginColumn.equals(beginColOfLowermostAntiDiagonalQuadruplets);
+    }
+
+    private Boolean checkIfQuadrupletIsBothAtTheBeginningAndAtTheEnd(Integer beginRow, Integer beginColumn) {
+        return beginRow.equals(beginRowOfUppermostAntiDiagonalQuadruplets) || beginRow.equals(beginRowOfLowermostAntiDiagonalQuadruplets);
+    }
+
+    private Boolean checkIfQuadrupletIsCandidate(Board fullBoard, Integer beginRow, Integer beginColumn  ) {
+
+        List<Boolean> positionOnTheBoard = positionOfQuadruplet(beginRow, beginColumn);
+
+        Boolean isQuadrupletAtBeginning = positionOnTheBoard.get(0);
+        Boolean isQuadrupletAtEnd = positionOnTheBoard.get(1);
+        Character currentElement = fullBoard.currentBoard()[beginRow][beginColumn];
         if(isQuadrupletAtBeginning && !isQuadrupletAtEnd) {
             return currentElement != fullBoard.currentBoard()[beginRow- QUADRUPLET_SIZE][beginColumn+ QUADRUPLET_SIZE];
         } else if(isQuadrupletAtEnd && !isQuadrupletAtBeginning) {
@@ -61,3 +86,4 @@ public class AntiDiagonalRules implements Rules {
         } else return true;
     }
 }
+
