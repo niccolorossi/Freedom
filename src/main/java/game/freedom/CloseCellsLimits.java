@@ -1,13 +1,13 @@
 package game.freedom;
 
-public class CloseCellsIndexes {
+public class CloseCellsLimits {
     
     private Integer leftColumnIndex;
     private Integer rightColumnIndex;
     private Integer lowerRowIndex;
     private Integer upperRowIndex;
     
-    CloseCellsIndexes(Integer boardSize, Integer row, Integer column) {
+    CloseCellsLimits(Integer boardSize, Integer row, Integer column) {
         if(row == 1) {
             upperRowIndex = row;
         }  else {

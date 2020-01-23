@@ -10,26 +10,32 @@ import java.util.stream.IntStream;
 public class CloseCellsValues {
     
     private List<Character> closeValues;
+    private CloseCellsLimits closeCellsLimits;
     
     CloseCellsValues(Board board, Integer row, Integer column) {
 
-        CloseCellsIndexes closeCellsIndexes = new CloseCellsIndexes(board.size(), row, column);
+        this.closeCellsLimits = new CloseCellsLimits(board.size(), row, column);
+        this.closeValues = closeValues(board);
 
-        Integer upperRow = closeCellsIndexes.getUpperRowIndex();
-        Integer lowerRow = closeCellsIndexes.getLowerRowIndex();
-        Integer leftColumn = closeCellsIndexes.getLeftColumnIndex();
-        Integer rightColumn = closeCellsIndexes.getRightColumnIndex();
+    }
 
-        this.closeValues = new ArrayList<>();
+    private List<Character> closeValues(Board board) {
 
-        for (row = upperRow; row <= lowerRow; row++) {
+        Integer upperRow = closeCellsLimits.getUpperRowIndex();
+        Integer lowerRow = closeCellsLimits.getLowerRowIndex();
+        Integer leftColumn = closeCellsLimits.getLeftColumnIndex();
+        Integer rightColumn = closeCellsLimits.getRightColumnIndex();
+        List <Character> closeValues = new ArrayList<>();
+
+        for (int row = upperRow; row <= lowerRow; row++) {
             Integer currentRow = row;
             List<Character> rowCharactersList = IntStream.rangeClosed(leftColumn, rightColumn)
                     .mapToObj(c -> board.stone(currentRow, c)).collect(Collectors.toList());
             closeValues.addAll(rowCharactersList);
         }
+        return closeValues;
     }
-    
+
     List<Character> getCloseValues() {
         return closeValues;
     }

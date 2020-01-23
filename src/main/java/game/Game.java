@@ -29,32 +29,17 @@ public class Game {
     }
     
     public void start() {
-        OutputManager outputManager = new OutputManager();
-        Integer totalNumberOfMoves = numberOfMoves();
 
+        Integer totalNumberOfMoves = numberOfMoves();
         for(int turnNumber = 1; turnNumber <= totalNumberOfMoves - 1; turnNumber++) {
             turn();
-            outputManager.printBoard(gameStatus.getBoard());
         }
-
-        Character lastTurnPlayer = gameStatus.currentPlayer();
-        outputManager.lastTurnMessage(lastTurnPlayer);
-
-        InputString inputString = new InputString();
-
-        if(inputString.notPassedTurn()) {
-            LastMove lastMove = new LastMove(lastTurnPlayer, gameStatus.getBoard());
-            gameStatus.updateStatus(lastMove);
-        }
-        outputManager.printBoard(gameStatus.getBoard());
-
-        outputManager.winnerMessage(gameStatus.winner());
+        final_turn();
     }
     
     private void turn() {
 
         Character currentPlayer = this.currentPlayer();
-
         OutputManager outputManager = new OutputManager();
         outputManager.freedomMessage(gameStatus.isFreedom());
         outputManager.currentPlayerTurnMessage(currentPlayer);
@@ -68,12 +53,28 @@ public class Game {
                 moveValidator.validate(coordinates, gameStatus.isFreedom(), gameStatus.getBoard());
                 RegularMove regularMove = new RegularMove(coordinates, currentPlayer);
                 gameStatus.updateStatus(regularMove);
+                outputManager.printBoard(gameStatus.getBoard());
                 break;
             } catch (NonAdjacentException | OccupiedCellException e) { 
                 outputManager.displayMessage(e.getMessage());
             }
         }
         
+    }
+
+    private void final_turn() {
+        OutputManager  outputManager = new OutputManager();
+        Character lastTurnPlayer = gameStatus.currentPlayer();
+        outputManager.lastTurnMessage(lastTurnPlayer);
+
+        InputString inputString = new InputString();
+
+        if(inputString.notPassedTurn()) {
+            LastMove lastMove = new LastMove(lastTurnPlayer, gameStatus.getBoard());
+            gameStatus.updateStatus(lastMove);
+        }
+        outputManager.printBoard(gameStatus.getBoard());
+        outputManager.winnerMessage(gameStatus.winner());
     }
     
 }
