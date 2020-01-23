@@ -1,5 +1,7 @@
 package winning;
 
+import winning.indexes.*;
+
 import java.util.stream.IntStream;
 
 public class LiveStonesBoard {
@@ -14,19 +16,14 @@ public class LiveStonesBoard {
                         .forEach(c -> currentBoard[r][c] = false));
     }
     
-    public void setLiveStone(int row, int column) {
-        currentBoard[row][column] = true;
-    }
-    
     Boolean getLiveStone(int row, int column) {
         return currentBoard[row][column];
     }
+    
+    public void setLiveStone(int row, int column) { currentBoard[row][column] = true;}
 
     public int size() {
         return currentBoard[0].length;
     }
     
 }
-
-
-// responsabilità: piazzare le pietre vive

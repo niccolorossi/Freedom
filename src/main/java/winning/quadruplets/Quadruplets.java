@@ -1,8 +1,10 @@
 package winning.quadruplets;
 
-import winning.LiveStonesBoard;
+import winning.indexes.Indexes;
+
+import java.util.List;
 
 interface Quadruplets {
     
-    void findQuadruplets(Character currentStone, LiveStonesBoard liveStonesBoard);
+    List<Indexes> getQuadruplets(Character currentStone);
 }

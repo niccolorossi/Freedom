@@ -1,10 +1,13 @@
 package winning.quadruplets;
 
 import game.Board;
-import winning.LiveStonesBoard;
 import winning.indexes.AntiDiagonalIndexes;
+import winning.indexes.Indexes;
 import winning.limits.AntiDiagonalLimits;
 import winning.rules.AntiDiagonalRules;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AntiDiagonalQuadruplets implements Quadruplets {
 
@@ -21,22 +24,26 @@ public class AntiDiagonalQuadruplets implements Quadruplets {
         this.fullBoard = fullBoard;
     }
 
-    public void findQuadruplets(Character currentStone, LiveStonesBoard liveStonesBoard) {
+    @Override
+    public List<Indexes> getQuadruplets(Character currentStone) {
         
         int beginRow = antiDiagonalLimits.beginRow();
         int beginCol = antiDiagonalLimits.beginCol();
         int endRow = antiDiagonalLimits.endRowInclusive();
         int endCol = antiDiagonalLimits.endColInclusive();
         
+        List<Indexes> toReturn = new ArrayList<>();
+        
         for(int row=beginRow; row>=endRow; row--) {
             for(int col=beginCol; col<=endCol; col++) {
 
                 if(antiDiagonalRules.isValid(fullBoard, row, col, currentStone)
                         && antiDiagonalRules.isCandidate(fullBoard, row, col)) {
-                    AntiDiagonalIndexes indexes = new AntiDiagonalIndexes(row, col);
-                    indexes.setIndexes(liveStonesBoard);
+                    toReturn.add(new AntiDiagonalIndexes(row, col));
                 }
             }
         }
+        return toReturn;
     }
+    
 }

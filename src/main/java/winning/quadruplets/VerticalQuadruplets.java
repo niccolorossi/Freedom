@@ -1,10 +1,13 @@
 package winning.quadruplets;
 
 import game.Board;
-import winning.LiveStonesBoard;
+import winning.indexes.Indexes;
 import winning.indexes.VerticalIndexes;
 import winning.limits.VerticalLimits;
 import winning.rules.VerticalRules;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VerticalQuadruplets implements Quadruplets {
     
@@ -18,23 +21,26 @@ public class VerticalQuadruplets implements Quadruplets {
         this.fullBoard = fullBoard;
     }
 
-    public void findQuadruplets(Character currentStone, LiveStonesBoard liveStonesBoard) {
+    @Override
+    public List<Indexes> getQuadruplets(Character currentStone) {
         
         int beginRow = verticalLimits.beginRow();
         int beginCol = verticalLimits.beginCol();
         int endRow = verticalLimits.endRowInclusive();
         int endCol = verticalLimits.endColInclusive();
-        
+
+        List<Indexes> toReturn = new ArrayList<>();
+
         for(int col=beginCol; col<=endCol; col++) {
             for(int row=beginRow; row<=endRow; row++) {
 
                 if(verticalRules.isValid(fullBoard, row, col, currentStone) 
                         && verticalRules.isCandidate(fullBoard, row, col)) {
-                   VerticalIndexes verticalIndexes = new VerticalIndexes(row, col);
-                   verticalIndexes.setIndexes(liveStonesBoard);
+                   toReturn.add(new VerticalIndexes(row, col));
                 }
             }
         }
+        return toReturn;
     }
     
 }

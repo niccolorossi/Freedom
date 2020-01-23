@@ -3,8 +3,12 @@ package winning.quadruplets;
 import game.Board;
 import winning.LiveStonesBoard;
 import winning.indexes.HorizontalIndexes;
+import winning.indexes.Indexes;
 import winning.limits.HorizontalLimits;
 import winning.rules.HorizontalRules;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HorizontalQuadruplets implements Quadruplets {
 
@@ -18,23 +22,26 @@ public class HorizontalQuadruplets implements Quadruplets {
         this.fullBoard = fullBoard;
     }
 
-    public void findQuadruplets(Character currentStone, LiveStonesBoard liveStonesBoard) {
+    @Override
+    public List<Indexes> getQuadruplets(Character currentStone) {
 
         int beginRow = horizontalLimits.beginRow();
         int beginCol = horizontalLimits.beginCol();
         int endRow = horizontalLimits.endRowInclusive();
         int endCol = horizontalLimits.endColInclusive();
-        
+
+        List<Indexes> toReturn = new ArrayList<>();
+
         for(int row=beginRow; row<=endRow; row++) {
             for(int col=beginCol; col<=endCol; col++) {
 
                 if(horizontalRules.isValid(fullBoard, row, col, currentStone)
                         && horizontalRules.isCandidate(fullBoard, row, col)) {
-                    HorizontalIndexes indexes = new HorizontalIndexes(row, col);
-                    indexes.setIndexes(liveStonesBoard);
+                    toReturn.add(new HorizontalIndexes(row, col));
                 }
             }
         }
+        return toReturn;
     }
     
 }

@@ -24,7 +24,4 @@ public class Winner {
         return Arrays.asList(whiteScore, blackScore);
     }
     
-    //possibly a String method that says winner is W / winner is B / game is drawn
-    //responsabilità: stabilire il vincitore
-    
 }

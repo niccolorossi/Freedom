@@ -5,7 +5,6 @@ import winning.LiveStonesBoard;
 public class VerticalIndexes extends Indexes {
 
     public VerticalIndexes(Integer beginRow, Integer beginColumn) {
-
         super(beginRow, beginColumn);
     }
 
