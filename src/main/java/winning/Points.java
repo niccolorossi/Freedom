@@ -9,6 +9,7 @@ public class Points {
     public Points(Board fullBoard, Character playerCharacter) {
         
         this.playerLiveStones = new PlayerLiveStones(fullBoard, playerCharacter);
+
     }
 
     public Integer getScore() {

@@ -44,9 +44,7 @@ public class Game {
     private void turn() {
 
         printNewTurnMessages();
-
         while(true) {
-
             List<Integer> coordinates = askForMove();
             try {
                 validateMoveAndUpdate(coordinates);
@@ -66,8 +64,6 @@ public class Game {
         printUpdatedBoard();
         printWinner();
     }
-
-
 
     private void validateMoveAndUpdate(List<Integer> coordinates) throws NonAdjacentException, OccupiedCellException{
         moveValidator.validate(coordinates, gameStatus.isFreedom(), gameStatus.getBoard());
@@ -112,12 +108,8 @@ public class Game {
         outputManager.displayMessage(e.getMessage());
     }
 
-
     private void printWinner() {
         OutputManager outputManager = new OutputManager();
         outputManager.winnerMessage(gameStatus.winner());
     }
-
-
-    
 }

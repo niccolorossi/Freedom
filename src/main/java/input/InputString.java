@@ -70,6 +70,7 @@ public class InputString {
             }
         }
     }
+    
 
     public Boolean notPassedTurn() {
         
