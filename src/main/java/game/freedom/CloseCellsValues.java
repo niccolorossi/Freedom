@@ -39,5 +39,6 @@ public class CloseCellsValues {
     List<Character> getCloseValues() {
         return closeValues;
     }
+
     
 }

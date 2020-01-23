@@ -12,6 +12,11 @@ public class Board {
     public Board (int boardSize) {
 
         this.currentBoard = new Character[boardSize][boardSize];
+        initBoard();
+    }
+
+    private void initBoard() {
+        Integer boardSize = currentBoard[0].length;
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));

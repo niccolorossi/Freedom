@@ -22,7 +22,7 @@ public class MoveValidator {
     }
 
     public void validate(List<Integer> coordinates, Boolean isFreedom, Board board) throws NonAdjacentException, OccupiedCellException{
-        
+
         Integer row = coordinates.get(0);
         Integer column = coordinates.get(1);
 
@@ -30,12 +30,14 @@ public class MoveValidator {
             ValidateAdjacentCoordinate validateAdjacentCell = new ValidateAdjacentCoordinate(previousRow, previousColumn);
             validateAdjacentCell.coordinateAdjacent(row, column);
         }
-        
+
         ValidateOccupiedCell validateOccupiedCell = new ValidateOccupiedCell(board.emptyCellCharacter());
         validateOccupiedCell.isCellOccupied(board.stone(row,column));
-        
+
         updatePreviousCoordinates(row, column);
     }
+
+
     
     private void updatePreviousCoordinates(Integer row, Integer column){
         this.previousRow = row;

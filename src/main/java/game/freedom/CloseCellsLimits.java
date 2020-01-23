@@ -8,30 +8,14 @@ public class CloseCellsLimits {
     private Integer upperRowIndex;
     
     CloseCellsLimits(Integer boardSize, Integer row, Integer column) {
-        if(row == 1) {
-            upperRowIndex = row;
-        }  else {
-            upperRowIndex = row-1;
-        }
-        
-        if(column == 1) {
-            leftColumnIndex = column;
-        }  else {
-            leftColumnIndex = column-1;
-        }
-        
-        if(row == boardSize){
-            lowerRowIndex = row;
-        } else {
-            lowerRowIndex = row+1;
-        }
-        
-        if(column == boardSize) {
-            rightColumnIndex = column;
-        }  else {
-            rightColumnIndex = column+1;
-        }
-        
+
+        upperRowIndex = (row == 1) ? row : row - 1;
+
+        leftColumnIndex = (column == 1) ? column : column - 1;
+
+        lowerRowIndex = (row == boardSize) ? row : row + 1;
+
+        rightColumnIndex = (column == boardSize) ? column : column + 1;
     }
     
     Integer getLeftColumnIndex() {
