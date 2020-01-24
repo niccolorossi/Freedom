@@ -1,5 +1,7 @@
 package winning;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.stream.IntStream;
 
 public class LiveStonesBoard {
@@ -31,5 +33,7 @@ public class LiveStonesBoard {
                         .forEach(c -> currentBoard[r][c] = false));
     }
     
-    
+    public Boolean[][] getCurrentBoard() {
+        return this.currentBoard;
+    }
 }

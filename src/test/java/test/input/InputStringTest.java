@@ -49,7 +49,7 @@ public class InputStringTest {
         BoardTooSmallException thrown = assertThrows(BoardTooSmallException.class,
                             () -> validBoardSize.boardSize());
                             
-         assertTrue(thrown.getMessage().contains("Board size must be greater or equal than 6!"));
+         assertTrue(thrown.getMessage().contains("Board size must be greater than or equal to 6!"));
     }
 
     @Test

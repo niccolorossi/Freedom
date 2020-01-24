@@ -46,13 +46,13 @@ public class QuadrupletsTest {
         fullBoard = new Board(fullBoardCharacter);
     }
 
-    /*
+    
     @Test
     public void testAllHorizontalVerticalDiagonalAntiQuadrupletsAreSet() {
-        LiveStonesBoard liveStonesBoard = new LiveStonesBoard(fullBoard, 'B');
-        liveStonesBoard.aliveStonesForCurrentPlayer();
+        PlayerLiveStones playerLiveStones = new PlayerLiveStones(fullBoard, 'B');
+        LiveStonesBoard liveStonesBoard = playerLiveStones.getLiveStonesBoard();
         assertThat(liveStonesBoard.getCurrentBoard(), is(fullLiveStonesBoard));
     }
     
-     */
+    
 }

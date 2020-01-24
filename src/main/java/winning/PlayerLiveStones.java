@@ -5,12 +5,12 @@ import winning.indexes.Indexes;
 
 import java.util.List;
 
-class PlayerLiveStones {
+public class PlayerLiveStones {
     
     private PlayerIndexes playerIndexes;
     private LiveStonesBoard liveStonesBoard;
     
-    PlayerLiveStones(Board fullBoard, Character playerCharacter) {
+    public PlayerLiveStones(Board fullBoard, Character playerCharacter) {
         this.playerIndexes = new PlayerIndexes(fullBoard, playerCharacter);
         Integer boardSize = fullBoard.size();
         this.liveStonesBoard = new LiveStonesBoard(boardSize);
@@ -24,7 +24,7 @@ class PlayerLiveStones {
         }
     }
     
-    LiveStonesBoard getLiveStonesBoard() {
+    public LiveStonesBoard getLiveStonesBoard() {
         setAllLiveStones();
         return this.liveStonesBoard;
     }
