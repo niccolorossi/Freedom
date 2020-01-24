@@ -27,13 +27,13 @@ public class CloseCellsValues {
         Integer leftColumn = closeCellsLimits.getLeftColumnIndex();
         Integer rightColumn = closeCellsLimits.getRightColumnIndex();
         List <Character> closeValues = new ArrayList<>();
-
+        
         for (int row = upperRow; row <= lowerRow; row++) {
-            Integer currentRow = row;
-            List<Character> rowCharactersList = IntStream.rangeClosed(leftColumn, rightColumn)
-                    .mapToObj(c -> board.stone(Arrays.asList(currentRow, c))).collect(Collectors.toList());
-            closeValues.addAll(rowCharactersList);
+            for(int col = leftColumn; col <=rightColumn; col++){
+                closeValues.add(board.stone(Arrays.asList(row,col)));
+            }
         }
+        
         return closeValues;
     }
 

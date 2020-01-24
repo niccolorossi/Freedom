@@ -21,7 +21,7 @@ public class InputString {
             try {
                 return askForMoveAndValidateIt(boardSize);
             } catch (IndexOutOfBoundsException | NumberFormatException e1) {
-                printInvalidFormatMessage(e1);
+                printInvalidFormatMessage();
             } catch (OutOfBoundsException e2) {
                 printOutOfBoundsMessage(e2);
             }
@@ -36,9 +36,9 @@ public class InputString {
         return validInputMove.inputMove();
     }
 
-    private void printInvalidFormatMessage(Exception e) {
+    private void printInvalidFormatMessage() {
         OutputManager outputManager = new OutputManager();
-        outputManager.invalidInputFormat(e);
+        outputManager.invalidInputFormat();
     }
 
     private void printOutOfBoundsMessage(OutOfBoundsException e){
@@ -53,7 +53,7 @@ public class InputString {
             try {
                 return askForBoardSizeAndValidatesIt();
             } catch ( NumberFormatException e) {
-                printInvalidInputMessage(e);
+                printInvalidInputMessage();
             } catch (BoardTooSmallException e) {
                 printBoardTooSmallMessage(e);
             }
@@ -68,9 +68,9 @@ public class InputString {
 
     }
 
-    private void printInvalidInputMessage( Exception e) {
+    private void printInvalidInputMessage() {
         OutputManager outputManager = new OutputManager();
-        outputManager.invalidBoardInput(e);
+        outputManager.invalidBoardInput();
     }
 
     private void printBoardTooSmallMessage(BoardTooSmallException e) {

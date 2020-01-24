@@ -1,7 +1,6 @@
 package winning.quadruplets;
 
 import game.Board;
-import winning.LiveStonesBoard;
 import winning.indexes.HorizontalIndexes;
 import winning.indexes.Indexes;
 import winning.limits.HorizontalLimits;

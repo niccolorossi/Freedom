@@ -17,6 +17,6 @@ public class NextMoveFreedom {
 
     private Boolean verifyFreedom(Board board, Move move) {
         CloseCellsValues closeCellsValues = new CloseCellsValues(board, move.getRow(), move.getColumn());
-        return !closeCellsValues.getCloseValues().stream().anyMatch(x -> x == board.emptyCellCharacter());
+        return closeCellsValues.getCloseValues().stream().noneMatch(x -> x == board.emptyCellCharacter());
     }
 }

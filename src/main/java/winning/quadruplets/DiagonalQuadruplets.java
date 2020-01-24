@@ -18,7 +18,7 @@ public class DiagonalQuadruplets implements Quadruplets {
     public DiagonalQuadruplets(Board fullBoard) {
         this.diagonalLimits = new DiagonalLimits(fullBoard.size());
         this.diagonalRules = new DiagonalRules(diagonalLimits.beginRow(),
-                                                diagonalLimits.beginRow(),
+                                                diagonalLimits.beginCol(),
                                                 diagonalLimits.endRowInclusive(),
                                                 diagonalLimits.endColInclusive());
         this.fullBoard = fullBoard;

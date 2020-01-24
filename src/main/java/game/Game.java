@@ -20,13 +20,6 @@ public class Game {
         this.moveValidator = new MoveValidator();
     }
     
-    private Integer numberOfMoves() {
-        return this.boardSize*this.boardSize;
-    }
-    
-    private Character currentPlayer() {
-        return gameStatus.currentPlayer();
-    }
     
     public void start() {
 
@@ -41,6 +34,15 @@ public class Game {
         }
     }
     
+
+    private void lastTurn() {
+
+        printLastTurnMessage();
+        askForPassAndUpdate();
+        printUpdatedBoard();
+        printWinner();
+    }
+
     private void turn() {
 
         printNewTurnMessages();
@@ -50,19 +52,19 @@ public class Game {
                 validateMoveAndUpdate(coordinates);
                 printUpdatedBoard();
                 break;
-            } catch (NonAdjacentException | OccupiedCellException e) { 
+            } catch (NonAdjacentException | OccupiedCellException e) {
                 printErrorMessage(e);
             }
         }
-        
+
     }
 
-    private void lastTurn() {
+    private Integer numberOfMoves() {
+        return this.boardSize*this.boardSize;
+    }
 
-        printLastTurnMessage();
-        askForPassAndUpdate();
-        printUpdatedBoard();
-        printWinner();
+    private Character currentPlayer() {
+        return gameStatus.currentPlayer();
     }
 
     private void validateMoveAndUpdate(List<Integer> coordinates) throws NonAdjacentException, OccupiedCellException{

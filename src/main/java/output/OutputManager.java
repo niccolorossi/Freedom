@@ -31,23 +31,9 @@ public class OutputManager {
         printStream.println("Player " + playerStone + ", it's your turn!");
     }
 
-    public void winnerMessage(List<Integer> points) {
-
-        Integer whitePoints = points.get(0);
-        Integer blackPoints = points.get(1);
-
-        StringBuilder str = new StringBuilder();
-        str.append(whitePoints + " - " + blackPoints);
-        String comment;
-
-        if(whitePoints == blackPoints) {
-            comment = " : the game is drawn!";
-        } else {
-            comment = whitePoints > blackPoints ? " : White won!" : " : Black won!";
-        }
-        str.append(comment);
-
-       printStream.println(str.toString());
+    public void winnerMessage(String winningMessage) {
+        
+       printStream.println(winningMessage);
     }
     public void displayMessage(String message) {
         printStream.println(message);
@@ -63,10 +49,10 @@ public class OutputManager {
         }
     }
 
-    public void invalidBoardInput(Exception e) {
+    public void invalidBoardInput() {
         printStream.println("You must enter an integer number greater than or equal to 6!");
     }
-    public void invalidInputFormat(Exception e) {
+    public void invalidInputFormat() {
         printStream.println("You must enter TWO numbers separated by a whitespace");
     }
 

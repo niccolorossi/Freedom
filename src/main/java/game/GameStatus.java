@@ -42,7 +42,7 @@ public class GameStatus {
         return newStone;
     }
 
-    public List<Integer> winner() {
+    public String winner() {
         return new Winner(board).getWinner();
     }
     

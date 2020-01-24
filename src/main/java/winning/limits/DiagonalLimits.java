@@ -1,5 +1,4 @@
 package winning.limits;
-import winning.rules.Rules;
 
 public class DiagonalLimits implements Limits {
 

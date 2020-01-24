@@ -76,12 +76,12 @@ public class WinnerTest {
     @Test
     public void blackIsWinner() {
         Winner winner = new Winner(fullBoard);
-        assertThat(winner.getWinner(), is(Arrays.asList(15, 23)));
+        assertThat(winner.getWinner(), is("15 - 23 : Black won!"));
     }
 
     @Test
     public void theGameIsDrawn() {
         Winner winner = new Winner(fullBoardDraw);
-        assertThat(winner.getWinner(), is(Arrays.asList(40, 40)));
+        assertThat(winner.getWinner(), is("40 - 40 : the game is drawn!"));
     }
 }

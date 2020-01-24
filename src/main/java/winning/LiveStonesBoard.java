@@ -9,9 +9,7 @@ public class LiveStonesBoard {
     public LiveStonesBoard(Integer boardSize) {
         
         this.currentBoard = new Boolean[boardSize][boardSize];
-        IntStream.range(0, boardSize)
-                .forEach(r -> IntStream.range(0, boardSize)
-                        .forEach(c -> currentBoard[r][c] = false));
+        initBoardToFalse(boardSize);
 
     }
     
@@ -19,10 +17,19 @@ public class LiveStonesBoard {
         return currentBoard[row][column];
     }
     
-    public void setLiveStone(int row, int column) { currentBoard[row][column] = true;}
+    public void setLiveStone(int row, int column) {
+        currentBoard[row][column] = true;
+    }
 
     public int size() {
         return currentBoard[0].length;
     }
+    
+    private void initBoardToFalse(Integer boardSize ){
+        IntStream.range(0, boardSize)
+                .forEach(r -> IntStream.range(0, boardSize)
+                        .forEach(c -> currentBoard[r][c] = false));
+    }
+    
     
 }

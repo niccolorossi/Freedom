@@ -18,9 +18,8 @@ class PlayerLiveStones {
     
     private void setAllLiveStones() {
         List<Indexes> indexesList = playerIndexes.getAllIndexes();
-        Integer listSize = indexesList.size();
-        for(int i=0; i<listSize; i++) {
-            Indexes currentIndexes = indexesList.get(i);
+
+        for (Indexes currentIndexes : indexesList) {
             currentIndexes.setIndexes(liveStonesBoard);
         }
     }

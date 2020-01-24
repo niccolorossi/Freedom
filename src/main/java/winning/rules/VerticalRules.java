@@ -24,29 +24,30 @@ public class VerticalRules implements Rules {
 
     @Override
     public Boolean isCandidate(Board fullBoard, Integer beginRow, Integer beginColumn) {
+        
+        Character[][] currentBoard = fullBoard.currentBoard();
         boolean isQuadrupletAtBeginning;
         boolean isQuadrupletAtEnd;
 
-        if (beginRow.equals(beginRowOfUppermostVerticalQuadruplets)) {
-            isQuadrupletAtBeginning = true;
-            isQuadrupletAtEnd = false;
-        } else if (beginRow.equals(beginRowOfLowermostVerticalQuadruplets)) {
-            isQuadrupletAtBeginning = false;
-            isQuadrupletAtEnd = true;
-        } else {
-            isQuadrupletAtBeginning = false;
-            isQuadrupletAtEnd = false;
-        }
+        isQuadrupletAtBeginning = beginRow.equals(beginRowOfUppermostVerticalQuadruplets);
+        isQuadrupletAtEnd = beginRow.equals(beginRowOfLowermostVerticalQuadruplets);
 
-        Character currentElement = fullBoard.currentBoard()[beginRow][beginColumn];
-
+        Character firstElementOfThisQuadruplet = currentBoard[beginRow][beginColumn];
+        Character firstElementOfNextQuadruplet;
+        Character lastElementOfPreviousQuadruplet;
+        
+        
         if (isQuadrupletAtBeginning) {
-            return currentElement != fullBoard.currentBoard()[beginRow + QUADRUPLET_SIZE][beginColumn];
+            firstElementOfNextQuadruplet = currentBoard[beginRow + QUADRUPLET_SIZE][beginColumn];
+            return firstElementOfThisQuadruplet != firstElementOfNextQuadruplet;
         } else if (isQuadrupletAtEnd) {
-           return currentElement != fullBoard.currentBoard()[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn];
+            lastElementOfPreviousQuadruplet = currentBoard[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn];
+           return firstElementOfThisQuadruplet != lastElementOfPreviousQuadruplet;
         } else {
-            return currentElement != fullBoard.currentBoard()[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn]
-                    && currentElement != fullBoard.currentBoard()[beginRow + QUADRUPLET_SIZE][beginColumn];
+            firstElementOfNextQuadruplet = currentBoard[beginRow + QUADRUPLET_SIZE][beginColumn];
+            lastElementOfPreviousQuadruplet = currentBoard[beginRow + PREVIOUS_QUADRUPLET_OFFSET][beginColumn];
+            return firstElementOfThisQuadruplet != firstElementOfNextQuadruplet
+                    && firstElementOfThisQuadruplet != lastElementOfPreviousQuadruplet;
         }
     }
 }
