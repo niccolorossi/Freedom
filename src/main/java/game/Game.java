@@ -107,7 +107,7 @@ public class Game {
 
     private void printErrorMessage(Exception e) {
         OutputManager outputManager = new OutputManager();
-        outputManager.displayMessage(e.getMessage());
+        outputManager.printErrorMessage(e);
     }
 
     private void printWinner() {

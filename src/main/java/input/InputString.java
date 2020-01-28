@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class InputString {
 
     private Scanner scanner;
+    
     public InputString() {
         this.scanner = new Scanner(System.in);
     }
@@ -21,14 +22,14 @@ public class InputString {
             try {
                 return askForMoveAndValidateIt(boardSize);
             } catch (IndexOutOfBoundsException | NumberFormatException e1) {
-                printInvalidFormatMessage();
+                printInvalidMoveInputFormatMessage();
             } catch (OutOfBoundsException e2) {
-                printOutOfBoundsMessage(e2);
+                printErrorMessage(e2);
             }
         }
     }
 
-    private List<Integer> askForMoveAndValidateIt(Integer boardSize) throws OutOfBoundsException{
+    private List<Integer> askForMoveAndValidateIt(Integer boardSize) throws OutOfBoundsException {
         String inputString =  scanner.nextLine();
         StringToIntegerList stringToIntegerList = new StringToIntegerList(inputString);
         List<Integer> moveList = stringToIntegerList.integerList();
@@ -36,67 +37,56 @@ public class InputString {
         return validInputMove.inputMove();
     }
 
-    private void printInvalidFormatMessage() {
+    private void printInvalidMoveInputFormatMessage() {
         OutputManager outputManager = new OutputManager();
         outputManager.invalidInputFormat();
     }
-
-    private void printOutOfBoundsMessage(OutOfBoundsException e){
-        OutputManager outputManager = new OutputManager();
-        outputManager.outOfBounds(e);
-    }
     
-
     public Integer getBoardSize() {
         
         while(true) {
             try {
-                return askForBoardSizeAndValidatesIt();
-            } catch ( NumberFormatException e) {
-                printInvalidInputMessage();
+                return askForBoardSizeAndValidateIt();
+            } catch (NumberFormatException e) {
+                printInvalidBoardSizeInputMessage();
             } catch (BoardTooSmallException e) {
-                printBoardTooSmallMessage(e);
+                printErrorMessage(e);
             }
         }
     }
 
-    private Integer askForBoardSizeAndValidatesIt() throws BoardTooSmallException{
+    private Integer askForBoardSizeAndValidateIt() throws BoardTooSmallException, NumberFormatException {
         String inputString = scanner.nextLine();
         Integer inputInteger = Integer.parseInt(inputString);
         ValidBoardSize validBoardSize = new ValidBoardSize(inputInteger);
         return validBoardSize.boardSize();
-
     }
 
-    private void printInvalidInputMessage() {
+    private void printInvalidBoardSizeInputMessage() {
         OutputManager outputManager = new OutputManager();
         outputManager.invalidBoardInput();
     }
 
-    private void printBoardTooSmallMessage(BoardTooSmallException e) {
-        OutputManager outputManager = new OutputManager();
-        outputManager.boardTooSmall(e);
-    }
-
     public Boolean notPassedTurn() {
-        
+
         while(true) {
             try {
-               return askIfWantToPassTurn();
+                return askIfWantToPassTurn();
             } catch (WrongPassMessageException e) {
-                printWrongPassMessage(e);
+                printErrorMessage(e);
             }
         }
     }
 
-    private Boolean askIfWantToPassTurn() throws WrongPassMessageException{
+    private Boolean askIfWantToPassTurn() throws WrongPassMessageException {
         String inputString = scanner.nextLine();
         ValidPassMessage validPassMessage = new ValidPassMessage(inputString);
         return validPassMessage.passMessage().equals("N");
     }
 
-    private void printWrongPassMessage(WrongPassMessageException e) {
+    private void printErrorMessage(Exception e) {
         OutputManager outputManager = new OutputManager();
-        outputManager.displayMessage(e.getMessage());
+        outputManager.printErrorMessage(e);
     }
+    
 }

@@ -1,11 +1,8 @@
 package output;
 
-import exceptions.BoardTooSmallException;
-import exceptions.OutOfBoundsException;
 import game.Board;
 
 import java.io.PrintStream;
-import java.util.List;
 
 public class OutputManager {
 
@@ -32,11 +29,7 @@ public class OutputManager {
     }
 
     public void winnerMessage(String winningMessage) {
-        
        printStream.println(winningMessage);
-    }
-    public void displayMessage(String message) {
-        printStream.println(message);
     }
 
     public void printBoard(Board board) {
@@ -55,12 +48,8 @@ public class OutputManager {
     public void invalidInputFormat() {
         printStream.println("You must enter TWO numbers separated by a whitespace");
     }
-
-    public void outOfBounds(OutOfBoundsException e) {
-        printStream.println(e.getMessage());
-    }
-
-    public void boardTooSmall(BoardTooSmallException e) {
+    
+    public void printErrorMessage(Exception e) {
         printStream.println(e.getMessage());
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.input.InputStringTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-01-28T15:57:54" hostname="cli-10-105-7-36.wireless-s.units.it" time="0.014">
+  <properties/>
+  <testcase name="whenNotIntegerInputAnExceptionIsCaught" classname="test.input.InputStringTest" time="0.008"/>
+  <testcase name="whenPassMessageIsWrongThanThrowException" classname="test.input.InputStringTest" time="0.002"/>
+  <testcase name="testWhenBoardSizeIsLessThanSixException" classname="test.input.InputStringTest" time="0.001"/>
+  <testcase name="whenPassMessageIsRightThanNoException" classname="test.input.InputStringTest" time="0.002"/>
+  <testcase name="whenSizeIsTenAndRowPlayedIsElevenExceptionIsThrown" classname="test.input.InputStringTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
