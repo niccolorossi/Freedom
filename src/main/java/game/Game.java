@@ -20,27 +20,19 @@ public class Game {
         this.moveValidator = new MoveValidator();
     }
     
-    
     public void start() {
-
         gameUntilLastTurn();
         lastTurn();
     }
-
+    
     private void gameUntilLastTurn() {
-
         for(int turnNumber = 1; turnNumber <= numberOfMoves() - 1; turnNumber++) {
             turn();
         }
     }
-    
 
-    private void lastTurn() {
-
-        printLastTurnMessage();
-        askForPassAndUpdate();
-        printUpdatedBoard();
-        printWinner();
+    private Integer numberOfMoves() {
+        return this.boardSize*this.boardSize;
     }
 
     private void turn() {
@@ -56,21 +48,50 @@ public class Game {
                 printErrorMessage(e);
             }
         }
-
     }
 
-    private Integer numberOfMoves() {
-        return this.boardSize*this.boardSize;
+    private void printNewTurnMessages() {
+        Character currentPlayer = this.currentPlayer();
+        OutputManager outputManager = new OutputManager();
+        outputManager.freedomMessage(gameStatus.isFreedom());
+        outputManager.currentPlayerTurnMessage(currentPlayer);
     }
 
     private Character currentPlayer() {
         return gameStatus.currentPlayer();
     }
 
-    private void validateMoveAndUpdate(List<Integer> coordinates) throws NonAdjacentException, OccupiedCellException{
+    private List<Integer> askForMove() {
+        InputString inputString = new InputString();
+        return inputString.getMove(boardSize);
+    }
+
+    private void validateMoveAndUpdate(List<Integer> coordinates) throws NonAdjacentException, OccupiedCellException {
         moveValidator.validate(coordinates, gameStatus.isFreedom(), gameStatus.getBoard());
         RegularMove regularMove = new RegularMove(coordinates, currentPlayer());
         gameStatus.updateStatus(regularMove);
+    }
+
+    private void printUpdatedBoard() {
+        OutputManager outputManager = new OutputManager();
+        outputManager.printBoard(gameStatus.getBoard());
+    }
+
+    private void printErrorMessage(Exception e) {
+        OutputManager outputManager = new OutputManager();
+        outputManager.printErrorMessage(e);
+    }
+    
+    private void lastTurn() {
+        printLastTurnMessage();
+        askForPassAndUpdate();
+        printUpdatedBoard();
+        printWinner();
+    }
+    
+    private void printLastTurnMessage() {
+        OutputManager outputManager = new OutputManager();
+        outputManager.lastTurnMessage(currentPlayer());
     }
 
     private void askForPassAndUpdate(){
@@ -81,35 +102,7 @@ public class Game {
             gameStatus.updateStatus(lastMove);
         }
     }
-
-    private List<Integer> askForMove(){
-        InputString inputString = new InputString();
-        return inputString.getMove(boardSize);
-    }
-
-    private void printNewTurnMessages() {
-        Character currentPlayer = this.currentPlayer();
-        OutputManager outputManager = new OutputManager();
-        outputManager.freedomMessage(gameStatus.isFreedom());
-        outputManager.currentPlayerTurnMessage(currentPlayer);
-    }
-
-    private void printLastTurnMessage() {
-        OutputManager  outputManager = new OutputManager();
-        outputManager.lastTurnMessage(currentPlayer());
-
-    }
-
-    private void printUpdatedBoard(){
-        OutputManager outputManager = new OutputManager();
-        outputManager.printBoard(gameStatus.getBoard());
-    }
-
-    private void printErrorMessage(Exception e) {
-        OutputManager outputManager = new OutputManager();
-        outputManager.printErrorMessage(e);
-    }
-
+    
     private void printWinner() {
         OutputManager outputManager = new OutputManager();
         outputManager.winnerMessage(gameStatus.winner());

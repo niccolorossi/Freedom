@@ -3,14 +3,11 @@ package game;
 import game.freedom.NextMoveFreedom;
 import winning.Winner;
 
-import java.util.List;
-
 public class GameStatus {
     
     private Board board;
     private Boolean isFreedom;
     private Character newStone;
-    
     
     public GameStatus(int size) {
         this.board = new Board(size);
@@ -25,12 +22,12 @@ public class GameStatus {
         checkIfNextMoveIsFreedom(move);
     }
 
-    public void updateStatus(LastMove move) {
+    void updateStatus(LastMove move) {
 
         board.placeStone(move);
     }
     
-    public void checkIfNextMoveIsFreedom(Move move) {
+    private void checkIfNextMoveIsFreedom(Move move) {
 
         NextMoveFreedom nextMoveFreedom = new NextMoveFreedom(board, move);
         this.isFreedom = nextMoveFreedom.isNextFreedom();
@@ -38,11 +35,11 @@ public class GameStatus {
     
     private void changePlayer() { newStone = (newStone == 'W') ? 'B' : 'W'; }
     
-    Character currentPlayer(){
+    Character currentPlayer() {
         return newStone;
     }
 
-    public String winner() {
+    String winner() {
         return new Winner(board).getWinner();
     }
     
@@ -50,7 +47,7 @@ public class GameStatus {
         return this.board;
     }
     
-    public Boolean isFreedom(){
+    Boolean isFreedom(){
         return isFreedom;
     }
 }

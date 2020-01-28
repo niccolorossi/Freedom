@@ -10,9 +10,10 @@ public class MoveValidator {
 
     private Integer previousRow;
     private Integer previousColumn;
-
-    public MoveValidator(){}
-
+    
+    public MoveValidator() {
+        
+    }
     /*
      * This ctor is for testing purposes only
      */
@@ -21,7 +22,7 @@ public class MoveValidator {
         this.previousColumn = previousColumn;
     }
 
-    public void validate(List<Integer> coordinates, Boolean isFreedom, Board board) throws NonAdjacentException, OccupiedCellException{
+    public void validate(List<Integer> coordinates, Boolean isFreedom, Board board) throws NonAdjacentException, OccupiedCellException {
 
         if(!isFreedom){
             checkIfAdjacent(coordinates);
@@ -30,7 +31,7 @@ public class MoveValidator {
         updatePreviousCoordinates(coordinates);
     }
 
-    private void checkIfAdjacent(List<Integer> coordinates) throws NonAdjacentException{
+    private void checkIfAdjacent(List<Integer> coordinates) throws NonAdjacentException {
         ValidateAdjacentCoordinate validateAdjacentCell = new ValidateAdjacentCoordinate(previousRow, previousColumn);
         validateAdjacentCell.coordinateAdjacent(coordinates);
     }
