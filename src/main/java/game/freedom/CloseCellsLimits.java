@@ -1,6 +1,6 @@
 package game.freedom;
 
-public class CloseCellsLimits {
+class CloseCellsLimits {
     
     private Integer leftColumnIndex;
     private Integer rightColumnIndex;
@@ -20,7 +20,7 @@ public class CloseCellsLimits {
     }
 
     private Integer endingIndex(Integer coordinate, Integer boardSize) {
-        return (coordinate == boardSize) ? coordinate : coordinate + 1;
+        return (coordinate.equals(boardSize)) ? coordinate : coordinate + 1;
     }
     
     Integer getLeftColumnIndex() { return leftColumnIndex; }

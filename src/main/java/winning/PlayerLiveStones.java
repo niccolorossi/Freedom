@@ -20,7 +20,7 @@ public class PlayerLiveStones {
         List<Indexes> indexesList = playerIndexes.getAllIndexes();
 
         for (Indexes currentIndexes : indexesList) {
-            currentIndexes.setIndexes(liveStonesBoard);
+            currentIndexes.setLiveStonesForThisIndexes(liveStonesBoard);
         }
     }
     

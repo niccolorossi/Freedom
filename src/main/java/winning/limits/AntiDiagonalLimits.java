@@ -4,8 +4,8 @@ public class AntiDiagonalLimits implements Limits {
     
     private Integer boardSize;
     
-    public AntiDiagonalLimits(Integer length) {
-        this.boardSize = length;
+    public AntiDiagonalLimits(Integer boardSize) {
+        this.boardSize = boardSize;
     }
 
     @Override

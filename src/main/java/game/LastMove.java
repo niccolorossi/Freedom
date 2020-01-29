@@ -1,12 +1,13 @@
 package game;
 
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
-public class LastMove extends Move {
+class LastMove extends Move {
     
-    public LastMove(Character newStone, Board board) {
+    LastMove(Character newStone, Board board) {
         this.currentPlayer = newStone;
         this.coordinates = findCoordinates(board);
     }

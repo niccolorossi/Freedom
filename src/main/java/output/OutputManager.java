@@ -45,6 +45,7 @@ public class OutputManager {
     public void invalidBoardInput() {
         printStream.println("You must enter an integer number greater than or equal to 6!");
     }
+    
     public void invalidInputFormat() {
         printStream.println("You must enter TWO numbers separated by a whitespace");
     }

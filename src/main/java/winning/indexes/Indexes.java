@@ -12,5 +12,5 @@ public abstract class Indexes {
         this.beginColumn = beginColumn;
     }
 
-    abstract public void setIndexes(LiveStonesBoard liveStonesBoard);
+    abstract public void setLiveStonesForThisIndexes(LiveStonesBoard liveStonesBoard);
 }

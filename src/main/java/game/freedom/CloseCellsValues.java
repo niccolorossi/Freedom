@@ -5,10 +5,8 @@ import game.Board;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class CloseCellsValues {
+class CloseCellsValues {
     
     private List<Character> closeValues;
     private CloseCellsLimits closeCellsLimits;
@@ -17,7 +15,6 @@ public class CloseCellsValues {
 
         this.closeCellsLimits = new CloseCellsLimits(board.size(), row, column);
         this.closeValues = closeValues(board);
-
     }
 
     private List<Character> closeValues(Board board) {
@@ -36,12 +33,9 @@ public class CloseCellsValues {
         
         return closeValues;
     }
-
-
-
+    
     List<Character> getCloseValues() {
         return closeValues;
     }
-
     
 }

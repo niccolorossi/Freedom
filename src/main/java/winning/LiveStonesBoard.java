@@ -1,14 +1,12 @@
 package winning;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.stream.IntStream;
 
 public class LiveStonesBoard {
     
     private Boolean[][] currentBoard;
 
-    public LiveStonesBoard(Integer boardSize) {
+    LiveStonesBoard(Integer boardSize) {
         
         this.currentBoard = new Boolean[boardSize][boardSize];
         initBoardToFalse(boardSize);

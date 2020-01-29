@@ -1,6 +1,6 @@
 package test.game;
 
-import checkers.MoveValidator;
+import game.checkers.MoveValidator;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import game.GameStatus;

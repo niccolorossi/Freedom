@@ -1,6 +1,6 @@
 package game;
 
-import checkers.MoveValidator;
+import game.checkers.MoveValidator;
 import exceptions.NonAdjacentException;
 import exceptions.OccupiedCellException;
 import input.InputString;
@@ -29,6 +29,13 @@ public class Game {
         for(int turnNumber = 1; turnNumber <= numberOfMoves() - 1; turnNumber++) {
             turn();
         }
+    }
+    
+    private void lastTurn() {
+        printLastTurnMessage();
+        askForPassAndUpdate();
+        printUpdatedBoard();
+        printWinner();
     }
 
     private Integer numberOfMoves() {
@@ -80,13 +87,6 @@ public class Game {
     private void printErrorMessage(Exception e) {
         OutputManager outputManager = new OutputManager();
         outputManager.printErrorMessage(e);
-    }
-    
-    private void lastTurn() {
-        printLastTurnMessage();
-        askForPassAndUpdate();
-        printUpdatedBoard();
-        printWinner();
     }
     
     private void printLastTurnMessage() {

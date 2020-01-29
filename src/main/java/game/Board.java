@@ -16,7 +16,7 @@ public class Board {
     }
 
     private void initBoard() {
-        Integer boardSize = currentBoard[0].length;
+        int boardSize = currentBoard[0].length;
         IntStream.range(0, boardSize)
                 .forEach(r -> IntStream.range(0, boardSize)
                         .forEach(c -> currentBoard[r][c] = emptyCellCharacter));

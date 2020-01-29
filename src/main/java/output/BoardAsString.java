@@ -12,13 +12,13 @@ public class BoardAsString {
         Character[][] currentBoard = board.currentBoard();
         StringBuilder toReturn = new StringBuilder();
 
-        Consumer<Character[]> pipeDelimiter = (row) -> {
+        Consumer<Character[]> boardRowAsStringBuilder = (row) -> {
             Arrays.stream(row).forEach((el) -> toReturn.append("|").append(el));
             toReturn.append("|" +"\n");
         };
 
         Arrays.stream(currentBoard)
-                .forEach(pipeDelimiter);
+                .forEach(boardRowAsStringBuilder);
 
         return toReturn.toString();
     }

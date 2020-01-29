@@ -7,7 +7,7 @@ abstract public class Move {
     Character currentPlayer;
     List<Integer> coordinates;
 
-    public Character currentPlayer() {
+    Character currentPlayer() {
         return currentPlayer;
     }
     

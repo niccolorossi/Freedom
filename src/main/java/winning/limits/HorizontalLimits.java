@@ -4,9 +4,9 @@ public class HorizontalLimits implements Limits {
 
     private int boardSize;
 
-    public HorizontalLimits(Integer length) {
+    public HorizontalLimits(Integer boardSize) {
         
-        this.boardSize = length;
+        this.boardSize = boardSize;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package checkers;
+package game.checkers;
 
 import exceptions.OccupiedCellException;
 

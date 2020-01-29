@@ -2,9 +2,6 @@ package winning;
 
 import game.Board;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Winner {
 
     private Points whitePoints;
@@ -31,7 +28,6 @@ public class Winner {
             comment = whiteScore > blackScore ? " : White won!" : " : Black won!";
         }
         str.append(comment);
-
         
         return str.toString();
     }
