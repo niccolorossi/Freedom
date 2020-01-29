@@ -21,16 +21,16 @@ public class InputString {
         while(true) {
             try {
                 return askForMoveAndValidateIt(boardSize);
-            } catch (IndexOutOfBoundsException | NumberFormatException e1) {
+            } catch (IndexOutOfBoundsException | NumberFormatException e) {
                 printInvalidMoveInputFormatMessage();
-            } catch (OutOfBoundsException e2) {
-                printErrorMessage(e2);
+            } catch (OutOfBoundsException e) {
+                printErrorMessage(e);
             }
         }
     }
 
     private List<Integer> askForMoveAndValidateIt(Integer boardSize) throws OutOfBoundsException {
-        String inputString =  scanner.nextLine();
+        String inputString = scanner.nextLine();
         StringToIntegerList stringToIntegerList = new StringToIntegerList(inputString);
         List<Integer> moveList = stringToIntegerList.integerList();
         ValidInputMove validInputMove = new ValidInputMove(boardSize, moveList);

@@ -18,7 +18,7 @@ class ValidateAdjacentCoordinate {
     void coordinateAdjacent(List<Integer> coordinates) throws NonAdjacentException {
 
         if(isPreviousRowNotAdjacentTo(coordinates.get(0)) || isPreviousColNotAdjacentTo(coordinates.get(1))) {
-            String message = "This move must be adjacent to " + Arrays.asList(previousRow, previousColumn);
+            String message = "This move must be adjacent to " + Arrays.asList(previousRow + 1, previousColumn + 1);
             throw new NonAdjacentException(message);
         }
     }

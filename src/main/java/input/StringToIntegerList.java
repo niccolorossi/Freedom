@@ -13,6 +13,7 @@ public class StringToIntegerList {
     }
 
     public List<Integer> integerList() {
-        return Stream.of(inputString.split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+      return Stream.of(inputString.split(" ")).
+              map(x -> Integer.parseInt(x)-1).collect(Collectors.toList());
     }
 }

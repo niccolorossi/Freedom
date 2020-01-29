@@ -16,11 +16,11 @@ class CloseCellsLimits {
     }
 
     private Integer startingIndex(Integer coordinate) {
-        return (coordinate == 1) ? coordinate : coordinate - 1;
+        return (coordinate.equals(0)) ? coordinate : coordinate - 1;
     }
 
     private Integer endingIndex(Integer coordinate, Integer boardSize) {
-        return (coordinate.equals(boardSize)) ? coordinate : coordinate + 1;
+        return (coordinate.equals(boardSize-1)) ? coordinate : coordinate + 1;
     }
     
     Integer getLeftColumnIndex() { return leftColumnIndex; }

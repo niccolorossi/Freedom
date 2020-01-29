@@ -21,8 +21,8 @@ class LastMove extends Move {
         for(int row=0; row<boardSize; row++) {
             for(int col=0; col<boardSize; col++) {
                 if(currentBoard[row][col].equals(emptyCellCharacter)) {
-                    toReturn.add(row+1);
-                    toReturn.add(col+1);
+                    toReturn.add(row);
+                    toReturn.add(col);
                 }
             }
         }

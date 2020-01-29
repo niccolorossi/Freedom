@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.winning.WinnerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-01-29T09:56:03" hostname="cli107-137.wireless-s.units.it" time="0.084">
+  <properties/>
+  <testcase name="blackScoreis23" classname="test.winning.WinnerTest" time="0.057"/>
+  <testcase name="whiteScoreis15" classname="test.winning.WinnerTest" time="0.007"/>
+  <testcase name="blackScoreIsTheSameAsWhite" classname="test.winning.WinnerTest" time="0.007"/>
+  <testcase name="theGameIsDrawn" classname="test.winning.WinnerTest" time="0.007"/>
+  <testcase name="blackIsWinner" classname="test.winning.WinnerTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

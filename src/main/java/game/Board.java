@@ -34,7 +34,7 @@ public class Board {
     public Character stone(List<Integer> coordinates) {
         Integer row = coordinates.get(0);
         Integer column = coordinates.get(1);
-        return currentBoard[row-1][column-1];
+        return currentBoard[row][column];
     }
     
     void placeStone(Move move) {
@@ -42,7 +42,7 @@ public class Board {
         Integer row = move.getRow();
         Integer column = move.getColumn();
 
-        currentBoard[row-1][column-1] = move.currentPlayer();
+        currentBoard[row][column] = move.currentPlayer();
     }
 
     public Character emptyCellCharacter() {

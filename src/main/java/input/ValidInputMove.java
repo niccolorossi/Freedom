@@ -17,7 +17,7 @@ public class ValidInputMove {
     public List<Integer> inputMove() throws OutOfBoundsException {
         Integer row = move.get(0);
         Integer column = move.get(1);
-        if(row > boardSize || row < 1 || column < 1 || column > boardSize) {
+        if(row >= boardSize || row < 0 || column < 0 || column >= boardSize) {
             throw new OutOfBoundsException("Input coordinates must be between 1 and " + boardSize + "!");
         } else return move;
     }
