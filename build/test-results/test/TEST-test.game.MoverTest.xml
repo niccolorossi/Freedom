@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.game.MoverTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-29T10:06:44" hostname="cli107-137.wireless-s.units.it" time="0.022">
+  <properties/>
+  <testcase name="testOccupiedCellToStringReturnsPreviousBoard" classname="test.game.MoverTest" time="0.02"/>
+  <testcase name="testNonAdjacentCellToStringReturnsPreviousBoard" classname="test.game.MoverTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

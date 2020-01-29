@@ -33,8 +33,9 @@ public class MoverTest {
     public void testOccupiedCellToStringReturnsPreviousBoard() {
 
        gameStatus.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
-       List<Integer> occupiedMove = Arrays.asList(1, 1);
        MoveValidator moveValidator = new MoveValidator(1, 1);
+
+       List<Integer> occupiedMove = Arrays.asList(1, 1);
 
        OccupiedCellException thrown = assertThrows(OccupiedCellException.class,
                () -> moveValidator.validate(occupiedMove, false, gameStatus.getBoard()));
@@ -45,13 +46,14 @@ public class MoverTest {
     @Test
     public void testNonAdjacentCellToStringReturnsPreviousBoard() {
         gameStatus.updateStatus(new RegularMove(Arrays.asList(1,1), 'W'));
-        List<Integer> occupiedMove = Arrays.asList(5, 1);
         MoveValidator moveValidator = new MoveValidator(1, 1);
+        
+        List<Integer> nonAdjacentMove = Arrays.asList(5, 1);
 
         NonAdjacentException thrown = assertThrows(NonAdjacentException.class,
-                () -> moveValidator.validate(occupiedMove, false, gameStatus.getBoard()));
+                () -> moveValidator.validate(nonAdjacentMove, false, gameStatus.getBoard()));
 
-        assertTrue(thrown.getMessage().contains("This move must be adjacent to " + Arrays.asList(1, 1)));
+        assertTrue(thrown.getMessage().contains("This move must be adjacent to " + Arrays.asList(2, 2)));
     }
     
      
